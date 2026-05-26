@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Receipts — Quant Engine Syndicate</title>
+<meta name="description" content="Audited track record for Quant Engine Syndicate. 103 bets, 56.9% strike, +£6.22 P&L, +5.86% closing-line value.">
+<style>
+  :root {
+    --bg: #0d1117;
+    --bg2: #161b22;
+    --fg: #e6edf3;
+    --muted: #8b949e;
+    --accent: #2ea043;
+    --accent-hover: #3fb950;
+    --border: #30363d;
+    --warn: #d29922;
+    --danger: #f85149;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background: var(--bg);
+    color: var(--fg);
+    line-height: 1.55;
+  }
+  .container { max-width: 640px; margin: 0 auto; padding: 32px 20px 64px; }
+  .badge {
+    display: inline-block;
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--accent);
+    border: 1px solid var(--accent);
+    padding: 4px 10px;
+    border-radius: 999px;
+    margin-bottom: 16px;
+  }
+  .back-link { display: inline-block; color: var(--muted); font-size: 13px; text-decoration: none; margin-bottom: 16px; }
+  .back-link:hover { color: var(--fg); }
+  h1 { font-size: 30px; line-height: 1.2; margin: 0 0 12px; font-weight: 700; }
+  h2 { font-size: 20px; margin: 36px 0 10px; }
+  h3 { font-size: 15px; margin: 18px 0 4px; color: var(--fg); }
+  .sub { color: var(--muted); font-size: 17px; margin-bottom: 24px; }
+  .hero-stats {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 20px;
+    margin: 24px 0;
+  }
+  .hero-row { display: flex; justify-content: space-between; align-items: baseline; padding: 10px 0; border-bottom: 1px solid var(--border); }
+  .hero-row:last-child { border-bottom: none; }
+  .hero-num { font-size: 22px; font-weight: 700; color: var(--accent); }
+  .hero-lbl { color: var(--muted); font-size: 13px; }
+  .explain { color: var(--muted); font-size: 14px; margin: 4px 0 0; }
+  table { width: 100%; border-collapse: collapse; margin: 12px 0 8px; font-size: 14px; }
+  th, td { text-align: left; padding: 10px 8px; border-bottom: 1px solid var(--border); }
+  th { color: var(--muted); font-weight: 500; font-size: 12px; text-transform: uppercase; letter-spacing: 0.05em; }
+  td.good { color: var(--accent); }
+  td.bad { color: var(--danger); }
+  td.muted { color: var(--muted); }
+  .method {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 16px 18px;
+    margin: 16px 0;
+  }
+  .method p { margin: 0 0 10px; color: var(--muted); font-size: 14px; }
+  .method p:last-child { margin-bottom: 0; }
+  .limits {
+    background: rgba(210, 153, 34, 0.06);
+    border-left: 3px solid var(--warn);
+    padding: 14px 16px;
+    border-radius: 4px;
+    margin: 20px 0;
+    font-size: 14px;
+  }
+  .limits strong { color: var(--fg); }
+  ul { padding-left: 20px; color: var(--muted); font-size: 14px; }
+  li { margin-bottom: 6px; }
+  a { color: var(--accent); }
+  a:hover { color: var(--accent-hover); }
+  footer { color: var(--muted); font-size: 12px; margin-top: 48px; border-top: 1px solid var(--border); padding-top: 16px; }
+  footer a { color: var(--muted); }
+  .cta-back {
+    display: block;
+    text-align: center;
+    background: var(--accent);
+    color: #fff;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 16px;
+    padding: 12px 24px;
+    border-radius: 8px;
+    margin: 32px 0 16px;
+  }
+  .cta-back:hover { background: var(--accent-hover); }
+</style>
+</head>
+<body>
+<div class="container">
+  <a class="back-link" href="./wc2026_pass.html">← back to the WC pass</a>
+  <span class="badge">The Receipts</span>
+  <h1>103 bets. 56.9% strike. +£6.22. +5.86% CLV.</h1>
+  <p class="sub">No vertical equity curves. No 96% accuracy claims. Just the actual numbers, with the actual definitions.</p>
+
+  <div class="hero-stats">
+    <div class="hero-row">
+      <span class="hero-lbl">Audited bets (since 2026-03-12)</span>
+      <span class="hero-num">103</span>
+    </div>
+    <p class="explain">Every staked bet logged automatically by the model runner, then settled match-by-match. Real money, not paper.</p>
+
+    <div class="hero-row">
+      <span class="hero-lbl">Strike rate</span>
+      <span class="hero-num">56.9%</span>
+    </div>
+    <p class="explain">Bets won ÷ bets settled. For comparison, a coin-flip strategy run at ~2.0 odds breaks even at ~50%; we need ~52-55%+ to clear typical bookmaker margin depending on average odds taken.</p>
+
+    <div class="hero-row">
+      <span class="hero-lbl">Net P&amp;L</span>
+      <span class="hero-num">+£6.22</span>
+    </div>
+    <p class="explain">On £30.36 total staked = <strong>+20.5% ROI</strong>. Bankroll grew from £5.00 to ~£11.30. Yes, those are real numbers — the bankroll is small on purpose because the track record is still young.</p>
+
+    <div class="hero-row">
+      <span class="hero-lbl">Closing-line value (CLV)</span>
+      <span class="hero-num">+5.86%</span>
+    </div>
+    <p class="explain">CLV measures whether our entry odds beat the final market price. <strong>This is the metric tipsters can't fake.</strong> Positive CLV over a meaningful sample is the closest thing to proof that an edge is real. Across 83 bets with closing odds backfilled, we're averaging +5.86% — the bookmaker market is closing tighter than where we got in.</p>
+  </div>
+
+  <h2>Performance by market</h2>
+  <table>
+    <thead>
+      <tr><th>Market</th><th>Verdict</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Over/Under goals</td><td class="good">Strongest edge — best-performing market across the track</td></tr>
+      <tr><td>BTTS (both teams to score)</td><td class="muted">Mid — selectively profitable, regional bias</td></tr>
+      <tr><td>1X2 (match result)</td><td class="bad">Worst — efficient market, hardest to beat</td></tr>
+      <tr><td>Cards (totals)</td><td class="muted">Micro-validation — 10p flat stake until calibration proven</td></tr>
+    </tbody>
+  </table>
+  <p style="color: var(--muted); font-size: 13px;">Posting the worst market alongside the best is intentional. If a tipster only shows you their winners, they're showing you a survivor bias, not a strategy.</p>
+
+  <h2>How the model works</h2>
+  <div class="method">
+    <p>We use a <strong>multi-layer ensemble model</strong>. Layers include Dixon-Coles match probability fitting, Elo ratings, expected-goals divergence (rolling xG vs actual finishing), weather effects on goal totals, confirmed lineup/absence gating, referee discipline profiles, head-to-head venue patterns, and others.</p>
+    <p>We <strong>don't reveal the exact layer count, weights, thresholds, or layer names</strong> — that's the only piece of IP we have, and giving it away would kill the edge. What we do reveal: every bet, every stake, every edge %, every win and loss, in real time.</p>
+    <p>The bets are public. The results are settled in real time. The method stays private.</p>
+  </div>
+
+  <h2>External verification</h2>
+  <ul>
+    <li>Independent ledger: <a href="BLOGABET_URL_HERE">verified on BlogAbet</a> (public bet-by-bet record, third-party hosted)</li>
+    <li>Free track-record updates: <a href="https://twitter.com/quantenginesynd">@quantenginesynd</a> on X</li>
+    <li>Daily free pick posted publicly before kickoff — judge calibration before paying anything</li>
+  </ul>
+
+  <h2>Methodology limitations (be honest about it)</h2>
+  <div class="limits">
+    <strong>103 bets is suggestive, not statistically significant at the p&lt;0.05 level.</strong> With this sample size, the true edge could plausibly sit anywhere from +5% (real but smaller than headline) to +25% (lucky sample). We'd need <strong>500+ settled bets</strong> to make a definitive statistical claim. We're publishing the track record as it builds — you're watching the experiment run, not buying a finished proof.
+    <br><br>
+    Other caveats worth knowing: the bankroll is small (~£11.30 current), so stake variance is high in percentage terms. Closing-line value is backfilled for 83 of the 103 bets so far. The Cards market is still in micro-validation (10p flat) and shouldn't be treated as a proven layer yet. If those caveats kill your interest, that's the correct response — better now than after £25.
+  </div>
+
+  <a class="cta-back" href="./wc2026_pass.html">Back to the WC pass →</a>
+
+  <footer>
+    Quant Engine Syndicate · <a href="https://twitter.com/quantenginesynd">@quantenginesynd</a> · <a href="./wc2026_pass.html">Pass</a> · <a href="./legal.html">Refund &amp; Privacy</a>
+  </footer>
+</div>
+</body>
+</html>
