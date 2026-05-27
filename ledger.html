@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Full Ledger — Quant Edge Syndicate</title>
+<meta name="description" content="Every model-followed bet since 2026-03-12: date, match, market, selection, odds, result, P&amp;L, and closing-line value. 107 bets, 53.3% strike.">
+<style>
+  :root { --bg:#0d1117; --bg2:#161b22; --fg:#e6edf3; --muted:#8b949e; --accent:#2ea043; --accent-hover:#3fb950; --border:#30363d; --danger:#f85149; }
+  * { box-sizing:border-box; }
+  body { margin:0; font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif; background:var(--bg); color:var(--fg); line-height:1.5; }
+  .container { max-width:920px; margin:0 auto; padding:32px 20px 64px; }
+  .back-link { display:inline-block; color:var(--muted); font-size:13px; text-decoration:none; margin-bottom:16px; }
+  .back-link:hover { color:var(--fg); }
+  .badge { display:inline-block; font-size:12px; letter-spacing:0.08em; text-transform:uppercase; color:var(--accent); border:1px solid var(--accent); padding:4px 10px; border-radius:999px; margin-bottom:16px; }
+  h1 { font-size:28px; line-height:1.2; margin:0 0 12px; font-weight:700; }
+  .sub { color:var(--muted); font-size:15px; margin-bottom:20px; }
+  .totals { display:flex; flex-wrap:wrap; gap:10px; margin:0 0 24px; }
+  .tot { background:var(--bg2); border:1px solid var(--border); border-radius:8px; padding:10px 14px; }
+  .tot .num { font-size:18px; font-weight:700; color:var(--accent); }
+  .tot .lbl { font-size:11px; color:var(--muted); text-transform:uppercase; letter-spacing:0.05em; }
+  table { width:100%; border-collapse:collapse; font-size:13px; }
+  th,td { text-align:left; padding:8px 8px; border-bottom:1px solid var(--border); white-space:nowrap; }
+  th { color:var(--muted); font-weight:500; font-size:11px; text-transform:uppercase; letter-spacing:0.05em; position:sticky; top:0; background:var(--bg); }
+  td.num { text-align:right; font-variant-numeric:tabular-nums; }
+  td.date { color:var(--muted); }
+  .win { color:var(--accent); }
+  .loss { color:var(--danger); }
+  .muted { color:var(--muted); }
+  .note { color:var(--muted); font-size:12px; margin:18px 0 0; }
+  .table-wrap { overflow-x:auto; border:1px solid var(--border); border-radius:10px; }
+  footer { color:var(--muted); font-size:12px; margin-top:40px; border-top:1px solid var(--border); padding-top:16px; }
+  footer a { color:var(--muted); }
+</style>
+</head>
+<body>
+<div class="container">
+  <a class="back-link" href="./proof.html">← back to the proof summary</a>
+  <span class="badge">The Full Ledger</span>
+  <h1>Every model-followed bet, since 2026-03-12.</h1>
+  <p class="sub">No filtering, no cherry-picking. Wins in green, losses in red, exactly as settled. This table is generated directly from the settlement database — the totals below are the same numbers behind the headline stats.</p>
+
+  <div class="totals">
+    <div class="tot"><div class="num">107</div><div class="lbl">Bets</div></div>
+    <div class="tot"><div class="num">57W&nbsp;–&nbsp;50L</div><div class="lbl">Record</div></div>
+    <div class="tot"><div class="num">53.3%</div><div class="lbl">Strike</div></div>
+    <div class="tot"><div class="num">+£6.79</div><div class="lbl">Net P&amp;L</div></div>
+    <div class="tot"><div class="num">+1.69%</div><div class="lbl">Avg CLV (52 tracked)</div></div>
+  </div>
+
+  <div class="table-wrap">
+  <table>
+    <thead>
+      <tr><th>Date</th><th>Match</th><th>Market</th><th>Selection</th><th>Odds</th><th>Result</th><th>P&amp;L</th><th>CLV</th></tr>
+    </thead>
+    <tbody>
+      <tr><td class='date'>2026-05-23</td><td>Valencia vs Barcelona</td><td class='muted'>Over/Under 2.5</td><td>Under 2.5</td><td class='num'>2.75</td><td class='loss'>Loss</td><td class='num loss'>-£0.20</td><td class='num muted'>—</td></tr>
+<tr><td class='date'>2026-05-23</td><td>Bologna vs Inter</td><td class='muted'>1X2</td><td>Away Win</td><td class='num'>2.10</td><td class='loss'>Loss</td><td class='num loss'>-£0.30</td><td class='num muted'>—</td></tr>
+<tr><td class='date'>2026-05-20</td><td>SC Freiburg vs Aston Villa</td><td class='muted'>Asian Handicap</td><td>Freiburg +1.5</td><td class='num'>1.43</td><td class='loss'>Loss</td><td class='num loss'>-£0.25</td><td class='num loss'>-0.05%</td></tr>
+<tr><td class='date'>2026-05-17</td><td>Udinese vs Cremonese</td><td class='muted'>1X2</td><td>Home Win</td><td class='num'>2.45</td><td class='loss'>Loss</td><td class='num loss'>-£0.30</td><td class='num win'>+0.02%</td></tr>
+<tr><td class='date'>2026-05-17</td><td>Sassuolo vs Lecce</td><td class='muted'>Over/Under 2.5</td><td>Under 2.5</td><td class='num'>1.73</td><td class='loss'>Loss</td><td class='num loss'>-£0.30</td><td class='num loss'>-0.04%</td></tr>
+<tr><td class='date'>2026-05-17</td><td>Rayo Vallecano vs Villarreal</td><td class='muted'>Over/Under 2.5</td><td>Under 2.5</td><td class='num'>2.10</td><td class='win'>Win</td><td class='num win'>+£0.55</td><td class='num muted'>—</td></tr>
+<tr><td class='date'>2026-05-17</td><td>Atalanta vs Bologna</td><td class='muted'>Over/Under 2.5</td><td>Under 2.5</td><td class='num'>2.20</td><td class='win'>Win</td><td class='num win'>+£0.24</td><td class='num muted'>—</td></tr>
+<tr><td class='date'>2026-05-17</td><td>Wolves vs Fulham</td><td class='muted'>Over/Under 2.5</td><td>Under 2.5</td><td class='num'>1.91</td><td class='win'>Win</td><td class='num win'>+£0.18</td><td class='num loss'>-0.05%</td></tr>
+<tr><td class='date'>2026-05-17</td><td>Roma vs Lazio</td><td class='muted'>BTTS</td><td>BTTS Yes</td><td class='num'>1.95</td><td class='loss'>Loss</td><td class='num loss'>-£0.20</td><td class='num loss'>-0.03%</td></tr>
+<tr><td class='date'>2026-05-17</td><td>Manchester United vs Nottingham Forest</td><td class='muted'>Over/Under 2.5</td><td>Under 2.5</td><td class='num'>2.50</td><td class='loss'>Loss</td><td class='num loss'>-£0.20</td><td class='num loss'>-0.05%</td></tr>
+<tr><td class='date'>2026-05-17</td><td>Como vs Parma</td><td class='muted'>Over/Under 2.5</td><td>Under 2.5</td><td class='num'>2.30</td><td class='win'>Win</td><td class='num win'>+£0.52</td><td class='num win'>+0.05%</td></tr>
+<tr><td class='date'>2026-05-16</td><td>Sporting vs Gil Vicente</td><td class='muted'>Over/Under 2.5</td><td>Under 2.5</td><td class='num'>2.85</td><td class='loss'>Loss</td><td class='num loss'>-£0.11</td><td class='num muted'>—</td></tr>
+<tr><td class='date'>2026-05-16</td><td>St Pauli vs Wolfsburg</td><td class='muted'>BTTS</td><td>BTTS Yes</td><td class='num'>1.57</td><td class='win'>Win</td><td class='num win'>+£0.13</td><td class='num win'>+0.00%</td></tr>
+<tr><td class='date'>2026-05-14</td><td>Real Madrid vs Oviedo</td><td class='muted'>Over/Under</td><td>Under 2.5</td><td class='num'>2.75</td><td class='win'>Win</td><td class='num win'>+£0.35</td><td class='num win'>+0.57%</td></tr>
+<tr><td class='date'>2026-05-14</td><td>Girona vs Real Sociedad</td><td class='muted'>BTTS</td><td>BTTS Yes</td><td class='num'>1.67</td><td class='win'>Win</td><td class='num win'>+£0.13</td><td class='num muted'>—</td></tr>
+<tr><td class='date'>2026-05-13</td><td>Manchester City vs Crystal Palace</td><td class='muted'>Over/Under 2.5</td><td>Under 2.5</td><td class='num'>2.75</td><td class='loss'>Loss</td><td class='num loss'>-£0.30</td><td class='num muted'>—</td></tr>
+<tr><td class='date'>2026-05-13</td><td>Villarreal vs Sevilla</td><td class='muted'>1X2</td><td>Home Win</td><td class='num'>2.03</td><td class='win'>Win</td><td class='num win'>+£0.26</td><td class='num loss'>-0.03%</td></tr>
+<tr><td class='date'>2026-05-13</td><td>CA Osasuna vs Atletico Madrid</td><td class='muted'>1X2</td><td>Home Win</td><td class='num'>2.62</td><td class='loss'>Loss</td><td class='num loss'>-£0.20</td><td class='num loss'>-0.00%</td></tr>
+<tr><td class='date'>2026-05-11</td><td>Rayo Vallecano vs Girona</td><td class='muted'>Over/Under 2.5</td><td>Under 2.5</td><td class='num'>1.91</td><td class='win'>Win</td><td class='num win'>+£0.23</td><td class='num win'>+0.02%</td></tr>
+<tr><td class='date'>2026-05-10</td><td>Barcelona vs Real Madrid</td><td class='muted'>BTTS</td><td>Yes</td><td class='num'>1.40</td><td class='loss'>Loss</td><td class='num loss'>-£0.20</td><td class='num loss'>-0.03%</td></tr>
+<tr><td class='date'>2026-05-10</td><td>AC Milan vs Atalanta</td><td class='muted'>Over/Under 2.5</td><td>Under 2.5</td><td class='num'>1.91</td><td class='loss'>Loss</td><td class='num loss'>-£0.20</td><td class='num loss'>-0.01%</td></tr>
+<tr><td class='date'>2026-05-10</td><td>Athletic Bilbao vs Valencia</td><td class='muted'>Over/Under 2.5</td><td>Under 2.5</td><td class='num'>1.73</td><td class='win'>Win</td><td class='num win'>+£0.07</td><td class='num muted'>—</td></tr>
+<tr><td class='date'>2026-05-10</td><td>Mallorca vs Villarreal</td><td class='muted'>Over/Under 2.5</td><td>Under 2.5</td><td class='num'>2.20</td><td class='win'>Win</td><td class='num win'>+£0.24</td><td class='num win'>+0.05%</td></tr>
+<tr><td class='date'>2026-05-09</td><td>Elche vs Alaves</td><td class='muted'>1X2</td><td>Home Win</td><td class='num'>2.25</td><td class='loss'>Loss</td><td class='num loss'>-£0.10</td><td class='num muted'>—</td></tr>
+<tr><td class='date'>2026-05-09</td><td>Lecce vs Juventus</td><td class='muted'>Over/Under 2.5</td><td>Under 2.5</td><td class='num'>1.91</td><td class='win'>Win</td><td class='num win'>+£0.23</td><td class='num loss'>-0.00%</td></tr>
+<tr><td class='date'>2026-05-09</td><td>Atletico Madrid vs Celta Vigo</td><td class='muted'>Over/Under 2.5</td><td>Under 2.5</td><td class='num'>2.10</td><td class='win'>Win</td><td class='num win'>+£0.63</td><td class='num loss'>-0.05%</td></tr>
+<tr><td class='date'>2026-05-07</td><td>Aston Villa vs Nottingham Forest</td><td class='muted'>Over/Under 2.5</td><td>Over 2.5</td><td class='num'>2.00</td><td class='win'>Win</td><td class='num win'>+£0.10</td><td class='num win'>+0.01%</td></tr>
+<tr><td class='date'>2026-05-07</td><td>Strasbourg vs Rayo Vallecano</td><td class='muted'>1X2</td><td>Home Win</td><td class='num'>1.99</td><td class='loss'>Loss</td><td class='num loss'>-£0.10</td><td class='num win'>+0.02%</td></tr>
+<tr><td class='date'>2026-05-07</td><td>Strasbourg vs Rayo Vallecano</td><td class='muted'>1X2</td><td>Home Win</td><td class='num'>1.99</td><td class='loss'>Loss</td><td class='num loss'>-£0.10</td><td class='num win'>+0.02%</td></tr>
+<tr><td class='date'>2026-05-06</td><td>Bayern Munich vs PSG</td><td class='muted'>Over/Under 4.5</td><td>Over 4.5</td><td class='num'>2.38</td><td class='loss'>Loss</td><td class='num loss'>-£0.15</td><td class='num win'>+0.03%</td></tr>
+<tr><td class='date'>2026-05-05</td><td>Arsenal vs Atletico</td><td class='muted'>BTTS</td><td>Yes</td><td class='num'>1.95</td><td class='loss'>Loss</td><td class='num loss'>-£0.10</td><td class='num muted'>—</td></tr>
+<tr><td class='date'>2026-05-04</td><td>Chelsea vs Nottingham Forest</td><td class='muted'>Over/Under 2.5</td><td>Over 2.5</td><td class='num'>1.73</td><td class='win'>Win</td><td class='num win'>+£0.07</td><td class='num muted'>—</td></tr>
+<tr><td class='date'>2026-05-04</td><td>Cremonese vs Lazio</td><td class='muted'>BetBuilder</td><td>BTTS+O2.5</td><td class='num'>2.50</td><td class='win'>Win</td><td class='num win'>+£0.15</td><td class='num muted'>—</td></tr>
+<tr><td class='date'>2026-05-04</td><td>Everton vs Manchester City</td><td class='muted'>BTTS</td><td>Yes</td><td class='num'>1.75</td><td class='win'>Win</td><td class='num win'>+£0.07</td><td class='num muted'>—</td></tr>
+<tr><td class='date'>2026-05-04</td><td>Sevilla vs Real Sociedad</td><td class='muted'>BTTS</td><td>Yes</td><td class='num'>1.80</td><td class='loss'>Loss</td><td class='num loss'>-£0.10</td><td class='num muted'>—</td></tr>
+<tr><td class='date'>2026-05-04</td><td>Sevilla vs Real Sociedad</td><td class='muted'>Over/Under 2.5</td><td>Over 2.5</td><td class='num'>2.10</td><td class='loss'>Loss</td><td class='num loss'>-£0.10</td><td class='num win'>+0.30%</td></tr>
+<tr><td class='date'>2026-05-04</td><td>Everton vs Manchester City</td><td class='muted'>Over/Under 2.5</td><td>Over 2.5</td><td class='num'>1.57</td><td class='win'>Win</td><td class='num win'>+£0.06</td><td class='num win'>+0.00%</td></tr>
+<tr><td class='date'>2026-05-04</td><td>Cremonese vs Lazio</td><td class='muted'>Over/Under 2.5</td><td>Over 2.5</td><td class='num'>2.10</td><td class='win'>Win</td><td class='num win'>+£0.11</td><td class='num win'>+0.08%</td></tr>
+<tr><td class='date'>2026-05-04</td><td>Cremonese vs Lazio</td><td class='muted'>1X2</td><td>Home Win</td><td class='num'>3.16</td><td class='loss'>Loss</td><td class='num loss'>-£0.10</td><td class='num win'>+0.02%</td></tr>
+<tr><td class='date'>2026-05-04</td><td>Chelsea vs Nottingham Forest</td><td class='muted'>Over/Under 3.5</td><td>Over 3.5</td><td class='num'>2.50</td><td class='win'>Win</td><td class='num win'>+£0.15</td><td class='num muted'>—</td></tr>
+<tr><td class='date'>2026-05-04</td><td>Chelsea vs Nottingham Forest</td><td class='muted'>BTTS</td><td>Yes</td><td class='num'>1.70</td><td class='win'>Win</td><td class='num win'>+£0.07</td><td class='num loss'>-0.06%</td></tr>
+<tr><td class='date'>2026-05-03</td><td>Inter Milan vs Parma</td><td class='muted'>Over/Under 2.5</td><td>Under 2.5</td><td class='num'>2.62</td><td class='win'>Win</td><td class='num win'>+£0.16</td><td class='num loss'>-0.00%</td></tr>
+<tr><td class='date'>2026-05-03</td><td>Borussia Monchengladbach vs Borussia Dortmund</td><td class='muted'>BTTS</td><td>Yes</td><td class='num'>1.50</td><td class='loss'>Loss</td><td class='num loss'>-£0.10</td><td class='num muted'>—</td></tr>
+<tr><td class='date'>2026-05-03</td><td>Getafe vs Rayo Vallecano</td><td class='muted'>Over/Under 2.5</td><td>Under 2.5</td><td class='num'>1.44</td><td class='win'>Win</td><td class='num win'>+£0.04</td><td class='num win'>+0.00%</td></tr>
+<tr><td class='date'>2026-05-03</td><td>Sassuolo vs AC Milan</td><td class='muted'>1X2</td><td>Home Win</td><td class='num'>4.80</td><td class='muted'>Cash-out</td><td class='num win'>+£0.26</td><td class='num muted'>—</td></tr>
+<tr><td class='date'>2026-05-03</td><td>Bournemouth vs Crystal Palace</td><td class='muted'>Over/Under 2.5</td><td>Under 2.5</td><td class='num'>2.10</td><td class='loss'>Loss</td><td class='num loss'>-£0.10</td><td class='num loss'>-0.09%</td></tr>
+<tr><td class='date'>2026-04-29</td><td>Atletico Madrid vs Arsenal</td><td class='muted'>BTTS</td><td>Yes</td><td class='num'>1.91</td><td class='win'>Win</td><td class='num win'>+£0.09</td><td class='num muted'>—</td></tr>
+<tr><td class='date'>2026-04-29</td><td>Atletico Madrid vs Arsenal</td><td class='muted'>Over/Under 2.5</td><td>Under 2.5</td><td class='num'>1.67</td><td class='win'>Win</td><td class='num win'>+£0.07</td><td class='num muted'>—</td></tr>
+<tr><td class='date'>2026-04-26</td><td>Torino vs Inter</td><td class='muted'>Over/Under 2.5</td><td>Under 2.5</td><td class='num'>2.30</td><td class='loss'>Loss</td><td class='num loss'>-£0.30</td><td class='num win'>+0.03%</td></tr>
+<tr><td class='date'>2026-04-26</td><td>Torino vs Inter</td><td class='muted'>Over/Under 2.5</td><td>Under 2.5</td><td class='num'>2.38</td><td class='loss'>Loss</td><td class='num loss'>-£0.30</td><td class='num win'>+0.03%</td></tr>
+<tr><td class='date'>2026-04-25</td><td>Hellas Verona vs Lecce</td><td class='muted'>1X2</td><td>Home Win</td><td class='num'>2.55</td><td class='loss'>Loss</td><td class='num loss'>-£0.10</td><td class='num muted'>—</td></tr>
+<tr><td class='date'>2026-04-25</td><td>Getafe vs Barcelona</td><td class='muted'>Over/Under 2.5</td><td>Under 2.5</td><td class='num'>1.91</td><td class='win'>Win</td><td class='num win'>+£0.46</td><td class='num loss'>-0.00%</td></tr>
+<tr><td class='date'>2026-04-25</td><td>Koln vs Leverkusen</td><td class='muted'>BTTS</td><td>Yes</td><td class='num'>1.50</td><td class='win'>Win</td><td class='num win'>+£0.25</td><td class='num win'>+0.04%</td></tr>
+<tr><td class='date'>2026-04-25</td><td>Lyon vs Auxerre</td><td class='muted'>Over/Under 2.5</td><td>Under 2.5</td><td class='num'>2.00</td><td class='loss'>Loss</td><td class='num loss'>-£1.00</td><td class='num loss'>-0.09%</td></tr>
+<tr><td class='date'>2026-04-24</td><td>Real Betis vs Real Madrid</td><td class='muted'>Over/Under 2.5</td><td>Under 2.5</td><td class='num'>2.62</td><td class='win'>Win</td><td class='num win'>+£0.16</td><td class='num muted'>—</td></tr>
+<tr><td class='date'>2026-04-23</td><td>VfB Stuttgart vs SC Freiburg</td><td class='muted'>Over/Under 2.5</td><td>Over 2.5</td><td class='num'>1.53</td><td class='loss'>Loss</td><td class='num loss'>-£0.15</td><td class='num loss'>-2.42%</td></tr>
+<tr><td class='date'>2026-04-23</td><td>VfB Stuttgart vs SC Freiburg</td><td class='muted'>Over/Under 2.5</td><td>Over 2.5</td><td class='num'>1.53</td><td class='loss'>Loss</td><td class='num loss'>-£0.15</td><td class='num loss'>-2.42%</td></tr>
+<tr><td class='date'>2026-04-22</td><td>Bournemouth vs Leeds</td><td class='muted'>Over/Under 3.5</td><td>Over 3.5</td><td class='num'>2.50</td><td class='win'>Win</td><td class='num win'>+£0.45</td><td class='num win'>+49.70%</td></tr>
+<tr><td class='date'>2026-04-22</td><td>Atalanta vs Lazio</td><td class='muted'>Over/Under 2.5</td><td>Over 2.5</td><td class='num'>1.95</td><td class='loss'>Loss</td><td class='num loss'>-£0.50</td><td class='num muted'>—</td></tr>
+<tr><td class='date'>2026-04-22</td><td>Bournemouth vs Leeds</td><td class='muted'>Over/Under 2.5</td><td>Over 2.5</td><td class='num'>1.61</td><td class='win'>Win</td><td class='num win'>+£0.19</td><td class='num win'>+24.81%</td></tr>
+<tr><td class='date'>2026-04-22</td><td>Bayer Leverkusen vs Bayern Munich</td><td class='muted'>Over/Under 2.5</td><td>Over 2.5</td><td class='num'>1.29</td><td class='loss'>Loss</td><td class='num loss'>-£0.50</td><td class='num muted'>—</td></tr>
+<tr><td class='date'>2026-04-22</td><td>Bournemouth vs Leeds</td><td class='muted'>Over/Under</td><td>Over 3.5</td><td class='num'>2.50</td><td class='win'>Win</td><td class='num win'>+£0.23</td><td class='num win'>+49.70%</td></tr>
+<tr><td class='date'>2026-04-22</td><td>Bayer Leverkusen vs Bayern Munich</td><td class='muted'>Over/Under</td><td>Over 3.5</td><td class='num'>1.61</td><td class='loss'>Loss</td><td class='num loss'>-£0.15</td><td class='num muted'>—</td></tr>
+<tr><td class='date'>2026-04-22</td><td>PSG vs Nantes</td><td class='muted'>Over/Under</td><td>Over 3.5</td><td class='num'>1.91</td><td class='loss'>Loss</td><td class='num loss'>-£0.15</td><td class='num win'>+6.11%</td></tr>
+<tr><td class='date'>2026-04-21</td><td>Inter vs Como</td><td class='muted'>Over/Under 2.5</td><td>Over 2.5</td><td class='num'>1.95</td><td class='win'>Win</td><td class='num win'>+£0.19</td><td class='num muted'>—</td></tr>
+<tr><td class='date'>2026-04-21</td><td>Brighton vs Chelsea</td><td class='muted'>1X2</td><td>Brighton Win</td><td class='num'>2.25</td><td class='win'>Win</td><td class='num win'>+£0.25</td><td class='num muted'>—</td></tr>
+<tr><td class='date'>2026-04-20</td><td>Lecce vs Fiorentina</td><td class='muted'>Over/Under 2.5</td><td>Under 2.5</td><td class='num'>1.67</td><td class='win'>Win</td><td class='num win'>+£0.10</td><td class='num win'>+0.03%</td></tr>
+<tr><td class='date'>2026-04-19</td><td>Man City vs Arsenal</td><td class='muted'>Cards Over/Under</td><td>Under 4.5 Cards</td><td class='num'>1.73</td><td class='win'>Win</td><td class='num win'>+£0.07</td><td class='num loss'>-0.11%</td></tr>
+<tr><td class='date'>2026-04-19</td><td>Strasbourg vs Rennes</td><td class='muted'>Cards Over/Under</td><td>Over 3.5 Cards</td><td class='num'>1.83</td><td class='loss'>Loss</td><td class='num loss'>-£0.10</td><td class='num win'>+0.20%</td></tr>
+<tr><td class='date'>2026-04-19</td><td>Man City vs Arsenal</td><td class='muted'>Over/Under 2.5</td><td>Under 2.5 Goals</td><td class='num'>1.91</td><td class='loss'>Loss</td><td class='num loss'>-£0.10</td><td class='num loss'>-0.01%</td></tr>
+<tr><td class='date'>2026-04-19</td><td>Bayern Munich vs VfB Stuttgart</td><td class='muted'>Cards Over/Under</td><td>Over 3.5 Cards</td><td class='num'>1.83</td><td class='loss'>Loss</td><td class='num loss'>-£0.10</td><td class='num muted'>—</td></tr>
+<tr><td class='date'>2026-04-19</td><td>Strasbourg vs Rennes</td><td class='muted'>1X2</td><td>Strasbourg Win</td><td class='num'>3.40</td><td class='loss'>Loss</td><td class='num loss'>-£0.25</td><td class='num loss'>-0.13%</td></tr>
+<tr><td class='date'>2026-04-19</td><td>SC Freiburg vs Heidenheim</td><td class='muted'>1X2</td><td>SC Freiburg Win</td><td class='num'>1.65</td><td class='win'>Win</td><td class='num win'>+£0.20</td><td class='num muted'>—</td></tr>
+<tr><td class='date'>2026-04-19</td><td>Aston Villa vs Sunderland</td><td class='muted'>Cards Over/Under</td><td>Over 3.5 Cards</td><td class='num'>1.67</td><td class='win'>Win</td><td class='num win'>+£0.07</td><td class='num loss'>-0.16%</td></tr>
+<tr><td class='date'>2026-04-19</td><td>Everton vs Liverpool</td><td class='muted'>1X2</td><td>Everton Win</td><td class='num'>3.20</td><td class='loss'>Loss</td><td class='num loss'>-£0.15</td><td class='num muted'>—</td></tr>
+<tr><td class='date'>2026-04-19</td><td>Cremonese vs Torino</td><td class='muted'>Cards Over/Under</td><td>Over 3.5 Cards</td><td class='num'>1.67</td><td class='loss'>Loss</td><td class='num loss'>-£0.10</td><td class='num loss'>-0.17%</td></tr>
+<tr><td class='date'>2026-04-18</td><td>Atletico Madrid vs Real Sociedad</td><td class='muted'>Over/Under 2.5</td><td>Under 2.5</td><td class='num'>2.20</td><td class='loss'>Loss</td><td class='num loss'>-£0.50</td><td class='num muted'>—</td></tr>
+<tr><td class='date'>2026-04-18</td><td>Eintracht Frankfurt vs RB Leipzig</td><td class='muted'>Over/Under 2.5</td><td>Under 2.5</td><td class='num'>3.00</td><td class='loss'>Loss</td><td class='num loss'>-£0.50</td><td class='num muted'>—</td></tr>
+<tr><td class='date'>2026-04-18</td><td>Lorient vs Marseille</td><td class='muted'>Over/Under 2.5</td><td>Under 2.5</td><td class='num'>2.75</td><td class='win'>Win</td><td class='num win'>+£0.53</td><td class='num muted'>—</td></tr>
+<tr><td class='date'>2026-04-18</td><td>Lorient vs Marseille</td><td class='muted'>1X2</td><td>Home Win</td><td class='num'>4.75</td><td class='win'>Win</td><td class='num win'>+£1.13</td><td class='num muted'>—</td></tr>
+<tr><td class='date'>2026-04-18</td><td>Werder Bremen vs Hamburg</td><td class='muted'>BTTS</td><td>Yes</td><td class='num'>1.67</td><td class='win'>Win</td><td class='num win'>+£0.34</td><td class='num muted'>—</td></tr>
+<tr><td class='date'>2026-04-18</td><td>Brentford vs Fulham</td><td class='muted'>Over/Under 2.5</td><td>Under 2.5</td><td class='num'>2.30</td><td class='win'>Win</td><td class='num win'>+£0.65</td><td class='num muted'>—</td></tr>
+<tr><td class='date'>2026-04-15</td><td>Arsenal vs Sporting</td><td class='muted'>Over/Under 2.5</td><td>Under 2.5</td><td class='num'>1.44</td><td class='win'>Win</td><td class='num win'>+£0.92</td><td class='num loss'>-0.23%</td></tr>
+<tr><td class='date'>2026-04-13</td><td>Fiorentina vs Lazio</td><td class='muted'>1X2</td><td>Home Win</td><td class='num'>2.38</td><td class='win'>Win</td><td class='num win'>+£0.76</td><td class='num loss'>-0.00%</td></tr>
+<tr><td class='date'>2026-04-12</td><td>Chelsea vs Man City</td><td class='muted'>BTTS</td><td>Yes</td><td class='num'>1.50</td><td class='loss'>Loss</td><td class='num loss'>-£0.54</td><td class='num muted'>—</td></tr>
+<tr><td class='date'>2026-04-11</td><td>Borussia Dortmund vs Bayer Leverkusen</td><td class='muted'>BTTS</td><td>Yes</td><td class='num'>1.44</td><td class='loss'>Loss</td><td class='num loss'>-£0.61</td><td class='num win'>+0.00%</td></tr>
+<tr><td class='date'>2026-04-07</td><td>Sporting CP vs Arsenal</td><td class='muted'>BTTS</td><td>BTTS Yes</td><td class='num'>1.80</td><td class='loss'>Loss</td><td class='num loss'>-£0.50</td><td class='num loss'>-0.06%</td></tr>
+<tr><td class='date'>2026-04-06</td><td>Girona vs Villarreal</td><td class='muted'>Over/Under 2.5</td><td>Under 2.5</td><td class='num'>2.20</td><td class='win'>Win</td><td class='num win'>+£0.70</td><td class='num muted'>—</td></tr>
+<tr><td class='date'>2026-04-06</td><td>Napoli vs AC Milan</td><td class='muted'>1X2</td><td>Home Win</td><td class='num'>2.40</td><td class='win'>Win</td><td class='num win'>+£1.31</td><td class='num muted'>—</td></tr>
+<tr><td class='date'>2026-04-04</td><td>Southampton vs Arsenal</td><td class='muted'>BTTS</td><td>BTTS Yes</td><td class='num'>1.75</td><td class='win'>Win</td><td class='num win'>+£0.26</td><td class='num muted'>—</td></tr>
+<tr><td class='date'>2026-03-23</td><td>Heidenheim vs Bayer Leverkusen</td><td class='muted'>BTTS</td><td>BTTS No</td><td class='num'>2.50</td><td class='loss'>Loss</td><td class='num loss'>-£0.31</td><td class='num win'>+0.05%</td></tr>
+<tr><td class='date'>2026-03-23</td><td>AC Milan vs Torino</td><td class='muted'>Over/Under</td><td>Under 2.5</td><td class='num'>2.00</td><td class='loss'>Loss</td><td class='num loss'>-£0.23</td><td class='num muted'>—</td></tr>
+<tr><td class='date'>2026-03-20</td><td>Cagliari vs Napoli</td><td class='muted'>BTTS</td><td>BTTS No</td><td class='num'>1.57</td><td class='win'>Win</td><td class='num win'>+£0.20</td><td class='num muted'>—</td></tr>
+<tr><td class='date'>2026-03-19</td><td>Lyon vs Celta Vigo</td><td class='muted'>Over/Under</td><td>Under 2.5</td><td class='num'>1.75</td><td class='win'>Win</td><td class='num win'>+£0.75</td><td class='num win'>+1.16%</td></tr>
+<tr><td class='date'>2026-03-19</td><td>Freiburg vs Genk</td><td class='muted'>BTTS</td><td>BTTS Yes</td><td class='num'>1.78</td><td class='win'>Win</td><td class='num win'>+£0.78</td><td class='num loss'>-1.11%</td></tr>
+<tr><td class='date'>2026-03-19</td><td>Aston Villa vs Lille</td><td class='muted'>Over/Under</td><td>Under 2.5</td><td class='num'>1.98</td><td class='win'>Win</td><td class='num win'>+£0.59</td><td class='num win'>+10.00%</td></tr>
+<tr><td class='date'>2026-03-18</td><td>Tottenham vs Atletico Madrid</td><td class='muted'>Over/Under</td><td>Over 2.5</td><td class='num'>1.62</td><td class='win'>Win</td><td class='num win'>+£0.22</td><td class='num muted'>—</td></tr>
+<tr><td class='date'>2026-03-17</td><td>Chelsea vs PSG</td><td class='muted'>BTTS</td><td>BTTS Yes</td><td class='num'>1.40</td><td class='loss'>Loss</td><td class='num loss'>-£0.35</td><td class='num muted'>—</td></tr>
+<tr><td class='date'>2026-03-17</td><td>Man City vs Real Madrid</td><td class='muted'>Over/Under</td><td>Over 2.5</td><td class='num'>1.40</td><td class='win'>Win</td><td class='num win'>+£0.14</td><td class='num muted'>—</td></tr>
+<tr><td class='date'>2026-03-16</td><td>Cremonese vs Fiorentina</td><td class='muted'>Over/Under</td><td>Under 2.5</td><td class='num'>1.67</td><td class='loss'>Loss</td><td class='num loss'>-£0.47</td><td class='num muted'>—</td></tr>
+<tr><td class='date'>2026-03-15</td><td>Lazio vs AC Milan</td><td class='muted'>Over/Under</td><td>Under 2.5</td><td class='num'>1.73</td><td class='win'>Win</td><td class='num win'>+£0.73</td><td class='num muted'>—</td></tr>
+<tr><td class='date'>2026-03-14</td><td>Sunderland vs Brighton</td><td class='muted'>BTTS</td><td>BTTS No</td><td class='num'>1.95</td><td class='win'>Win</td><td class='num win'>+£0.75</td><td class='num muted'>—</td></tr>
+<tr><td class='date'>2026-03-14</td><td>Inter Milan vs Atalanta</td><td class='muted'>BTTS</td><td>BTTS No</td><td class='num'>2.05</td><td class='loss'>Loss</td><td class='num loss'>-£0.61</td><td class='num muted'>—</td></tr>
+<tr><td class='date'>2026-03-13</td><td>Marseille vs Auxerre</td><td class='muted'>BTTS</td><td>BTTS No</td><td class='num'>1.80</td><td class='win'>Win</td><td class='num win'>+£0.32</td><td class='num muted'>—</td></tr>
+<tr><td class='date'>2026-03-13</td><td>Borussia Mgladbach vs St Pauli</td><td class='muted'>Over/Under</td><td>Under 2.5</td><td class='num'>1.67</td><td class='win'>Win</td><td class='num win'>+£0.36</td><td class='num muted'>—</td></tr>
+<tr><td class='date'>2026-03-12</td><td>Genk vs SC Freiburg</td><td class='muted'>BTTS</td><td>BTTS No</td><td class='num'>2.25</td><td class='win'>Win</td><td class='num win'>+£0.38</td><td class='num muted'>—</td></tr>
+<tr><td class='date'>2026-03-12</td><td>VfB Stuttgart vs FC Porto</td><td class='muted'>1X2</td><td>Home Win</td><td class='num'>1.90</td><td class='loss'>Loss</td><td class='num loss'>-£0.28</td><td class='num muted'>—</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <p class="note">CLV (closing-line value) is shown where a closing price was recorded — 52 of 107 bets so far. A dash means the closing line wasn't captured for that bet. P&amp;L is real settled profit/loss at the stake placed. Pre-baseline bets and paper trades are excluded, as are user-override bets that deviated from the model's pick.</p>
+  <p class="note">Last generated: 2026-05-27 15:37. Independent third-party copy on <a href="https://quantedgesyndicate.blogabet.com/" style="color:var(--accent);">BlogAbet</a>.</p>
+
+  <footer>
+    Quant Edge Syndicate · <a href="https://twitter.com/quantedgesynd">@quantedgesynd</a> · <a href="./wc2026_pass.html">Pass</a> · <a href="./proof.html">Proof</a><br>
+    18+. Past performance does not guarantee future results. Not financial advice. <a href="https://www.begambleaware.org/">BeGambleAware.org</a>
+  </footer>
+</div>
+</body>
+</html>
