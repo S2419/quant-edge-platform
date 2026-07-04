@@ -144,7 +144,7 @@
     <span class="tag-best">Founder deal · until 31 Jul</span>
     <div class="price">£35 <small>one-off</small></div>
     <div class="price-sub">One-time payment. <strong>Lifetime access</strong> — every future paid pick, forever, across all sports. No subscription, no auto-renew, no card on file. <strong style="color:var(--accent);">Only available until 31 July 2026</strong> — after that it's the monthly.</div>
-    <a class="cta" id="fullaccess-cta" href="#">Get full access →</a>
+    <a class="cta" href="https://buy.stripe.com/4gMcN52be8dxcS6dW8ejK01">Get full access →</a>
     <p class="cta-note">Secure checkout via Stripe · Telegram invite emailed within 12h</p>
   </div>
 
@@ -155,31 +155,6 @@
     <span class="cta cta-secondary" style="opacity:0.55; cursor:not-allowed; pointer-events:none;">Coming soon</span>
     <p class="cta-note">Monthly reopens early August — grab the £35 lifetime founder deal above while it lasts.</p>
   </div>
-
-  <script>
-    function wireCheckout(btnId, fnPath) {
-      var btn = document.getElementById(btnId);
-      if (!btn) return;
-      btn.addEventListener('click', async function (e) {
-        e.preventDefault();
-        var label = btn.textContent;
-        btn.textContent = 'Loading checkout…';
-        btn.style.pointerEvents = 'none';
-        try {
-          var r = await fetch(fnPath, { method: 'POST' });
-          var d = await r.json();
-          if (d && d.url) { window.location = d.url; return; }
-          throw new Error(d && d.error ? d.error : 'no url');
-        } catch (err) {
-          btn.textContent = 'Something went wrong — try again';
-          btn.style.pointerEvents = 'auto';
-          setTimeout(function () { btn.textContent = label; }, 2500);
-        }
-      });
-    }
-    wireCheckout('fullaccess-cta', '/.netlify/functions/fullaccess-checkout');
-    // monthly checkout paused — membership reopens early August 2026
-  </script>
 
   <h2>What you get</h2>
   <ul>
