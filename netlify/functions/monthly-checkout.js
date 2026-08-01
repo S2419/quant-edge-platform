@@ -31,7 +31,7 @@ exports.handler = async (event) => {
     if (data.error) {
       return { statusCode: 400, body: JSON.stringify({ error: data.error.message }) };
     }
-    return { statusCode: 200, body: JSON.stringify({ url: data.url }) };
+    return { statusCode: 303, headers: { Location: data.url }, body: "" };
   } catch (e) {
     return { statusCode: 500, body: JSON.stringify({ error: String(e) }) };
   }
