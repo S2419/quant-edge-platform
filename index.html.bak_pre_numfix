@@ -7,18 +7,18 @@
     <link rel="alternate icon" href="/favicon.png">
     <link rel="apple-touch-icon" href="/favicon.png">
 <title>Quant Edge Syndicate — Data. Models. Edge.</title>
-<meta name="description" content="A forecasting system that scores itself against the market. Not tipsters. Honest math, transparent track record, slow on purpose. 140 audited bets, 51.0% strike, +10.1% ROI.">
+<meta name="description" content="A football betting model published in real time. Honest math, transparent track record, slow on purpose. 136 audited bets, 54.4% strike, +15.9% ROI.">
 <meta property="og:url" content="https://quantedgesyndicate.com/">
 <meta property="og:image" content="https://quantedgesyndicate.com/og.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Quant Edge Syndicate — Data. Models. Edge.">
-<meta name="twitter:description" content="A forecasting system that scores itself against the market. Not tipsters. Honest math, transparent track record, slow on purpose. 140 audited bets, 51.0% strike, +10.1% ROI.">
+<meta name="twitter:description" content="A football betting model published in real time. Honest math, transparent track record, slow on purpose. 136 audited bets, 54.4% strike, +15.9% ROI.">
 <meta name="twitter:image" content="https://quantedgesyndicate.com/og.png">
 <meta name="robots" content="index,follow">
 <meta property="og:title" content="Quant Edge Syndicate">
-<meta property="og:description" content="A forecasting system that scores itself against the market. Not tipsters. Honest math. Transparent track. Slow on purpose.">
+<meta property="og:description" content="A football betting model published in real time. Honest math. Transparent track. Slow on purpose.">
 <meta property="og:type" content="website">
 <style>
   :root {
@@ -57,14 +57,6 @@
     max-width: 88%;
     height: auto;
     margin: 0 auto 22px;
-  }
-  .hero-strap {
-    font-family: ui-monospace, "SF Mono", Menlo, monospace;
-    font-size: 12px;
-    letter-spacing: .22em;
-    text-transform: uppercase;
-    color: var(--accent);
-    margin: 0 0 14px;
   }
   .hero-sub {
     font-size: 17px;
@@ -321,14 +313,13 @@
   <!-- HERO -->
   <header class="hero">
     <img src="./qes_logo.png" alt="Quant Edge Syndicate" />
-    <p class="hero-strap">Predictive intelligence</p>
     <p class="hero-sub">
-      A forecasting system that scores itself against the market.
+      A football betting model published in real time.
       <em>Honest math. Transparent track. Slow on purpose.</em>
     </p>
     <div class="cta-row">
-      <a class="cta cta-primary" href="./proof.html">See the track record</a>
-      <a class="cta cta-secondary" href="./ledger.html">Read the ledger</a>
+      <a class="cta cta-secondary" href="./proof.html">See the track record</a>
+      <a class="cta cta-primary" href="./wc2026_pass.html">Get access</a>
     </div>
   </header>
 
@@ -336,15 +327,15 @@
   <section aria-label="Track record">
     <div class="stats-grid">
       <div class="stat">
-        <div class="stat-num">148</div>
+        <div class="stat-num">136</div>
         <div class="stat-label">audited bets<br>since 2026-03-12</div>
       </div>
       <div class="stat">
-        <div class="stat-num">51.0%</div>
+        <div class="stat-num">54.4%</div>
         <div class="stat-label">strike rate</div>
       </div>
       <div class="stat">
-        <div class="stat-num">+10.1%</div>
+        <div class="stat-num">+15.9%</div>
         <div class="stat-label">ROI on stakes</div>
       </div>
       <div class="stat">
@@ -380,7 +371,6 @@
           <li>96% accuracy claims</li>
           <li>Celebrity endorsements (real or AI-faked)</li>
           <li>&ldquo;The AI does the work&rdquo; mystique &mdash; a model produces numbers, a human decides</li>
-          <li>Tipping. We are not tipsters &mdash; we are a multi-predictive intelligence system reading predictive markets</li>
         </ul>
       </div>
     </div>
@@ -389,7 +379,7 @@
   <!-- CHANNELS -->
   <section aria-label="Where to follow">
     <div class="section-eyebrow">Where to follow</div>
-    <h2>Two channels, one model</h2>
+    <h2>Three channels, one model</h2>
     <div class="channels">
 
       <a class="channel" href="https://twitter.com/quantedgesynd" target="_blank" rel="noopener">
@@ -418,25 +408,32 @@
         <div class="channel-desc">Pre-lineup reads, settle posts, sit-out reasoning.</div>
       </a>
 
+      <a class="channel" href="./wc2026_pass.html">
+        <div class="channel-row">
+          <div class="channel-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="12" cy="12" r="9" stroke="#a6f000" stroke-width="1.6" fill="none"/>
+              <path d="M12 5l2.8 2-1 3.3h-3.6L9 7l3-2zm-5 4.2 2.6 1-.4 3.4-2.8 1.4L4.9 12 7 9.2zm10 0 2.1 2.8-1.5 3-2.8-1.4-.4-3.4L17 9.2zM10 16.5h4l1.6 2.4L12 21l-3.6-2.1L10 16.5z" fill="#a6f000"/>
+            </svg>
+          </div>
+          <div class="channel-name">Membership <span style="color:var(--muted);font-weight:400;">(paid)</span></div>
+          <div class="channel-handle">&pound;25 / month &middot; cancel anytime</div>
+        </div>
+        <div class="channel-desc">Full edges, lineup re-checks, stake math, channel access.</div>
+      </a>
+
     </div>
   </section>
 
-  <!-- WHY SPORT -->
-  <section aria-label="Why sport">
-    <div class="section-eyebrow">Why sport</div>
-    <h2>The proving ground, not the destination</h2>
+  <!-- LONG GAME -->
+  <section aria-label="The long game">
+    <div class="section-eyebrow">The long game</div>
+    <h2>An honest read on where this is</h2>
     <div class="long-game">
-      Sport is the harshest scoring environment we could find. Every forecast gets a price
-      attached, a closing line to measure against, and a result inside ninety minutes.
-      Nothing else marks your homework that fast.
-      <br /><br />
-      So we bet. Not because tipping is the business, but because a bet is a forecast with
-      money and a timestamp on it, and closing-line value is the only honest scoreboard here.
-      <br /><br />
-      Where this goes is quantitative analytics in sport, and the same scoring discipline
-      applied to decisions well outside it. This is a <strong>working track record</strong>,
-      not a finished one. 148 bets is suggestive; 500+ is what significance looks like.
-      We publish as we go so you can audit the build in real time.
+      This is a <strong>working track record</strong>, not a finished one.
+      136 bets is suggestive &mdash; 500+ is what statistical significance looks like.
+      We&rsquo;re publishing as we go so you can audit the build in real time.
+      Slow compounding beats viral cherry-picks every time.
     </div>
   </section>
 
@@ -445,6 +442,7 @@
     <div>
       <a href="./blog/">Blog</a>
       <a href="./proof.html">Track record</a>
+      <a href="./wc2026_pass.html">Membership</a>
       <a href="./legal.html">Legal</a>
     </div>
     <div class="foot-line">Quant Edge Syndicate &mdash; 2026</div>
