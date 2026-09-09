@@ -253,6 +253,32 @@
   .channel-handle { color: var(--accent); font-size: 13px; margin-left: auto; }
   .channel-desc { color: var(--muted); font-size: 14px; line-height: 1.5; }
 
+  /* ANALYSIS */
+  .analysis-figure {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 14px;
+    margin: 0 0 16px;
+  }
+  .analysis-figure img { width: 100%; height: auto; display: block; border-radius: 6px; }
+  .analysis-figure figcaption {
+    color: var(--muted);
+    font-size: 13px;
+    line-height: 1.6;
+    margin-top: 12px;
+  }
+  .analysis-note {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--accent);
+    border-radius: 10px;
+    padding: 22px;
+    font-size: 15px;
+    line-height: 1.65;
+  }
+  .analysis-note strong { color: var(--accent); font-weight: 600; }
+
   /* LONG GAME */
   .long-game {
     background: var(--bg2);
@@ -424,6 +450,39 @@
   </section>
 
   <!-- WHY SPORT -->
+  <!-- ANALYSIS -->
+  <section aria-label="Analysis">
+    <div class="section-eyebrow">Analysis</div>
+    <h2>Champions League projected goals</h2>
+
+    <figure class="analysis-figure">
+      <img src="./ucl-projected-goals.png"
+           alt="Projected Champions League goals for the leading scorers, showing the typical season and the 10th to 90th percentile range" />
+      <figcaption>
+        Model output, 5,000 simulated seasons of the league phase and knockout rounds.
+        The dot is a typical season. The bar is where 8 seasons in 10 land.
+      </figcaption>
+    </figure>
+
+    <div class="analysis-note">
+      A single projected number implies a precision football does not have.
+      Play the season a thousand times and Mbapp&eacute; averages about
+      <strong>11 goals</strong> &mdash; but one season in ten ends on 7, and one in ten
+      ends on 17. Same player, same ability. That spread is how far his team goes,
+      plus the bounce of a ball.
+      <br /><br />
+      It is also why the favourite is not always the higher scorer. Haaland&rsquo;s good
+      season (11) sits above Mbapp&eacute;&rsquo;s quiet one (7), so Haaland outscoring him
+      is ordinary rather than an upset. Topping the charts still means beating
+      <strong>everyone</strong>, not one rival, which is a different question.
+      <br /><br />
+      Rates count league-phase football only. Qualifying rounds are excluded: a striker
+      with six goals against qualifying opposition is not the same as a striker with six
+      against the last sixteen. <strong>No prices attached.</strong> This is a read on
+      structure, not a recommendation.
+    </div>
+  </section>
+
   <section aria-label="Why sport">
     <div class="section-eyebrow">Why sport</div>
     <h2>The proving ground, not the destination</h2>
