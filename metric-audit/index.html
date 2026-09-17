@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="alternate icon" href="/favicon.png">
+<title>Metric audit | Quant Edge Syndicate</title>
+<meta name="description" content="We test which of the player metrics you screen on still describe the same player a year later. Conversion rate keeps 8% of its signal. Passing volume keeps 82%.">
+<link rel="canonical" href="https://quantedgesyndicate.com/metric-audit/">
+<meta name="robots" content="index,follow">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Metric audit">
+<meta property="og:description" content="We test which of the player metrics you screen on still describe the same player a year later. Conversion rate keeps 8% of its signal. Passing volume keeps 82%.">
+<meta property="og:url" content="https://quantedgesyndicate.com/metric-audit/">
+<meta property="og:image" content="https://quantedgesyndicate.com/analysis/metric-persistence.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Metric audit">
+<meta name="twitter:description" content="We test which of the player metrics you screen on still describe the same player a year later. Conversion rate keeps 8% of its signal. Passing volume keeps 82%.">
+<meta name="twitter:image" content="https://quantedgesyndicate.com/analysis/metric-persistence.png">
+<style>
+  :root {
+    --bg: #000000;
+    --bg2: #0c0c0c;
+    --bg3: #141414;
+    --fg: #ffffff;
+    --muted: #9a9a9a;
+    --dim: #6b6b6b;
+    --accent: #a6f000;
+    --accent-dim: #5a8400;
+    --border: #1f1f1f;
+    --border-hi: #2c2c2c;
+    --danger: #ff5252;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background: var(--bg);
+    color: var(--fg);
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  .wrap { max-width: 720px; margin: 0 auto; padding: 24px 20px 56px; }
+
+  .topbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 6px 0 22px;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 8px;
+  }
+  .topbar img { height: 30px; width: auto; display: block; }
+  .topbar nav a { color: var(--muted); font-size: 14px; margin-left: 18px; }
+  .topbar nav a:hover { color: var(--accent); text-decoration: none; }
+
+  .crumb { font-size: 12px; color: var(--dim); margin: 20px 0 10px; letter-spacing: 0.02em; }
+  .crumb a { color: var(--muted); }
+  .crumb span { color: var(--dim); }
+
+  .eyebrow {
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--accent);
+    font-weight: 600;
+    margin-bottom: 12px;
+  }
+  h1 {
+    font-size: 30px;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    margin: 0 0 16px;
+    font-weight: 800;
+  }
+  .byline {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px 14px;
+    align-items: center;
+    color: var(--muted);
+    font-size: 14px;
+    padding-bottom: 22px;
+    margin-bottom: 8px;
+    border-bottom: 1px solid var(--border);
+  }
+  .byline .author { color: var(--fg); font-weight: 600; }
+  .byline .dot { color: var(--dim); }
+
+  article p { font-size: 17px; color: #e9e9e9; margin: 0 0 20px; }
+  article h2 {
+    font-size: 21px;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    margin: 40px 0 16px;
+    padding-top: 8px;
+  }
+
+  .lineups { display: grid; grid-template-columns: 1fr; gap: 14px; margin: 8px 0 8px; }
+  .lineup {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 18px 18px;
+  }
+  .lineup .team { font-weight: 700; font-size: 16px; margin-bottom: 4px; }
+  .lineup .form { color: var(--accent); font-size: 13px; font-weight: 600; margin-bottom: 12px; letter-spacing: 0.04em; }
+  .lineup .players { font-size: 15px; color: #e9e9e9; line-height: 1.7; }
+
+  .pred {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--accent);
+    border-radius: 10px;
+    padding: 6px 20px 8px;
+    margin: 8px 0;
+  }
+  .pred p { font-size: 16px; }
+  .pred p:last-child { margin-bottom: 20px; }
+
+  .cta-card {
+    background: var(--bg2);
+    border: 1px solid var(--border-hi);
+    border-radius: 12px;
+    padding: 24px 22px;
+    margin: 44px 0 8px;
+    text-align: center;
+  }
+  .cta-card h3 { margin: 0 0 8px; font-size: 18px; }
+  .cta-card p { color: var(--muted); font-size: 15px; margin: 0 0 18px; }
+  .cta-btn {
+    display: inline-block;
+    padding: 12px 22px;
+    font-size: 15px;
+    font-weight: 600;
+    border-radius: 8px;
+    background: var(--accent);
+    color: #0a0a0a;
+    border: 1px solid var(--accent);
+  }
+  .cta-btn:hover { background: #b8ff1f; text-decoration: none; }
+  .cta-note { display: block; margin-top: 14px; font-size: 12px; color: var(--dim); }
+
+  footer {
+    border-top: 1px solid var(--border);
+    margin-top: 48px;
+    padding: 26px 0 12px;
+    text-align: center;
+    color: var(--dim);
+    font-size: 13px;
+  }
+  footer a { color: var(--muted); margin: 0 10px; }
+  footer a:hover { color: var(--accent); text-decoration: none; }
+  .foot-line { margin-top: 14px; }
+
+  @media (min-width: 720px) {
+    .wrap { padding: 32px 28px 72px; }
+    h1 { font-size: 38px; }
+    .lineups { grid-template-columns: 1fr 1fr; }
+  }
+</style>
+
+<style>
+  figure { margin: 28px 0; }
+  figure img { width: 100%; height: auto; border: 1px solid var(--border); border-radius: 6px; display: block; }
+  figcaption { color: var(--muted); font-size: 0.86rem; margin-top: 8px; }
+  table.data { width: 100%; border-collapse: collapse; margin: 22px 0; font-size: 0.92rem; }
+  table.data th { text-align: left; color: var(--muted); font-weight: 600; border-bottom: 1px solid var(--border-hi); padding: 6px 8px; }
+  table.data td { padding: 5px 8px; border-bottom: 1px solid var(--border); }
+  table.data td.num { text-align: right; font-variant-numeric: tabular-nums; }
+  tr.hi td { color: var(--accent); }
+  tr.lo td { color: #ff6b6b; }
+  .callout { border-left: 3px solid var(--accent); background: var(--bg2); padding: 14px 16px; margin: 24px 0; }
+  .callout p { margin: 0; }
+  .postlist a.post { display: block; border: 1px solid var(--border); border-radius: 6px; padding: 16px 18px; margin: 14px 0; text-decoration: none; }
+  .postlist a.post:hover { border-color: var(--border-hi); text-decoration: none; }
+  .postlist h2 { margin: 0 0 6px; font-size: 1.12rem; color: var(--fg); }
+  .postlist p { margin: 0; color: var(--muted); font-size: 0.92rem; }
+</style>
+
+<style>
+  .lead { font-size: 1.12rem; color: var(--fg); }
+  .rung { border: 1px solid var(--border); border-radius: 6px; padding: 18px 20px; margin: 16px 0; }
+  .rung h3 { margin: 0 0 4px; font-size: 1.06rem; color: var(--accent); }
+  .rung .price { color: var(--muted); font-size: 0.88rem; margin-bottom: 8px; }
+  .rung p { margin: 0 0 8px; }
+  .rung ul { margin: 6px 0 0 18px; padding: 0; color: var(--muted); font-size: 0.93rem; }
+  .trap { border-left: 3px solid var(--border-hi); padding: 2px 0 2px 14px; margin: 12px 0; color: var(--muted); font-size: 0.95rem; }
+  .trap strong { color: var(--fg); font-weight: 600; }
+  .notsell { border-left: 3px solid #ff6b6b; background: var(--bg2); padding: 14px 16px; margin: 24px 0; }
+  .notsell p { margin: 0; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="topbar">
+    <a href="/"><img src="/qes_logo.png" alt="Quant Edge Syndicate"></a>
+    <nav>
+      <a href="/analysis/">Analysis</a>
+      <a href="/blog/">Blog</a>
+      <a href="/proof.html">Track record</a>
+    </nav>
+  </div>
+
+  <div class="crumb">
+    <a href="/">Home</a> <span>/</span> <span>Metric audit</span>
+  </div>
+
+  <div class="eyebrow">What we do</div>
+  <h1>Which of your player metrics actually work?</h1>
+
+  <article>
+    <p class="lead">You have a list of stats you use to judge players. We test
+    which of them still describe the same player a year later.</p>
+
+    <p>The ones that do not survive, you should not be ranking on. On five
+    seasons of Premier League data, passing volume keeps <strong>82%</strong> of
+    its ability to separate players. Conversion rate keeps <strong>8%</strong>.
+    If a shortlist weights those the same way, most of what it is measuring is
+    last season's luck.</p>
+
+    <figure>
+      <a href="/analysis/which-football-stats-persist/">
+        <img src="/analysis/metric-persistence.png"
+             alt="Bar chart of how much of each player metric's separation survives one season" />
+      </a>
+      <figcaption>Our own numbers, on public data.
+        <a href="/analysis/which-football-stats-persist/">Full method and
+        results &rarr;</a></figcaption>
+    </figure>
+
+    <h2>How it works</h2>
+    <p>Send us an export, or run our script yourself and send the output. You
+    get back a ranked table of your metrics with sample sizes and intervals,
+    and a short read on what we would change about how you weight them.</p>
+
+    <h2>What you are actually paying for</h2>
+    <p>Not the script. That is published and you are welcome to it. It is about
+    a hundred lines and anyone competent can rebuild it in an afternoon.</p>
+
+    <p>You are paying for the five things that flip the answer, which we found
+    the slow way:</p>
+
+    <div class="trap"><strong>Pooling positions.</strong> Measured across
+    everyone, shot volume looks 86% stable. Measured within position it is 63%.
+    Most of that gap was forwards being forwards.</div>
+
+    <div class="trap"><strong>Null is not zero.</strong> The same feed uses an
+    empty field for "none happened" and for "not recorded". Treat them alike
+    and a forward shows zero shots across a full season.</div>
+
+    <div class="trap"><strong>Mid-season transfers.</strong> One provider
+    duplicates a player's whole season under both clubs and splits others
+    properly. A single rule gets one of those wrong.</div>
+
+    <div class="trap"><strong>The wrong population.</strong> Conversion rate
+    across all outfielders reads 8%. Among the forwards it actually describes,
+    19%. Quote the wrong one and you understate your own screen.</div>
+
+    <div class="trap"><strong>Mechanical regression.</strong> Split any noisy
+    measure and the top half falls back. That is arithmetic, not football, and
+    it means only the comparison between metrics carries meaning.</div>
+
+    <h2>Three ways in</h2>
+
+    <div class="rung">
+      <h3>1. The baseline</h3>
+      <div class="price">Free</div>
+      <p>Our Premier League numbers as a comparison set, plus the method. Your
+      result means little on its own and a lot against a reference.</p>
+    </div>
+
+    <div class="rung">
+      <h3>2. The audit</h3>
+      <div class="price">A few days &middot; first one free</div>
+      <p>We run it on your data and hand back:</p>
+      <ul>
+        <li>every metric you screen on, ranked by how much it persists</li>
+        <li>sample sizes and intervals on each</li>
+        <li>which of the five traps above your data has</li>
+        <li>a two-page read on what to reweight</li>
+      </ul>
+    </div>
+
+    <div class="rung">
+      <h3>3. The screen</h3>
+      <div class="price">Scoped per engagement</div>
+      <p>Not the metrics, the whole process. Every threshold in your
+      recruitment screen with its evidence, its sample size, the date it was
+      measured, and an honest verdict on whether it can be defended.</p>
+      <p>We did this to ourselves first. Three of our own rules did not survive
+      it.</p>
+    </div>
+
+    <div class="notsell">
+      <p><strong>What we do not sell: player recommendations.</strong> If you
+      hold event or tracking data, you have better inputs than we do and we
+      would lose that comparison every time. We are not here to pick your
+      players. We are here to check what you are picking them on.</p>
+    </div>
+
+    <h2>Why trust any of it</h2>
+    <p>We published this research, the sample grew, one of our readings changed,
+    and we said so in public. That is the only evidence available that the
+    numbers were not chosen after the fact.</p>
+
+    <p>Method, filters and code are open on request, including the parts that
+    did not work.</p>
+
+    <h2>Get in touch</h2>
+    <p><a href="mailto:advanceddata7@gmail.com">advanceddata7@gmail.com</a>
+    &nbsp;&middot;&nbsp;
+    <a href="/analysis/">Read the research first &rarr;</a></p>
+  </article>
+
+  <footer>
+    <div>
+      <a href="/analysis/">Analysis</a>
+      <a href="/blog/">Blog</a>
+      <a href="/proof.html">Track record</a>
+      <a href="/legal.html">Legal</a>
+    </div>
+    <div class="foot-line">Quant Edge Syndicate &mdash; 2026</div>
+  </footer>
+
+</div>
+</body>
+</html>
