@@ -5,19 +5,19 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <link rel="alternate icon" href="/favicon.png">
-<title>Analysis &mdash; football research | Quant Edge Syndicate</title>
-<meta name="description" content="Measured football research from Quant Edge Syndicate. Which player metrics persist, what regresses, and the negative results as well as the positive ones.">
-<link rel="canonical" href="https://quantedgesyndicate.com/analysis/">
+<title>Champions League projected goals | Quant Edge Syndicate</title>
+<meta name="description" content="Projected Champions League goals for the leading scorers from 5,000 simulated seasons, with the 10th to 90th percentile range. A read on structure, no prices attached.">
+<link rel="canonical" href="https://quantedgesyndicate.com/analysis/champions-league-projected-goals/">
 <meta name="robots" content="index,follow">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Analysis &mdash; football research">
-<meta property="og:description" content="Measured football research from Quant Edge Syndicate. Which player metrics persist, what regresses, and the negative results as well as the positive ones.">
-<meta property="og:url" content="https://quantedgesyndicate.com/analysis/">
-<meta property="og:image" content="https://quantedgesyndicate.com/og.png">
+<meta property="og:title" content="Champions League projected goals">
+<meta property="og:description" content="Projected Champions League goals for the leading scorers from 5,000 simulated seasons, with the 10th to 90th percentile range. A read on structure, no prices attached.">
+<meta property="og:url" content="https://quantedgesyndicate.com/analysis/champions-league-projected-goals/">
+<meta property="og:image" content="https://quantedgesyndicate.com/analysis/ucl-projected-goals.png">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Analysis &mdash; football research">
-<meta name="twitter:description" content="Measured football research from Quant Edge Syndicate. Which player metrics persist, what regresses, and the negative results as well as the positive ones.">
-<meta name="twitter:image" content="https://quantedgesyndicate.com/og.png">
+<meta name="twitter:title" content="Champions League projected goals">
+<meta name="twitter:description" content="Projected Champions League goals for the leading scorers from 5,000 simulated seasons, with the 10th to 90th percentile range. A read on structure, no prices attached.">
+<meta name="twitter:image" content="https://quantedgesyndicate.com/analysis/ucl-projected-goals.png">
 <style>
   :root {
     --bg: #000000;
@@ -181,6 +181,13 @@
   .postlist h2 { margin: 0 0 6px; font-size: 1.12rem; color: var(--fg); }
   .postlist p { margin: 0; color: var(--muted); font-size: 0.92rem; }
 </style>
+<style>
+  .analysis-figure { margin: 28px 0; }
+  .analysis-figure img { width: 100%; height: auto; display: block; border-radius: 6px; border: 1px solid var(--border); }
+  .analysis-figure figcaption { color: var(--muted); font-size: 0.86rem; margin-top: 8px; }
+  .analysis-note { color: var(--fg); }
+  .analysis-note strong { color: var(--accent); font-weight: 600; }
+</style>
 </head>
 <body>
 <div class="wrap">
@@ -194,24 +201,47 @@
     </nav>
   </div>
 
-  <div class="eyebrow">Research</div>
-  <h1>Analysis</h1>
-  <p style="color:var(--muted)">Measured football research. Sample sizes and
-  intervals stated, method open, and the results that did not work published
-  alongside the ones that did.</p>
-
-  <div class="postlist">
-    <a class="post" href="/analysis/which-football-stats-persist/">
-      <h2>Which football stats actually mean anything</h2>
-      <p>663 Premier League season-pairs. Volume and behaviour persist to the
-      next season. Efficiency does not. 17 September 2026</p>
-    </a>
-    <a class="post" href="/analysis/champions-league-projected-goals/">
-      <h2>Champions League projected goals</h2>
-      <p>5,000 simulated seasons of the league phase and knockouts. Where the
-      leading scorers land, and how wide that range really is. 9 September 2026</p>
-    </a>
+  <div class="crumb">
+    <a href="/">Home</a> <span>/</span> <a href="/analysis/">Analysis</a>
+    <span>/</span> <span>Champions League projected goals</span>
   </div>
+
+  <div class="eyebrow">Research &middot; Champions League</div>
+  <h1>Champions League projected goals</h1>
+  <div class="byline">
+    <span class="author">Quant Edge Syndicate</span>
+    <span class="dot">&middot;</span>
+    <time datetime="2026-09-09">9 September 2026</time>
+  </div>
+
+  <article>
+    <figure class="analysis-figure">
+      <img src="/analysis/ucl-projected-goals.png"
+           alt="Projected Champions League goals for the leading scorers, showing the typical season and the 10th to 90th percentile range" />
+      <figcaption>
+        Model output, 5,000 simulated seasons of the league phase and knockout rounds.
+        The dot is a typical season. The bar is where 8 seasons in 10 land.
+      </figcaption>
+    </figure>
+
+    <div class="analysis-note">
+      A single projected number implies a precision football does not have.
+      Play the season a thousand times and Mbapp&eacute; averages about
+      <strong>11 goals</strong> &mdash; but one season in ten ends on 7, and one in ten
+      ends on 17. Same player, same ability. That spread is how far his team goes,
+      plus the bounce of a ball.
+      <br /><br />
+      It is also why the favourite is not always the higher scorer. Haaland&rsquo;s good
+      season (11) sits above Mbapp&eacute;&rsquo;s quiet one (7), so Haaland outscoring him
+      is ordinary rather than an upset. Topping the charts still means beating
+      <strong>everyone</strong>, not one rival, which is a different question.
+      <br /><br />
+      Rates count league-phase football only. Qualifying rounds are excluded: a striker
+      with six goals against qualifying opposition is not the same as a striker with six
+      against the last sixteen. <strong>No prices attached.</strong> This is a read on
+      structure, not a recommendation.
+    </div>
+  </article>
 
   <footer>
     <div>
