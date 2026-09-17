@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="alternate icon" href="/favicon.png">
+<title>Which football stats actually mean anything | Quant Edge Syndicate</title>
+<meta name="description" content="We measured how much of the gap between players on each metric survives to the next season. Volume persists. Efficiency does not. 663 Premier League season-pairs, method open.">
+<link rel="canonical" href="https://quantedgesyndicate.com/analysis/which-football-stats-persist/">
+<meta name="robots" content="index,follow">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Which football stats actually mean anything">
+<meta property="og:description" content="We measured how much of the gap between players on each metric survives to the next season. Volume persists. Efficiency does not. 663 Premier League season-pairs, method open.">
+<meta property="og:url" content="https://quantedgesyndicate.com/analysis/which-football-stats-persist/">
+<meta property="og:image" content="https://quantedgesyndicate.com/analysis/metric-persistence.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Which football stats actually mean anything">
+<meta name="twitter:description" content="We measured how much of the gap between players on each metric survives to the next season. Volume persists. Efficiency does not. 663 Premier League season-pairs, method open.">
+<meta name="twitter:image" content="https://quantedgesyndicate.com/analysis/metric-persistence.png">
+<style>
+  :root {
+    --bg: #000000;
+    --bg2: #0c0c0c;
+    --bg3: #141414;
+    --fg: #ffffff;
+    --muted: #9a9a9a;
+    --dim: #6b6b6b;
+    --accent: #a6f000;
+    --accent-dim: #5a8400;
+    --border: #1f1f1f;
+    --border-hi: #2c2c2c;
+    --danger: #ff5252;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background: var(--bg);
+    color: var(--fg);
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  .wrap { max-width: 720px; margin: 0 auto; padding: 24px 20px 56px; }
+
+  .topbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 6px 0 22px;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 8px;
+  }
+  .topbar img { height: 30px; width: auto; display: block; }
+  .topbar nav a { color: var(--muted); font-size: 14px; margin-left: 18px; }
+  .topbar nav a:hover { color: var(--accent); text-decoration: none; }
+
+  .crumb { font-size: 12px; color: var(--dim); margin: 20px 0 10px; letter-spacing: 0.02em; }
+  .crumb a { color: var(--muted); }
+  .crumb span { color: var(--dim); }
+
+  .eyebrow {
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--accent);
+    font-weight: 600;
+    margin-bottom: 12px;
+  }
+  h1 {
+    font-size: 30px;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    margin: 0 0 16px;
+    font-weight: 800;
+  }
+  .byline {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px 14px;
+    align-items: center;
+    color: var(--muted);
+    font-size: 14px;
+    padding-bottom: 22px;
+    margin-bottom: 8px;
+    border-bottom: 1px solid var(--border);
+  }
+  .byline .author { color: var(--fg); font-weight: 600; }
+  .byline .dot { color: var(--dim); }
+
+  article p { font-size: 17px; color: #e9e9e9; margin: 0 0 20px; }
+  article h2 {
+    font-size: 21px;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    margin: 40px 0 16px;
+    padding-top: 8px;
+  }
+
+  .lineups { display: grid; grid-template-columns: 1fr; gap: 14px; margin: 8px 0 8px; }
+  .lineup {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 18px 18px;
+  }
+  .lineup .team { font-weight: 700; font-size: 16px; margin-bottom: 4px; }
+  .lineup .form { color: var(--accent); font-size: 13px; font-weight: 600; margin-bottom: 12px; letter-spacing: 0.04em; }
+  .lineup .players { font-size: 15px; color: #e9e9e9; line-height: 1.7; }
+
+  .pred {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--accent);
+    border-radius: 10px;
+    padding: 6px 20px 8px;
+    margin: 8px 0;
+  }
+  .pred p { font-size: 16px; }
+  .pred p:last-child { margin-bottom: 20px; }
+
+  .cta-card {
+    background: var(--bg2);
+    border: 1px solid var(--border-hi);
+    border-radius: 12px;
+    padding: 24px 22px;
+    margin: 44px 0 8px;
+    text-align: center;
+  }
+  .cta-card h3 { margin: 0 0 8px; font-size: 18px; }
+  .cta-card p { color: var(--muted); font-size: 15px; margin: 0 0 18px; }
+  .cta-btn {
+    display: inline-block;
+    padding: 12px 22px;
+    font-size: 15px;
+    font-weight: 600;
+    border-radius: 8px;
+    background: var(--accent);
+    color: #0a0a0a;
+    border: 1px solid var(--accent);
+  }
+  .cta-btn:hover { background: #b8ff1f; text-decoration: none; }
+  .cta-note { display: block; margin-top: 14px; font-size: 12px; color: var(--dim); }
+
+  footer {
+    border-top: 1px solid var(--border);
+    margin-top: 48px;
+    padding: 26px 0 12px;
+    text-align: center;
+    color: var(--dim);
+    font-size: 13px;
+  }
+  footer a { color: var(--muted); margin: 0 10px; }
+  footer a:hover { color: var(--accent); text-decoration: none; }
+  .foot-line { margin-top: 14px; }
+
+  @media (min-width: 720px) {
+    .wrap { padding: 32px 28px 72px; }
+    h1 { font-size: 38px; }
+    .lineups { grid-template-columns: 1fr 1fr; }
+  }
+</style>
+
+<style>
+  figure { margin: 28px 0; }
+  figure img { width: 100%; height: auto; border: 1px solid var(--border); border-radius: 6px; display: block; }
+  figcaption { color: var(--muted); font-size: 0.86rem; margin-top: 8px; }
+  table.data { width: 100%; border-collapse: collapse; margin: 22px 0; font-size: 0.92rem; }
+  table.data th { text-align: left; color: var(--muted); font-weight: 600; border-bottom: 1px solid var(--border-hi); padding: 6px 8px; }
+  table.data td { padding: 5px 8px; border-bottom: 1px solid var(--border); }
+  table.data td.num { text-align: right; font-variant-numeric: tabular-nums; }
+  tr.hi td { color: var(--accent); }
+  tr.lo td { color: #ff6b6b; }
+  .callout { border-left: 3px solid var(--accent); background: var(--bg2); padding: 14px 16px; margin: 24px 0; }
+  .callout p { margin: 0; }
+  .postlist a.post { display: block; border: 1px solid var(--border); border-radius: 6px; padding: 16px 18px; margin: 14px 0; text-decoration: none; }
+  .postlist a.post:hover { border-color: var(--border-hi); text-decoration: none; }
+  .postlist h2 { margin: 0 0 6px; font-size: 1.12rem; color: var(--fg); }
+  .postlist p { margin: 0; color: var(--muted); font-size: 0.92rem; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="topbar">
+    <a href="/"><img src="/qes_logo.png" alt="Quant Edge Syndicate"></a>
+    <nav>
+      <a href="/analysis/">Analysis</a>
+      <a href="/blog/">Blog</a>
+      <a href="/proof.html">Track record</a>
+    </nav>
+  </div>
+
+  <div class="crumb">
+    <a href="/">Home</a> <span>/</span> <a href="/analysis/">Analysis</a>
+    <span>/</span> <span>Which stats persist</span>
+  </div>
+
+  <div class="eyebrow">Research &middot; Premier League 2022/23&ndash;2025/26</div>
+  <h1>Which football stats actually mean anything</h1>
+  <div class="byline">
+    <span class="author">Quant Edge Syndicate</span>
+    <span class="dot">&middot;</span>
+    <time datetime="2026-09-17">17 September 2026</time>
+  </div>
+
+  <article>
+    <p>Football analysis runs on per-season numbers. Conversion rate, shot
+    accuracy, dribble success, duels won. They get quoted as though they
+    describe a player.</p>
+
+    <p>Some of them do. Most of them describe a season.</p>
+
+    <p>We tested which is which. Five Premier League seasons, every outfielder
+    with 600 or more minutes, 663 consecutive season-pairs. For each metric we
+    split the players at the median and measured how much of the gap between
+    the two halves was still there a year later, on the same players.</p>
+
+    <p>Crucially, that comparison is made <strong>within position</strong>.
+    Pooled across everyone, a large part of the gap on something like shot
+    volume is simply forwards being forwards, and a centre-back is still a
+    centre-back next season. Measured pooled, shots per 90 looks 86% stable.
+    Measured properly, it is 63%.</p>
+
+    <div class="callout">
+      <p><strong>What a player does persists. How well he does it barely
+      does.</strong></p>
+    </div>
+
+    <figure>
+      <img src="/analysis/metric-persistence.png"
+           alt="Bar chart of how much of each metric's year-one separation survives one season, Premier League, 663 season-pairs">
+      <figcaption>How much of the gap between the best and worst half survives
+      one season. Green above 60%, red below 40%.</figcaption>
+    </figure>
+
+    <h2>The table</h2>
+    <table class="data">
+      <thead><tr><th>Metric</th><th class="num">Retained</th>
+      <th class="num">Correlation</th></tr></thead>
+      <tbody>
+      <tr class="hi"><td>passes per 90</td><td class="num">82%</td><td class="num">0.87</td></tr>
+      <tr class="hi"><td>dribbles attempted per 90</td><td class="num">82%</td><td class="num">0.88</td></tr>
+      <tr class="hi"><td>duels per 90</td><td class="num">80%</td><td class="num">0.78</td></tr>
+      <tr class="hi"><td>key passes per 90</td><td class="num">75%</td><td class="num">0.80</td></tr>
+      <tr class="hi"><td>fouls drawn per 90</td><td class="num">75%</td><td class="num">0.78</td></tr>
+      <tr class="hi"><td>tackles per 90</td><td class="num">69%</td><td class="num">0.76</td></tr>
+      <tr class=""><td>blocks per 90</td><td class="num">64%</td><td class="num">0.72</td></tr>
+      <tr class=""><td>shots per 90</td><td class="num">63%</td><td class="num">0.85</td></tr>
+      <tr class=""><td>interceptions per 90</td><td class="num">59%</td><td class="num">0.71</td></tr>
+      <tr class=""><td>duel win %</td><td class="num">55%</td><td class="num">0.73</td></tr>
+      <tr class=""><td>goals + assists per 90</td><td class="num">48%</td><td class="num">0.72</td></tr>
+      <tr class=""><td>match rating</td><td class="num">47%</td><td class="num">0.46</td></tr>
+      <tr class="lo"><td>dribble success %</td><td class="num">32%</td><td class="num">0.22</td></tr>
+      <tr class="lo"><td>goals per 90</td><td class="num">31%</td><td class="num">0.73</td></tr>
+      <tr class="lo"><td>shot accuracy</td><td class="num">13%</td><td class="num">0.19</td></tr>
+      <tr class="lo"><td>conversion</td><td class="num">8%</td><td class="num">0.08</td></tr>
+      </tbody>
+    </table>
+
+    <h2>Read the top</h2>
+    <p>Volume and behaviour hold up. A player who attempts a lot of dribbles
+    this season attempts a lot next season, at a correlation of 0.88, the
+    highest on the board. Passing volume, duels, key passes and tackles all
+    sit at 69% or better.</p>
+
+    <p>These are traits. They describe how a player plays and what he is asked
+    to do, and that is stable.</p>
+
+    <h2>Read the bottom</h2>
+    <p>Efficiency collapses. Shot accuracy retains 13%. Dribble success 32%.
+    Conversion, meaning goals per shot on target, retains 8% with a
+    year-on-year correlation of 0.08.</p>
+
+    <p>One caveat that matters. That 8% is measured across all outfielders,
+    including centre-backs for whom a finishing rate is close to meaningless.
+    Restricted to attackers alone, with a 20-shot filter, it rises to roughly
+    19%. Still far below every volume metric, but the honest number for a
+    question about forwards is the higher one.</p>
+
+    <h2>The clearest case</h2>
+    <p>The same test on Premier League attackers, split on conversion, 92
+    consecutive season-pairs. The good finishers fell from 0.466 to 0.371. The
+    poor finishers rose from 0.277 to 0.331. Both landed either side of the
+    league median of 0.350, within 0.04 of each other.</p>
+
+    <figure>
+      <img src="/analysis/finishing-regression.png"
+           alt="Line chart showing hot and cold finisher groups converging on the league median after one season">
+      <figcaption>The dotted lines are where each group would sit if the
+      year-one difference held. The solid lines are where they went.</figcaption>
+    </figure>
+
+    <p>A separation of 0.189 becomes 0.040, so roughly four fifths of it is
+    gone in a season. The 95% interval on that change is &minus;0.201 to
+    &minus;0.096, which does not come near zero.</p>
+
+    <h2>Haaland</h2>
+    <p>Erling Haaland is the clearest single illustration, because the two
+    halves of him behave completely differently.</p>
+
+    <p>His shooting barely moves: 3.47, 3.45, 3.02 and 3.10 shots per 90 across
+    four seasons, roughly double the league median, and even his lowest year is
+    65% above average. His finishing swings by sixty per cent: 60%, then 46%,
+    then 37%, then 46% of shots on target converted.</p>
+
+    <p>His goal rate fell by a third between 2022/23 and 2024/25 while his shot
+    volume barely changed. Nothing about how he plays broke. The part that
+    moved was the part that was never stable to begin with.</p>
+
+    <figure>
+      <img src="/analysis/striker-shot-volume.png"
+           alt="Two panel chart of shots per 90 and goals per 90 for ten current Premier League forwards across four seasons">
+      <figcaption>Ten forwards, all current Premier League squad members.
+      Average swing from a player's own mean: 15% on shots, 28% on goals.</figcaption>
+    </figure>
+
+    <h2>What we are not claiming</h2>
+    <p>This is not a finding that finishing is a myth. Over a career, some
+    players are plainly better at it. The claim is narrower: a single season of
+    conversion rate carries very little information about the next one.</p>
+
+    <p>Part of the regression is also mechanical. Split any measure containing
+    error and the top half falls back, which is arithmetic rather than
+    football. That is precisely why the comparison between metrics carries the
+    meaning here. Every metric in the table is measured with error, and passing
+    volume retains 82% anyway while conversion retains 8%.</p>
+
+    <p>And this is one league, five seasons, public per-season aggregates. No
+    event data, no tracking. A centre-back and a full-back are both filed as
+    "Defender" in this feed, which limits any position-specific reading.</p>
+
+    <h2>What it implies for recruitment</h2>
+    <p>A screen that ranks forwards on conversion rate is ranking them largely
+    on last season's variance. The same goes for shot accuracy at 13%.</p>
+
+    <p>The metrics that survive are the boring ones. How often he shoots, not
+    how often he scores. How often he takes a man on, not how often it comes
+    off.</p>
+
+    <h2>Reproduction</h2>
+    <p>Every number here comes from our own code against a per-season player
+    panel collected from a public API. Method, filters and code are available
+    on request, including the parts that did not work.</p>
+
+    <p>We publish negative results as a matter of course. It is the only reason
+    to believe the positive ones.</p>
+  </article>
+
+  <footer>
+    <div>
+      <a href="/analysis/">Analysis</a>
+      <a href="/blog/">Blog</a>
+      <a href="/proof.html">Track record</a>
+      <a href="/legal.html">Legal</a>
+    </div>
+    <div class="foot-line">Quant Edge Syndicate &mdash; 2026</div>
+  </footer>
+
+</div>
+</body>
+</html>
