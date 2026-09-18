@@ -6,17 +6,17 @@
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <link rel="alternate icon" href="/favicon.png">
 <title>Which football stats actually mean anything | Quant Edge Syndicate</title>
-<meta name="description" content="We measured how much of the gap between players on each metric survives to the next season. Volume persists. Efficiency does not. 663 Premier League season-pairs, method open.">
+<meta name="description" content="We measured how much of the gap between players on each metric survives to the next season. Volume persists. Efficiency does not. 652 Premier League season-pairs, method open.">
 <link rel="canonical" href="https://quantedgesyndicate.com/analysis/which-football-stats-persist/">
 <meta name="robots" content="index,follow">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Which football stats actually mean anything">
-<meta property="og:description" content="We measured how much of the gap between players on each metric survives to the next season. Volume persists. Efficiency does not. 663 Premier League season-pairs, method open.">
+<meta property="og:description" content="We measured how much of the gap between players on each metric survives to the next season. Volume persists. Efficiency does not. 652 Premier League season-pairs, method open.">
 <meta property="og:url" content="https://quantedgesyndicate.com/analysis/which-football-stats-persist/">
 <meta property="og:image" content="https://quantedgesyndicate.com/analysis/metric-persistence.png">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Which football stats actually mean anything">
-<meta name="twitter:description" content="We measured how much of the gap between players on each metric survives to the next season. Volume persists. Efficiency does not. 663 Premier League season-pairs, method open.">
+<meta name="twitter:description" content="We measured how much of the gap between players on each metric survives to the next season. Volume persists. Efficiency does not. 652 Premier League season-pairs, method open.">
 <meta name="twitter:image" content="https://quantedgesyndicate.com/analysis/metric-persistence.png">
 <style>
   :root {
@@ -189,7 +189,6 @@
     <a href="/"><img src="/qes_logo.png" alt="Quant Edge Syndicate"></a>
     <nav>
       <a href="/analysis/">Analysis</a>
-      <a href="/metric-audit/">Metric audit</a>
       <a href="/blog/">Blog</a>
       <a href="/proof.html">Track record</a>
     </nav>
@@ -215,10 +214,12 @@
 
     <p>Some of them do. Most of them describe a season.</p>
 
-    <p>We tested which is which. Five Premier League seasons, every outfielder
-    with 600 or more minutes, 663 consecutive season-pairs. For each metric we
-    split the players at the median and measured how much of the gap between
-    the two halves was still there a year later, on the same players.</p>
+    <p>We tested which is which. Four completed Premier League seasons,
+    2022/23 to 2025/26, which gives three consecutive-season comparisons.
+    Every outfielder with 600 or more minutes in both halves of a comparison:
+    663 players, 652 season-pairs. For each metric we split the players at the
+    median and measured how much of the gap between the two halves was still
+    there a year later, on the same players.</p>
 
     <p>Crucially, that comparison is made <strong>within position</strong>.
     Pooled across everyone, a large part of the gap on something like shot
@@ -233,32 +234,48 @@
 
     <figure>
       <img src="/analysis/metric-persistence.png"
-           alt="Bar chart of how much of each metric's year-one separation survives one season, Premier League, 663 season-pairs">
+           alt="Bar chart of how much of each metric's year-one separation survives one season, Premier League, 652 season-pairs">
       <figcaption>How much of the gap between the best and worst half survives
       one season. Green above 60%, red below 40%.</figcaption>
     </figure>
+
+    <div class="callout">
+      <p><strong>What &ldquo;retained&rdquo; means, exactly.</strong> Sort the
+      players by a metric and cut at the median. Measure the distance between
+      the top half's average and the bottom half's average. Now follow the same
+      players into the next season and measure the distance between those same
+      two groups again. Retained is the second distance as a share of the
+      first. 83% means the two groups are still almost as far apart. 11% means
+      they have very nearly collapsed into each other.</p>
+      <p>It is <em>not</em> a correlation, and it is <em>not</em> the share of
+      variance explained, and it is <em>not</em> an estimate of how much of a
+      metric is skill. Correlation is a separate column, and on conversion the
+      two happen to sit close together &mdash; 11% retained against an r of
+      0.10 &mdash; which is coincidence, not confirmation.</p>
+    </div>
 
     <h2>The table</h2>
     <table class="data">
       <thead><tr><th>Metric</th><th class="num">Retained</th>
       <th class="num">Correlation</th></tr></thead>
       <tbody>
-      <tr class="hi"><td>passes per 90</td><td class="num">82%</td><td class="num">0.87</td></tr>
-      <tr class="hi"><td>dribbles attempted per 90</td><td class="num">82%</td><td class="num">0.88</td></tr>
-      <tr class="hi"><td>duels per 90</td><td class="num">80%</td><td class="num">0.78</td></tr>
-      <tr class="hi"><td>key passes per 90</td><td class="num">75%</td><td class="num">0.80</td></tr>
-      <tr class="hi"><td>fouls drawn per 90</td><td class="num">75%</td><td class="num">0.78</td></tr>
-      <tr class="hi"><td>tackles per 90</td><td class="num">69%</td><td class="num">0.76</td></tr>
-      <tr class=""><td>blocks per 90</td><td class="num">64%</td><td class="num">0.72</td></tr>
-      <tr class=""><td>shots per 90</td><td class="num">63%</td><td class="num">0.85</td></tr>
-      <tr class=""><td>interceptions per 90</td><td class="num">59%</td><td class="num">0.71</td></tr>
-      <tr class=""><td>duel win %</td><td class="num">55%</td><td class="num">0.73</td></tr>
-      <tr class=""><td>goals + assists per 90</td><td class="num">48%</td><td class="num">0.72</td></tr>
-      <tr class=""><td>match rating</td><td class="num">47%</td><td class="num">0.46</td></tr>
-      <tr class="lo"><td>dribble success %</td><td class="num">32%</td><td class="num">0.22</td></tr>
-      <tr class="lo"><td>goals per 90</td><td class="num">31%</td><td class="num">0.73</td></tr>
-      <tr class="lo"><td>shot accuracy</td><td class="num">13%</td><td class="num">0.19</td></tr>
-      <tr class="lo"><td>conversion</td><td class="num">8%</td><td class="num">0.08</td></tr>
+      <tr class="hi"><td>passes per 90</td><td class="num">83%</td><td class="num">0.89</td></tr>
+      <tr class="hi"><td>dribbles attempted per 90</td><td class="num">84%</td><td class="num">0.90</td></tr>
+      <tr class="hi"><td>duels per 90</td><td class="num">82%</td><td class="num">0.85</td></tr>
+      <tr class="hi"><td>key passes per 90</td><td class="num">78%</td><td class="num">0.81</td></tr>
+      <tr class="hi"><td>fouls drawn per 90</td><td class="num">76%</td><td class="num">0.81</td></tr>
+      <tr class="hi"><td>tackles per 90</td><td class="num">70%</td><td class="num">0.77</td></tr>
+      <tr class=""><td>fouls committed per 90</td><td class="num">67%</td><td class="num">0.71</td></tr>
+      <tr class=""><td>blocks per 90</td><td class="num">65%</td><td class="num">0.73</td></tr>
+      <tr class=""><td>shots per 90</td><td class="num">64%</td><td class="num">0.87</td></tr>
+      <tr class=""><td>interceptions per 90</td><td class="num">60%</td><td class="num">0.72</td></tr>
+      <tr class=""><td>duel win %</td><td class="num">58%</td><td class="num">0.75</td></tr>
+      <tr class=""><td>match rating</td><td class="num">50%</td><td class="num">0.50</td></tr>
+      <tr class=""><td>goals + assists per 90</td><td class="num">47%</td><td class="num">0.73</td></tr>
+      <tr class="lo"><td>goals per 90</td><td class="num">32%</td><td class="num">0.74</td></tr>
+      <tr class="lo"><td>dribble success %</td><td class="num">31%</td><td class="num">0.21</td></tr>
+      <tr class="lo"><td>shot accuracy</td><td class="num">13%</td><td class="num">0.20</td></tr>
+      <tr class="lo"><td>conversion</td><td class="num">11%</td><td class="num">0.10</td></tr>
       </tbody>
     </table>
 
@@ -273,14 +290,14 @@
 
     <h2>Read the bottom</h2>
     <p>Efficiency collapses. Shot accuracy retains 13%. Dribble success 32%.
-    Conversion, meaning goals per shot on target, retains 8% with a
-    year-on-year correlation of 0.08.</p>
+    Conversion, meaning goals per shot on target, retains 11% with a
+    year-on-year correlation of 0.10.</p>
 
-    <p>One caveat that matters. That 8% is measured across all outfielders,
+    <p>One caveat that matters. That 11% is measured across all outfielders,
     including centre-backs for whom a finishing rate is close to meaningless.
-    Restricted to attackers alone, with a 20-shot filter, it rises to roughly
-    19%. Still far below every volume metric, but the honest number for a
-    question about forwards is the higher one.</p>
+    Restricted to attackers alone it rises to 23%, on 130 season-pairs. Still
+    far below every volume metric, but the honest number for a question about
+    forwards is the higher one.</p>
 
     <h2>The clearest case</h2>
     <p>The same test on Premier League attackers, split on conversion, 92
@@ -328,19 +345,27 @@
     error and the top half falls back, which is arithmetic rather than
     football. That is precisely why the comparison between metrics carries the
     meaning here. Every metric in the table is measured with error, and passing
-    volume retains 82% anyway while conversion retains 8%.</p>
+    volume retains 83% anyway while conversion retains 11%.</p>
 
-    <p>And this is one league, five seasons, public per-season aggregates. No
+    <p>And this is one league, four seasons, public per-season aggregates. No
     event data, no tracking. A centre-back and a full-back are both filed as
     "Defender" in this feed, which limits any position-specific reading.</p>
 
-    <h2>What it implies for recruitment</h2>
-    <p>A screen that ranks forwards on conversion rate is ranking them largely
-    on last season's variance. The same goes for shot accuracy at 13%.</p>
+    <h2>What this might mean for recruitment</h2>
+    <p>We are not claiming this improves anyone's recruitment decisions. We
+    have not tested it against signings and outcomes, and until someone does,
+    any claim in that direction is unearned.</p>
 
-    <p>The metrics that survive are the boring ones. How often he shoots, not
-    how often he scores. How often he takes a man on, not how often it comes
-    off.</p>
+    <p>What we can say is narrower. If a screen ranks forwards on conversion
+    rate, most of what separates the top of that list from the bottom will not
+    be there next season. The same goes for shot accuracy at 13%. The metrics
+    that survive are the boring ones: how often he shoots, not how often he
+    scores; how often he takes a man on, not how often it comes off.</p>
+
+    <p>Whether that matters depends on how much weight those metrics carry in
+    your own process, which we cannot see from here. If you rank players for a
+    living, we would genuinely like to know whether this is relevant to how you
+    work, and whether the method holds up against data better than ours.</p>
 
     <h2>Reproduction</h2>
     <p>Every number here comes from our own code against a per-season player
@@ -349,12 +374,6 @@
 
     <p>We publish negative results as a matter of course. It is the only reason
     to believe the positive ones.</p>
-    <div class="callout">
-      <p><strong>Want to know what your own metrics score?</strong> We run this
-      on your data and hand back the table.
-      <a href="/metric-audit/">How the audit works &rarr;</a></p>
-    </div>
-
   </article>
 
   <footer>
