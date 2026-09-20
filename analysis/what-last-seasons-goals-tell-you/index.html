@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="alternate icon" href="/favicon.png">
+<title>The half of a striker's season worth paying for | Quant Edge Syndicate</title>
+<meta name="description" content="Finishing barely persists, so the obvious move is to stop looking at goals and look at shots instead. We tested that and it is wrong. 130 Premier League attacker season-pairs.">
+<link rel="canonical" href="https://quantedgesyndicate.com/analysis/what-last-seasons-goals-tell-you/">
+<meta name="robots" content="index,follow">
+<meta property="og:type" content="article">
+<meta property="og:title" content="The half of a striker's season worth paying for">
+<meta property="og:description" content="Finishing barely persists, so the obvious move is to stop looking at goals and look at shots instead. We tested that and it is wrong. 130 Premier League attacker season-pairs.">
+<meta property="og:url" content="https://quantedgesyndicate.com/analysis/what-last-seasons-goals-tell-you/">
+<meta property="og:image" content="https://quantedgesyndicate.com/analysis/predicting-goals.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="The half of a striker's season worth paying for">
+<meta name="twitter:description" content="Finishing barely persists, so the obvious move is to stop looking at goals and look at shots instead. We tested that and it is wrong. 130 Premier League attacker season-pairs.">
+<meta name="twitter:image" content="https://quantedgesyndicate.com/analysis/predicting-goals.png">
+<style>
+  :root {
+    --bg: #000000;
+    --bg2: #0c0c0c;
+    --bg3: #141414;
+    --fg: #ffffff;
+    --muted: #9a9a9a;
+    --dim: #6b6b6b;
+    --accent: #a6f000;
+    --accent-dim: #5a8400;
+    --border: #1f1f1f;
+    --border-hi: #2c2c2c;
+    --danger: #ff5252;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background: var(--bg);
+    color: var(--fg);
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  .wrap { max-width: 720px; margin: 0 auto; padding: 24px 20px 56px; }
+
+  .topbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 6px 0 22px;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 8px;
+  }
+  .topbar img { height: 30px; width: auto; display: block; }
+  .topbar nav a { color: var(--muted); font-size: 14px; margin-left: 18px; }
+  .topbar nav a:hover { color: var(--accent); text-decoration: none; }
+
+  .crumb { font-size: 12px; color: var(--dim); margin: 20px 0 10px; letter-spacing: 0.02em; }
+  .crumb a { color: var(--muted); }
+  .crumb span { color: var(--dim); }
+
+  .eyebrow {
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--accent);
+    font-weight: 600;
+    margin-bottom: 12px;
+  }
+  h1 {
+    font-size: 30px;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    margin: 0 0 16px;
+    font-weight: 800;
+  }
+  .byline {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px 14px;
+    align-items: center;
+    color: var(--muted);
+    font-size: 14px;
+    padding-bottom: 22px;
+    margin-bottom: 8px;
+    border-bottom: 1px solid var(--border);
+  }
+  .byline .author { color: var(--fg); font-weight: 600; }
+  .byline .dot { color: var(--dim); }
+
+  article p { font-size: 17px; color: #e9e9e9; margin: 0 0 20px; }
+  article h2 {
+    font-size: 21px;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    margin: 40px 0 16px;
+    padding-top: 8px;
+  }
+
+  .lineups { display: grid; grid-template-columns: 1fr; gap: 14px; margin: 8px 0 8px; }
+  .lineup {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 18px 18px;
+  }
+  .lineup .team { font-weight: 700; font-size: 16px; margin-bottom: 4px; }
+  .lineup .form { color: var(--accent); font-size: 13px; font-weight: 600; margin-bottom: 12px; letter-spacing: 0.04em; }
+  .lineup .players { font-size: 15px; color: #e9e9e9; line-height: 1.7; }
+
+  .pred {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--accent);
+    border-radius: 10px;
+    padding: 6px 20px 8px;
+    margin: 8px 0;
+  }
+  .pred p { font-size: 16px; }
+  .pred p:last-child { margin-bottom: 20px; }
+
+  .cta-card {
+    background: var(--bg2);
+    border: 1px solid var(--border-hi);
+    border-radius: 12px;
+    padding: 24px 22px;
+    margin: 44px 0 8px;
+    text-align: center;
+  }
+  .cta-card h3 { margin: 0 0 8px; font-size: 18px; }
+  .cta-card p { color: var(--muted); font-size: 15px; margin: 0 0 18px; }
+  .cta-btn {
+    display: inline-block;
+    padding: 12px 22px;
+    font-size: 15px;
+    font-weight: 600;
+    border-radius: 8px;
+    background: var(--accent);
+    color: #0a0a0a;
+    border: 1px solid var(--accent);
+  }
+  .cta-btn:hover { background: #b8ff1f; text-decoration: none; }
+  .cta-note { display: block; margin-top: 14px; font-size: 12px; color: var(--dim); }
+
+  footer {
+    border-top: 1px solid var(--border);
+    margin-top: 48px;
+    padding: 26px 0 12px;
+    text-align: center;
+    color: var(--dim);
+    font-size: 13px;
+  }
+  footer a { color: var(--muted); margin: 0 10px; }
+  footer a:hover { color: var(--accent); text-decoration: none; }
+  .foot-line { margin-top: 14px; }
+
+  @media (min-width: 720px) {
+    .wrap { padding: 32px 28px 72px; }
+    h1 { font-size: 38px; }
+    .lineups { grid-template-columns: 1fr 1fr; }
+  }
+</style>
+
+<style>
+  figure { margin: 28px 0; }
+  figure img { width: 100%; height: auto; border: 1px solid var(--border); border-radius: 6px; display: block; }
+  figcaption { color: var(--muted); font-size: 0.86rem; margin-top: 8px; }
+  table.data { width: 100%; border-collapse: collapse; margin: 22px 0; font-size: 0.92rem; }
+  table.data th { text-align: left; color: var(--muted); font-weight: 600; border-bottom: 1px solid var(--border-hi); padding: 6px 8px; }
+  table.data td { padding: 5px 8px; border-bottom: 1px solid var(--border); }
+  table.data td.num { text-align: right; font-variant-numeric: tabular-nums; }
+  tr.hi td { color: var(--accent); }
+  tr.lo td { color: #ff6b6b; }
+  .callout { border-left: 3px solid var(--accent); background: var(--bg2); padding: 14px 16px; margin: 24px 0; }
+  .callout p { margin: 0; }
+  .postlist a.post { display: block; border: 1px solid var(--border); border-radius: 6px; padding: 16px 18px; margin: 14px 0; text-decoration: none; }
+  .postlist a.post:hover { border-color: var(--border-hi); text-decoration: none; }
+  .postlist h2 { margin: 0 0 6px; font-size: 1.12rem; color: var(--fg); }
+  .postlist p { margin: 0; color: var(--muted); font-size: 0.92rem; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="topbar">
+    <a href="/"><img src="/qes_logo.png" alt="Quant Edge Syndicate"></a>
+    <nav>
+      <a href="/analysis/">Analysis</a>
+      <a href="/blog/">Blog</a>
+      <a href="/proof.html">Track record</a>
+    </nav>
+  </div>
+
+  <div class="crumb">
+    <a href="/">Home</a> <span>/</span> <a href="/analysis/">Analysis</a>
+    <span>/</span> <span>Striker goals</span>
+  </div>
+
+  <div class="eyebrow">Analysis &middot; 20 September 2026</div>
+  <h1>The half of a striker's season worth paying for</h1>
+
+  <article>
+    <p class="lead">A striker scored fifteen last season. How much should that
+    change what you think of him?</p>
+
+    <p>More than we expected. We ran this test assuming our own earlier
+    research pointed the other way, and it did not.</p>
+
+    <h2>The obvious conclusion, and why it is wrong</h2>
+
+    <p>Our first piece found that finishing barely persists. Split players into
+    good and bad finishers, come back a year later, and almost all of the gap
+    between them has gone.</p>
+
+    <p>So the obvious move is to stop looking at goals and start looking at
+    shots. Goals are contaminated by finishing, finishing is mostly luck, and
+    shot volume is the clean trait underneath.</p>
+
+    <p>We tested it. Among Premier League attackers, last season's goal rate
+    predicts next season's goal rate better than shot volume does.</p>
+
+    <figure>
+      <img src="/analysis/predicting-goals.png"
+           alt="Bar chart of how well each of last season's metrics correlates with the same attacker's goals per 90 the following season">
+      <figcaption>Premier League attackers, 130 consecutive season-pairs.
+      Bars are 95% intervals. The top three overlap, so treat them as a group
+      rather than a ranking.</figcaption>
+    </figure>
+
+    <p>Goals at 0.53, goals and assists at 0.49, shots at 0.47. Those three
+    intervals sit on top of each other, so the honest reading is that all three
+    tell you roughly the same thing. What they do not do is beat each other.</p>
+
+    <div class="callout">
+      <p><strong>Swapping goals for shots does not buy you anything. The
+      mistake is not which number you use. It is taking that number apart and
+      paying extra for the wrong half.</strong></p>
+    </div>
+
+    <h2>Why persistence did not mean prediction</h2>
+
+    <p>This is the part that took us a while, so it is worth going slowly.</p>
+
+    <p>Imagine a class sits an exam. The top half average 80%, the bottom half
+    average 50%. A year later the same class sits a harder paper. Everyone's
+    marks fall. Now the top half average 60% and the bottom half still average
+    50%.</p>
+
+    <p>The gap between the groups has collapsed from thirty points to ten. But
+    the same pupils are still the ones at the top.</p>
+
+    <p>Those are two different questions with two different answers. "Is the
+    gap still there?" is not the same question as "are the same people still
+    ahead?"</p>
+
+    <p>Our first piece measured the gap. This one measures the order. A
+    striker's goal rate falls back hard towards the pack, which is exactly what
+    the first chart shows, and he is still mostly in the same place in the
+    queue.</p>
+
+    <h2>So what should you throw away?</h2>
+
+    <p>Not the goals. The efficiency inside them.</p>
+
+    <p>Conversion, meaning goals per shot on target, correlates 0.23 with next
+    season's goals. Shot accuracy correlates 0.08, and its interval crosses
+    zero, which means we cannot rule out that it tells you nothing at all.</p>
+
+    <p>Those are the two numbers a scouting report reaches for when it wants to
+    justify a signing the raw goal count does not support. He is a natural
+    finisher. His shot accuracy is elite. Neither survives contact with the
+    following season.</p>
+
+    <h2>What it means for a shortlist</h2>
+
+    <p>Take a striker's season and break it in two.</p>
+
+    <p><strong>How often he got a shot away</strong> is a trait. It describes
+    how he plays and what his team asks of him, and it turns up again next
+    year.</p>
+
+    <p><strong>How often those shots went in</strong> is mostly the season he
+    had.</p>
+
+    <p>Keep the goal count. It quietly contains both halves and it does the job
+    as well as anything else we tested. What you should not do is take it
+    apart, find the finishing half, and pay a premium for that.</p>
+
+    <h2>One thing we did not expect</h2>
+
+    <p>Among attackers, key passes per 90 correlates <strong>minus 0.15</strong>
+    with next season's goals. The players creating chances are not the players
+    finishing them.</p>
+
+    <p>The interval crosses zero so we are not claiming it as a finding. But it
+    does undercut any pitch that rolls a forward's whole game into one number,
+    because two of the components point in opposite directions.</p>
+
+    <h2>Limits</h2>
+
+    <p>130 attacker season-pairs is not many. The three leading metrics are
+    inside each other's intervals and we have said so rather than ranking them.</p>
+
+    <p>This is one league, four completed seasons, and public per-season
+    aggregates. No event data and no tracking. Correlation here is about who
+    ranks where, not about how many goals a given player will score.</p>
+
+    <p>And a correlation of 0.53 still leaves most of next season unexplained.
+    The claim is that goals are the best of a weak field, not that they are
+    good.</p>
+
+    <h2>Reproduction</h2>
+
+    <p>Same panel and same filters as the persistence piece. Method, code and
+    intervals are open on request, including the tests that went nowhere.</p>
+
+    <p>This piece exists because the first one invited a conclusion we could
+    not support once we checked it. That is the useful half of publishing.</p>
+
+    <div class="callout">
+      <p><strong>Want to know what your own metrics score?</strong> We run this
+      on your data and hand back the table.
+      <a href="/metric-audit/">How the audit works &rarr;</a></p>
+    </div>
+
+  </article>
+
+  <footer>
+    <div>
+      <a href="/analysis/">Analysis</a>
+      <a href="/blog/">Blog</a>
+      <a href="/proof.html">Track record</a>
+      <a href="/legal.html">Legal</a>
+    </div>
+    <div class="foot-line">Quant Edge Syndicate &mdash; 2026</div>
+  </footer>
+
+</div>
+</body>
+</html>
