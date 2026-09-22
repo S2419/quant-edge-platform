@@ -8,17 +8,17 @@
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <link rel="alternate icon" href="/favicon.png">
 <title>The half of a striker's season worth paying for | Quant Edge Syndicate</title>
-<meta name="description" content="Finishing barely persists, so the obvious move is to stop looking at goals and look at shots instead. We tested that and it's wrong. 130 Premier League attacker season-pairs.">
+<meta name="description" content="Finishing barely persists, so the obvious move is to stop looking at goals and look at shots instead. We tested that and it's wrong. 145 Premier League attacker season-pairs.">
 <link rel="canonical" href="https://quantedgesyndicate.com/analysis/what-last-seasons-goals-tell-you/">
 <meta name="robots" content="index,follow">
 <meta property="og:type" content="article">
 <meta property="og:title" content="The half of a striker's season worth paying for">
-<meta property="og:description" content="Finishing barely persists, so the obvious move is to stop looking at goals and look at shots instead. We tested that and it's wrong. 130 Premier League attacker season-pairs.">
+<meta property="og:description" content="Finishing barely persists, so the obvious move is to stop looking at goals and look at shots instead. We tested that and it's wrong. 145 Premier League attacker season-pairs.">
 <meta property="og:url" content="https://quantedgesyndicate.com/analysis/what-last-seasons-goals-tell-you/">
 <meta property="og:image" content="https://quantedgesyndicate.com/analysis/predicting-goals.png">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="The half of a striker's season worth paying for">
-<meta name="twitter:description" content="Finishing barely persists, so the obvious move is to stop looking at goals and look at shots instead. We tested that and it's wrong. 130 Premier League attacker season-pairs.">
+<meta name="twitter:description" content="Finishing barely persists, so the obvious move is to stop looking at goals and look at shots instead. We tested that and it's wrong. 145 Premier League attacker season-pairs.">
 <meta name="twitter:image" content="https://quantedgesyndicate.com/analysis/predicting-goals.png">
 <style>
   :root {
@@ -234,12 +234,12 @@
     <figure>
       <img src="/analysis/predicting-goals.png"
            alt="Bar chart of how well each of last season's metrics correlates with the same attacker's goals per 90 the following season">
-      <figcaption>Premier League attackers, 130 consecutive season-pairs.
+      <figcaption>Premier League attackers, 145 consecutive season-pairs.
       Bars are 95% intervals. The top three overlap, so treat them as a group
       rather than a ranking.</figcaption>
     </figure>
 
-    <p>Goals come out at 0.53, goals and assists at 0.49, shots at 0.47. Look
+    <p>Goals come out at 0.52, goals and assists at 0.47, shots at 0.47. Look
     at the bars, though: those three overlap almost completely. So it isn't
     that goals win. All three tell you about the same amount, and none of them is
     far enough ahead to be worth switching to.</p>
@@ -278,8 +278,8 @@
     <p>The success rates hiding inside the goals, rather than the goals
     themselves.</p>
 
-    <p>Conversion, the share of his shots on target that went in, scores 0.23
-    against next season's goals. Shot accuracy scores 0.08, and its interval
+    <p>Conversion, the share of his shots on target that went in, scores 0.22
+    against next season's goals. Shot accuracy scores 0.10, and its interval
     crosses zero. Put simply, we can't rule out that it tells you nothing at
     all.</p>
 
@@ -306,18 +306,19 @@
 
     <h2>One thing we didn't expect</h2>
 
-    <p>Among attackers, key passes per 90 score <strong>minus 0.15</strong>
+    <p>Among attackers, key passes per 90 score <strong>minus 0.17</strong>
     against next season's goals. Slightly negative, in other words: the
-    players creating chances aren't the ones finishing them.</p>
+    players creating chances tend not to be the ones finishing them.</p>
 
-    <p>The interval crosses zero, so we're not calling it a finding. It does
-    cause problems for any product that rolls a forward's whole game into one
+    <p>The interval only just clears zero (&minus;0.32 to &minus;0.01), and
+    it's one result among several we tested, so we're still not calling it a
+    finding. It does cause problems for any product that rolls a forward's whole game into one
     rating, though, because at least two of the ingredients pull in opposite
     directions.</p>
 
     <h2>Limits</h2>
 
-    <p>130 attacker season-pairs isn't many. The top three stats sit inside
+    <p>145 attacker season-pairs isn't many. The top three stats sit inside
     each other's intervals, and we've said so rather than ranking them as if
     the order meant something.</p>
 
@@ -325,7 +326,7 @@
     no event or tracking data. And the correlations here are about who ranks
     where, not how many goals a particular player will score.</p>
 
-    <p>Most importantly, 0.53 still leaves the large majority of next season
+    <p>Most importantly, 0.52 still leaves the large majority of next season
     unexplained.
     Goals are the best of a weak bunch, which isn't the same as good.</p>
 
@@ -338,6 +339,13 @@
     <p>We only wrote this because the first piece pointed towards a
     conclusion that didn't hold up once we checked. Catching that sort of
     thing is a big part of why we publish at all.</p>
+
+    <p class="note"><strong>Corrected on 22 September 2026.</strong> The
+    original counted only one of the data provider's two labels for strikers.
+    With both, the sample is 145 season-pairs rather than 130 and the figures
+    move slightly (goals 0.53 to 0.52). One sentence changed meaning: the
+    key-passes interval now just clears zero, and the text above says so. The
+    chart was redrawn.</p>
 
     <div class="callout">
       <p><strong>Want to know what your own metrics score?</strong> We'll run
