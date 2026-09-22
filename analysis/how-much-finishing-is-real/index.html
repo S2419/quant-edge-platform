@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="alternate icon" href="/favicon.png">
+<title>How much of a striker's finishing is real | Quant Edge Syndicate</title>
+<meta name="description" content="About a quarter, in all 14 leagues we measured. Our 80% ranges held 81% of outcomes. And 61 calls on this season, frozen before most of it is played.">
+<link rel="canonical" href="https://quantedgesyndicate.com/analysis/how-much-finishing-is-real/">
+<meta name="robots" content="index,follow">
+<meta property="og:type" content="article">
+<meta property="og:title" content="How much of a striker's finishing is real">
+<meta property="og:description" content="About a quarter, in all 14 leagues we measured. Our 80% ranges held 81% of outcomes. And 61 calls on this season, frozen before most of it is played.">
+<meta property="og:url" content="https://quantedgesyndicate.com/analysis/how-much-finishing-is-real/">
+<meta property="og:image" content="https://quantedgesyndicate.com/analysis/metric-persistence.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="How much of a striker's finishing is real">
+<meta name="twitter:description" content="About a quarter, in all 14 leagues we measured. Our 80% ranges held 81% of outcomes. And 61 calls on this season, frozen before most of it is played.">
+<meta name="twitter:image" content="https://quantedgesyndicate.com/analysis/metric-persistence.png">
+<style>
+  :root {
+    --bg: #000000;
+    --bg2: #0c0c0c;
+    --bg3: #141414;
+    --fg: #ffffff;
+    --muted: #9a9a9a;
+    --dim: #6b6b6b;
+    --accent: #a6f000;
+    --accent-dim: #5a8400;
+    --border: #1f1f1f;
+    --border-hi: #2c2c2c;
+    --danger: #ff5252;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background: var(--bg);
+    color: var(--fg);
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  .wrap { max-width: 720px; margin: 0 auto; padding: 24px 20px 56px; }
+
+  .topbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 6px 0 22px;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 8px;
+  }
+  .topbar img { height: 30px; width: auto; display: block; }
+  .topbar nav a { color: var(--muted); font-size: 14px; margin-left: 18px; }
+  .topbar nav a:hover { color: var(--accent); text-decoration: none; }
+
+  .crumb { font-size: 12px; color: var(--dim); margin: 20px 0 10px; letter-spacing: 0.02em; }
+  .crumb a { color: var(--muted); }
+  .crumb span { color: var(--dim); }
+
+  .eyebrow {
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--accent);
+    font-weight: 600;
+    margin-bottom: 12px;
+  }
+  h1 {
+    font-size: 30px;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    margin: 0 0 16px;
+    font-weight: 800;
+  }
+  .byline {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px 14px;
+    align-items: center;
+    color: var(--muted);
+    font-size: 14px;
+    padding-bottom: 22px;
+    margin-bottom: 8px;
+    border-bottom: 1px solid var(--border);
+  }
+  .byline .author { color: var(--fg); font-weight: 600; }
+  .byline .dot { color: var(--dim); }
+
+  article p { font-size: 17px; color: #e9e9e9; margin: 0 0 20px; }
+  article h2 {
+    font-size: 21px;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    margin: 40px 0 16px;
+    padding-top: 8px;
+  }
+
+  .lineups { display: grid; grid-template-columns: 1fr; gap: 14px; margin: 8px 0 8px; }
+  .lineup {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 18px 18px;
+  }
+  .lineup .team { font-weight: 700; font-size: 16px; margin-bottom: 4px; }
+  .lineup .form { color: var(--accent); font-size: 13px; font-weight: 600; margin-bottom: 12px; letter-spacing: 0.04em; }
+  .lineup .players { font-size: 15px; color: #e9e9e9; line-height: 1.7; }
+
+  .pred {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--accent);
+    border-radius: 10px;
+    padding: 6px 20px 8px;
+    margin: 8px 0;
+  }
+  .pred p { font-size: 16px; }
+  .pred p:last-child { margin-bottom: 20px; }
+
+  .cta-card {
+    background: var(--bg2);
+    border: 1px solid var(--border-hi);
+    border-radius: 12px;
+    padding: 24px 22px;
+    margin: 44px 0 8px;
+    text-align: center;
+  }
+  .cta-card h3 { margin: 0 0 8px; font-size: 18px; }
+  .cta-card p { color: var(--muted); font-size: 15px; margin: 0 0 18px; }
+  .cta-btn {
+    display: inline-block;
+    padding: 12px 22px;
+    font-size: 15px;
+    font-weight: 600;
+    border-radius: 8px;
+    background: var(--accent);
+    color: #0a0a0a;
+    border: 1px solid var(--accent);
+  }
+  .cta-btn:hover { background: #b8ff1f; text-decoration: none; }
+  .cta-note { display: block; margin-top: 14px; font-size: 12px; color: var(--dim); }
+
+  footer {
+    border-top: 1px solid var(--border);
+    margin-top: 48px;
+    padding: 26px 0 12px;
+    text-align: center;
+    color: var(--dim);
+    font-size: 13px;
+  }
+  footer a { color: var(--muted); margin: 0 10px; }
+  footer a:hover { color: var(--accent); text-decoration: none; }
+  .foot-line { margin-top: 14px; }
+
+  @media (min-width: 720px) {
+    .wrap { padding: 32px 28px 72px; }
+    h1 { font-size: 38px; }
+    .lineups { grid-template-columns: 1fr 1fr; }
+  }
+</style>
+
+<style>
+  figure { margin: 28px 0; }
+  figure img { width: 100%; height: auto; border: 1px solid var(--border); border-radius: 6px; display: block; }
+  figcaption { color: var(--muted); font-size: 0.86rem; margin-top: 8px; }
+  table.data { width: 100%; border-collapse: collapse; margin: 22px 0; font-size: 0.92rem; }
+  table.data th { text-align: left; color: var(--muted); font-weight: 600; border-bottom: 1px solid var(--border-hi); padding: 6px 8px; }
+  table.data td { padding: 5px 8px; border-bottom: 1px solid var(--border); }
+  table.data td.num { text-align: right; font-variant-numeric: tabular-nums; }
+  tr.hi td { color: var(--accent); }
+  tr.lo td { color: #ff6b6b; }
+  .callout { border-left: 3px solid var(--accent); background: var(--bg2); padding: 14px 16px; margin: 24px 0; }
+  .callout p { margin: 0 0 10px; }
+  .callout p:last-child { margin-bottom: 0; }
+  p.note { border-left: 2px solid var(--border-hi); padding: 2px 0 2px 14px; margin: 22px 0; color: var(--muted); font-size: 0.93rem; }
+  article ol, article ul { margin: 16px 0; padding-left: 22px; }
+  article ol li, article ul li { margin: 7px 0; padding-left: 4px; }
+  article ol li::marker { color: var(--accent); font-weight: 700; }
+  .postlist a.post { display: block; border: 1px solid var(--border); border-radius: 6px; padding: 16px 18px; margin: 14px 0; text-decoration: none; }
+  .postlist a.post:hover { border-color: var(--border-hi); text-decoration: none; }
+  .postlist h2 { margin: 0 0 6px; font-size: 1.12rem; color: var(--fg); }
+  .postlist p { margin: 0; color: var(--muted); font-size: 0.92rem; }
+</style>
+<style>
+  .scroll { overflow-x: auto; }
+  .scroll table.data { min-width: 640px; }
+  code.hash { word-break: break-all; font-size: 0.82rem; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="topbar">
+    <a href="/"><img src="/qes_logo.png" alt="Quant Edge Syndicate"></a>
+    <nav>
+      <a href="/analysis/">Analysis</a>
+      <a href="/blog/">Blog</a>
+      <a href="/proof.html">Track record</a>
+    </nav>
+  </div>
+
+  <div class="crumb">
+    <a href="/">Home</a> <span>/</span> <a href="/analysis/">Analysis</a>
+    <span>/</span> <span>Finishing</span>
+  </div>
+
+  <div class="eyebrow">Analysis &middot; 22 September 2026</div>
+  <h1>How much of a striker's finishing is real</h1>
+
+  <article>
+    <p class="lead">About a quarter of it. We measured it in 14 leagues and
+    got the same answer in every one.</p>
+
+    <ul>
+      <li><strong>Roughly one part skill, three parts sample size.</strong>
+        Between 18% and 32% of the difference in finishing between strikers is
+        real, depending on the league. Never less than 18%, never more than a
+        third.</li>
+      <li><strong>So a hot season mostly does not travel.</strong> And the
+        noisier the league, the more one big season overstates the
+        player.</li>
+      <li><strong>Our ranges mean what they say.</strong> When we gave an 80%
+        range, the outcome landed inside it 81% of the time, across 275
+        seasons.</li>
+      <li><strong>61 calls on this season, frozen today.</strong>
+        All of them are below. They settle in May, including the ones that go
+        against us.</li>
+    </ul>
+
+    <p class="note">"Finishing" here means one number: league goals divided
+    by shots on target. Cups and internationals are excluded. "Striker" means
+    everyone the data feed labels an attacker or a forward, so centre-forwards
+    and wide forwards both.</p>
+
+    <h2>How you separate skill from luck</h2>
+
+    <p>Take every striker season with at least 15 shots on target. Their
+    conversion rates spread out. Most land somewhere between 20% and
+    50%.</p>
+
+    <p>Two things cause that spread. Strikers genuinely differ. And a season
+    is only a few dozen shots, so every rate carries noise.</p>
+
+    <p>The second part can be estimated directly from the number of shots.
+    Take it away, and what is left is the real difference between
+    players.</p>
+
+    <table class="data">
+      <thead><tr><th>League</th><th class="num">Real share</th></tr></thead>
+      <tbody>
+      <tr><td>Championship</td><td class="num">32%</td></tr>
+      <tr><td>Bundesliga</td><td class="num">31%</td></tr>
+      <tr><td>Belgian Pro League</td><td class="num">31%</td></tr>
+      <tr><td>Premier League</td><td class="num">30%</td></tr>
+      <tr><td>La Liga</td><td class="num">30%</td></tr>
+      <tr><td>Ligue 2</td><td class="num">30%</td></tr>
+      <tr><td>Serie A</td><td class="num">28%</td></tr>
+      <tr><td>Serie B</td><td class="num">27%</td></tr>
+      <tr><td>Primeira Liga</td><td class="num">26%</td></tr>
+      <tr><td>Ligue 1</td><td class="num">25%</td></tr>
+      <tr><td>2. Bundesliga</td><td class="num">24%</td></tr>
+      <tr><td>Scottish Premiership</td><td class="num">23%</td></tr>
+      <tr><td>Eredivisie</td><td class="num">19%</td></tr>
+      <tr><td>Segunda Divisi&oacute;n</td><td class="num">18%</td></tr>
+      </tbody>
+    </table>
+
+    <div class="callout">
+      <p><strong>Fourteen leagues, four seasons each, and the answer barely
+      moves. Most of the difference in finishing between two strikers in one
+      season is the size of the sample.</strong></p>
+    </div>
+
+    <p>This agrees with our <a href="/analysis/which-football-stats-persist/">
+    earlier persistence work</a>, which measured the same thing a different
+    way in the Premier League. Two separate methods, same conclusion.</p>
+
+    <p>We ran the same split on midfielders. It depends heavily on the league:
+    close to nothing in the Premier League and Serie A, over 40% in La Liga.
+    The data provider's position labels also vary between leagues. So we are
+    not making any general claim about midfielders.</p>
+
+    <h2>What that means when you buy one</h2>
+
+    <p>The obvious guess is that a striker repeats last season. We compared
+    that guess with ours on every season-to-season pair we hold.</p>
+
+    <ul>
+      <li><strong>In the Premier League, repeating last season is as good as
+        anything we do.</strong> A dead tie over 45 pairs.</li>
+      <li><strong>Across the other 13 leagues taken together we get
+        closer</strong>, and the gap grows with how much a league's numbers
+        bounce around from season to season. The correlation between the two is
+        0.77 across 14 leagues. Belgium, on 12 pairs, is a tie too.</li>
+      <li><strong>Serie B and the Scottish Premiership are where repeating last
+        season does worst</strong>, though on small samples (10 and 8
+        pairs).</li>
+    </ul>
+
+    <p>That is not us being clever. Pulling a noisy number back toward its
+    average is supposed to help most where the number is noisiest. The
+    practical point is where it bites: the big season in the noisy league is
+    the one most likely to be overpaid for.</p>
+
+    <h2>Our ranges mean what they say</h2>
+
+    <p>A range is only useful if it is honest. If we say 80%, it should happen
+    about 80% of the time. Too often and we are hedging. Too rarely and we are
+    overconfident.</p>
+
+    <table class="data">
+      <thead><tr><th></th><th class="num">Seasons</th>
+      <th class="num">Inside our 80% range</th></tr></thead>
+      <tbody>
+      <tr><td>Every striker and midfielder pair, 14 leagues</td><td class="num">275</td><td class="num">224 (81%)</td></tr>
+      <tr><td>Strikers whose finishing had just jumped 25%+ above their own norm</td><td class="num">58</td><td class="num">51 (88%)</td></tr>
+      </tbody>
+    </table>
+
+    <p>The second row is the hard one. It is the exact situation where a buyer
+    is most tempted to overpay, and the range still held.</p>
+
+    <p>The ranges are wide. One player's season is a few dozen shots and
+    nobody can be precise about that. Any single-player projection that looks
+    precise is hiding its interval.</p>
+
+    <h2>61 calls, written down now</h2>
+
+    <p>A test on past seasons always invites the objection that the cases were
+    picked after the fact. A call made before the result cannot be. So we ran
+    the same rule on last season and froze every player it returned.</p>
+
+    <p><strong>The rule, applied mechanically:</strong> every attacker
+    (strikers and wide forwards, under either of the data feed's two labels for
+    them) whose 2025/26
+    league conversion was at least 1.25 times his own established
+    rate, with 15 or more shots on target before it and in it. That gave
+    61 players across 13 leagues. None were added or removed
+    by hand.</p>
+
+    <p><strong>How they settle</strong>, fixed now rather than in May:</p>
+    <ol>
+      <li>The outcome is his league conversion over the whole of 2026/27, in
+        the same league as last season.</li>
+      <li>Fewer than 15 shots on target and the call counts neither way. It is
+        reported as insufficient evidence.</li>
+      <li>A player who changed league is reported separately and is not in the
+        main score. His rate is then being measured against different
+        defences. 10 of the 61 are now in a different league:
+        7 transferred, 3 went up or down with their club.</li>
+      <li>The score is how many outcomes land inside the range, and how close
+        we get compared with simply repeating last season.</li>
+      <li>Each call settles after the last round of its league's 2026/27
+        season. Every call is reported, including the ones that go against
+        us.</li>
+    </ol>
+
+    <p class="note"><strong>Timing, stated plainly.</strong> The register was
+    frozen on 22 September 2026, between four and eight rounds into the
+    season depending on the league. No 2026/27
+    figures were used in any call. The live season was read only to see which
+    club each player is at now.</p>
+
+    <p>The file is public and it will not change:
+    <a href="/analysis/preregistered-calls-2026-09-22.json">preregistered-calls-2026-09-22.json</a>. Its SHA-256
+    fingerprint is <code class="hash">de4967ca53e1797784ee3133fa6422dd860b7b9b2a7cf13b0582a167f90d389f</code>. If the file is ever
+    altered, that fingerprint changes.</p>
+
+    <div class="scroll">
+    <table class="data">
+      <thead><tr><th>Player</th><th>League 2025/26</th>
+      <th class="num">2025/26</th><th class="num">His norm</th>
+      <th class="num">Our call</th><th class="num">80% range</th>
+      <th></th></tr></thead>
+      <tbody>
+      <tr><td>A. Ezzalzouli</td><td>La Liga</td><td class="num">38%</td><td class="num">14%</td><td class="num"><strong>26%</strong></td><td class="num">13%&ndash;39%</td><td></td></tr>
+      <tr><td>C. Daferner</td><td>2. Bundesliga</td><td class="num">41%</td><td class="num">18%</td><td class="num"><strong>32%</strong></td><td class="num">18%&ndash;47%</td><td></td></tr>
+      <tr><td>A. Muja</td><td>Belgian Pro League</td><td class="num">38%</td><td class="num">17%</td><td class="num"><strong>29%</strong></td><td class="num">12%&ndash;47%</td><td></td></tr>
+      <tr><td>Y. Gboho</td><td>Ligue 1</td><td class="num">50%</td><td class="num">24%</td><td class="num"><strong>33%</strong></td><td class="num">18%&ndash;47%</td><td></td></tr>
+      <tr><td>Guilherme Schettine</td><td>Primeira Liga</td><td class="num">53%</td><td class="num">25%</td><td class="num"><strong>36%</strong></td><td class="num">22%&ndash;56%</td><td></td></tr>
+      <tr><td>D. Calvert-Lewin</td><td>Premier League</td><td class="num">41%</td><td class="num">20%</td><td class="num"><strong>28%</strong></td><td class="num">17%&ndash;42%</td><td></td></tr>
+      <tr><td>D. Durand</td><td>Ligue 2</td><td class="num">62%</td><td class="num">32%</td><td class="num"><strong>43%</strong></td><td class="num">27%&ndash;59%</td><td></td></tr>
+      <tr><td>Z. Vipotnik</td><td>Championship</td><td class="num">64%</td><td class="num">33%</td><td class="num"><strong>49%</strong></td><td class="num">36%&ndash;64%</td><td></td></tr>
+      <tr><td>A. Trezza</td><td>Primeira Liga</td><td class="num">47%</td><td class="num">25%</td><td class="num"><strong>35%</strong></td><td class="num">15%&ndash;54%</td><td></td></tr>
+      <tr><td>Dani Gómez</td><td>Segunda División</td><td class="num">47%</td><td class="num">25%</td><td class="num"><strong>33%</strong></td><td class="num">17%&ndash;50%</td><td></td></tr>
+      <tr><td>I. Prtajin</td><td>2. Bundesliga</td><td class="num">50%</td><td class="num">27%</td><td class="num"><strong>34%</strong></td><td class="num">22%&ndash;47%</td><td></td></tr>
+      <tr><td>F. Pittarello</td><td>Serie B</td><td class="num">38%</td><td class="num">22%</td><td class="num"><strong>30%</strong></td><td class="num">17%&ndash;43%</td><td></td></tr>
+      <tr><td>Beto</td><td>Premier League</td><td class="num">53%</td><td class="num">31%</td><td class="num"><strong>37%</strong></td><td class="num">22%&ndash;56%</td><td>now Fiorentina, Serie A</td></tr>
+      <tr><td>Gerard Moreno</td><td>La Liga</td><td class="num">62%</td><td class="num">36%</td><td class="num"><strong>41%</strong></td><td class="num">22%&ndash;56%</td><td></td></tr>
+      <tr><td>Z. Davitashvili</td><td>Ligue 2</td><td class="num">56%</td><td class="num">33%</td><td class="num"><strong>41%</strong></td><td class="num">24%&ndash;57%</td><td></td></tr>
+      <tr><td>Y. Sor</td><td>Belgian Pro League</td><td class="num">24%</td><td class="num">14%</td><td class="num"><strong>22%</strong></td><td class="num">7%&ndash;40%</td><td></td></tr>
+      <tr><td>L. Sinayoko</td><td>Ligue 1</td><td class="num">32%</td><td class="num">19%</td><td class="num"><strong>28%</strong></td><td class="num">13%&ndash;43%</td><td></td></tr>
+      <tr><td>L. Ramazani</td><td>La Liga</td><td class="num">32%</td><td class="num">19%</td><td class="num"><strong>27%</strong></td><td class="num">12%&ndash;41%</td><td>now Burnley, Championship</td></tr>
+      <tr><td>C. Ramírez</td><td>Primeira Liga</td><td class="num">40%</td><td class="num">25%</td><td class="num"><strong>35%</strong></td><td class="num">23%&ndash;50%</td><td></td></tr>
+      <tr><td>M. Whittaker</td><td>Championship</td><td class="num">42%</td><td class="num">27%</td><td class="num"><strong>32%</strong></td><td class="num">21%&ndash;42%</td><td></td></tr>
+      <tr><td>Raphinha</td><td>La Liga</td><td class="num">54%</td><td class="num">34%</td><td class="num"><strong>38%</strong></td><td class="num">25%&ndash;50%</td><td></td></tr>
+      <tr><td>I. Baldé</td><td>Ligue 2</td><td class="num">52%</td><td class="num">33%</td><td class="num"><strong>41%</strong></td><td class="num">25%&ndash;56%</td><td></td></tr>
+      <tr><td>J. Doku</td><td>Premier League</td><td class="num">33%</td><td class="num">21%</td><td class="num"><strong>28%</strong></td><td class="num">14%&ndash;43%</td><td></td></tr>
+      <tr><td>I. Sarr</td><td>Premier League</td><td class="num">43%</td><td class="num">28%</td><td class="num"><strong>34%</strong></td><td class="num">20%&ndash;48%</td><td></td></tr>
+      <tr><td>L. Schuler</td><td>2. Bundesliga</td><td class="num">50%</td><td class="num">32%</td><td class="num"><strong>38%</strong></td><td class="num">17%&ndash;58%</td><td></td></tr>
+      <tr><td>C. Morris</td><td>Championship</td><td class="num">60%</td><td class="num">39%</td><td class="num"><strong>43%</strong></td><td class="num">30%&ndash;57%</td><td></td></tr>
+      <tr><td>T. Lauritsen</td><td>Eredivisie</td><td class="num">44%</td><td class="num">29%</td><td class="num"><strong>32%</strong></td><td class="num">21%&ndash;42%</td><td>now Sampdoria, Serie B</td></tr>
+      <tr><td>M. Godts</td><td>Eredivisie</td><td class="num">40%</td><td class="num">27%</td><td class="num"><strong>37%</strong></td><td class="num">21%&ndash;50%</td><td>now Paris Saint-Germain, Ligue 1</td></tr>
+      <tr><td>O. Dembélé</td><td>Ligue 1</td><td class="num">56%</td><td class="num">37%</td><td class="num"><strong>40%</strong></td><td class="num">25%&ndash;54%</td><td></td></tr>
+      <tr><td>S. Mito</td><td>Eredivisie</td><td class="num">39%</td><td class="num">26%</td><td class="num"><strong>32%</strong></td><td class="num">13%&ndash;53%</td><td></td></tr>
+      <tr><td>R. Højlund</td><td>Serie A</td><td class="num">48%</td><td class="num">32%</td><td class="num"><strong>38%</strong></td><td class="num">23%&ndash;54%</td><td></td></tr>
+      <tr><td>André Luiz</td><td>Primeira Liga</td><td class="num">37%</td><td class="num">25%</td><td class="num"><strong>31%</strong></td><td class="num">14%&ndash;50%</td><td></td></tr>
+      <tr><td>R. Jiménez</td><td>Premier League</td><td class="num">47%</td><td class="num">32%</td><td class="num"><strong>36%</strong></td><td class="num">20%&ndash;50%</td><td>now Wolves, Championship</td></tr>
+      <tr><td>Toni Martínez</td><td>La Liga</td><td class="num">39%</td><td class="num">27%</td><td class="num"><strong>35%</strong></td><td class="num">23%&ndash;50%</td><td></td></tr>
+      <tr><td>L. Boyé</td><td>La Liga</td><td class="num">52%</td><td class="num">36%</td><td class="num"><strong>41%</strong></td><td class="num">26%&ndash;58%</td><td></td></tr>
+      <tr><td>A. Ueda</td><td>Eredivisie</td><td class="num">54%</td><td class="num">38%</td><td class="num"><strong>45%</strong></td><td class="num">31%&ndash;62%</td><td></td></tr>
+      <tr><td>A. Gouiri</td><td>Ligue 1</td><td class="num">47%</td><td class="num">33%</td><td class="num"><strong>36%</strong></td><td class="num">22%&ndash;52%</td><td></td></tr>
+      <tr><td>Gabriel Silva</td><td>Primeira Liga</td><td class="num">33%</td><td class="num">24%</td><td class="num"><strong>28%</strong></td><td class="num">14%&ndash;43%</td><td></td></tr>
+      <tr><td>D. Welbeck</td><td>Premier League</td><td class="num">46%</td><td class="num">33%</td><td class="num"><strong>37%</strong></td><td class="num">22%&ndash;52%</td><td></td></tr>
+      <tr><td>O. McBurnie</td><td>Championship</td><td class="num">44%</td><td class="num">32%</td><td class="num"><strong>37%</strong></td><td class="num">27%&ndash;49%</td><td>now Hull City, Premier League</td></tr>
+      <tr><td>G. Moncini</td><td>Serie B</td><td class="num">52%</td><td class="num">38%</td><td class="num"><strong>40%</strong></td><td class="num">27%&ndash;55%</td><td></td></tr>
+      <tr><td>F. Abiuso</td><td>Serie B</td><td class="num">44%</td><td class="num">32%</td><td class="num"><strong>38%</strong></td><td class="num">19%&ndash;56%</td><td></td></tr>
+      <tr><td>Richarlison</td><td>Premier League</td><td class="num">42%</td><td class="num">31%</td><td class="num"><strong>35%</strong></td><td class="num">23%&ndash;50%</td><td></td></tr>
+      <tr><td>A. Novaković</td><td>Serie B</td><td class="num">31%</td><td class="num">23%</td><td class="num"><strong>28%</strong></td><td class="num">14%&ndash;43%</td><td></td></tr>
+      <tr><td>Murilo</td><td>Primeira Liga</td><td class="num">34%</td><td class="num">26%</td><td class="num"><strong>30%</strong></td><td class="num">14%&ndash;43%</td><td></td></tr>
+      <tr><td>Jorge de Frutos</td><td>La Liga</td><td class="num">36%</td><td class="num">27%</td><td class="num"><strong>32%</strong></td><td class="num">16%&ndash;47%</td><td></td></tr>
+      <tr><td>E. Gliozzi</td><td>Serie B</td><td class="num">35%</td><td class="num">27%</td><td class="num"><strong>33%</strong></td><td class="num">13%&ndash;53%</td><td></td></tr>
+      <tr><td>B. Thomas-Asante</td><td>Championship</td><td class="num">50%</td><td class="num">38%</td><td class="num"><strong>41%</strong></td><td class="num">24%&ndash;57%</td><td>now Coventry, Premier League</td></tr>
+      <tr><td>N. Futkeu</td><td>2. Bundesliga</td><td class="num">69%</td><td class="num">52%</td><td class="num"><strong>56%</strong></td><td class="num">40%&ndash;72%</td><td>now SV Elversberg, Bundesliga</td></tr>
+      <tr><td>J. Pohjanpalo</td><td>Serie B</td><td class="num">68%</td><td class="num">52%</td><td class="num"><strong>54%</strong></td><td class="num">42%&ndash;68%</td><td></td></tr>
+      <tr><td>G. Hirst</td><td>Championship</td><td class="num">38%</td><td class="num">29%</td><td class="num"><strong>34%</strong></td><td class="num">19%&ndash;50%</td><td></td></tr>
+      <tr><td>Ronald</td><td>Championship</td><td class="num">25%</td><td class="num">19%</td><td class="num"><strong>25%</strong></td><td class="num">7%&ndash;43%</td><td></td></tr>
+      <tr><td>João Pedro</td><td>Premier League</td><td class="num">54%</td><td class="num">41%</td><td class="num"><strong>44%</strong></td><td class="num">28%&ndash;60%</td><td></td></tr>
+      <tr><td>E. Demirović</td><td>Bundesliga</td><td class="num">55%</td><td class="num">42%</td><td class="num"><strong>44%</strong></td><td class="num">32%&ndash;57%</td><td></td></tr>
+      <tr><td>Clayton</td><td>Primeira Liga</td><td class="num">43%</td><td class="num">34%</td><td class="num"><strong>36%</strong></td><td class="num">24%&ndash;48%</td><td></td></tr>
+      <tr><td>C. Tzolis</td><td>Belgian Pro League</td><td class="num">39%</td><td class="num">30%</td><td class="num"><strong>34%</strong></td><td class="num">23%&ndash;46%</td><td>now Arsenal, Premier League</td></tr>
+      <tr><td>G. Isaksen</td><td>Serie A</td><td class="num">26%</td><td class="num">21%</td><td class="num"><strong>25%</strong></td><td class="num">11%&ndash;39%</td><td></td></tr>
+      <tr><td>V. Vermeij</td><td>2. Bundesliga</td><td class="num">61%</td><td class="num">48%</td><td class="num"><strong>49%</strong></td><td class="num">32%&ndash;64%</td><td></td></tr>
+      <tr><td>F. Schleusener</td><td>2. Bundesliga</td><td class="num">46%</td><td class="num">37%</td><td class="num"><strong>39%</strong></td><td class="num">25%&ndash;54%</td><td></td></tr>
+      <tr><td>F. Diédhiou</td><td>Ligue 2</td><td class="num">50%</td><td class="num">40%</td><td class="num"><strong>42%</strong></td><td class="num">28%&ndash;61%</td><td></td></tr>
+      <tr><td>F. Bonazzoli</td><td>Serie A</td><td class="num">31%</td><td class="num">25%</td><td class="num"><strong>30%</strong></td><td class="num">12%&ndash;47%</td><td>now Cremonese, Serie B</td></tr>
+      </tbody>
+    </table>
+    </div>
+
+    <p>Christos Tzolis is on the list through the rule, separately from our
+    <a href="/analysis/what-23-assists-are-worth/">piece on his assists</a>. On his own
+    finishing we have him at 34%, with a range of
+    23% to 46%. He has since
+    moved to Arsenal, so under rule 3 he is reported separately.</p>
+
+    <h2>What we are not claiming</h2>
+
+    <ul>
+      <li>That we predict better than a club's own analysts. In the Premier
+        League we do not beat even the simplest guess.</li>
+      <li>A verdict on any transfer. Fee, fit, role and minutes all matter
+        more than this.</li>
+      <li>Anything beyond finishing. This is one number, measured
+        carefully.</li>
+    </ul>
+
+    <h2>Method</h2>
+
+    <p>League football only, 14 leagues, the four completed seasons from
+    2022/23 to 2025/26, players with 600 or more minutes. Player seasons come
+    from a public per-season data feed, with no event or tracking data.
+    Seasons are compared only within the same league.</p>
+
+    <p>Each estimate starts from the league's typical striker, fitted only on
+    seasons up to the decision point, and moves toward the player's own record
+    in proportion to how much of it there is. The 80% range allows for both how
+    little we know about the player and how few shots a season contains.</p>
+
+    <p>We publish the calls that go against us too. It is the only reason to
+    believe the ones that do not.</p>
+
+    <div class="callout">
+      <p><strong>Want this run on a player you are working on?</strong> We do
+      the first one free.
+      <a href="/metric-audit/">How it works &rarr;</a></p>
+    </div>
+
+  </article>
+
+  <footer>
+    <div>
+      <a href="/analysis/">Analysis</a>
+      <a href="/blog/">Blog</a>
+      <a href="/proof.html">Track record</a>
+      <a href="/legal.html">Legal</a>
+    </div>
+    <div class="foot-line">Quant Edge Syndicate &mdash; 2026</div>
+  </footer>
+
+</div>
+</body>
+</html>
