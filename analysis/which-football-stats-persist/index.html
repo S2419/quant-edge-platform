@@ -175,7 +175,12 @@
   tr.hi td { color: var(--accent); }
   tr.lo td { color: #ff6b6b; }
   .callout { border-left: 3px solid var(--accent); background: var(--bg2); padding: 14px 16px; margin: 24px 0; }
-  .callout p { margin: 0; }
+  .callout p { margin: 0 0 10px; }
+  .callout p:last-child { margin-bottom: 0; }
+  p.note { border-left: 2px solid var(--border-hi); padding: 2px 0 2px 14px; margin: 22px 0; color: var(--muted); font-size: 0.93rem; }
+  article ol, article ul { margin: 16px 0; padding-left: 22px; }
+  article ol li, article ul li { margin: 7px 0; padding-left: 4px; }
+  article ol li::marker { color: var(--accent); font-weight: 700; }
   .postlist a.post { display: block; border: 1px solid var(--border); border-radius: 6px; padding: 16px 18px; margin: 14px 0; text-decoration: none; }
   .postlist a.post:hover { border-color: var(--border-hi); text-decoration: none; }
   .postlist h2 { margin: 0 0 6px; font-size: 1.12rem; color: var(--fg); }
@@ -214,18 +219,42 @@
 
     <p>Some of them do. Most of them describe a season.</p>
 
-    <p>We tested which is which. Four completed Premier League seasons,
-    2022/23 to 2025/26, which gives three consecutive-season comparisons.
-    Every outfielder with 600 or more minutes in both halves of a comparison:
-    663 players, 652 season-pairs. For each metric we split the players at the
-    median and measured how much of the gap between the two halves was still
-    there a year later, on the same players.</p>
+    <p>So we tested them, one at a time. The method is simple enough to
+    describe in four steps.</p>
 
-    <p>Crucially, that comparison is made <strong>within position</strong>.
-    Pooled across everyone, a large part of the gap on something like shot
-    volume is simply forwards being forwards, and a centre-back is still a
-    centre-back next season. Measured pooled, shots per 90 looks 86% stable.
-    Measured properly, it is 63%.</p>
+    <ol>
+      <li>Rank every Premier League player on a stat. Passes per game, say.</li>
+      <li>Cut the list in half. Top half, bottom half.</li>
+      <li>Measure how far apart those two groups are.</li>
+      <li>Wait a year, find the same players, and measure the gap between the
+        same two groups again.</li>
+    </ol>
+
+    <p>If the gap is still there, the stat was telling you about the players.
+    If the gap has closed, it was telling you about the season they happened
+    to have.</p>
+
+    <p>We call what is left the <strong>retention</strong>. A stat that keeps
+    83% of its gap is describing something durable. One that keeps 11% has
+    watched its two groups collapse into each other.</p>
+
+    <h2>The one correction that changes everything</h2>
+
+    <p>Compare a striker with a centre-back and of course the striker takes
+    more shots. He will next year too. That is not a stat being reliable, it
+    is just a centre-back still being a centre-back.</p>
+
+    <p>So every comparison here happens <strong>inside a position group</strong>:
+    forwards against forwards, defenders against defenders. It matters more
+    than you would guess. Lumped together, shots per 90 looks 89% reliable.
+    Done properly, 64%. Most of the difference was positions, not
+    persistence.</p>
+
+    <p class="note"><strong>The specification.</strong> Four completed Premier
+    League seasons, 2022/23 to 2025/26, giving three consecutive-season
+    comparisons. Every outfielder with 600 or more minutes in both halves of a
+    comparison: 663 players, 652 season-pairs. Split at the median, measured
+    within position and weighted back together.</p>
 
     <div class="callout">
       <p><strong>What a player does persists. How well he does it barely
@@ -240,18 +269,18 @@
     </figure>
 
     <div class="callout">
-      <p><strong>What &ldquo;retained&rdquo; means, exactly.</strong> Sort the
-      players by a metric and cut at the median. Measure the distance between
-      the top half's average and the bottom half's average. Now follow the same
-      players into the next season and measure the distance between those same
-      two groups again. Retained is the second distance as a share of the
-      first. 83% means the two groups are still almost as far apart. 11% means
-      they have very nearly collapsed into each other.</p>
-      <p>It is <em>not</em> a correlation, and it is <em>not</em> the share of
-      variance explained, and it is <em>not</em> an estimate of how much of a
-      metric is skill. Correlation is a separate column, and on conversion the
-      two happen to sit close together &mdash; 11% retained against an r of
-      0.10 &mdash; which is coincidence, not confirmation.</p>
+      <p><strong>What these numbers are not.</strong> Retention is one
+      specific thing: the gap between two groups this year, divided by the gap
+      between the same two groups last year.</p>
+      <p>It is <em>not</em> a correlation. It is <em>not</em> the share of
+      variance explained. And it is <em>not</em> an estimate of how much of a
+      stat is skill &mdash; &ldquo;only 11% of finishing persists&rdquo; sounds
+      like a measurement of skill and is not one.</p>
+      <p>We report correlation separately, in its own column, because it
+      answers a different question: not &ldquo;is the gap still there&rdquo;
+      but &ldquo;are the same players still ahead&rdquo;. On conversion the two
+      land at 11% and 0.10, which is close enough to be confusing and is pure
+      coincidence.</p>
     </div>
 
     <h2>The table</h2>
@@ -279,31 +308,39 @@
       </tbody>
     </table>
 
-    <h2>Read the top</h2>
-    <p>Volume and behaviour hold up. A player who attempts a lot of dribbles
-    this season attempts a lot next season, at a correlation of 0.88, the
-    highest on the board. Passing volume, duels, key passes and tackles all
-    sit at 69% or better.</p>
+    <h2>The top of the table: what a player does</h2>
+    <p>Everything near the top is a count of how often something happens. A
+    player who tried a lot of dribbles this season tries a lot next season, at
+    a correlation of 0.90, the highest figure on the board. Passing volume,
+    duels, key passes and tackles all hold 70% of their gap or better.</p>
 
-    <p>These are traits. They describe how a player plays and what he is asked
-    to do, and that is stable.</p>
+    <p>These are habits. They describe how someone plays and what his manager
+    asks of him, and neither changes much in twelve months.</p>
 
-    <h2>Read the bottom</h2>
-    <p>Efficiency collapses. Shot accuracy retains 13%. Dribble success 32%.
-    Conversion, meaning goals per shot on target, retains 11% with a
+    <h2>The bottom of the table: how well he does it</h2>
+    <p>Everything near the bottom is a success rate, and success rates fall
+    apart. Shot accuracy keeps 13% of its gap. Dribble success keeps 31%.
+    Conversion &mdash; goals per shot on target &mdash; keeps 11%, with a
     year-on-year correlation of 0.10.</p>
 
-    <p>One caveat that matters. That 11% is measured across all outfielders,
-    including centre-backs for whom a finishing rate is close to meaningless.
-    Restricted to attackers alone it rises to 23%, on 130 season-pairs. Still
-    far below every volume metric, but the honest number for a question about
-    forwards is the higher one.</p>
+    <p>One caveat that matters, and it cuts against us. That 11% covers every
+    outfielder, centre-backs included, and a finishing rate means very little
+    for a centre-back. Among attackers alone it rises to 23%, on 130
+    season-pairs. Still far below every volume stat on the board. But if the
+    question is about forwards, 23% is the honest number to quote, not 11%.</p>
 
-    <h2>The clearest case</h2>
-    <p>The same test on Premier League attackers, split on conversion, 92
-    consecutive season-pairs. The good finishers fell from 0.466 to 0.371. The
-    poor finishers rose from 0.277 to 0.331. Both landed either side of the
-    league median of 0.350, within 0.04 of each other.</p>
+    <h2>What that looks like with real players</h2>
+    <p>Take Premier League attackers and split them on finishing alone: the
+    good half and the poor half, 92 consecutive season-pairs.</p>
+
+    <p>In year one the good half converted 46.6% of their shots on target. The
+    poor half converted 27.7%. A year later the good half had fallen to 37.1%
+    and the poor half had climbed to 33.1%. Both ended up either side of the
+    league median of 34.8%, four percentage points apart.</p>
+
+    <p>Nobody moved clubs to cause that. Nobody changed as a player. Both
+    groups simply drifted back towards the middle, which is what happens to
+    numbers that were partly luck the first time.</p>
 
     <figure>
       <img src="/analysis/finishing-regression.png"
@@ -312,22 +349,27 @@
       year-one difference held. The solid lines are where they went.</figcaption>
     </figure>
 
-    <p>A separation of 0.189 becomes 0.040, so roughly four fifths of it is
-    gone in a season. The 95% interval on that change is &minus;0.201 to
-    &minus;0.096, which does not come near zero.</p>
+    <p>A 19.0-point gap became a 4.0-point gap. Roughly four fifths of it was
+    gone inside a year. The 95% interval on that change runs from &minus;20.0
+    to &minus;9.8 points, which is nowhere near zero, so this is not something
+    we found by staring at noise.</p>
 
-    <h2>Haaland</h2>
-    <p>Erling Haaland is the clearest single illustration, because the two
-    halves of him behave completely differently.</p>
+    <h2>One player, both halves</h2>
+    <p>Erling Haaland shows the split better than any chart, because the two
+    halves of his game behave completely differently.</p>
 
-    <p>His shooting barely moves: 3.47, 3.45, 3.02 and 3.10 shots per 90 across
-    four seasons, roughly double the league median, and even his lowest year is
-    65% above average. His finishing swings by sixty per cent: 60%, then 46%,
-    then 37%, then 46% of shots on target converted.</p>
+    <p><strong>How often he shoots barely moves.</strong> Across four seasons:
+    3.47, 3.45, 3.02, 3.10 shots per 90. That is roughly double a typical
+    Premier League attacker, and even his quietest year sits more than 80%
+    above that benchmark.</p>
 
-    <p>His goal rate fell by a third between 2022/23 and 2024/25 while his shot
-    volume barely changed. Nothing about how he plays broke. The part that
-    moved was the part that was never stable to begin with.</p>
+    <p><strong>How often those shots go in swings wildly.</strong> 60%, then
+    46%, then 37%, then 46% of his shots on target converted.</p>
+
+    <p>His goal rate fell by nearly 40% between 2022/23 and 2024/25 &mdash;
+    1.17 per 90 down to 0.72 &mdash; while his shooting hardly changed.
+    Nothing about how he plays broke. The part that moved was the part that was
+    never steady in the first place.</p>
 
     <figure>
       <img src="/analysis/striker-shot-volume.png"
@@ -341,11 +383,17 @@
     players are plainly better at it. The claim is narrower: a single season of
     conversion rate carries very little information about the next one.</p>
 
-    <p>Part of the regression is also mechanical. Split any measure containing
-    error and the top half falls back, which is arithmetic rather than
-    football. That is precisely why the comparison between metrics carries the
-    meaning here. Every metric in the table is measured with error, and passing
-    volume retains 83% anyway while conversion retains 11%.</p>
+    <p>And some of this collapse is guaranteed by arithmetic, not by football.
+    Every measurement carries noise. Whenever you take the top half of a noisy
+    measurement, you have partly selected the players who got lucky &mdash; and
+    luck does not repeat. So the top half always falls back a bit, for every
+    stat, even a perfectly good one.</p>
+
+    <p>That is exactly why the <em>ranking</em> is what carries meaning here,
+    not the individual percentages. Every stat in the table faces the same
+    headwind. Passing volume keeps 83% of its gap anyway. Conversion keeps 11%.
+    The distance between those two is real, even if both numbers are flattered
+    by the same arithmetic.</p>
 
     <p>And this is one league, four seasons, public per-season aggregates. No
     event data, no tracking. A centre-back and a full-back are both filed as

@@ -175,7 +175,12 @@
   tr.hi td { color: var(--accent); }
   tr.lo td { color: #ff6b6b; }
   .callout { border-left: 3px solid var(--accent); background: var(--bg2); padding: 14px 16px; margin: 24px 0; }
-  .callout p { margin: 0; }
+  .callout p { margin: 0 0 10px; }
+  .callout p:last-child { margin-bottom: 0; }
+  p.note { border-left: 2px solid var(--border-hi); padding: 2px 0 2px 14px; margin: 22px 0; color: var(--muted); font-size: 0.93rem; }
+  article ol, article ul { margin: 16px 0; padding-left: 22px; }
+  article ol li, article ul li { margin: 7px 0; padding-left: 4px; }
+  article ol li::marker { color: var(--accent); font-weight: 700; }
   .postlist a.post { display: block; border: 1px solid var(--border); border-radius: 6px; padding: 16px 18px; margin: 14px 0; text-decoration: none; }
   .postlist a.post:hover { border-color: var(--border-hi); text-decoration: none; }
   .postlist h2 { margin: 0 0 6px; font-size: 1.12rem; color: var(--fg); }
@@ -201,6 +206,12 @@
   alongside the ones that did.</p>
 
   <div class="postlist">
+    <a class="post" href="/analysis/what-23-assists-are-worth/">
+      <h2>What a season of 23 assists is actually worth</h2>
+      <p>Splitting one player's season into the half that describes him and the
+      half that describes his teammates. A live call on Christos Tzolis, and a
+      closed case to check it against. 22 September 2026</p>
+    </a>
     <a class="post" href="/analysis/what-last-seasons-goals-tell-you/">
       <h2>The half of a striker's season worth paying for</h2>
       <p>Finishing barely persists, so the obvious move is to drop goals and

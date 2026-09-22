@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="alternate icon" href="/favicon.png">
+<title>What a season of 23 assists is actually worth | Quant Edge Syndicate</title>
+<meta name="description" content="Splitting one player's season into the half that describes him and the half that describes his teammates. Christos Tzolis, live, with a closed case to check the method against.">
+<link rel="canonical" href="https://quantedgesyndicate.com/analysis/what-23-assists-are-worth/">
+<meta name="robots" content="index,follow">
+<meta property="og:type" content="article">
+<meta property="og:title" content="What a season of 23 assists is actually worth">
+<meta property="og:description" content="Splitting one player's season into the half that describes him and the half that describes his teammates. Christos Tzolis, live, with a closed case to check the method against.">
+<meta property="og:url" content="https://quantedgesyndicate.com/analysis/what-23-assists-are-worth/">
+<meta property="og:image" content="https://quantedgesyndicate.com/analysis/metric-persistence.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="What a season of 23 assists is actually worth">
+<meta name="twitter:description" content="Splitting one player's season into the half that describes him and the half that describes his teammates. Christos Tzolis, live, with a closed case to check the method against.">
+<meta name="twitter:image" content="https://quantedgesyndicate.com/analysis/metric-persistence.png">
+<style>
+  :root {
+    --bg: #000000;
+    --bg2: #0c0c0c;
+    --bg3: #141414;
+    --fg: #ffffff;
+    --muted: #9a9a9a;
+    --dim: #6b6b6b;
+    --accent: #a6f000;
+    --accent-dim: #5a8400;
+    --border: #1f1f1f;
+    --border-hi: #2c2c2c;
+    --danger: #ff5252;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background: var(--bg);
+    color: var(--fg);
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  .wrap { max-width: 720px; margin: 0 auto; padding: 24px 20px 56px; }
+
+  .topbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 6px 0 22px;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 8px;
+  }
+  .topbar img { height: 30px; width: auto; display: block; }
+  .topbar nav a { color: var(--muted); font-size: 14px; margin-left: 18px; }
+  .topbar nav a:hover { color: var(--accent); text-decoration: none; }
+
+  .crumb { font-size: 12px; color: var(--dim); margin: 20px 0 10px; letter-spacing: 0.02em; }
+  .crumb a { color: var(--muted); }
+  .crumb span { color: var(--dim); }
+
+  .eyebrow {
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--accent);
+    font-weight: 600;
+    margin-bottom: 12px;
+  }
+  h1 {
+    font-size: 30px;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    margin: 0 0 16px;
+    font-weight: 800;
+  }
+  .byline {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px 14px;
+    align-items: center;
+    color: var(--muted);
+    font-size: 14px;
+    padding-bottom: 22px;
+    margin-bottom: 8px;
+    border-bottom: 1px solid var(--border);
+  }
+  .byline .author { color: var(--fg); font-weight: 600; }
+  .byline .dot { color: var(--dim); }
+
+  article p { font-size: 17px; color: #e9e9e9; margin: 0 0 20px; }
+  article h2 {
+    font-size: 21px;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    margin: 40px 0 16px;
+    padding-top: 8px;
+  }
+
+  .lineups { display: grid; grid-template-columns: 1fr; gap: 14px; margin: 8px 0 8px; }
+  .lineup {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 18px 18px;
+  }
+  .lineup .team { font-weight: 700; font-size: 16px; margin-bottom: 4px; }
+  .lineup .form { color: var(--accent); font-size: 13px; font-weight: 600; margin-bottom: 12px; letter-spacing: 0.04em; }
+  .lineup .players { font-size: 15px; color: #e9e9e9; line-height: 1.7; }
+
+  .pred {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--accent);
+    border-radius: 10px;
+    padding: 6px 20px 8px;
+    margin: 8px 0;
+  }
+  .pred p { font-size: 16px; }
+  .pred p:last-child { margin-bottom: 20px; }
+
+  .cta-card {
+    background: var(--bg2);
+    border: 1px solid var(--border-hi);
+    border-radius: 12px;
+    padding: 24px 22px;
+    margin: 44px 0 8px;
+    text-align: center;
+  }
+  .cta-card h3 { margin: 0 0 8px; font-size: 18px; }
+  .cta-card p { color: var(--muted); font-size: 15px; margin: 0 0 18px; }
+  .cta-btn {
+    display: inline-block;
+    padding: 12px 22px;
+    font-size: 15px;
+    font-weight: 600;
+    border-radius: 8px;
+    background: var(--accent);
+    color: #0a0a0a;
+    border: 1px solid var(--accent);
+  }
+  .cta-btn:hover { background: #b8ff1f; text-decoration: none; }
+  .cta-note { display: block; margin-top: 14px; font-size: 12px; color: var(--dim); }
+
+  footer {
+    border-top: 1px solid var(--border);
+    margin-top: 48px;
+    padding: 26px 0 12px;
+    text-align: center;
+    color: var(--dim);
+    font-size: 13px;
+  }
+  footer a { color: var(--muted); margin: 0 10px; }
+  footer a:hover { color: var(--accent); text-decoration: none; }
+  .foot-line { margin-top: 14px; }
+
+  @media (min-width: 720px) {
+    .wrap { padding: 32px 28px 72px; }
+    h1 { font-size: 38px; }
+    .lineups { grid-template-columns: 1fr 1fr; }
+  }
+</style>
+
+<style>
+  figure { margin: 28px 0; }
+  figure img { width: 100%; height: auto; border: 1px solid var(--border); border-radius: 6px; display: block; }
+  figcaption { color: var(--muted); font-size: 0.86rem; margin-top: 8px; }
+  table.data { width: 100%; border-collapse: collapse; margin: 22px 0; font-size: 0.92rem; }
+  table.data th { text-align: left; color: var(--muted); font-weight: 600; border-bottom: 1px solid var(--border-hi); padding: 6px 8px; }
+  table.data td { padding: 5px 8px; border-bottom: 1px solid var(--border); }
+  table.data td.num { text-align: right; font-variant-numeric: tabular-nums; }
+  tr.hi td { color: var(--accent); }
+  tr.lo td { color: #ff6b6b; }
+  .callout { border-left: 3px solid var(--accent); background: var(--bg2); padding: 14px 16px; margin: 24px 0; }
+  .callout p { margin: 0 0 10px; }
+  .callout p:last-child { margin-bottom: 0; }
+  p.note { border-left: 2px solid var(--border-hi); padding: 2px 0 2px 14px; margin: 22px 0; color: var(--muted); font-size: 0.93rem; }
+  article ol, article ul { margin: 16px 0; padding-left: 22px; }
+  article ol li, article ul li { margin: 7px 0; padding-left: 4px; }
+  article ol li::marker { color: var(--accent); font-weight: 700; }
+  .postlist a.post { display: block; border: 1px solid var(--border); border-radius: 6px; padding: 16px 18px; margin: 14px 0; text-decoration: none; }
+  .postlist a.post:hover { border-color: var(--border-hi); text-decoration: none; }
+  .postlist h2 { margin: 0 0 6px; font-size: 1.12rem; color: var(--fg); }
+  .postlist p { margin: 0; color: var(--muted); font-size: 0.92rem; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="topbar">
+    <a href="/"><img src="/qes_logo.png" alt="Quant Edge Syndicate"></a>
+    <nav>
+      <a href="/analysis/">Analysis</a>
+      <a href="/blog/">Blog</a>
+      <a href="/proof.html">Track record</a>
+    </nav>
+  </div>
+
+  <div class="crumb">
+    <a href="/">Home</a> <span>/</span> <a href="/analysis/">Analysis</a>
+    <span>/</span> <span>23 assists</span>
+  </div>
+
+  <div class="eyebrow">Analysis &middot; 22 September 2026</div>
+  <h1>What a season of 23 assists is actually worth</h1>
+
+  <article>
+    <p class="lead">Last season Christos Tzolis produced 23 league assists for
+    Club Brugge. He is now at Arsenal. How much of that number travels with
+    him?</p>
+
+    <p>This piece is the method from our earlier work pointed at one player,
+    in public, while the answer is still unknown. We would rather be checkable
+    than right.</p>
+
+    <h2>The split</h2>
+
+    <p>Our <a href="/analysis/which-football-stats-persist/">persistence
+    research</a> found a clean divide across 652 Premier League season-pairs.
+    Counts of how often a player does something hold 64&ndash;84% of their
+    year-one gap twelve months later. Success rates hold 11&ndash;31%.</p>
+
+    <p>Every attacking season splits along that line.</p>
+
+    <ol>
+      <li><strong>How many chances he created.</strong> That is a habit. It
+        describes his role and how he plays.</li>
+      <li><strong>How many of those chances got finished.</strong> That
+        depends on the player at the other end of the pass.</li>
+    </ol>
+
+    <p>An assist needs both. Which is why an assist total is a strange thing
+    to buy a player on: half of it is a report on his teammates.</p>
+
+    <h2>Tzolis, league football only</h2>
+
+    <p>Cups and international games are excluded throughout. Different
+    opposition, different role, different rate.</p>
+
+    <table class="data">
+      <thead><tr><th>Season</th><th>Club</th><th class="num">Mins</th>
+      <th class="num">Key passes /90</th><th class="num">Assists</th></tr></thead>
+      <tbody>
+      <tr><td>2023/24</td><td>Fortuna D&uuml;sseldorf</td><td class="num">2381</td><td class="num">1.74</td><td class="num">6</td></tr>
+      <tr><td>2024/25</td><td>Club Brugge</td><td class="num">2830</td><td class="num">2.45</td><td class="num">9</td></tr>
+      <tr class="hi"><td>2025/26</td><td>Club Brugge</td><td class="num">3079</td><td class="num">3.92</td><td class="num">23</td></tr>
+      </tbody>
+    </table>
+
+    <h2>The half that looks real</h2>
+
+    <p>His chance creation has risen every single season: 1.74, then 2.45,
+    then 3.92 key passes per 90. That is the most persistent kind of stat we
+    measured &mdash; key passes hold 78% of their gap year to year &mdash; and
+    it is still climbing.</p>
+
+    <p>Worth being careful here, in the opposite direction to the rest of this
+    piece. A rising line is <em>not</em> the same thing as a stable one. Our
+    retention figures describe players whose level holds steady, not players
+    still developing. For someone improving this fast, the average of his past
+    seasons understates him, and nobody knows yet where the line flattens
+    out.</p>
+
+    <h2>The half that leans on other people</h2>
+
+    <p>Now the success rate. Of the chances Tzolis created, what share became
+    goals?</p>
+
+    <table class="data">
+      <thead><tr><th></th><th class="num">Key passes</th>
+      <th class="num">Assists</th><th class="num">Converted</th></tr></thead>
+      <tbody>
+      <tr><td>2023/24 and 2024/25</td><td class="num">123</td><td class="num">15</td><td class="num">12.2%</td></tr>
+      <tr class="lo"><td>2025/26</td><td class="num">134</td><td class="num">23</td><td class="num">17.2%</td></tr>
+      </tbody>
+    </table>
+
+    <p>His teammates converted his chances at 1.41 times the rate they had
+    managed across his previous two seasons.</p>
+
+    <p>Run last season again at his own earlier rate and those 134 key passes
+    produce roughly 16 assists, not 23. On that arithmetic, about seven of his
+    assists came from the finishing at the other end rather than from him.</p>
+
+    <div class="callout">
+      <p><strong>The creation is his. A good part of the assist total belongs
+      to whoever was on the end of it.</strong></p>
+    </div>
+
+    <h2>Why we cannot prove this for him</h2>
+
+    <p>This is the honest limit, and it is a real one.</p>
+
+    <p>One player's season is around 130 chances. That is a small sample, and
+    small samples produce wide margins of error. We cannot show that Tzolis
+    individually was lucky, and anyone claiming otherwise from one season of
+    data is overreaching.</p>
+
+    <p>What we have is the population. Across 652 season-pairs, success rates
+    behave like this <em>as a rule</em>. So the claim is actuarial, not
+    predictive:</p>
+
+    <p class="note">Players whose success rate jumps this far above their own
+    established level usually give most of it back. By that standard, this much
+    of the 23 looks like the spike rather than the player. That is a statement
+    about the population, not a forecast for one man.</p>
+
+    <p>An insurer prices a house without predicting which one burns down. Same
+    logic, same limits.</p>
+
+    <h2>A closed case, to check the method</h2>
+
+    <p>Tzolis is unfinished. Here is one that is not.</p>
+
+    <p>In 2023/24 Dominic Solanke scored 19 Premier League goals for
+    Bournemouth. Tottenham paid a reported &pound;65m for him that August,
+    Bournemouth's record sale. Using only what was visible beforehand:</p>
+
+    <table class="data">
+      <thead><tr><th>Season</th><th>Club</th><th class="num">Shots on target /90</th>
+      <th class="num">Conversion</th><th class="num">Goals</th></tr></thead>
+      <tbody>
+      <tr><td>2022/23</td><td>Bournemouth</td><td class="num">0.91</td><td class="num">21%</td><td class="num">6</td></tr>
+      <tr class="hi"><td>2023/24</td><td>Bournemouth</td><td class="num">1.03</td><td class="num">50%</td><td class="num">19</td></tr>
+      <tr><td>2024/25</td><td>Tottenham</td><td class="num">1.06</td><td class="num">35%</td><td class="num">9</td></tr>
+      </tbody>
+    </table>
+
+    <p>The habit held almost exactly: 1.03 shots on target per 90 in the
+    season that sold him, 1.06 in his first season afterwards. He kept getting
+    into the same positions and getting the shot away just as often.</p>
+
+    <p>The success rate did not. 50% in the selling season, 35% after the
+    move, against the 21% he had shown the year before.</p>
+
+    <p><strong>And here is the part we will not skip.</strong> That 35% comes
+    off 26 shots on target, which carries a 95% interval from 19% to 54%. The
+    selling season's 50% sits inside that range. So even in a case that looks
+    this clean, the drop is not established for Solanke as an individual. It is
+    consistent with the population finding. It does not prove it on its
+    own.</p>
+
+    <p>His 2025/26 is excluded entirely: an ankle injury in pre-season, surgery,
+    fifteen appearances. Injury cuts the sample rather than the rate, and three
+    goals from eleven shots on target measures nothing at all.</p>
+
+    <p class="note"><strong>What this is not.</strong> Not a verdict on a
+    transfer. Fee, fit, role, minutes, injuries and the rest sit outside this
+    and all of them matter more than anything here. The only claim is that the
+    number the market reacted to was part habit and part spike, and that the
+    split was visible in advance.</p>
+
+    <h2>What we are betting on, in public</h2>
+
+    <p>Tzolis has played 211 Premier League minutes across three appearances.
+    He is creating 3.41 chances per 90, against 3.92 last season. His teammates
+    have converted 12.5% of them, against 17.2% last season and 12.2% before
+    that.</p>
+
+    <p>Three substitute appearances prove nothing whatsoever. But note the
+    difference from Solanke's excluded season: those minutes are small because
+    it is September, not because anyone is unavailable. This season
+    accumulates. By May it is a real test.</p>
+
+    <p>Our position, written down now rather than after the fact: the chance
+    creation should largely survive the step up, and the assist rate per chance
+    should settle closer to 12% than 17%. If both hold, the method worked on a
+    case we called in advance. If the creation collapses, we were wrong about
+    the more important half.</p>
+
+    <h2>Method</h2>
+
+    <p>League football only. Retention figures from 652 Premier League
+    season-pairs across 2022/23 to 2025/26, measured within position. Player
+    seasons from a public per-season API, no event or tracking data. Intervals
+    are Wilson intervals on the underlying counts.</p>
+
+    <p>We publish the cases that go against us too. It is the only reason to
+    believe the ones that do not.</p>
+
+    <div class="callout">
+      <p><strong>Want this run on a player you are working on?</strong> We do
+      the first one free.
+      <a href="/metric-audit/">How it works &rarr;</a></p>
+    </div>
+
+  </article>
+
+  <footer>
+    <div>
+      <a href="/analysis/">Analysis</a>
+      <a href="/blog/">Blog</a>
+      <a href="/proof.html">Track record</a>
+      <a href="/legal.html">Legal</a>
+    </div>
+    <div class="foot-line">Quant Edge Syndicate &mdash; 2026</div>
+  </footer>
+
+</div>
+</body>
+</html>

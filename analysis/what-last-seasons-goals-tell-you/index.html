@@ -175,7 +175,12 @@
   tr.hi td { color: var(--accent); }
   tr.lo td { color: #ff6b6b; }
   .callout { border-left: 3px solid var(--accent); background: var(--bg2); padding: 14px 16px; margin: 24px 0; }
-  .callout p { margin: 0; }
+  .callout p { margin: 0 0 10px; }
+  .callout p:last-child { margin-bottom: 0; }
+  p.note { border-left: 2px solid var(--border-hi); padding: 2px 0 2px 14px; margin: 22px 0; color: var(--muted); font-size: 0.93rem; }
+  article ol, article ul { margin: 16px 0; padding-left: 22px; }
+  article ol li, article ul li { margin: 7px 0; padding-left: 4px; }
+  article ol li::marker { color: var(--accent); font-weight: 700; }
   .postlist a.post { display: block; border: 1px solid var(--border); border-radius: 6px; padding: 16px 18px; margin: 14px 0; text-decoration: none; }
   .postlist a.post:hover { border-color: var(--border-hi); text-decoration: none; }
   .postlist h2 { margin: 0 0 6px; font-size: 1.12rem; color: var(--fg); }
@@ -206,21 +211,24 @@
     <p class="lead">A striker scored fifteen last season. How much should that
     change what you think of him?</p>
 
-    <p>More than we expected. We ran this test assuming our own earlier
-    research pointed the other way, and it did not.</p>
+    <p>We expected this piece to say &ldquo;less than you think&rdquo;. It
+    does not, and we were wrong in a way worth writing down.</p>
 
-    <h2>The obvious conclusion, and why it is wrong</h2>
+    <h2>The trap we walked into</h2>
 
-    <p>Our first piece found that finishing barely persists. Split players into
-    good and bad finishers, come back a year later, and almost all of the gap
-    between them has gone.</p>
+    <p><a href="/analysis/which-football-stats-persist/">Our first piece</a>
+    found that finishing barely lasts. Split players into good and poor
+    finishers, come back a year later, and almost all of the difference between
+    them has evaporated.</p>
 
-    <p>So the obvious move is to stop looking at goals and start looking at
-    shots. Goals are contaminated by finishing, finishing is mostly luck, and
-    shot volume is the clean trait underneath.</p>
+    <p>From which there is an obvious next step, and we took it. If goals are
+    part shooting and part finishing, and finishing is mostly luck, then stop
+    counting goals. Count shots instead. Shots are the clean signal
+    underneath.</p>
 
-    <p>We tested it. Among Premier League attackers, last season's goal rate
-    predicts next season's goal rate better than shot volume does.</p>
+    <p>It sounds right. We tested it anyway. Among Premier League attackers,
+    last season's goals predict next season's goals slightly <em>better</em>
+    than shot volume does.</p>
 
     <figure>
       <img src="/analysis/predicting-goals.png"
@@ -230,9 +238,10 @@
       rather than a ranking.</figcaption>
     </figure>
 
-    <p>Goals at 0.53, goals and assists at 0.49, shots at 0.47. Those three
-    intervals sit on top of each other, so the honest reading is that all three
-    tell you roughly the same thing. What they do not do is beat each other.</p>
+    <p>Goals score 0.53, goals and assists 0.49, shots 0.47. But look at the
+    whiskers: those three overlap almost completely. The honest reading is not
+    that goals win. It is that all three tell you about the same amount, and
+    none of them beats the others by enough to bother swapping.</p>
 
     <div class="callout">
       <p><strong>Swapping goals for shots does not buy you anything. The
@@ -240,77 +249,83 @@
       paying extra for the wrong half.</strong></p>
     </div>
 
-    <h2>Why persistence did not mean prediction</h2>
+    <h2>Two questions that sound like one</h2>
 
-    <p>This is the part that took us a while, so it is worth going slowly.</p>
+    <p>This is the bit that took us longest to see, so here it is slowly.</p>
 
-    <p>Imagine a class sits an exam. The top half average 80%, the bottom half
-    average 50%. A year later the same class sits a harder paper. Everyone's
-    marks fall. Now the top half average 60% and the bottom half still average
+    <p>A class sits an exam. The top half average 80%, the bottom half 50%. A
+    year later the same class sits a much harder paper and everyone's marks
+    fall. Now the top half average 60% and the bottom half still average
     50%.</p>
 
-    <p>The gap between the groups has collapsed from thirty points to ten. But
-    the same pupils are still the ones at the top.</p>
+    <p>The gap between the two groups has collapsed, from thirty points to ten.
+    And yet the same pupils are still the ones at the top.</p>
 
-    <p>Those are two different questions with two different answers. "Is the
-    gap still there?" is not the same question as "are the same people still
-    ahead?"</p>
+    <div class="callout">
+      <p><strong>&ldquo;Is the gap still there?&rdquo; and &ldquo;are the same
+      people still ahead?&rdquo; are different questions. A stat can fail the
+      first and pass the second.</strong></p>
+    </div>
 
-    <p>Our first piece measured the gap. This one measures the order. A
-    striker's goal rate falls back hard towards the pack, which is exactly what
-    the first chart shows, and he is still mostly in the same place in the
-    queue.</p>
+    <p>Our first piece measured the gap. This one measures the running order.
+    A striker's goal rate does fall back hard towards the pack &mdash; that is
+    the first piece, and it is true &mdash; and he is still roughly where he
+    was in the queue.</p>
 
     <h2>So what should you throw away?</h2>
 
-    <p>Not the goals. The efficiency inside them.</p>
+    <p>Not the goals. The success rates hiding inside them.</p>
 
-    <p>Conversion, meaning goals per shot on target, correlates 0.23 with next
-    season's goals. Shot accuracy correlates 0.08, and its interval crosses
-    zero, which means we cannot rule out that it tells you nothing at all.</p>
+    <p>Conversion &mdash; the share of his shots on target that went in &mdash;
+    scores 0.23 against next season's goals. Shot accuracy scores 0.08, and its
+    interval crosses zero, which is the statistical way of saying we cannot
+    rule out that it tells you nothing whatsoever.</p>
 
-    <p>Those are the two numbers a scouting report reaches for when it wants to
-    justify a signing the raw goal count does not support. He is a natural
-    finisher. His shot accuracy is elite. Neither survives contact with the
-    following season.</p>
+    <p>Those two are exactly what a scouting report reaches for when it wants
+    to justify a signing the plain goal count does not support. <em>He is a
+    natural finisher. His shot accuracy is elite.</em> Neither claim survives
+    the following season.</p>
 
     <h2>What it means for a shortlist</h2>
 
-    <p>Take a striker's season and break it in two.</p>
+    <p>Split a striker's season in two.</p>
 
-    <p><strong>How often he got a shot away</strong> is a trait. It describes
-    how he plays and what his team asks of him, and it turns up again next
+    <p><strong>How often he got a shot away</strong> is a habit. It describes
+    how he plays and what his team asks of him, and it shows up again next
     year.</p>
 
     <p><strong>How often those shots went in</strong> is mostly the season he
-    had.</p>
+    happened to have.</p>
 
-    <p>Keep the goal count. It quietly contains both halves and it does the job
-    as well as anything else we tested. What you should not do is take it
-    apart, find the finishing half, and pay a premium for that.</p>
+    <p>Here is the practical version. Keep the goal count. It quietly contains
+    both halves, and it does the job as well as anything else we tested. What
+    you should <em>not</em> do is prise it apart, find the finishing half, and
+    pay a premium for that specifically.</p>
 
     <h2>One thing we did not expect</h2>
 
-    <p>Among attackers, key passes per 90 correlates <strong>minus 0.15</strong>
-    with next season's goals. The players creating chances are not the players
-    finishing them.</p>
+    <p>Among attackers, key passes per 90 scores <strong>minus 0.15</strong>
+    against next season's goals. Slightly negative. The players creating the
+    chances are not the players finishing them.</p>
 
-    <p>The interval crosses zero so we are not claiming it as a finding. But it
-    does undercut any pitch that rolls a forward's whole game into one number,
-    because two of the components point in opposite directions.</p>
+    <p>The interval crosses zero, so we are not calling it a finding. But it
+    does undercut any product that rolls a forward's whole game into a single
+    rating, because at least two of the ingredients point in opposite
+    directions.</p>
 
     <h2>Limits</h2>
 
-    <p>130 attacker season-pairs is not many. The three leading metrics are
-    inside each other's intervals and we have said so rather than ranking them.</p>
+    <p>130 attacker season-pairs is not many. The three leading stats sit
+    inside each other's intervals, and we have said so rather than ranking
+    them as though the order meant something.</p>
 
-    <p>This is one league, four completed seasons, and public per-season
-    aggregates. No event data and no tracking. Correlation here is about who
-    ranks where, not about how many goals a given player will score.</p>
+    <p>This is one league, four completed seasons, and public season totals.
+    No event data, no tracking. And correlation here is about who ranks where,
+    not about how many goals any particular player will score.</p>
 
-    <p>And a correlation of 0.53 still leaves most of next season unexplained.
-    The claim is that goals are the best of a weak field, not that they are
-    good.</p>
+    <p>Most of all: 0.53 still leaves the large majority of next season
+    unexplained. The claim is that goals are the best of a weak field. Not
+    that they are good.</p>
 
     <h2>Reproduction</h2>
 
