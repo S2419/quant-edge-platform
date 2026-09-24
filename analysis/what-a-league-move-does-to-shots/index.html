@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google Analytics, only after consent: see /consent.js -->
+<script src="/consent.js" defer></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="alternate icon" href="/favicon.png">
+<title>What a league move does to a player's shots | Quant Edge Syndicate</title>
+<meta name="description" content="1,249 moves across 14 divisions. Stepping up costs shots, moving between top leagues makes no clear difference. And where our ranges failed the test, we say so.">
+<link rel="canonical" href="https://quantedgesyndicate.com/analysis/what-a-league-move-does-to-shots/">
+<meta name="robots" content="index,follow">
+<meta property="og:type" content="article">
+<meta property="og:title" content="What a league move does to a player's shots">
+<meta property="og:description" content="1,249 moves across 14 divisions. Stepping up costs shots, moving between top leagues makes no clear difference. And where our ranges failed the test, we say so.">
+<meta property="og:url" content="https://quantedgesyndicate.com/analysis/what-a-league-move-does-to-shots/">
+<meta property="og:image" content="https://quantedgesyndicate.com/analysis/league-moves-shift.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="What a league move does to a player's shots">
+<meta name="twitter:description" content="1,249 moves across 14 divisions. Stepping up costs shots, moving between top leagues makes no clear difference. And where our ranges failed the test, we say so.">
+<meta name="twitter:image" content="https://quantedgesyndicate.com/analysis/league-moves-shift.png">
+<style>
+  :root {
+    --bg: #000000;
+    --bg2: #0c0c0c;
+    --bg3: #141414;
+    --fg: #ffffff;
+    --muted: #9a9a9a;
+    --dim: #6b6b6b;
+    --accent: #a6f000;
+    --accent-dim: #5a8400;
+    --border: #1f1f1f;
+    --border-hi: #2c2c2c;
+    --danger: #ff5252;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background: var(--bg);
+    color: var(--fg);
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  .wrap { max-width: 720px; margin: 0 auto; padding: 24px 20px 56px; }
+
+  .topbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 6px 0 22px;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 8px;
+  }
+  .topbar img { height: 30px; width: auto; display: block; }
+  .topbar nav a { color: var(--muted); font-size: 14px; margin-left: 18px; }
+  .topbar nav a:hover { color: var(--accent); text-decoration: none; }
+
+  .crumb { font-size: 12px; color: var(--dim); margin: 20px 0 10px; letter-spacing: 0.02em; }
+  .crumb a { color: var(--muted); }
+  .crumb span { color: var(--dim); }
+
+  .eyebrow {
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--accent);
+    font-weight: 600;
+    margin-bottom: 12px;
+  }
+  h1 {
+    font-size: 30px;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    margin: 0 0 16px;
+    font-weight: 800;
+  }
+  .byline {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px 14px;
+    align-items: center;
+    color: var(--muted);
+    font-size: 14px;
+    padding-bottom: 22px;
+    margin-bottom: 8px;
+    border-bottom: 1px solid var(--border);
+  }
+  .byline .author { color: var(--fg); font-weight: 600; }
+  .byline .dot { color: var(--dim); }
+
+  article p { font-size: 17px; color: #e9e9e9; margin: 0 0 20px; }
+  article h2 {
+    font-size: 21px;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    margin: 40px 0 16px;
+    padding-top: 8px;
+  }
+
+  .lineups { display: grid; grid-template-columns: 1fr; gap: 14px; margin: 8px 0 8px; }
+  .lineup {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 18px 18px;
+  }
+  .lineup .team { font-weight: 700; font-size: 16px; margin-bottom: 4px; }
+  .lineup .form { color: var(--accent); font-size: 13px; font-weight: 600; margin-bottom: 12px; letter-spacing: 0.04em; }
+  .lineup .players { font-size: 15px; color: #e9e9e9; line-height: 1.7; }
+
+  .pred {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--accent);
+    border-radius: 10px;
+    padding: 6px 20px 8px;
+    margin: 8px 0;
+  }
+  .pred p { font-size: 16px; }
+  .pred p:last-child { margin-bottom: 20px; }
+
+  .cta-card {
+    background: var(--bg2);
+    border: 1px solid var(--border-hi);
+    border-radius: 12px;
+    padding: 24px 22px;
+    margin: 44px 0 8px;
+    text-align: center;
+  }
+  .cta-card h3 { margin: 0 0 8px; font-size: 18px; }
+  .cta-card p { color: var(--muted); font-size: 15px; margin: 0 0 18px; }
+  .cta-btn {
+    display: inline-block;
+    padding: 12px 22px;
+    font-size: 15px;
+    font-weight: 600;
+    border-radius: 8px;
+    background: var(--accent);
+    color: #0a0a0a;
+    border: 1px solid var(--accent);
+  }
+  .cta-btn:hover { background: #b8ff1f; text-decoration: none; }
+  .cta-note { display: block; margin-top: 14px; font-size: 12px; color: var(--dim); }
+
+  footer {
+    border-top: 1px solid var(--border);
+    margin-top: 48px;
+    padding: 26px 0 12px;
+    text-align: center;
+    color: var(--dim);
+    font-size: 13px;
+  }
+  footer a { color: var(--muted); margin: 0 10px; }
+  footer a:hover { color: var(--accent); text-decoration: none; }
+  .foot-line { margin-top: 14px; }
+
+  @media (min-width: 720px) {
+    .wrap { padding: 32px 28px 72px; }
+    h1 { font-size: 38px; }
+    .lineups { grid-template-columns: 1fr 1fr; }
+  }
+</style>
+
+<style>
+  figure { margin: 28px 0; }
+  figure img { width: 100%; height: auto; border: 1px solid var(--border); border-radius: 6px; display: block; }
+  figcaption { color: var(--muted); font-size: 0.86rem; margin-top: 8px; }
+  table.data { width: 100%; border-collapse: collapse; margin: 22px 0; font-size: 0.92rem; }
+  table.data th { text-align: left; color: var(--muted); font-weight: 600; border-bottom: 1px solid var(--border-hi); padding: 6px 8px; }
+  table.data td { padding: 5px 8px; border-bottom: 1px solid var(--border); }
+  table.data td.num { text-align: right; font-variant-numeric: tabular-nums; }
+  tr.hi td { color: var(--accent); }
+  tr.lo td { color: #ff6b6b; }
+  .callout { border-left: 3px solid var(--accent); background: var(--bg2); padding: 14px 16px; margin: 24px 0; }
+  .callout p { margin: 0 0 10px; }
+  .callout p:last-child { margin-bottom: 0; }
+  p.note { border-left: 2px solid var(--border-hi); padding: 2px 0 2px 14px; margin: 22px 0; color: var(--muted); font-size: 0.93rem; }
+  article ol, article ul { margin: 16px 0; padding-left: 22px; }
+  article ol li, article ul li { margin: 7px 0; padding-left: 4px; }
+  article ol li::marker { color: var(--accent); font-weight: 700; }
+  .postlist a.post { display: block; border: 1px solid var(--border); border-radius: 6px; padding: 16px 18px; margin: 14px 0; text-decoration: none; }
+  .postlist a.post:hover { border-color: var(--border-hi); text-decoration: none; }
+  .postlist h2 { margin: 0 0 6px; font-size: 1.12rem; color: var(--fg); }
+  .postlist p { margin: 0; color: var(--muted); font-size: 0.92rem; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="topbar">
+    <a href="/"><img src="/qes_logo.png" alt="Quant Edge Syndicate"></a>
+    <nav>
+      <a href="/analysis/">Analysis</a>
+      <a href="/blog/">Blog</a>
+      <a href="/proof.html">Track record</a>
+    </nav>
+  </div>
+
+  <div class="crumb">
+    <a href="/">Home</a> <span>/</span> <a href="/analysis/">Analysis</a>
+    <span>/</span> <span>League moves</span>
+  </div>
+
+  <div class="eyebrow">Analysis &middot; 24 September 2026</div>
+  <h1>What a league move does to a player's shots</h1>
+
+  <article>
+    <p class="lead">It depends which way he goes. Stepping up costs shots.
+    Moving across makes no clear difference.</p>
+
+    <ul>
+      <li><strong>Second division to a top league: about 10% fewer shots per
+      90.</strong> Somewhere between 6% and 14% fewer, on 264 moves.</li>
+      <li><strong>Smaller top league to the big five: about 19% fewer.</strong>
+      Between 10% and 27% fewer, on 61 moves. The Eredivisie, Portugal,
+      Belgium and Scotland into England, Spain, Italy, Germany or France.</li>
+      <li><strong>Between top leagues: no clear change.</strong> The average
+      is 2% fewer, and the range runs from 7% fewer to 4% more. This group also
+      includes moves from the big five down to a smaller top league.</li>
+      <li><strong>Down to a second division: probably a few more.</strong>
+      About 6% more, but it could be nothing.</li>
+      <li><strong>We checked it on 436 moves into 2025/26</strong> that the
+      fit never saw. It held for moves across and down. For stepping up, our
+      ranges were too narrow, so we don't give one.</li>
+    </ul>
+
+    <p class="note">Shots per 90 minutes in league football. A move is an
+    attacker or midfielder who played a season in one of our 14 divisions and
+    the next season in a different one, loans included. Only players who took
+    five or more shots after the move are in the averages, so this is about
+    players who got a game: 1,249 is every move we found, the averages use the
+    769 moves into 2023/24 and 2024/25 that clear that bar, and the test uses
+    all 436 moves into 2025/26.</p>
+
+    <h2>Compared with what?</h2>
+
+    <p>The obvious check is this season against last season. That mixes two
+    things up: the new league, and the fact that a player coming off a big
+    season usually drops back wherever he plays next.</p>
+
+    <p>So we compare each mover with what we'd have expected if he'd stayed
+    in his old league. Whatever gap is left is the move.</p>
+
+    <figure>
+      <img src="/analysis/league-moves-shift.png"
+           alt="Change in shots per 90 after a league move, by direction, with 95% intervals">
+      <figcaption>Green: the interval clears zero. Grey: it doesn't. Moves into
+      2023/24 and 2024/25, 14 divisions. 25 moves that fit none of the four
+      groups are left off.</figcaption>
+    </figure>
+
+    <table class="data">
+      <thead><tr><th>Move</th><th class="num">Moves</th>
+      <th class="num">Shots per 90</th><th class="num">95% interval</th></tr></thead>
+      <tbody>
+        <tr class="hi"><td>Second division to a top league</td><td class="num">264</td><td class="num">10% fewer</td><td class="num">6% to 14% fewer</td></tr>
+        <tr class="hi"><td>Smaller top league to the big five</td><td class="num">61</td><td class="num">19% fewer</td><td class="num">10% to 27% fewer</td></tr>
+        <tr><td>Between top leagues (incl. big five down to a smaller one)</td><td class="num">197</td><td class="num">2% fewer</td><td class="num">7% fewer to 4% more</td></tr>
+        <tr><td>Top league down to a second division</td><td class="num">222</td><td class="num">6% more</td><td class="num">no change to 12% more</td></tr>
+      </tbody>
+    </table>
+
+    <p>The step into the big five from a smaller league is the biggest effect
+    and the least certain one, because there were only 61 such moves in two
+    seasons. The step up from a second division is smaller but much firmer.</p>
+
+    <h2>Did the ranges hold up?</h2>
+
+    <p>For each player we also give an 80% range for his shots per 90 after
+    the move. Say 80% and it should happen about 80% of the time. We fitted
+    everything on moves into 2023/24 and 2024/25, then checked it against
+    436 moves into 2025/26.</p>
+
+    <table class="data">
+      <thead><tr><th>Move</th><th class="num">Moves tested</th>
+      <th class="num">Inside our 80% range</th><th>Verdict</th></tr></thead>
+      <tbody>
+        <tr><td>Between top leagues</td><td class="num">117</td><td class="num">96 (82%)</td><td>Holds</td></tr>
+        <tr><td>Down to a second division</td><td class="num">110</td><td class="num">93 (85%)</td><td>Holds</td></tr>
+        <tr><td>Smaller top league to the big five</td><td class="num">43</td><td class="num">35 (81%)</td><td>Too few to call</td></tr>
+        <tr class="lo"><td>Second division to a top league</td><td class="num">149</td><td class="num">107 (72%)</td><td>Fails</td></tr>
+        <tr><td>All moves</td><td class="num">436</td><td class="num">343 (79%)</td><td></td></tr>
+      </tbody>
+    </table>
+
+    <div class="callout">
+      <p><strong>The average for stepping up is solid. The spread around it
+      isn't.</strong> Some players step up and shoot more than ever, some
+      disappear, and our range doesn't stretch far enough to cover both. So
+      for that move we give the average and no range.</p>
+    </div>
+
+    <p>We need at least 100 tested moves before we call a range reliable, so
+    the step into the big five stays uncalled for now, even though 81%
+    landed inside it.</p>
+
+    <h2>What this doesn't cover</h2>
+
+    <ul>
+      <li><strong>Finishing.</strong> How a player's conversion changes after a
+      move hasn't been tested, so we don't translate it.</li>
+      <li><strong>Shot quality.</strong> This is shot volume only. We don't
+      have shot locations or xG for these leagues.</li>
+      <li><strong>Loans and permanent moves together.</strong> We now have
+      transfer records that can split them, but this study doesn't yet.</li>
+    </ul>
+
+    <p>You can see this applied to every Premier League attacker who has
+    since moved in the <a href="/analysis/player-explorer/">player explorer</a>.</p>
+
+    <div class="callout">
+      <p><strong>Want this run on a player you're working on?</strong> We'll
+      do the first one free.
+      <a href="/metric-audit/">How it works &rarr;</a></p>
+    </div>
+  </article>
+
+  <footer>
+    <div>
+      <a href="/analysis/">Analysis</a>
+      <a href="/blog/">Blog</a>
+      <a href="/proof.html">Track record</a>
+      <a href="/legal.html">Legal</a>
+    </div>
+    <div class="foot-line">&copy; 2026 Quant Edge Syndicate &middot; <a href="#" data-cookie-settings>Cookie settings</a></div>
+  </footer>
+
+</div>
+</body>
+</html>

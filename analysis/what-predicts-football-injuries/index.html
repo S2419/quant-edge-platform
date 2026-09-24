@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google Analytics, only after consent: see /consent.js -->
+<script src="/consent.js" defer></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="alternate icon" href="/favicon.png">
+<title>What actually predicts a footballer's injuries | Quant Edge Syndicate</title>
+<meta name="description" content="5,120 player-seasons in 7 leagues. Last season's injuries predict next season's. Age barely does, and neither does workload. Tested on a season the model never saw.">
+<link rel="canonical" href="https://quantedgesyndicate.com/analysis/what-predicts-football-injuries/">
+<meta name="robots" content="index,follow">
+<meta property="og:type" content="article">
+<meta property="og:title" content="What actually predicts a footballer's injuries">
+<meta property="og:description" content="5,120 player-seasons in 7 leagues. Last season's injuries predict next season's. Age barely does, and neither does workload. Tested on a season the model never saw.">
+<meta property="og:url" content="https://quantedgesyndicate.com/analysis/what-predicts-football-injuries/">
+<meta property="og:image" content="https://quantedgesyndicate.com/analysis/injury-history.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="What actually predicts a footballer's injuries">
+<meta name="twitter:description" content="5,120 player-seasons in 7 leagues. Last season's injuries predict next season's. Age barely does, and neither does workload. Tested on a season the model never saw.">
+<meta name="twitter:image" content="https://quantedgesyndicate.com/analysis/injury-history.png">
+<style>
+  :root {
+    --bg: #000000;
+    --bg2: #0c0c0c;
+    --bg3: #141414;
+    --fg: #ffffff;
+    --muted: #9a9a9a;
+    --dim: #6b6b6b;
+    --accent: #a6f000;
+    --accent-dim: #5a8400;
+    --border: #1f1f1f;
+    --border-hi: #2c2c2c;
+    --danger: #ff5252;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background: var(--bg);
+    color: var(--fg);
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  .wrap { max-width: 720px; margin: 0 auto; padding: 24px 20px 56px; }
+
+  .topbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 6px 0 22px;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 8px;
+  }
+  .topbar img { height: 30px; width: auto; display: block; }
+  .topbar nav a { color: var(--muted); font-size: 14px; margin-left: 18px; }
+  .topbar nav a:hover { color: var(--accent); text-decoration: none; }
+
+  .crumb { font-size: 12px; color: var(--dim); margin: 20px 0 10px; letter-spacing: 0.02em; }
+  .crumb a { color: var(--muted); }
+  .crumb span { color: var(--dim); }
+
+  .eyebrow {
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--accent);
+    font-weight: 600;
+    margin-bottom: 12px;
+  }
+  h1 {
+    font-size: 30px;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    margin: 0 0 16px;
+    font-weight: 800;
+  }
+  .byline {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px 14px;
+    align-items: center;
+    color: var(--muted);
+    font-size: 14px;
+    padding-bottom: 22px;
+    margin-bottom: 8px;
+    border-bottom: 1px solid var(--border);
+  }
+  .byline .author { color: var(--fg); font-weight: 600; }
+  .byline .dot { color: var(--dim); }
+
+  article p { font-size: 17px; color: #e9e9e9; margin: 0 0 20px; }
+  article h2 {
+    font-size: 21px;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    margin: 40px 0 16px;
+    padding-top: 8px;
+  }
+
+  .lineups { display: grid; grid-template-columns: 1fr; gap: 14px; margin: 8px 0 8px; }
+  .lineup {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 18px 18px;
+  }
+  .lineup .team { font-weight: 700; font-size: 16px; margin-bottom: 4px; }
+  .lineup .form { color: var(--accent); font-size: 13px; font-weight: 600; margin-bottom: 12px; letter-spacing: 0.04em; }
+  .lineup .players { font-size: 15px; color: #e9e9e9; line-height: 1.7; }
+
+  .pred {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--accent);
+    border-radius: 10px;
+    padding: 6px 20px 8px;
+    margin: 8px 0;
+  }
+  .pred p { font-size: 16px; }
+  .pred p:last-child { margin-bottom: 20px; }
+
+  .cta-card {
+    background: var(--bg2);
+    border: 1px solid var(--border-hi);
+    border-radius: 12px;
+    padding: 24px 22px;
+    margin: 44px 0 8px;
+    text-align: center;
+  }
+  .cta-card h3 { margin: 0 0 8px; font-size: 18px; }
+  .cta-card p { color: var(--muted); font-size: 15px; margin: 0 0 18px; }
+  .cta-btn {
+    display: inline-block;
+    padding: 12px 22px;
+    font-size: 15px;
+    font-weight: 600;
+    border-radius: 8px;
+    background: var(--accent);
+    color: #0a0a0a;
+    border: 1px solid var(--accent);
+  }
+  .cta-btn:hover { background: #b8ff1f; text-decoration: none; }
+  .cta-note { display: block; margin-top: 14px; font-size: 12px; color: var(--dim); }
+
+  footer {
+    border-top: 1px solid var(--border);
+    margin-top: 48px;
+    padding: 26px 0 12px;
+    text-align: center;
+    color: var(--dim);
+    font-size: 13px;
+  }
+  footer a { color: var(--muted); margin: 0 10px; }
+  footer a:hover { color: var(--accent); text-decoration: none; }
+  .foot-line { margin-top: 14px; }
+
+  @media (min-width: 720px) {
+    .wrap { padding: 32px 28px 72px; }
+    h1 { font-size: 38px; }
+    .lineups { grid-template-columns: 1fr 1fr; }
+  }
+</style>
+
+<style>
+  figure { margin: 28px 0; }
+  figure img { width: 100%; height: auto; border: 1px solid var(--border); border-radius: 6px; display: block; }
+  figcaption { color: var(--muted); font-size: 0.86rem; margin-top: 8px; }
+  table.data { width: 100%; border-collapse: collapse; margin: 22px 0; font-size: 0.92rem; }
+  table.data th { text-align: left; color: var(--muted); font-weight: 600; border-bottom: 1px solid var(--border-hi); padding: 6px 8px; }
+  table.data td { padding: 5px 8px; border-bottom: 1px solid var(--border); }
+  table.data td.num { text-align: right; font-variant-numeric: tabular-nums; }
+  tr.hi td { color: var(--accent); }
+  tr.lo td { color: #ff6b6b; }
+  .callout { border-left: 3px solid var(--accent); background: var(--bg2); padding: 14px 16px; margin: 24px 0; }
+  .callout p { margin: 0 0 10px; }
+  .callout p:last-child { margin-bottom: 0; }
+  p.note { border-left: 2px solid var(--border-hi); padding: 2px 0 2px 14px; margin: 22px 0; color: var(--muted); font-size: 0.93rem; }
+  article ol, article ul { margin: 16px 0; padding-left: 22px; }
+  article ol li, article ul li { margin: 7px 0; padding-left: 4px; }
+  article ol li::marker { color: var(--accent); font-weight: 700; }
+  .postlist a.post { display: block; border: 1px solid var(--border); border-radius: 6px; padding: 16px 18px; margin: 14px 0; text-decoration: none; }
+  .postlist a.post:hover { border-color: var(--border-hi); text-decoration: none; }
+  .postlist h2 { margin: 0 0 6px; font-size: 1.12rem; color: var(--fg); }
+  .postlist p { margin: 0; color: var(--muted); font-size: 0.92rem; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="topbar">
+    <a href="/"><img src="/qes_logo.png" alt="Quant Edge Syndicate"></a>
+    <nav>
+      <a href="/analysis/">Analysis</a>
+      <a href="/blog/">Blog</a>
+      <a href="/proof.html">Track record</a>
+    </nav>
+  </div>
+
+  <div class="crumb">
+    <a href="/">Home</a> <span>/</span> <a href="/analysis/">Analysis</a>
+    <span>/</span> <span>Injuries</span>
+  </div>
+
+  <div class="eyebrow">Analysis &middot; 24 September 2026</div>
+  <h1>What actually predicts a footballer's injuries</h1>
+
+  <article>
+    <p class="lead">His injury record. Not his age, and not how much he
+    played.</p>
+
+    <ul>
+      <li><strong>Last season's injuries are the signal.</strong> Players who
+      missed no league games through injury: 21% missed five or more the next
+      season. Players who missed ten or more: 50%.</li>
+      <li><strong>Age barely moves it.</strong> From 26% for under-23s to 31%
+      at 27 to 30.</li>
+      <li><strong>Heavy league minutes go the wrong way.</strong> The most-used
+      players were injured slightly less the next season (25%), probably
+      partly because fit players get picked. We haven't tested that.</li>
+      <li><strong>Total workload doesn't predict it either.</strong> Cups,
+      Europe and internationals included, on 1,747 player-seasons at clubs
+      playing in Europe.</li>
+      <li><strong>A model using all of it scores about 6% better than simply
+      using each league's average rate</strong>, on one season it never saw. It
+      did better in all seven leagues, though it ranks players worst in the
+      Eredivisie. Real, but modest.</li>
+    </ul>
+
+    <p class="note">An injury game is a league fixture a player missed for a
+    medical reason. Suspensions, illness, international duty and "doubtful"
+    are left out. The outcome is five or more league games missed through
+    injury the next season, in the same league. Seven leagues: Premier League,
+    Championship, La Liga, Serie A, Bundesliga, Ligue 1 and Eredivisie, the
+    ones with injury records back to 2022/23. Players with 600+ league
+    minutes.</p>
+
+    <h2>The pattern</h2>
+
+    <figure>
+      <img src="/analysis/injury-history.png"
+           alt="Share missing five or more league games injured next season, by injury games last season, age and league minutes">
+      <figcaption>5,120 player-seasons, 2022/23 to 2024/25, each followed into
+      the next season.</figcaption>
+    </figure>
+
+    <p>Last season's injury games relate to next season's in every one of the
+    seven leagues, and clearly in each. Age only shows up in the
+    Championship, and weakly there.</p>
+
+    <h2>What about workload?</h2>
+
+    <p>League minutes miss a lot of a top player's load. So for players at
+    clubs in Europe we added every minute they played: cups, European games
+    and internationals.</p>
+
+    <table class="data">
+      <thead><tr><th>Total minutes, all competitions</th><th class="num">Players</th>
+      <th class="num">Missed 5+ games injured next season</th></tr></thead>
+      <tbody>
+        <tr><td>Under 2,500</td><td class="num">192</td><td class="num">23%</td></tr>
+        <tr><td>2,500 to 3,500</td><td class="num">196</td><td class="num">23%</td></tr>
+        <tr><td>3,500 to 4,500</td><td class="num">167</td><td class="num">20%</td></tr>
+        <tr><td>4,500 or more</td><td class="num">110</td><td class="num">18%</td></tr>
+      </tbody>
+    </table>
+
+    <p>That's only players with no injury games the season before, so a bad
+    record can't hide in the numbers. More minutes, if anything, fewer
+    injuries. On these players, adding workload to the model moved it from
+    6.0% better than the league average to 6.8%, which is too small to tell
+    from luck.</p>
+
+    <div class="callout">
+      <p><strong>Bukayo Saka played 4,430, 4,421 and 4,425 minutes in three
+      straight seasons</strong>, counting every competition including
+      internationals. In our injury records he then missed 1, 12 and 5 league
+      games through injury. Same load, three different outcomes.</p>
+    </div>
+
+    <h2>How good is the prediction?</h2>
+
+    <p>We trained on 2022/23 and 2023/24 and tested on players from 2024/25,
+    followed into 2025/26. Scored on how close its probabilities came to
+    what happened, it was about 6% better than simply using each league's
+    average rate, and between 3.6% and 10.5% better league by league. It's
+    one test season, and at putting players in the right order it was
+    weakest in the Eredivisie.</p>
+
+    <table class="data">
+      <thead><tr><th>Players ranked by predicted risk</th><th class="num">We said</th>
+      <th class="num">Happened</th></tr></thead>
+      <tbody>
+        <tr><td>Lowest fifth</td><td class="num">19%</td><td class="num">19%</td></tr>
+        <tr><td>Second</td><td class="num">21%</td><td class="num">24%</td></tr>
+        <tr><td>Middle</td><td class="num">26%</td><td class="num">23%</td></tr>
+        <tr><td>Fourth</td><td class="num">33%</td><td class="num">36%</td></tr>
+        <tr class="lo"><td>Highest fifth</td><td class="num">43%</td><td class="num">50%</td></tr>
+      </tbody>
+    </table>
+
+    <p>It sorts players the right way round, but it underrates the most
+    injury-prone fifth. Half of them missed five or more games, and we said
+    43%.</p>
+
+    <h2>What it can't see</h2>
+
+    <ul>
+      <li><strong>Congestion.</strong> Three games in a week is a different
+      load from the same minutes spread out. That needs match-by-match
+      minutes, which we haven't tested yet.</li>
+      <li><strong>Coming back from an injury.</strong> Same reason.</li>
+      <li><strong>Other leagues.</strong> The injury records only go back far
+      enough in these seven.</li>
+      <li><strong>How leagues record injuries.</strong> The base rate runs from
+      38% in the Championship to 14% in the Eredivisie. Part of that is how
+      absences get logged, and part is season length: five games out of 46
+      in the Championship is a lower bar than five out of 34 in the
+      Eredivisie.</li>
+    </ul>
+
+    <div class="callout">
+      <p><strong>Want this run on a player you're working on?</strong> We'll
+      do the first one free.
+      <a href="/metric-audit/">How it works &rarr;</a></p>
+    </div>
+  </article>
+
+  <footer>
+    <div>
+      <a href="/analysis/">Analysis</a>
+      <a href="/blog/">Blog</a>
+      <a href="/proof.html">Track record</a>
+      <a href="/legal.html">Legal</a>
+    </div>
+    <div class="foot-line">&copy; 2026 Quant Edge Syndicate &middot; <a href="#" data-cookie-settings>Cookie settings</a></div>
+  </footer>
+
+</div>
+</body>
+</html>
