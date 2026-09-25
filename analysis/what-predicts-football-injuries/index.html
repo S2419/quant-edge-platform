@@ -8,17 +8,17 @@
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <link rel="alternate icon" href="/favicon.png">
 <title>What actually predicts a footballer's injuries | Quant Edge Syndicate</title>
-<meta name="description" content="5,120 player-seasons in 7 leagues. Last season's injuries predict next season's. Age barely does, and neither does workload. Tested on a season the model never saw.">
+<meta name="description" content="5,133 player-seasons in 7 leagues. Last season's injuries predict next season's. Age barely does, and neither does workload. Tested on a season the model never saw.">
 <link rel="canonical" href="https://quantedgesyndicate.com/analysis/what-predicts-football-injuries/">
 <meta name="robots" content="index,follow">
 <meta property="og:type" content="article">
 <meta property="og:title" content="What actually predicts a footballer's injuries">
-<meta property="og:description" content="5,120 player-seasons in 7 leagues. Last season's injuries predict next season's. Age barely does, and neither does workload. Tested on a season the model never saw.">
+<meta property="og:description" content="5,133 player-seasons in 7 leagues. Last season's injuries predict next season's. Age barely does, and neither does workload. Tested on a season the model never saw.">
 <meta property="og:url" content="https://quantedgesyndicate.com/analysis/what-predicts-football-injuries/">
 <meta property="og:image" content="https://quantedgesyndicate.com/analysis/injury-history.png">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="What actually predicts a footballer's injuries">
-<meta name="twitter:description" content="5,120 player-seasons in 7 leagues. Last season's injuries predict next season's. Age barely does, and neither does workload. Tested on a season the model never saw.">
+<meta name="twitter:description" content="5,133 player-seasons in 7 leagues. Last season's injuries predict next season's. Age barely does, and neither does workload. Tested on a season the model never saw.">
 <meta name="twitter:image" content="https://quantedgesyndicate.com/analysis/injury-history.png">
 <style>
   :root {
@@ -213,10 +213,14 @@
     <p class="lead">His injury record. Not his age, and not how much he
     played.</p>
 
+    <p class="note"><strong>Corrected on 25 September 2026.</strong> Figures
+    updated after a data fix; the conclusions are unchanged. Details at the
+    end.</p>
+
     <ul>
       <li><strong>Last season's injuries are the signal.</strong> Players who
       missed no league games through injury: 21% missed five or more the next
-      season. Players who missed ten or more: 50%.</li>
+      season. Players who missed ten or more: 51%.</li>
       <li><strong>Age barely moves it.</strong> From 26% for under-23s to 31%
       at 27 to 30.</li>
       <li><strong>Heavy league minutes go the wrong way.</strong> The most-used
@@ -244,7 +248,7 @@
     <figure>
       <img src="/analysis/injury-history.png"
            alt="Share missing five or more league games injured next season, by injury games last season, age and league minutes">
-      <figcaption>5,120 player-seasons, 2022/23 to 2024/25, each followed into
+      <figcaption>5,133 player-seasons, 2022/23 to 2024/25, each followed into
       the next season.</figcaption>
     </figure>
 
@@ -287,7 +291,7 @@
     <p>We trained on 2022/23 and 2023/24 and tested on players from 2024/25,
     followed into 2025/26. Scored on how close its probabilities came to
     what happened, it was about 6% better than simply using each league's
-    average rate, and between 3.6% and 10.5% better league by league. It's
+    average rate, and between 3.4% and 10.6% better league by league. It's
     one test season, and at putting players in the right order it was
     weakest in the Eredivisie.</p>
 
@@ -298,7 +302,7 @@
         <tr><td>Lowest fifth</td><td class="num">19%</td><td class="num">19%</td></tr>
         <tr><td>Second</td><td class="num">21%</td><td class="num">24%</td></tr>
         <tr><td>Middle</td><td class="num">26%</td><td class="num">23%</td></tr>
-        <tr><td>Fourth</td><td class="num">33%</td><td class="num">36%</td></tr>
+        <tr><td>Fourth</td><td class="num">33%</td><td class="num">37%</td></tr>
         <tr class="lo"><td>Highest fifth</td><td class="num">43%</td><td class="num">50%</td></tr>
       </tbody>
     </table>
@@ -322,6 +326,15 @@
       in the Championship is a lower bar than five out of 34 in the
       Eredivisie.</li>
     </ul>
+
+    <p class="note"><strong>Corrected on 25 September 2026.</strong> When a
+    player split a season between two clubs, we had dropped the shorter spell
+    if it was under 600 minutes. Counting the whole season gives 5,133
+    player-seasons rather than 5,120. The model is still about 6% better than
+    the league average (6.1%, was 6.2%), by 3.4% to 10.6% league by league;
+    players with ten or more injury games the season before now come out at
+    51% (was 50%). The workload figures did not change. The chart was
+    redrawn.</p>
 
     <div class="callout">
       <p><strong>Want this run on a player you're working on?</strong> We'll
