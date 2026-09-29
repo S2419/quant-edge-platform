@@ -309,14 +309,21 @@
     <ul>
       <li><strong>Finishing.</strong> How a player's conversion changes after a
       move hasn't been tested, so we don't translate it.</li>
-      <li><strong>Shot quality.</strong> This is shot volume only. We don't
-      have shot locations or xG for these leagues.</li>
+      <li><strong>Shot quality.</strong> This is shot volume only. We have
+      shot locations and xG for the big five but not the other nine
+      divisions, so quality stays out of the study.</li>
       <li><strong>Loans and permanent moves together.</strong> We now have
       transfer records that can split them, but this study doesn't yet.</li>
     </ul>
 
     <p>You can see this applied to every Premier League attacker who has
     since moved in the <a href="/analysis/player-explorer/">player explorer</a>.</p>
+
+    <h2>Data sources</h2>
+    <ul>
+      <li><a href="https://www.api-football.com/">API-Football</a>: per-season player statistics for league football (minutes, shots, shots on target, goals, assists, key passes, passes, dribbles, duels, tackles, fouls, blocks, interceptions, match rating) and the position label. 14 divisions, 2022/23 to 2025/26.</li>
+      <li><a href="https://www.api-football.com/">API-Football</a>: transfer records, to tell a move from a club going up or down.</li>
+    </ul>
 
     <p class="note"><strong>Corrected on 25 September 2026.</strong> When a
     player split a season between two clubs, we had dropped the shorter spell

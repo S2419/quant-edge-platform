@@ -275,7 +275,7 @@
     </figure>
 
     <div class="callout">
-      <p><strong>What these numbers aren't.</strong> Retention is one specific
+      <p><strong>Careful with the word.</strong> Retention is one specific
       thing: the gap between two groups this year, divided by the gap between
       the same two groups last year.</p>
       <p>It isn't a correlation, and it isn't the share of variance explained.
@@ -329,8 +329,8 @@
     Conversion (goals per shot on target) keeps 12%, with a year-on-year
     correlation of 0.10.</p>
 
-    <p>One caveat, and it cuts against us. That 12% covers every outfielder,
-    centre-backs included, and a finishing rate doesn't mean much for a
+    <p>That 12% helps our case more than it should. It covers every
+    outfielder, centre-backs included, and a finishing rate means little for a
     centre-back. Look at attackers only and it rises to 25%, on 159
     season-pairs. That's still well below every volume stat on the board, but
     if you're asking about forwards, 25% is the figure to use, not 12%.</p>
@@ -384,10 +384,10 @@
       Average swing from a player's own mean: 15% on shots, 29% on goals.</figcaption>
     </figure>
 
-    <h2>What we're not claiming</h2>
-    <p>We're not saying finishing is a myth. Over a whole career, some players
-    are clearly better at it than others. The claim is narrower: one season of
-    conversion rate tells you very little about the next.</p>
+    <h2>Finishing isn't a myth</h2>
+    <p>Over a whole career some players are clearly better finishers than
+    others. The claim is narrower: one season of conversion rate tells you very
+    little about the next.</p>
 
     <p>Some of this drop is baked in by arithmetic rather than football, too.
     Every measurement has noise in it. Take the top half of a noisy measure
@@ -418,20 +418,24 @@
     he scores, and how often he takes a man on rather than how often it comes
     off.</p>
 
-    <p>Whether that matters to you depends on how much weight those numbers
-    carry in your own process, and we can't see that from here. If you rank
+    <p>How much that matters depends on the weight those numbers carry in
+    your process. We can't see that from here. If you rank
     players for a living, we'd like to hear whether this is relevant to
     how you work, and whether the method holds up on better data than
     ours.</p>
 
     <h2>Reproduction</h2>
     <p>Every number here comes from our own code, run on a per-season player
-    panel collected from a public API. The method, filters and code are
-    available on request, including the parts that didn't work.</p>
+    panel (sources below). The method, filters and code are available on
+    request, including the parts that didn't work.</p>
 
-    <p>We publish the results that fall flat as well as the ones that land.
-    If we only showed you the good ones, you'd have no reason to believe
-    them.</p>
+    <p>We publish the flops too. Show only the wins and you'd have no reason
+    to believe any of it.</p>
+
+    <h2>Data sources</h2>
+    <ul>
+      <li><a href="https://www.api-football.com/">API-Football</a>: per-season player statistics for league football (minutes, shots, shots on target, goals, assists, key passes, passes, dribbles, duels, tackles, fouls, blocks, interceptions, match rating) and the position label. Premier League, 2022/23 to 2025/26.</li>
+    </ul>
 
     <p class="note"><strong>Corrected on 22 September 2026.</strong> Our data
     provider files strikers under two labels, "Attacker" and "Forward", and the
