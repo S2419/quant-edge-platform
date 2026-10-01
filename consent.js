@@ -114,3 +114,19 @@
     init();
   }
 })();
+
+/* Top bar on every page: our X account. Lives here because every page loads this file. */
+(function () {
+  function addBar() {
+    if (document.getElementById('qes-xbar')) return;
+    var bar = document.createElement('div');
+    bar.id = 'qes-xbar';
+    bar.style.cssText = 'background:#000;border-bottom:1px solid #262626;color:#9a9a9a;' +
+      'font:13px/1.4 system-ui,-apple-system,sans-serif;text-align:center;padding:7px 16px;';
+    bar.innerHTML = 'We’re on X: <a href="https://x.com/quantedgesynd" target="_blank" ' +
+      'rel="noopener" style="color:#a6f000;text-decoration:none;font-weight:600">@quantedgesynd</a>';
+    document.body.insertBefore(bar, document.body.firstChild);
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', addBar);
+  else addBar();
+})();
