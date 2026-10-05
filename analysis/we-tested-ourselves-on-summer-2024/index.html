@@ -8,17 +8,17 @@
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <link rel="alternate icon" href="/favicon.png">
 <title>We tested ourselves on summer 2024 | Quant Edge Syndicate</title>
-<meta name="description" content="We ran our signing model as if it were June 2024 and scored it on what happened. It sorts signings well. It got the big-money ones wrong, and we think we know why.">
+<meta name="description" content="We ran our signing model as if it were June 2024 and scored it on what happened. It sorts signings well. It got the big-money ones wrong, and we've found one reason why.">
 <link rel="canonical" href="https://quantedgesyndicate.com/analysis/we-tested-ourselves-on-summer-2024/">
 <meta name="robots" content="index,follow">
 <meta property="og:type" content="article">
 <meta property="og:title" content="We tested ourselves on summer 2024">
-<meta property="og:description" content="We ran our signing model as if it were June 2024 and scored it on what happened. It sorts signings well. It got the big-money ones wrong, and we think we know why.">
+<meta property="og:description" content="We ran our signing model as if it were June 2024 and scored it on what happened. It sorts signings well. It got the big-money ones wrong, and we've found one reason why.">
 <meta property="og:url" content="https://quantedgesyndicate.com/analysis/we-tested-ourselves-on-summer-2024/">
 <meta property="og:image" content="https://quantedgesyndicate.com/analysis/league-moves-shift.png">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="We tested ourselves on summer 2024">
-<meta name="twitter:description" content="We ran our signing model as if it were June 2024 and scored it on what happened. It sorts signings well. It got the big-money ones wrong, and we think we know why.">
+<meta name="twitter:description" content="We ran our signing model as if it were June 2024 and scored it on what happened. It sorts signings well. It got the big-money ones wrong, and we've found one reason why.">
 <meta name="twitter:image" content="https://quantedgesyndicate.com/analysis/league-moves-shift.png">
 <style>
   :root {
@@ -212,25 +212,25 @@
   <article>
 
     <p class="lede">It sorts signings well. It gets the expensive ones wrong,
-    and we think we know why.</p>
+    and we've found one reason why.</p>
 
     <ul>
-      <li><strong>1,553 summer-2024 signings</strong> in our 14 divisions. The
-        fifth we rated most likely to become regulars did it 48% of the time.
-        The fifth we rated least likely: 6%.</li>
+      <li><strong>1,496 summer-2024 signings</strong> in our 14 divisions. The
+        fifth we rated most likely to become regulars did it 49% of the time.
+        The fifth we rated least likely: 11%.</li>
       <li><strong>League moves:</strong> our shots range held for 311 of
         405 players who changed league (77%).
         It held for moves across and down. It failed again for players stepping up
         from a second division.</li>
-      <li><strong>The 20 biggest fees:</strong> 10 right. No better than a coin flip. 7 of the
-        10 misses went the same way: we said he wouldn't play, he did.</li>
+      <li><strong>The 20 biggest fees:</strong> 9 right. No better than a coin flip. 8 of the
+        11 misses went the same way: we said he wouldn't play, he did.</li>
     </ul>
 
     <h2>The rules</h2>
     <p>Only what was known on 1 June 2024. The signing model learned from the
     summer 2023 window alone. Club strength is our own rating, as it stood that
     day. Loans made permanent don't count as signings: the player was already
-    there.</p>
+    there. Neither do players who left again within 45 days.</p>
     <p>A <strong>regular</strong> means he played at least half of his new club's
     league minutes after he arrived. Loaned out again in January means he wasn't
     a regular.</p>
@@ -241,17 +241,17 @@
     <table class="data">
       <thead><tr><th>Our rating</th><th class="num">We said</th><th class="num">Became regulars</th></tr></thead>
       <tbody>
-      <tr><td>Least likely fifth</td><td class="num">12%</td><td class="num">6%</td></tr>
-      <tr><td>Second</td><td class="num">22%</td><td class="num">21%</td></tr>
-      <tr><td>Middle</td><td class="num">30%</td><td class="num">32%</td></tr>
-      <tr><td>Fourth</td><td class="num">39%</td><td class="num">40%</td></tr>
-      <tr><td>Most likely fifth</td><td class="num">54%</td><td class="num">48%</td></tr>
+      <tr><td>Least likely fifth</td><td class="num">16%</td><td class="num">11%</td></tr>
+      <tr><td>Second</td><td class="num">26%</td><td class="num">26%</td></tr>
+      <tr><td>Middle</td><td class="num">33%</td><td class="num">35%</td></tr>
+      <tr><td>Fourth</td><td class="num">42%</td><td class="num">43%</td></tr>
+      <tr><td>Most likely fifth</td><td class="num">56%</td><td class="num">49%</td></tr>
       </tbody>
     </table>
     <p>The middle of the table lands within a few points. The top fifth is too
-    confident: we said 54%, it was 48%. Across all 1,553
+    confident: we said 56%, it was 49%. Across all 1,496
     the ranking was right about 7 times in ten when you pair a regular
-    with a non-regular (AUC 0.71).</p>
+    with a non-regular (AUC 0.67).</p>
 
     <h2>League moves</h2>
     <p>For players who changed league we give a range for shots per 90 at the new
@@ -274,42 +274,52 @@
       <thead><tr><th>Player</th><th>Move</th><th class="num">Fee</th><th class="num">Chance he'd be a regular, we said</th>
       <th class="num">Share of minutes he played</th><th>Call</th></tr></thead>
       <tbody>
-      <tr><td>J. Álvarez</td><td>Manchester City to Atletico Madrid</td><td class="num">&euro;75m</td><td class="num">62%</td><td class="num">74%</td><td>Right</td></tr>
-      <tr class="lo"><td>D. Solanke</td><td>Bournemouth to Tottenham</td><td class="num">&euro;64.3m</td><td class="num">45%</td><td class="num">64%</td><td>Wrong</td></tr>
-      <tr class="lo"><td>L. Yoro</td><td>Lille to Manchester United</td><td class="num">&euro;62m</td><td class="num">56%</td><td class="num">34%</td><td>Wrong</td></tr>
-      <tr class="lo"><td>Pedro Neto</td><td>Wolves to Chelsea</td><td class="num">&euro;60m</td><td class="num">16%</td><td class="num">67%</td><td>Wrong</td></tr>
-      <tr class="lo"><td>João Neves</td><td>Benfica to Paris Saint-Germain</td><td class="num">&euro;60m</td><td class="num">38%</td><td class="num">61%</td><td>Wrong</td></tr>
-      <tr><td>A. Onana</td><td>Everton to Aston Villa</td><td class="num">&euro;59.4m</td><td class="num">32%</td><td class="num">48%</td><td>Right</td></tr>
-      <tr><td>Dani Olmo</td><td>RB Leipzig to Barcelona</td><td class="num">&euro;55m</td><td class="num">31%</td><td class="num">35%</td><td>Right</td></tr>
-      <tr class="lo"><td>M. Olise</td><td>Crystal Palace to Bayern München</td><td class="num">&euro;53m</td><td class="num">21%</td><td class="num">77%</td><td>Wrong</td></tr>
+      <tr><td>J. Álvarez</td><td>Manchester City to Atletico Madrid</td><td class="num">&euro;75m</td><td class="num">61%</td><td class="num">74%</td><td>Right</td></tr>
+      <tr class="lo"><td>D. Solanke</td><td>Bournemouth to Tottenham</td><td class="num">&euro;64.3m</td><td class="num">46%</td><td class="num">64%</td><td>Wrong</td></tr>
+      <tr class="lo"><td>L. Yoro</td><td>Lille to Manchester United</td><td class="num">&euro;62m</td><td class="num">58%</td><td class="num">34%</td><td>Wrong</td></tr>
+      <tr class="lo"><td>Pedro Neto</td><td>Wolves to Chelsea</td><td class="num">&euro;60m</td><td class="num">19%</td><td class="num">67%</td><td>Wrong</td></tr>
+      <tr class="lo"><td>João Neves</td><td>Benfica to Paris Saint-Germain</td><td class="num">&euro;60m</td><td class="num">42%</td><td class="num">61%</td><td>Wrong</td></tr>
+      <tr><td>A. Onana</td><td>Everton to Aston Villa</td><td class="num">&euro;59.4m</td><td class="num">36%</td><td class="num">48%</td><td>Right</td></tr>
+      <tr><td>Dani Olmo</td><td>RB Leipzig to Barcelona</td><td class="num">&euro;55m</td><td class="num">34%</td><td class="num">35%</td><td>Right</td></tr>
+      <tr class="lo"><td>M. Olise</td><td>Crystal Palace to Bayern München</td><td class="num">&euro;53m</td><td class="num">24%</td><td class="num">77%</td><td>Wrong</td></tr>
       <tr><td>T. Koopmeiners</td><td>Atalanta to Juventus</td><td class="num">&euro;52m</td><td class="num">61%</td><td class="num">62%</td><td>Right</td></tr>
-      <tr><td>Douglas Luiz</td><td>Aston Villa to Juventus</td><td class="num">&euro;51.5m</td><td class="num">48%</td><td class="num">15%</td><td>Right</td></tr>
-      <tr><td>João Palhinha</td><td>Fulham to Bayern München</td><td class="num">&euro;51m</td><td class="num">36%</td><td class="num">22%</td><td>Right</td></tr>
-      <tr><td>M. Ugarte</td><td>Paris Saint-Germain to Manchester United</td><td class="num">&euro;50m</td><td class="num">63%</td><td class="num">55%</td><td>Right</td></tr>
-      <tr class="lo"><td>D. Doué</td><td>Rennes to Paris Saint-Germain</td><td class="num">&euro;50m</td><td class="num">16%</td><td class="num">58%</td><td>Wrong</td></tr>
-      <tr><td>M. Kilman</td><td>Wolves to West Ham</td><td class="num">&euro;47.5m</td><td class="num">55%</td><td class="num">98%</td><td>Right</td></tr>
-      <tr class="lo"><td>A. Gray</td><td>Leeds to Tottenham</td><td class="num">&euro;47.2m</td><td class="num">34%</td><td class="num">51%</td><td>Wrong</td></tr>
-      <tr><td>G. Rutter</td><td>Leeds to Brighton</td><td class="num">&euro;46.7m</td><td class="num">51%</td><td class="num">50%</td><td>Right</td></tr>
-      <tr class="lo"><td>M. de Ligt</td><td>Bayern München to Manchester United</td><td class="num">&euro;45m</td><td class="num">41%</td><td class="num">62%</td><td>Wrong</td></tr>
-      <tr><td>R. Calafiori</td><td>Bologna to Arsenal</td><td class="num">&euro;45m</td><td class="num">38%</td><td class="num">29%</td><td>Right</td></tr>
+      <tr><td>Douglas Luiz</td><td>Aston Villa to Juventus</td><td class="num">&euro;51.5m</td><td class="num">50%</td><td class="num">15%</td><td>Right</td></tr>
+      <tr><td>João Palhinha</td><td>Fulham to Bayern München</td><td class="num">&euro;51m</td><td class="num">39%</td><td class="num">22%</td><td>Right</td></tr>
+      <tr><td>M. Ugarte</td><td>Paris Saint-Germain to Manchester United</td><td class="num">&euro;50m</td><td class="num">64%</td><td class="num">55%</td><td>Right</td></tr>
+      <tr class="lo"><td>D. Doué</td><td>Rennes to Paris Saint-Germain</td><td class="num">&euro;50m</td><td class="num">19%</td><td class="num">58%</td><td>Wrong</td></tr>
+      <tr><td>M. Kilman</td><td>Wolves to West Ham</td><td class="num">&euro;47.5m</td><td class="num">58%</td><td class="num">98%</td><td>Right</td></tr>
+      <tr class="lo"><td>A. Gray</td><td>Leeds to Tottenham</td><td class="num">&euro;47.2m</td><td class="num">39%</td><td class="num">51%</td><td>Wrong</td></tr>
+      <tr class="lo"><td>G. Rutter</td><td>Leeds to Brighton</td><td class="num">&euro;46.7m</td><td class="num">49%</td><td class="num">50%</td><td>Wrong</td></tr>
+      <tr class="lo"><td>M. de Ligt</td><td>Bayern München to Manchester United</td><td class="num">&euro;45m</td><td class="num">44%</td><td class="num">62%</td><td>Wrong</td></tr>
+      <tr><td>R. Calafiori</td><td>Bologna to Arsenal</td><td class="num">&euro;45m</td><td class="num">43%</td><td class="num">29%</td><td>Right</td></tr>
       <tr class="lo"><td>J. Zirkzee</td><td>Bologna to Manchester United</td><td class="num">&euro;42.5m</td><td class="num">53%</td><td class="num">41%</td><td>Wrong</td></tr>
-      <tr class="lo"><td>C. Gallagher</td><td>Chelsea to Atletico Madrid</td><td class="num">&euro;42m</td><td class="num">53%</td><td class="num">49%</td><td>Wrong</td></tr>
+      <tr class="lo"><td>C. Gallagher</td><td>Chelsea to Atletico Madrid</td><td class="num">&euro;42m</td><td class="num">55%</td><td class="num">49%</td><td>Wrong</td></tr>
       </tbody>
     </table>
     </div>
-    <p>Two calls sit right on the line: Rutter played 50% of Brighton's league
-    minutes, Gallagher 49% of Atletico's.</p>
+    <p>Results that sit right on the line: A. Gray (we said 39%, he played 51% of Tottenham's league minutes); G. Rutter (we said 49%, he played 50% of Brighton's league minutes); C. Gallagher (we said 55%, he played 49% of Atletico Madrid's league minutes).</p>
 
     <h2>Why we got the big ones wrong</h2>
-    <p>The model doesn't know a fee was paid. It learned from 1,541 signings in the
+    <p>Two reasons. One we have measured, one we think.</p>
+
+    <p><strong>A short last season.</strong> The model reads only the season just
+    gone. Olise played 1,277 league minutes for Palace in
+    2023/24, much of it lost to injury, after 2,757 the
+    season before. To the model that looked like a part-timer. Across all
+    211 signings whose last season was under 60% of the one before, we
+    said 30% would become regulars and 38% did.
+    For players with steady seasons we said 44%; it was
+    43%.</p>
+
+    <p><strong>No fee.</strong> The model doesn't know a fee was paid. It learned from 1,499 signings in the
     summer 2023 window, and only 71 of them cost &euro;20m or more. The rest were
     loans, free transfers and cheaper moves, where a step up to a bigger club
     usually means fewer minutes. Clubs that pay big fees usually mean to play the
     player: 12 of these 20 became regulars.</p>
     <ul>
-      <li>Olise to Bayern: we said 21%, he played 77%.</li>
-      <li>Pedro Neto to Chelsea: we said 16%, he played 67%.</li>
-      <li>Doué to PSG: we said 16%, he played 58%.</li>
+      <li>Olise to Bayern: we said 24%, he played 77%.</li>
+      <li>Pedro Neto to Chelsea: we said 19%, he played 67%.</li>
+      <li>Doué to PSG: we said 19%, he played 58%.</li>
     </ul>
     <p>The fix isn't simple. Our data feed stopped publishing fee amounts in the
     2025 window, so a fee can't go into the model. And on 2024, where we do have
@@ -317,13 +327,19 @@
     the player's form and the strength of the club he left. It didn't pass on a
     season the model hadn't seen, so it isn't in.</p>
     <p>Until something does, we say it out loud: for paid moves into the clubs at
-    the top of our ratings, our number runs low. By 4 points in 2024. By
-    14 in 2025.</p>
+    the top of our ratings, our number runs low. By 3 points in 2024. By
+    10 in 2025.</p>
 
-    <h2>What's next</h2>
-    <p>The next version adds competition for the shirt: had the club just lost a
-    starter in his position? Same rules as everything else here. Written down
-    before the test, scored on a season it hasn't seen, published either way.</p>
+    <h2>What we've done since</h2>
+    <p>We added competition for the shirt: how much of his position's minutes had
+    just left the club, and how many rivals it signed alongside him. Written down
+    before the test, scored on the 2025 window, which it hadn't seen. It made the
+    model better, so it's in. It did not close the gap on big-money moves, so the
+    warning stays.</p>
+    <p>Next, the model reads two seasons, not one, so an injury year doesn't make
+    a regular look like a squad player. We've written that test down now. It gets
+    scored on the summer 2026 window once the season ends, and published either
+    way.</p>
 
     <h2>Data sources</h2>
     <ul>
@@ -331,6 +347,16 @@
         reported fees, player season statistics, league fixtures and results.</li>
       <li>Club strength: our own rating, built from those results.</li>
     </ul>
+
+    <p class="note"><strong>Corrected on 5 October 2026.</strong> We first counted
+    some players as signings who only passed through a club: a loan ending at a
+    parent club days before a sale elsewhere. We now leave out anyone who left
+    his new club again within 45 days. That changed the figures: 1,496
+    signings (was 1,553); the most and least likely fifths became regulars
+    49% and 11% of the time (were 48% and 6%); AUC
+    0.67 (was 0.71); 9 of the 20 biggest fees right (was 10);
+    the big-club gap 3 and 10 points (was 4 and 14). The
+    league-move figures did not change.</p>
 
     <div class="callout">
       <p><strong>Want this run on a player you're working on?</strong> We'll
