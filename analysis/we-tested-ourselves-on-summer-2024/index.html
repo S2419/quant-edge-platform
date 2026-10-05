@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google Analytics, only after consent: see /consent.js -->
+<script src="/consent.js" defer></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="alternate icon" href="/favicon.png">
+<title>We tested ourselves on summer 2024 | Quant Edge Syndicate</title>
+<meta name="description" content="We ran our signing model as if it were June 2024 and scored it on what happened. It sorts signings well. It got the big-money ones wrong, and we think we know why.">
+<link rel="canonical" href="https://quantedgesyndicate.com/analysis/we-tested-ourselves-on-summer-2024/">
+<meta name="robots" content="index,follow">
+<meta property="og:type" content="article">
+<meta property="og:title" content="We tested ourselves on summer 2024">
+<meta property="og:description" content="We ran our signing model as if it were June 2024 and scored it on what happened. It sorts signings well. It got the big-money ones wrong, and we think we know why.">
+<meta property="og:url" content="https://quantedgesyndicate.com/analysis/we-tested-ourselves-on-summer-2024/">
+<meta property="og:image" content="https://quantedgesyndicate.com/analysis/league-moves-shift.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="We tested ourselves on summer 2024">
+<meta name="twitter:description" content="We ran our signing model as if it were June 2024 and scored it on what happened. It sorts signings well. It got the big-money ones wrong, and we think we know why.">
+<meta name="twitter:image" content="https://quantedgesyndicate.com/analysis/league-moves-shift.png">
+<style>
+  :root {
+    --bg: #000000;
+    --bg2: #0c0c0c;
+    --bg3: #141414;
+    --fg: #ffffff;
+    --muted: #9a9a9a;
+    --dim: #6b6b6b;
+    --accent: #a6f000;
+    --accent-dim: #5a8400;
+    --border: #1f1f1f;
+    --border-hi: #2c2c2c;
+    --danger: #ff5252;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background: var(--bg);
+    color: var(--fg);
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  .wrap { max-width: 720px; margin: 0 auto; padding: 24px 20px 56px; }
+
+  .topbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 6px 0 22px;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 8px;
+  }
+  .topbar img { height: 30px; width: auto; display: block; }
+  .topbar nav a { color: var(--muted); font-size: 14px; margin-left: 18px; }
+  .topbar nav a:hover { color: var(--accent); text-decoration: none; }
+
+  .crumb { font-size: 12px; color: var(--dim); margin: 20px 0 10px; letter-spacing: 0.02em; }
+  .crumb a { color: var(--muted); }
+  .crumb span { color: var(--dim); }
+
+  .eyebrow {
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--accent);
+    font-weight: 600;
+    margin-bottom: 12px;
+  }
+  h1 {
+    font-size: 30px;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    margin: 0 0 16px;
+    font-weight: 800;
+  }
+  .byline {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px 14px;
+    align-items: center;
+    color: var(--muted);
+    font-size: 14px;
+    padding-bottom: 22px;
+    margin-bottom: 8px;
+    border-bottom: 1px solid var(--border);
+  }
+  .byline .author { color: var(--fg); font-weight: 600; }
+  .byline .dot { color: var(--dim); }
+
+  article p { font-size: 17px; color: #e9e9e9; margin: 0 0 20px; }
+  article h2 {
+    font-size: 21px;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    margin: 40px 0 16px;
+    padding-top: 8px;
+  }
+
+  .lineups { display: grid; grid-template-columns: 1fr; gap: 14px; margin: 8px 0 8px; }
+  .lineup {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 18px 18px;
+  }
+  .lineup .team { font-weight: 700; font-size: 16px; margin-bottom: 4px; }
+  .lineup .form { color: var(--accent); font-size: 13px; font-weight: 600; margin-bottom: 12px; letter-spacing: 0.04em; }
+  .lineup .players { font-size: 15px; color: #e9e9e9; line-height: 1.7; }
+
+  .pred {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--accent);
+    border-radius: 10px;
+    padding: 6px 20px 8px;
+    margin: 8px 0;
+  }
+  .pred p { font-size: 16px; }
+  .pred p:last-child { margin-bottom: 20px; }
+
+  .cta-card {
+    background: var(--bg2);
+    border: 1px solid var(--border-hi);
+    border-radius: 12px;
+    padding: 24px 22px;
+    margin: 44px 0 8px;
+    text-align: center;
+  }
+  .cta-card h3 { margin: 0 0 8px; font-size: 18px; }
+  .cta-card p { color: var(--muted); font-size: 15px; margin: 0 0 18px; }
+  .cta-btn {
+    display: inline-block;
+    padding: 12px 22px;
+    font-size: 15px;
+    font-weight: 600;
+    border-radius: 8px;
+    background: var(--accent);
+    color: #0a0a0a;
+    border: 1px solid var(--accent);
+  }
+  .cta-btn:hover { background: #b8ff1f; text-decoration: none; }
+  .cta-note { display: block; margin-top: 14px; font-size: 12px; color: var(--dim); }
+
+  footer {
+    border-top: 1px solid var(--border);
+    margin-top: 48px;
+    padding: 26px 0 12px;
+    text-align: center;
+    color: var(--dim);
+    font-size: 13px;
+  }
+  footer a { color: var(--muted); margin: 0 10px; }
+  footer a:hover { color: var(--accent); text-decoration: none; }
+  .foot-line { margin-top: 14px; }
+
+  @media (min-width: 720px) {
+    .wrap { padding: 32px 28px 72px; }
+    h1 { font-size: 38px; }
+    .lineups { grid-template-columns: 1fr 1fr; }
+  }
+</style>
+
+<style>
+  figure { margin: 28px 0; }
+  figure img { width: 100%; height: auto; border: 1px solid var(--border); border-radius: 6px; display: block; }
+  figcaption { color: var(--muted); font-size: 0.86rem; margin-top: 8px; }
+  table.data { width: 100%; border-collapse: collapse; margin: 22px 0; font-size: 0.92rem; }
+  table.data th { text-align: left; color: var(--muted); font-weight: 600; border-bottom: 1px solid var(--border-hi); padding: 6px 8px; }
+  table.data td { padding: 5px 8px; border-bottom: 1px solid var(--border); }
+  table.data td.num { text-align: right; font-variant-numeric: tabular-nums; }
+  tr.hi td { color: var(--accent); }
+  tr.lo td { color: #ff6b6b; }
+  .callout { border-left: 3px solid var(--accent); background: var(--bg2); padding: 14px 16px; margin: 24px 0; }
+  .callout p { margin: 0 0 10px; }
+  .callout p:last-child { margin-bottom: 0; }
+  p.note { border-left: 2px solid var(--border-hi); padding: 2px 0 2px 14px; margin: 22px 0; color: var(--muted); font-size: 0.93rem; }
+  article ol, article ul { margin: 16px 0; padding-left: 22px; }
+  article ol li, article ul li { margin: 7px 0; padding-left: 4px; }
+  article ol li::marker { color: var(--accent); font-weight: 700; }
+  .postlist a.post { display: block; border: 1px solid var(--border); border-radius: 6px; padding: 16px 18px; margin: 14px 0; text-decoration: none; }
+  .postlist a.post:hover { border-color: var(--border-hi); text-decoration: none; }
+  .postlist h2 { margin: 0 0 6px; font-size: 1.12rem; color: var(--fg); }
+  .postlist p { margin: 0; color: var(--muted); font-size: 0.92rem; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="topbar">
+    <a href="/"><img src="/qes_logo.png" alt="Quant Edge Syndicate"></a>
+    <nav>
+      <a href="/analysis/">Quant Lab</a>
+      <a href="/blog/">Blog</a>
+      <a href="/proof.html">Track record</a>
+    </nav>
+  </div>
+
+  <div class="crumb">
+    <a href="/">Home</a> <span>/</span> <a href="/analysis/">Quant Lab</a>
+    <span>/</span> <span>Summer 2024 back-test</span>
+  </div>
+
+  <div class="eyebrow">Quant Lab &middot; 5 October 2026</div>
+  <h1>We tested ourselves on summer 2024</h1>
+
+  <article>
+
+    <p class="lede">It sorts signings well. It gets the expensive ones wrong,
+    and we think we know why.</p>
+
+    <ul>
+      <li><strong>1,553 summer-2024 signings</strong> in our 14 divisions. The
+        fifth we rated most likely to become regulars did it 48% of the time.
+        The fifth we rated least likely: 6%.</li>
+      <li><strong>League moves:</strong> our shots range held for 311 of
+        405 players who changed league (77%).
+        It held for moves across and down. It failed again for players stepping up
+        from a second division.</li>
+      <li><strong>The 20 biggest fees:</strong> 10 right. No better than a coin flip. 7 of the
+        10 misses went the same way: we said he wouldn't play, he did.</li>
+    </ul>
+
+    <h2>The rules</h2>
+    <p>Only what was known on 1 June 2024. The signing model learned from the
+    summer 2023 window alone. Club strength is our own rating, as it stood that
+    day. Loans made permanent don't count as signings: the player was already
+    there.</p>
+    <p>A <strong>regular</strong> means he played at least half of his new club's
+    league minutes after he arrived. Loaned out again in January means he wasn't
+    a regular.</p>
+    <p>The 20 cases are the 20 biggest reported fees among those signings. Chosen
+    by that rule, every one shown, misses included.</p>
+
+    <h2>Sorting signings</h2>
+    <table class="data">
+      <thead><tr><th>Our rating</th><th class="num">We said</th><th class="num">Became regulars</th></tr></thead>
+      <tbody>
+      <tr><td>Least likely fifth</td><td class="num">12%</td><td class="num">6%</td></tr>
+      <tr><td>Second</td><td class="num">22%</td><td class="num">21%</td></tr>
+      <tr><td>Middle</td><td class="num">30%</td><td class="num">32%</td></tr>
+      <tr><td>Fourth</td><td class="num">39%</td><td class="num">40%</td></tr>
+      <tr><td>Most likely fifth</td><td class="num">54%</td><td class="num">48%</td></tr>
+      </tbody>
+    </table>
+    <p>The middle of the table lands within a few points. The top fifth is too
+    confident: we said 54%, it was 48%. Across all 1,553
+    the ranking was right about 7 times in ten when you pair a regular
+    with a non-regular (AUC 0.71).</p>
+
+    <h2>League moves</h2>
+    <p>For players who changed league we give a range for shots per 90 at the new
+    club. Eight in ten should land inside it.</p>
+    <table class="data">
+      <thead><tr><th>Move</th><th class="num">Inside the range</th><th class="num">Rate</th><th>Verdict</th></tr></thead>
+      <tbody>
+      <tr><td>Between top leagues</td><td class="num">77 of 97</td><td class="num">79%</td><td>Holds</td></tr>
+      <tr><td>Down to a second division</td><td class="num">99 of 122</td><td class="num">81%</td><td>Holds</td></tr>
+      <tr><td>Smaller top league to the big five</td><td class="num">25 of 30</td><td class="num">83%</td><td>Holds</td></tr>
+      <tr><td>Second division to a top league</td><td class="num">110 of 156</td><td class="num">71%</td><td>Fails</td></tr>
+      </tbody>
+    </table>
+    <p>Stepping up from a second division is still the weak spot. The average
+    holds, the spread doesn't: some players shoot more than ever, some vanish.</p>
+
+    <h2>The 20 biggest fees</h2>
+    <div class="scroll">
+    <table class="data">
+      <thead><tr><th>Player</th><th>Move</th><th class="num">Fee</th><th class="num">Chance he'd be a regular, we said</th>
+      <th class="num">Share of minutes he played</th><th>Call</th></tr></thead>
+      <tbody>
+      <tr><td>J. Álvarez</td><td>Manchester City to Atletico Madrid</td><td class="num">&euro;75m</td><td class="num">62%</td><td class="num">74%</td><td>Right</td></tr>
+      <tr class="lo"><td>D. Solanke</td><td>Bournemouth to Tottenham</td><td class="num">&euro;64.3m</td><td class="num">45%</td><td class="num">64%</td><td>Wrong</td></tr>
+      <tr class="lo"><td>L. Yoro</td><td>Lille to Manchester United</td><td class="num">&euro;62m</td><td class="num">56%</td><td class="num">34%</td><td>Wrong</td></tr>
+      <tr class="lo"><td>Pedro Neto</td><td>Wolves to Chelsea</td><td class="num">&euro;60m</td><td class="num">16%</td><td class="num">67%</td><td>Wrong</td></tr>
+      <tr class="lo"><td>João Neves</td><td>Benfica to Paris Saint-Germain</td><td class="num">&euro;60m</td><td class="num">38%</td><td class="num">61%</td><td>Wrong</td></tr>
+      <tr><td>A. Onana</td><td>Everton to Aston Villa</td><td class="num">&euro;59.4m</td><td class="num">32%</td><td class="num">48%</td><td>Right</td></tr>
+      <tr><td>Dani Olmo</td><td>RB Leipzig to Barcelona</td><td class="num">&euro;55m</td><td class="num">31%</td><td class="num">35%</td><td>Right</td></tr>
+      <tr class="lo"><td>M. Olise</td><td>Crystal Palace to Bayern München</td><td class="num">&euro;53m</td><td class="num">21%</td><td class="num">77%</td><td>Wrong</td></tr>
+      <tr><td>T. Koopmeiners</td><td>Atalanta to Juventus</td><td class="num">&euro;52m</td><td class="num">61%</td><td class="num">62%</td><td>Right</td></tr>
+      <tr><td>Douglas Luiz</td><td>Aston Villa to Juventus</td><td class="num">&euro;51.5m</td><td class="num">48%</td><td class="num">15%</td><td>Right</td></tr>
+      <tr><td>João Palhinha</td><td>Fulham to Bayern München</td><td class="num">&euro;51m</td><td class="num">36%</td><td class="num">22%</td><td>Right</td></tr>
+      <tr><td>M. Ugarte</td><td>Paris Saint-Germain to Manchester United</td><td class="num">&euro;50m</td><td class="num">63%</td><td class="num">55%</td><td>Right</td></tr>
+      <tr class="lo"><td>D. Doué</td><td>Rennes to Paris Saint-Germain</td><td class="num">&euro;50m</td><td class="num">16%</td><td class="num">58%</td><td>Wrong</td></tr>
+      <tr><td>M. Kilman</td><td>Wolves to West Ham</td><td class="num">&euro;47.5m</td><td class="num">55%</td><td class="num">98%</td><td>Right</td></tr>
+      <tr class="lo"><td>A. Gray</td><td>Leeds to Tottenham</td><td class="num">&euro;47.2m</td><td class="num">34%</td><td class="num">51%</td><td>Wrong</td></tr>
+      <tr><td>G. Rutter</td><td>Leeds to Brighton</td><td class="num">&euro;46.7m</td><td class="num">51%</td><td class="num">50%</td><td>Right</td></tr>
+      <tr class="lo"><td>M. de Ligt</td><td>Bayern München to Manchester United</td><td class="num">&euro;45m</td><td class="num">41%</td><td class="num">62%</td><td>Wrong</td></tr>
+      <tr><td>R. Calafiori</td><td>Bologna to Arsenal</td><td class="num">&euro;45m</td><td class="num">38%</td><td class="num">29%</td><td>Right</td></tr>
+      <tr class="lo"><td>J. Zirkzee</td><td>Bologna to Manchester United</td><td class="num">&euro;42.5m</td><td class="num">53%</td><td class="num">41%</td><td>Wrong</td></tr>
+      <tr class="lo"><td>C. Gallagher</td><td>Chelsea to Atletico Madrid</td><td class="num">&euro;42m</td><td class="num">53%</td><td class="num">49%</td><td>Wrong</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p>Two calls sit right on the line: Rutter played 50% of Brighton's league
+    minutes, Gallagher 49% of Atletico's.</p>
+
+    <h2>Why we got the big ones wrong</h2>
+    <p>The model doesn't know a fee was paid. It learned from 1,541 signings in the
+    summer 2023 window, and only 71 of them cost &euro;20m or more. The rest were
+    loans, free transfers and cheaper moves, where a step up to a bigger club
+    usually means fewer minutes. Clubs that pay big fees usually mean to play the
+    player: 12 of these 20 became regulars.</p>
+    <ul>
+      <li>Olise to Bayern: we said 21%, he played 77%.</li>
+      <li>Pedro Neto to Chelsea: we said 16%, he played 67%.</li>
+      <li>Doué to PSG: we said 16%, he played 58%.</li>
+    </ul>
+    <p>The fix isn't simple. Our data feed stopped publishing fee amounts in the
+    2025 window, so a fee can't go into the model. And on 2024, where we do have
+    fees, adding one helped a little, but not by enough to be sure. We tried the next best thing,
+    the player's form and the strength of the club he left. It didn't pass on a
+    season the model hadn't seen, so it isn't in.</p>
+    <p>Until something does, we say it out loud: for paid moves into the clubs at
+    the top of our ratings, our number runs low. By 4 points in 2024. By
+    14 in 2025.</p>
+
+    <h2>What's next</h2>
+    <p>The next version adds competition for the shirt: had the club just lost a
+    starter in his position? Same rules as everything else here. Written down
+    before the test, scored on a season it hasn't seen, published either way.</p>
+
+    <h2>Data sources</h2>
+    <ul>
+      <li><a href="https://www.api-football.com/">API-Football</a>: transfers and
+        reported fees, player season statistics, league fixtures and results.</li>
+      <li>Club strength: our own rating, built from those results.</li>
+    </ul>
+
+    <div class="callout">
+      <p><strong>Want this run on a player you're working on?</strong> We'll
+      do the first one free.
+      <a href="/metric-audit/">How it works &rarr;</a></p>
+    </div>
+  </article>
+
+  <footer>
+    <div>
+      <a href="/analysis/">Quant Lab</a>
+      <a href="/blog/">Blog</a>
+      <a href="/proof.html">Track record</a>
+      <a href="/legal.html">Legal</a>
+    </div>
+    <div class="foot-line">&copy; 2026 Quant Edge Syndicate &middot; <a href="#" data-cookie-settings>Cookie settings</a></div>
+  </footer>
+
+</div>
+</body>
+</html>
