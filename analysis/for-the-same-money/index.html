@@ -8,17 +8,17 @@
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <link rel="alternate icon" href="/favicon.png">
 <title>For the same money, would we have bought better? | Quant Edge Syndicate</title>
-<meta name="description" content="We rebuilt 120 clubs&#39; summer 2024 windows with their own budgets. Our picks did better on paper, though the test let clubs share players, which flatters them. The clubs&#39; own signings were hard to tell apart from a random pick of players they could afford.">
+<meta name="description" content="We rebuilt 120 clubs&#39; summer 2024 windows with their own budgets. Our picks looked far better until each player could go to only one club. Then they weren&#39;t.">
 <link rel="canonical" href="https://quantedgesyndicate.com/analysis/for-the-same-money/">
 <meta name="robots" content="index,follow">
 <meta property="og:type" content="article">
 <meta property="og:title" content="For the same money, would we have bought better?">
-<meta property="og:description" content="We rebuilt 120 clubs&#39; summer 2024 windows with their own budgets. Our picks did better on paper, though the test let clubs share players, which flatters them. The clubs&#39; own signings were hard to tell apart from a random pick of players they could afford.">
+<meta property="og:description" content="We rebuilt 120 clubs&#39; summer 2024 windows with their own budgets. Our picks looked far better until each player could go to only one club. Then they weren&#39;t.">
 <meta property="og:url" content="https://quantedgesyndicate.com/analysis/for-the-same-money/">
 <meta property="og:image" content="https://quantedgesyndicate.com/og.png">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="For the same money, would we have bought better?">
-<meta name="twitter:description" content="We rebuilt 120 clubs&#39; summer 2024 windows with their own budgets. Our picks did better on paper, though the test let clubs share players, which flatters them. The clubs&#39; own signings were hard to tell apart from a random pick of players they could afford.">
+<meta name="twitter:description" content="We rebuilt 120 clubs&#39; summer 2024 windows with their own budgets. Our picks looked far better until each player could go to only one club. Then they weren&#39;t.">
 <meta name="twitter:image" content="https://quantedgesyndicate.com/og.png">
 <style>
   :root {
@@ -212,40 +212,46 @@
   <article>
 
     <p class="lede">We rebuilt 120 clubs' summer 2024 windows with their own
-    budgets. Our picks did better on paper, by less than first shown: see the
-    correction below. The clubs' own signings were hard to tell
-    apart from a random pick of players they could afford.</p>
+    budgets. At first our picks looked far better. When we re-ran it fairly,
+    with each player available to one club only, they weren't. The first
+    result came from many clubs sharing a few players.</p>
 
     <ul>
-      <li><strong>Our picks</strong> out-produced 75% of the players in their
-        position in their division, on average. The clubs' real signings: 60%.
-        A random pick of players they could afford: 57%.</li>
-      <li><strong>Cheaper too:</strong> about 60% of what the clubs spent on the
-        same slots, roughly &euro;2.0bn against &euro;3.3bn. Part of that is the same cheap players being
-        picked again and again (see the correction). Spending less wasn't a goal.
-        The rule only had to stay inside the budget.</li>
-      <li><strong>We expected a wash.</strong> We wrote that down before running
-        it. It wasn't one.</li>
+      <li><strong>The fair re-run:</strong> the clubs' real signings
+        out-produced 61% of the players in their position, on average. Our picks: 56%. A random pick of players they could afford: 57%.</li>
+      <li><strong>Formally, no verdict.</strong> Once players were taken, 49
+        of 127 clubs couldn't fill their squads. We had said in advance that
+        more than 30 would make the test inconclusive.</li>
+      <li><strong>Every other version agrees.</strong> Clubs picking in 200
+        random orders: clubs 61%, ours 59%, random 57%. Same division only:
+        clubs 61%, ours 58%, random 56%.</li>
+      <li><strong>The first run said 75% for us.</strong> That figure came from a rule that let many clubs sign the same player. The rest of this page is the original test, kept so you can
+        see how we got there.</li>
     </ul>
 
-    <p class="note"><strong>Correction, 13 October 2026.</strong> This test
+    <p class="note"><strong>Update, 13 October 2026: the re-run is in.</strong>
+    We wrote the new rule down and committed it to git before running
+    anything: clubs pick in order of budget, largest first, and a player one
+    club picks is gone for everyone after it. The random squads ran under the
+    same rule. Of the 78 clubs that could be filled, our picks came out 5
+    points behind the clubs' own signings (95% range 10 behind to 1 ahead)
+    and level with random (5 behind to 3 ahead). We expected the gap to
+    shrink. It went.</p>
+
+    <p class="note"><strong>Correction, 13 October 2026, written before the re-run.</strong> This test
     flatters our picks, and the first version of this page didn't say how.
     Nothing stopped two clubs signing the same player, and a few players
-    turn up again and again in our alternative squads. In our 13 October re-run
-    (the original run did not save who was picked),
+    turn up again and again in our alternative squads. In a 13 October repeat of the first run (the original run did
+    not save who was picked),
     120 clubs needed 267 signings and only 50 different players filled them.
     Six players filled 46% of the slots. One went to 31 clubs. A player joins
     one club. Count each player once and our picks average 70%, not 75%. Leave
-    out those six and the remaining picks also average 70%. The gap survives,
-    smaller. But the ranges below treat 120
+    out those six and the remaining picks also average 70%. (The re-run above shows the gap does not survive.) But the ranges below treat 120
     clubs as 120 separate choices, and they weren't, so they are too narrow.</p>
     <p class="note">Those players also earned their numbers in their own
     divisions, and a defender (the most-picked player is one) who out-produced most of
-    one league would not necessarily out-produce the buyer's. We are re-running
-    the test with each player available to one club only, with the rules
-    written down first as before. We'll publish the
-    result here whichever way it falls. Until then, read the gap below as the top of
-    the range, and the ranges as too tight.</p>
+    one league would not necessarily out-produce the buyer's. We said we would re-run it with each player available to one club only,
+    rules written down first. That re-run is at the top of this page.</p>
 
     <div class="scroll">
     <table class="data">
@@ -266,9 +272,11 @@
     five in the Bundesliga, and Coda for eight in the Championship and three in
     the Premier League. How they would have done there is exactly what this
     test can't say.
-    The full list of picks, club by club, comes with the re-run.</p>
+    The re-run registered a club-by-club list for the ten largest budgets. It
+    isn't on this page yet; we'll add it here.</p>
 
-    <h2>The question</h2>
+    <h2>The original test</h2>
+    <h3>The question</h3>
     <p>Every club makes the same bet each summer: with this money, for these
     positions, who do we sign? You can't rerun a transfer window. You can
     rebuild one on paper, using a model that learned from the previous summer
@@ -315,7 +323,8 @@
     every 100 in their position. On a list of 100, that is about 15 places
     higher, on average.</p>
 
-    <h2>The result</h2>
+    <h3>The result, first run</h3>
+    <p class="note">Replaced by the re-run at the top of this page.</p>
     <table class="data">
       <thead><tr><th>Squad</th><th class="num">Out-produced, on average</th></tr></thead>
       <tbody>
@@ -342,7 +351,8 @@
 
     <h2>What the clubs' number means, and what it doesn't</h2>
     <p>On this test, in this window, we can't tell the clubs' choices apart
-    from a random pick of players they could afford.</p>
+    from a random pick of players they could afford. The re-run says the same:
+    clubs 4 points ahead of random, range 1 behind to 9 ahead.</p>
     <p>That is not the same as saying recruitment is random. Clubs pay wages
     we can't see, sign for reasons a season total doesn't capture, and know
     who would actually come. One window is not much. We say "can't tell
@@ -352,14 +362,13 @@
     random. We decided before the test that this split would decide nothing,
     and it doesn't.</p>
 
-    <h2>Why a weak model wins this</h2>
+    <h2>Why we thought a weak model could win this</h2>
     <p>Our ratings aren't sharp. Across these signings, what we predicted and
-    what happened line up only loosely: a correlation of about 0.27.</p>
-    <p>That looks like enough, though the correction above shows part of it is
-    the same few players picked over and over. Pick the best one or two in each position
-    out of dozens on a rough guide and you still land well above the
-    average of the list. The gain comes from a big choice and a consistent
-    rule, not a brilliant forecast.</p>
+    what happened line up only loosely: a correlation of about 0.27. We argued
+    that picking the best one or two in each position out of dozens, even on
+    a rough guide, would land well above the average of the list.</p>
+    <p>The re-run says it didn't. Most of the gain was the same few players,
+    picked over and over.</p>
 
     <h2>The catch we looked for</h2>
     <p>We expected a wash, so we went looking for a flaw. The obvious one:
@@ -399,37 +408,36 @@
         summer 2024, so no later window can be tested with a budget.</li>
       <li><strong>Defending is counted, not judged.</strong> Tackles and
         interceptions reward ball-winners over positionally good defenders.</li>
-      <li><strong>The same player could go to many clubs.</strong> See the
-        correction at the top. This is the largest limit on this page.</li>
+      <li><strong>In the first run, the same player could go to many clubs.</strong>
+        The re-run fixed that, and the advantage went. The re-run has its own
+        limit: 49 clubs couldn't be filled, so it compares only the 78 that
+        could.</li>
       <li><strong>No goalkeepers.</strong> Our data has no saves or clean
         sheets.</li>
     </ul>
 
-    <h2>What it's for</h2>
-    <p>Not a shopping list. A club's own record. Run on one club's recent
-    windows, using that club's own fee data, the same test asks whether its recruitment added anything over
-    the players it could have afforded. With five to ten signings a window,
-    most clubs will land in "can't tell", and we'll say so. What it finds is
-    the clear outliers, either way.</p>
+    <h2>What this changes</h2>
+    <p>We had planned to run this test on single clubs' records. On this
+    evidence we won't: once each player can go to one club, we found no sign our ratings pick better than the
+    clubs, or than chance. Our model still sorts
+    signings by how likely they are to play
+    (<a href="/analysis/we-tested-ourselves-on-summer-2024/">see the summer 2024 back-test</a>).
+    It doesn't yet pick better squads.</p>
 
     <h2>Data sources</h2>
     <ul>
       <li><a href="https://www.api-football.com/">API-Football</a>: transfers and
         reported fees, player season statistics, league fixtures and results.</li>
       <li>Club strength: our own rating, built from those results.</li>
-      <li>The rules were committed to git on 6 October 2026, before any
-        result was seen.</li>
+      <li>The rules were committed to git before any result was seen: on 6
+        October 2026 for the first run, and on 13 October for the re-run.</li>
     </ul>
 
-    <p class="note"><strong>Re-run on 13 October 2026</strong> on current
-    data: our picks changed for 8 of the 120 clubs, and the gap over the clubs
-    came out at 15.1 points instead of 14.9. The figures above are from the
-    original, registered run.</p>
+    <p class="note"><strong>First run repeated on 13 October 2026</strong> on current data,
+    same rules as 6 October: our picks changed for 8 of the 120 clubs, and the
+    gap over the clubs came out at 15.1 points instead of 14.9. The first-run
+    figures above are from the original, registered run.</p>
 
-    <div class="callout">
-      <p><strong>Want to know how your club's last windows score?</strong>
-      <a href="/metric-audit/">Get in touch &rarr;</a></p>
-    </div>
   </article>
 
   <footer>
