@@ -254,6 +254,19 @@
   .card .st { display: flex; flex-wrap: wrap; align-items: center; gap: 2px; }
   .pc-key { display: flex; flex-wrap: wrap; gap: 10px 20px; margin: 16px 0 6px; color: var(--muted); font-size: 13px; align-items: center; }
   .pc-key span { display: inline-flex; align-items: center; gap: 6px; }
+  @media (max-width: 480px) {
+    .wrap { padding-left: 16px; padding-right: 16px; }
+    .card .attrs { grid-template-columns: 1fr; }
+    .card .attr:nth-child(4n+1), .card .attr:nth-child(4n+2) { background: none; }
+    .card .attr:nth-child(odd) { background: var(--bg3); }
+    .card .attr { padding: 8px 8px; }
+    .card .an { font-size: 15px; }
+    .card .nm { font-size: 26px; }
+    .card .tt { font-size: 14px; }
+    .pc-controls select { flex: 1 1 45%; }
+    .pc-controls input, .pc-controls select { font-size: 16px; }
+    .pc-results button { padding: 11px 12px; }
+  }
   @media (prefers-reduced-motion: reduce) { .card .tt { transition: none; } }
 </style>
 
@@ -413,7 +426,7 @@
         "<span class='av " + band(a[1]) + "'>" + a[1] + "</span>" +
         "<span class='tt' role='tooltip' id='" + tid + "'><span class='tt-h'>" + esc(name) + "</span>" +
         "<span>" + esc(MEANING[name](s)) + " in " + D.season + ".</span>" +
-        "<span>Ranks above " + a[2] + "% of " + esc(p.l) + " " + plural(p.p) + " with 900+ minutes (players level with him count as half).</span>" +
+        "<span>Ranks above " + a[2] + "% of " + esc(p.l) + " players our data lists as " + plural(p.p) + ", 900+ minutes (players level with him count as half).</span>" +
         "<span class='tt-s'>" + h[1] + ": " + h[2] + "</span></span></li>";
     });
     var c = p.c, now = c ?
@@ -468,8 +481,10 @@
     }
     if (k >= 0) hits.sort(function (a, b) { return b[1][2] - a[1][2] || P[a[0]].n.localeCompare(P[b[0]].n); });
     else hits.sort(function (a, b) { return P[a[0]].n.localeCompare(P[b[0]].n); });
-    cnt.textContent = hits.length.toLocaleString("en-GB") + " players" + (hits.length > 60 ? ", showing the first 60" : "");
-    res.innerHTML = hits.slice(0, 60).map(function (h) {
+    var cap = (t || L || X || k >= 0) ? 30 : 6;
+    cnt.textContent = hits.length.toLocaleString("en-GB") + " players" +
+      (hits.length > cap ? ", showing the first " + cap + (cap === 6 ? ". Search or filter to find anyone." : "") : "");
+    res.innerHTML = hits.slice(0, cap).map(function (h) {
       var p = P[h[0]];
       return "<li><button type='button' data-i='" + h[0] + "'><span class='rn'>" + esc(p.n) + "</span>" +
         (h[1] ? "<span class='rv " + band(h[1][1]) + "'>" + h[1][1] + "</span>" : "<span></span>") +

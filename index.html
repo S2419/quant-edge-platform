@@ -341,6 +341,21 @@
     .hero { animation: none; }
     .cta { transition: none; }
   }
+
+  /* PLAYER CARDS TEASER */
+  .pc-home-sub { color: var(--muted); font-size: 16px; line-height: 1.55; margin: 0 0 18px; max-width: 620px; }
+  .pc-home-card { display: block; max-width: 420px; background: var(--bg2); border: 1px solid var(--border);
+    border-radius: 8px; color: var(--fg); margin: 0 0 16px; }
+  .pc-home-card:hover { text-decoration: none; border-color: var(--accent); }
+  .pc-home-head { padding: 14px 16px 12px; border-bottom: 2px solid var(--accent); }
+  .pc-home-name { font-size: 24px; font-weight: 800; line-height: 1.1; }
+  .pc-home-meta { color: var(--muted); font-size: 13px; margin-top: 4px; }
+  .pc-home-attrs { list-style: none; margin: 0; padding: 8px 10px 10px; display: grid; grid-template-columns: 1fr 1fr; gap: 2px 12px; }
+  .pc-home-attrs li { display: flex; justify-content: space-between; align-items: center; padding: 6px 6px; font-size: 14px; }
+  .pc-home-attrs b { font-size: 20px; font-variant-numeric: tabular-nums; }
+  .pc-home-attrs .r4 { color: var(--accent); } .pc-home-attrs .r3 { color: #c9d84a; } .pc-home-attrs .r2 { color: #e8a23a; }
+  .pc-home-cta { max-width: 420px; display: block; }
+  @media (max-width: 360px) { .pc-home-attrs { grid-template-columns: 1fr; } }
 </style>
 </head>
 <body>
@@ -363,6 +378,31 @@
       <a class="cta cta-secondary" href="/analysis/">Read the research</a>
     </div>
   </header>
+
+  <!-- PLAYER CARDS -->
+  <section aria-label="Player cards" class="pc-home">
+    <div class="section-eyebrow">New &middot; Player cards</div>
+    <h2>Every player, rated 1 to 20</h2>
+    <p class="pc-home-sub">4,000 players across 14 divisions. Each rating is where a player
+    ranks against everyone in his position, in his own division, last season. Tap any
+    rating for the real number behind it, plus this season's stats, injury news and
+    his next game.</p>
+    <a class="pc-home-card" href="/analysis/player-cards/" aria-label="Open the player cards">
+      <div class="pc-home-head">
+        <div class="pc-home-name">Pedri</div>
+        <div class="pc-home-meta">Central midfielder &middot; Barcelona &middot; rated on 2025/26, La Liga</div>
+      </div>
+      <ul class="pc-home-attrs">
+        <li><span>Creativity</span><b class="r4">20</b></li>
+        <li><span>Involvement</span><b class="r4">20</b></li>
+        <li><span>Dribbling</span><b class="r4">19</b></li>
+        <li><span>Duels</span><b class="r4">19</b></li>
+        <li><span>Tackles made</span><b class="r3">15</b></li>
+        <li><span>Shooting</span><b class="r2">8</b></li>
+      </ul>
+    </a>
+    <a class="cta cta-primary pc-home-cta" href="/analysis/player-cards/">Search 4,000 players</a>
+  </section>
 
   <!-- HONEST STATS -->
   <section aria-label="Track record">
