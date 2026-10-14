@@ -440,7 +440,7 @@
   }
   function formations(c) {
     if (!c.fm.length) return "";
-    return "<section class='tc-sec'><h3>Formations, last season and this</h3><div class='tc-note'>Results against what our club ratings expected before each game, so a shape used against strong teams is not punished for it. A win counts 1, a draw 0.5, so +0.05 a game is like turning one defeat into a draw every ten games. "Now" is games this season.</div>" +
+    return "<section class='tc-sec'><h3>Formations, last season and this</h3><div class='tc-note'>Results against what our club ratings expected before each game, so a shape used against strong teams is not punished for it. A win counts 1, a draw 0.5, so +0.05 a game is like turning one defeat into a draw every ten games. \"Now\" is games this season.</div>" +
       "<div class='scroll'><table class='fm'><thead><tr><th>Shape</th><th>Games</th><th>W-D-L</th><th title='Average result against expected, per game'>v exp.</th><th>Verdict</th></tr></thead><tbody>" +
       c.fm.map(function (f) {
         return "<tr class='v-" + f[7] + "'><td>" + esc(f[0]) + "</td><td>" + f[1] + (f[2] ? " (" + f[2] + " now)" : "") + "</td><td>" +
