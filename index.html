@@ -5,536 +5,440 @@
 <script src="/consent.js" defer></script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
-    <link rel="alternate icon" href="/favicon.png">
-    <link rel="apple-touch-icon" href="/favicon.png">
-<title>Quant Edge Syndicate | Data. Models. Edge.</title>
-<meta name="description" content="A forecasting system that scores itself against the market. Not tipsters. Honest math, transparent track record, slow on purpose. 148 audited bets, 51.0% strike, +10.1% ROI.">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="alternate icon" href="/favicon.png">
+<link rel="apple-touch-icon" href="/favicon.png">
+<title>Quant Edge Syndicate | See football in a new way</title>
+<meta name="description" content="Every regular outfield player and every club in 14 divisions, rated 1 to 20 within their own division, with next games, injury news where our feed has it, and forecasts we score in public.">
 <meta property="og:url" content="https://quantedgesyndicate.com/">
 <meta property="og:image" content="https://quantedgesyndicate.com/og.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Quant Edge Syndicate | Data. Models. Edge.">
-<meta name="twitter:description" content="A forecasting system that scores itself against the market. Not tipsters. Honest math, transparent track record, slow on purpose. 148 audited bets, 51.0% strike, +10.1% ROI.">
+<meta name="twitter:title" content="Quant Edge Syndicate | See football in a new way">
+<meta name="twitter:description" content="Every regular outfield player and every club in 14 divisions, rated 1 to 20 within their own division, with next games, injury news where our feed has it, and forecasts we score in public.">
 <meta name="twitter:image" content="https://quantedgesyndicate.com/og.png">
 <meta name="robots" content="index,follow">
 <meta property="og:title" content="Quant Edge Syndicate">
-<meta property="og:description" content="A forecasting system that scores itself against the market. Not tipsters. Honest math. Transparent track. Slow on purpose.">
+<meta property="og:description" content="Every regular outfield player and every club in 14 divisions, rated 1 to 20 within their own division, with next games, injury news where our feed has it, and forecasts we score in public.">
 <meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://media.api-sports.io">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&display=swap" rel="stylesheet">
 <style>
   :root {
-    --bg: #000000;
-    --bg2: #0c0c0c;
-    --bg3: #141414;
-    --fg: #ffffff;
-    --muted: #9a9a9a;
-    --dim: #6b6b6b;
-    --accent: #a6f000;
-    --accent-dim: #5a8400;
-    --border: #1f1f1f;
-    --border-hi: #2c2c2c;
-    --danger: #ff5252;
+    --bg: #000000; --bg2: #0c0c0c; --bg3: #141414; --fg: #ffffff; --muted: #9a9a9a; --dim: #6b6b6b;
+    --accent: #a6f000; --accent-dim: #5a8400; --border: #1f1f1f; --border-hi: #2c2c2c; --danger: #ff5252;
+    --amber: #e8a23a; --red: #ff6b62; --cond: "Barlow Condensed", "Arial Narrow", sans-serif;
   }
   * { box-sizing: border-box; }
   html, body { margin: 0; padding: 0; }
-  body {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    background: var(--bg);
-    color: var(--fg);
-    line-height: 1.55;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-  }
+  html { scroll-behavior: smooth; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; background: var(--bg);
+    color: var(--fg); line-height: 1.55; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; overflow-x: hidden; }
   a { color: var(--accent); text-decoration: none; }
   a:hover { text-decoration: underline; }
+  :focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+  .wrap { max-width: 1120px; margin: 0 auto; padding: 0 20px; }
+  .skip { position: absolute; left: -999px; top: 8px; background: var(--accent); color: #000; padding: 8px 12px; border-radius: 6px; z-index: 99; }
+  .skip:focus { left: 8px; }
 
-  .wrap { max-width: 880px; margin: 0 auto; padding: 32px 20px 56px; }
+  /* top bar */
+  .bar { position: sticky; top: 0; z-index: 40; background: rgba(0,0,0,.82); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border); }
+  .bar .wrap { display: flex; align-items: center; gap: 18px; height: 58px; }
+  .bar .logo { display: flex; align-items: center; gap: 8px; color: var(--fg); font: 700 20px var(--cond); letter-spacing: .06em; text-transform: uppercase; white-space: nowrap; }
+  .bar .logo:hover { text-decoration: none; }
+  .bar .logo img { height: 40px; width: 40px; display: block; }
+  .sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+  .bar nav { margin-left: auto; display: flex; gap: 4px; }
+  .bar nav a { color: var(--muted); font-size: 14px; font-weight: 600; padding: 8px 10px; border-radius: 6px; }
+  .bar nav a:hover { color: var(--fg); background: var(--bg3); text-decoration: none; }
+  .bar nav a.cta-mini { color: #000; background: var(--accent); }
+  @media (max-width: 640px) { .bar nav a.hide-s { display: none; } .bar nav a { padding: 8px 8px; font-size: 13px; } .bar .logo img { height: 34px; width: 34px; } .bar .logo { font-size: 17px; } }
 
-  /* HERO */
-  .hero { text-align: center; padding: 24px 0 8px; animation: fadeIn 0.6s ease-out both; }
-  .hero img {
-    display: block;
-    width: 280px;
-    max-width: 88%;
-    height: auto;
-    margin: 0 auto 22px;
-  }
-  .hero-strap {
-    font-family: ui-monospace, "SF Mono", Menlo, monospace;
-    font-size: 12px;
-    letter-spacing: .22em;
-    text-transform: uppercase;
-    color: var(--accent);
-    margin: 0 0 14px;
-  }
-  .hero-sub {
-    font-size: 17px;
-    color: var(--muted);
-    max-width: 560px;
-    margin: 0 auto 28px;
-    line-height: 1.55;
-  }
-  .hero-sub em { color: var(--fg); font-style: normal; }
+  /* hero */
+  .hero { position: relative; padding: 48px 0 40px; }
+  .hero::before { content: ""; position: absolute; inset: -60px 0 auto; height: 620px; pointer-events: none; z-index: -1;
+    background: radial-gradient(600px 340px at 78% 30%, rgba(166,240,0,.13), transparent 70%), radial-gradient(500px 300px at 10% 0%, rgba(166,240,0,.06), transparent 70%); }
+  .hero .wrap { display: grid; grid-template-columns: minmax(0, 1fr); gap: 36px; align-items: center; }
+  .eyebrow { font: 600 12px ui-monospace, "SF Mono", Menlo, monospace; letter-spacing: .2em; text-transform: uppercase; color: var(--accent); margin: 0 0 14px; }
+  h1 { font: 700 clamp(44px, 8.5vw, 84px)/0.92 var(--cond); letter-spacing: -.01em; margin: 0 0 18px; text-transform: uppercase; }
+  h1 em { font-style: normal; color: var(--accent); }
+  .lede { font-size: clamp(16px, 2.2vw, 19px); color: var(--muted); max-width: 540px; margin: 0 0 24px; }
+  .lede b { color: var(--fg); font-weight: 600; }
+  .search { display: flex; gap: 8px; max-width: 520px; background: var(--bg2); border: 1px solid var(--border-hi); border-radius: 10px; padding: 6px; }
+  .search:focus-within { border-color: var(--accent); }
+  .search input { flex: 1; min-width: 0; background: none; border: 0; color: var(--fg); font-size: 16px; padding: 10px 10px; outline: none; }
+  .search button { background: var(--accent); color: #000; border: 0; border-radius: 7px; font-weight: 700; font-size: 15px; padding: 0 18px; cursor: pointer; min-height: 44px; }
+  .quick { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
+  .chip { display: inline-flex; align-items: center; gap: 6px; border: 1px solid var(--border-hi); color: var(--fg); border-radius: 999px; padding: 8px 14px;
+    font-size: 14px; font-weight: 600; min-height: 40px; background: var(--bg2); }
+  .chip:hover { border-color: var(--accent); color: var(--accent); text-decoration: none; }
+  .chip small { color: var(--muted); font-weight: 500; }
 
-  .cta-row {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    align-items: stretch;
-    max-width: 420px;
-    margin: 0 auto 8px;
-  }
-  .cta {
-    display: inline-block;
-    padding: 14px 22px;
-    font-size: 16px;
-    font-weight: 600;
-    border-radius: 8px;
-    text-align: center;
-    text-decoration: none;
-    transition: transform 0.12s ease, background 0.15s ease, border-color 0.15s ease;
-    letter-spacing: 0.01em;
-  }
-  .cta:hover { text-decoration: none; transform: translateY(-1px); }
-  .cta-primary {
-    background: var(--accent);
-    color: #0a0a0a;
-    border: 1px solid var(--accent);
-  }
-  .cta-primary:hover { background: #b8ff1f; border-color: #b8ff1f; }
-  .cta-secondary {
-    background: transparent;
-    color: var(--fg);
-    border: 1px solid var(--border-hi);
-  }
-  .cta-secondary:hover { border-color: var(--accent); color: var(--accent); }
+  /* the card deck */
+  .deck { position: relative; perspective: 1000px; max-width: 400px; width: 100%; justify-self: center; }
+  .pcard { position: relative; display: block; color: var(--fg); background: linear-gradient(160deg, #141f00 0%, var(--bg2) 38%, var(--bg2) 100%);
+    border: 1px solid var(--accent-dim); border-radius: 16px; padding: 18px; box-shadow: 0 30px 80px -30px rgba(166,240,0,.35), 0 0 0 1px rgba(255,255,255,.02) inset;
+    transform-style: preserve-3d; transition: transform .25s ease-out; touch-action: pan-y; }
+  .pcard:hover { text-decoration: none; }
+  .pc-top { display: flex; gap: 14px; align-items: center; }
+  .face { position: relative; flex: none; width: 92px; height: 92px; border-radius: 50%; overflow: hidden; background: var(--bg3);
+    border: 3px solid var(--accent); display: grid; place-items: center; }
+  .face .fi { font: 700 28px var(--cond); color: var(--muted); }
+  .face img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; background: var(--bg3); }
+  .pc-name { font: 700 34px/0.95 var(--cond); text-transform: uppercase; overflow-wrap: anywhere; }
+  .pc-role { color: var(--muted); font-size: 14px; margin-top: 4px; display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
+  .pc-role img { width: 20px; height: 20px; object-fit: contain; }
+  .pc-attrs { list-style: none; margin: 16px 0 12px; padding: 0; display: grid; gap: 7px; }
+  .pc-attrs li { display: grid; grid-template-columns: 1fr 34px; grid-template-rows: auto 6px; column-gap: 10px; align-items: center; font-size: 14px; }
+  .pc-attrs b { grid-row: span 2; text-align: right; font: 700 26px var(--cond); font-variant-numeric: tabular-nums; }
+  .pc-attrs .bar6 { height: 6px; border-radius: 3px; background: var(--bg3); overflow: hidden; }
+  .pc-attrs .bar6 i { display: block; height: 100%; border-radius: 3px; width: var(--w, 0); transition: width .7s cubic-bezier(.2,.8,.2,1); }
+  .b4 { color: var(--accent); } .b3 { color: #c9d84a; } .b2 { color: var(--amber); } .b1 { color: var(--red); }
+  .bar6 .b4 { background: var(--accent); } .bar6 .b3 { background: #c9d84a; } .bar6 .b2 { background: var(--amber); } .bar6 .b1 { background: var(--red); }
+  .pc-foot { display: flex; justify-content: space-between; gap: 10px; flex-wrap: wrap; border-top: 1px solid var(--border-hi); padding-top: 12px; font-size: 13px; color: var(--muted); }
+  .pc-foot .go { color: var(--accent); font-weight: 700; }
+  .warn { display: inline-flex; align-items: center; gap: 5px; font-size: 12px; font-weight: 700; border-radius: 4px; padding: 1px 7px 1px 2px; }
+  .warn i { font-style: normal; width: 16px; height: 16px; display: inline-grid; place-items: center; border-radius: 3px; color: #000; font-size: 11px; }
+  .warn-out { color: var(--red); border: 1px solid var(--red); } .warn-out i { background: var(--red); }
+  .warn-doubt { color: var(--amber); border: 1px solid var(--amber); } .warn-doubt i { background: var(--amber); }
+  .warn-susp { color: #c9c9c9; border: 1px solid #c9c9c9; } .warn-susp i { background: #c9c9c9; }
+  .deck-nav { display: flex; align-items: center; justify-content: center; gap: 10px; margin-top: 16px; }
+  .deck-nav button.arrow { width: 44px; height: 44px; border-radius: 50%; border: 1px solid var(--border-hi); background: var(--bg2); color: var(--fg); font-size: 22px; cursor: pointer; }
+  .deck-nav button.arrow:hover { border-color: var(--accent); color: var(--accent); }
+  .dots { display: flex; gap: 2px; }
+  .dots button { width: 24px; height: 44px; border: 0; background: none; cursor: pointer; padding: 0; display: grid; place-items: center; }
+  .dots button::after { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--border-hi); transition: all .2s; }
+  .dots button[aria-current=true]::after { background: var(--accent); width: 18px; border-radius: 4px; }
+  .deck-nav, .deck-note { display: none; }
+  .js .deck-nav { display: flex; } .js .deck-note { display: block; }
+  .pause { font-size: 13px !important; letter-spacing: -2px; }
+  .deck-note { text-align: center; color: var(--dim); font-size: 12px; margin-top: 4px; }
+  .swap { animation: swapIn .45s cubic-bezier(.2,.8,.2,1); }
+  @keyframes swapIn { from { opacity: 0; transform: translateX(var(--dx, 24px)) scale(.98); } to { opacity: 1; transform: none; } }
 
-  /* STATS */
-  section { margin: 56px 0; }
-  .section-eyebrow {
-    font-size: 11px;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: var(--accent);
-    margin-bottom: 14px;
-    font-weight: 600;
-  }
-  h2 {
-    font-size: 22px;
-    margin: 0 0 18px;
-    font-weight: 700;
-    letter-spacing: -0.01em;
-  }
+  /* sections */
+  section.blk { padding: 56px 0; border-top: 1px solid var(--border); }
+  .kicker { font-size: 11px; letter-spacing: .18em; text-transform: uppercase; color: var(--accent); margin-bottom: 12px; font-weight: 700; }
+  h2 { font: 700 clamp(30px, 5vw, 48px)/1 var(--cond); text-transform: uppercase; margin: 0 0 14px; letter-spacing: -.005em; }
+  .sub { color: var(--muted); font-size: 16px; max-width: 640px; margin: 0 0 26px; }
 
-  .stats-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 10px;
-    margin-bottom: 16px;
-  }
-  .stat {
-    background: var(--bg2);
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    padding: 18px 14px;
-    text-align: center;
-  }
-  .stat-num {
-    font-size: 26px;
-    font-weight: 700;
-    color: var(--accent);
-    line-height: 1.1;
-    letter-spacing: -0.01em;
-  }
-  .stat-label {
-    font-size: 12px;
-    color: var(--muted);
-    margin-top: 6px;
-    line-height: 1.35;
-  }
-  .stat-caption {
-    color: var(--muted);
-    font-size: 14px;
-    text-align: center;
-    margin: 12px auto 0;
-    max-width: 620px;
-    line-height: 1.55;
-  }
-  .stat-caption strong { color: var(--fg); font-weight: 600; }
+  /* leaders rail */
+  .rail { display: grid; grid-auto-flow: column; grid-auto-columns: minmax(200px, 1fr); gap: 10px; overflow-x: auto; scroll-snap-type: x mandatory;
+    padding: 4px 20px 14px; margin: 0 -20px; scrollbar-width: thin; scrollbar-color: var(--border-hi) transparent; }
+  .lead { scroll-snap-align: start; display: grid; grid-template-columns: 48px 1fr; gap: 4px 12px; align-items: center; background: var(--bg2);
+    border: 1px solid var(--border); border-radius: 12px; padding: 14px; color: var(--fg); transition: border-color .15s, transform .15s; }
+  .lead:hover { border-color: var(--accent); text-decoration: none; transform: translateY(-2px); }
+  .lead img { width: 48px; height: 48px; object-fit: contain; grid-row: span 2; }
+  .lead .ln { font-weight: 700; font-size: 15px; line-height: 1.2; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .lead .ll { font-size: 12px; color: var(--muted); }
+  .lead .lp { grid-column: 1 / -1; display: flex; justify-content: space-between; font-size: 13px; color: var(--muted); border-top: 1px solid var(--border); padding-top: 8px; margin-top: 6px; }
+  .lead .lp b { color: var(--accent); font: 700 18px var(--cond); }
+  .rail-hint { color: var(--dim); font-size: 12px; margin-top: 4px; }
 
-  /* TWO-COL DO/DONT */
-  .two-col {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 14px;
-  }
-  .col {
-    background: var(--bg2);
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    padding: 22px 20px;
-  }
-  .col-do { border-color: var(--accent-dim); }
-  .col h3 {
-    margin: 0 0 14px;
-    font-size: 16px;
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
-  }
-  .col-do h3 { color: var(--accent); }
-  .col-dont h3 { color: var(--danger); }
-  .col ul { margin: 0; padding: 0; list-style: none; }
-  .col li {
-    padding: 8px 0 8px 22px;
-    position: relative;
-    font-size: 15px;
-    color: var(--fg);
-    line-height: 1.5;
-    border-bottom: 1px solid var(--border);
-  }
-  .col li:last-child { border-bottom: none; }
-  .col-do li::before {
-    content: "+";
-    position: absolute;
-    left: 0;
-    top: 8px;
-    color: var(--accent);
-    font-weight: 700;
-  }
-  .col-dont li::before {
-    content: "\00d7";
-    position: absolute;
-    left: 0;
-    top: 7px;
-    color: var(--danger);
-    font-weight: 700;
-    font-size: 17px;
-  }
+  /* audiences */
+  .tabs { display: flex; gap: 6px; overflow-x: auto; scrollbar-width: none; margin: 0 -20px 18px; padding: 0 20px; }
+  .tabs::-webkit-scrollbar { display: none; }
+  .tabs [role=tab] { flex: none; background: var(--bg2); border: 1px solid var(--border-hi); color: var(--muted); border-radius: 999px; padding: 10px 18px;
+    font: 600 16px var(--cond); letter-spacing: .06em; text-transform: uppercase; cursor: pointer; min-height: 44px; }
+  .tabs [role=tab][aria-selected=true] { background: var(--accent); color: #000; border-color: var(--accent); }
+  .aud { display: grid; gap: 18px; background: var(--bg2); border: 1px solid var(--border); border-radius: 14px; padding: 24px; }
+  .aud[hidden] { display: none; }
+  .aud h3 { font: 700 30px/1 var(--cond); text-transform: uppercase; margin: 0; }
+  .aud p { margin: 0; color: var(--muted); font-size: 16px; max-width: 560px; }
+  .aud ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 8px; }
+  .aud li { padding-left: 22px; position: relative; font-size: 15px; }
+  .aud li::before { content: "+"; position: absolute; left: 0; color: var(--accent); font-weight: 700; }
+  .btns { display: flex; flex-wrap: wrap; gap: 10px; }
+  .btn { display: inline-flex; align-items: center; justify-content: center; min-height: 46px; padding: 0 20px; border-radius: 9px; font-weight: 700; font-size: 15px;
+    transition: transform .12s, background .15s, border-color .15s; }
+  .btn:hover { text-decoration: none; transform: translateY(-1px); }
+  .btn-p { background: var(--accent); color: #000; } .btn-p:hover { background: #b8ff1f; }
+  .btn-s { border: 1px solid var(--border-hi); color: var(--fg); } .btn-s:hover { border-color: var(--accent); color: var(--accent); }
 
-  /* CHANNELS */
-  .channels {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 12px;
+  /* scored */
+  .scored { display: grid; gap: 12px; }
+  .score { display: grid; gap: 8px; align-content: start; background: var(--bg2); border: 1px solid var(--border); border-radius: 14px; padding: 22px; color: var(--fg); transition: border-color .15s; }
+  .score:hover { border-color: var(--accent); text-decoration: none; }
+  .score .big { font: 700 64px/0.9 var(--cond); color: var(--accent); font-variant-numeric: tabular-nums; }
+  .score .big.wrong { color: var(--fg); font-size: 44px; line-height: 1; }
+  .score p { margin: 0; color: var(--muted); font-size: 15px; }
+  .score .more { font-size: 14px; color: var(--accent); font-weight: 700; }
+  .meter { height: 8px; border-radius: 4px; background: var(--bg3); position: relative; overflow: hidden; }
+  .meter i { position: absolute; inset: 0 auto 0 0; width: var(--mw, 0);
   }
-  .channel {
-    background: var(--bg2);
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    padding: 18px 18px;
-    display: block;
-    color: var(--fg);
-    text-decoration: none;
-    transition: border-color 0.15s ease, background 0.15s ease;
+  .js .meter i { width: 0;
   }
-  .channel:hover {
-    border-color: var(--accent);
-    background: var(--bg3);
-    text-decoration: none;
-  }
-  .channel-row {
-    display: flex;
-    align-items: center;
-    gap: 14px;
-    margin-bottom: 6px;
-  }
-  .channel-icon {
-    width: 36px;
-    height: 36px;
-    border-radius: 8px;
-    background: #0a0a0a;
-    border: 1px solid var(--border-hi);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-  }
-  .channel-icon svg { width: 18px; height: 18px; }
-  .channel-name { font-weight: 600; font-size: 16px; }
-  .channel-handle { color: var(--accent); font-size: 13px; margin-left: auto; }
-  .channel-desc { color: var(--muted); font-size: 14px; line-height: 1.5; }
+  .meter i { background: var(--accent); border-radius: 4px; transition: width 1.1s cubic-bezier(.2,.8,.2,1); }
+  .meter u { position: absolute; top: -3px; bottom: -3px; width: 2px; background: var(--fg); text-decoration: none; }
+  .meter-k { display: flex; justify-content: space-between; font-size: 12px; color: var(--dim); }
 
-  /* ANALYSIS */
-  .analysis-figure {
-    background: var(--bg2);
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    padding: 14px;
-    margin: 0 0 16px;
-  }
-  .analysis-figure img { width: 100%; height: auto; display: block; border-radius: 6px; }
-  .analysis-figure figcaption {
-    color: var(--muted);
-    font-size: 13px;
-    line-height: 1.6;
-    margin-top: 12px;
-  }
-  .analysis-note {
-    background: var(--bg2);
-    border: 1px solid var(--border);
-    border-left: 3px solid var(--accent);
-    border-radius: 10px;
-    padding: 22px;
-    font-size: 15px;
-    line-height: 1.65;
-  }
-  .analysis-note strong { color: var(--accent); font-weight: 600; }
+  /* research rail */
+  .art { scroll-snap-align: start; display: grid; gap: 10px; align-content: start; background: var(--bg2); border: 1px solid var(--border); border-radius: 12px;
+    padding: 18px; color: var(--fg); min-height: 200px; transition: border-color .15s, transform .15s; }
+  .art:hover { border-color: var(--accent); text-decoration: none; transform: translateY(-2px); }
+  .art .at { font: 700 22px/1.05 var(--cond); text-transform: uppercase; }
+  .art .ad { color: var(--muted); font-size: 14px; }
+  .art .ar { color: var(--accent); font-size: 13px; font-weight: 700; margin-top: auto; }
+  .rail.arts { grid-auto-columns: minmax(260px, 1fr); }
 
-  /* LONG GAME */
-  .long-game {
-    background: var(--bg2);
-    border: 1px solid var(--border);
-    border-left: 3px solid var(--accent);
-    border-radius: 10px;
-    padding: 22px 22px;
-    color: var(--fg);
-    font-size: 15px;
-    line-height: 1.65;
-  }
+  /* betting, lower down */
+  .bet-intro { display: grid; gap: 14px; }
+  .long-game { background: var(--bg2); border: 1px solid var(--border); border-left: 3px solid var(--accent); border-radius: 12px; padding: 22px; font-size: 15px; line-height: 1.65; }
   .long-game strong { color: var(--accent); font-weight: 600; }
+  .stats-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin: 22px 0 12px; }
+  .stat { background: var(--bg2); border: 1px solid var(--border); border-radius: 12px; padding: 18px 14px; text-align: center; }
+  .stat-num { font: 700 38px/1 var(--cond); color: var(--accent); font-variant-numeric: tabular-nums; }
+  .stat-num.sm { font-size: 26px; line-height: 1.45; }
+  .stat-label { font-size: 12px; color: var(--muted); margin-top: 6px; line-height: 1.35; }
+  .stat-caption { color: var(--muted); font-size: 14px; margin: 0 0 22px; }
+  .stat-caption strong { color: var(--fg); }
+  .two-col { display: grid; gap: 12px; margin-bottom: 22px; }
+  details.col { background: var(--bg2); border: 1px solid var(--border); border-radius: 12px; padding: 0 20px; }
+  details.col[open] { padding-bottom: 14px; }
+  details.col summary { cursor: pointer; list-style: none; padding: 16px 0; font: 700 18px var(--cond); letter-spacing: .06em; text-transform: uppercase; display: flex; justify-content: space-between; align-items: center; min-height: 44px; }
+  details.col summary::-webkit-details-marker { display: none; }
+  details.col summary::after { content: "+"; font-size: 22px; color: var(--muted); transition: transform .2s; }
+  details.col[open] summary::after { transform: rotate(45deg); }
+  .col-do { border-color: var(--accent-dim); } .col-do summary { color: var(--accent); } .col-dont summary { color: var(--danger); }
+  .col ul { margin: 0; padding: 0; list-style: none; }
+  .col li { padding: 8px 0 8px 22px; position: relative; font-size: 15px; border-bottom: 1px solid var(--border); }
+  .col li:last-child { border-bottom: 0; }
+  .col-do li::before { content: "+"; position: absolute; left: 0; top: 8px; color: var(--accent); font-weight: 700; }
+  .col-dont li::before { content: "\00d7"; position: absolute; left: 0; top: 7px; color: var(--danger); font-weight: 700; font-size: 17px; }
 
-  /* FOOTER */
-  footer {
-    border-top: 1px solid var(--border);
-    margin-top: 56px;
-    padding: 28px 0 12px;
-    text-align: center;
-    color: var(--dim);
-    font-size: 13px;
-  }
-  footer a { color: var(--muted); margin: 0 10px; }
+  footer { border-top: 1px solid var(--border); padding: 30px 0 40px; text-align: center; color: var(--dim); font-size: 13px; }
+  footer a { color: var(--muted); margin: 0 8px; display: inline-block; padding: 4px 0; }
   footer a:hover { color: var(--accent); text-decoration: none; }
-  .foot-line { margin-top: 14px; }
+  .foot-line { margin-top: 12px; }
   .contact { display: block; margin-top: 6px; font-size: 12px; color: var(--dim); }
 
-  /* DESKTOP */
-  @media (min-width: 720px) {
-    .wrap { padding: 48px 28px 72px; }
-    .hero { padding: 36px 0 12px; }
-    .hero img { width: 420px; margin-bottom: 28px; }
-    .hero-sub { font-size: 19px; margin-bottom: 36px; }
-    .cta-row {
-      flex-direction: row;
-      max-width: 760px;
-      gap: 14px;
-      flex-wrap: wrap;
-    }
-    .cta-row .cta { flex: 1; }
-    .stats-grid {
-      grid-template-columns: repeat(4, 1fr);
-      gap: 12px;
-    }
-    .stat { padding: 22px 14px; }
-    .stat-num { font-size: 30px; }
-    .two-col { grid-template-columns: 1fr 1fr; gap: 16px; }
-    section { margin: 72px 0; }
-    h2 { font-size: 26px; }
-  }
+  /* reveal on scroll: content is visible without script, and with reduced motion */
+  .js .rv { opacity: 0; transform: translateY(18px); transition: opacity .6s ease-out, transform .6s cubic-bezier(.2,.8,.2,1); }
+  .js .rv.in { opacity: 1; transform: none; }
 
-  @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(6px); }
-    to { opacity: 1; transform: translateY(0); }
+  @media (min-width: 760px) {
+    .hero { padding: 72px 0 64px; }
+    .hero .wrap { grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr); gap: 48px; }
+    .scored { grid-template-columns: repeat(3, 1fr); }
   }
-
+  @media (min-width: 1000px) {
+    .stats-grid { grid-template-columns: repeat(4, 1fr); }
+    .two-col { grid-template-columns: 1fr 1fr; align-items: start; }
+    .aud { grid-template-columns: 1.2fr 1fr; align-items: start; padding: 32px; }
+    section.blk { padding: 80px 0; }
+    .bet-intro { grid-template-columns: 1fr 1fr; align-items: start; gap: 28px; }
+  }
+  @media (max-width: 380px) { .face { width: 76px; height: 76px; } .pc-name { font-size: 28px; } .pcard { padding: 14px; } }
   @media (prefers-reduced-motion: reduce) {
-    .hero { animation: none; }
-    .cta { transition: none; }
+    html { scroll-behavior: auto; }
+    .js .rv { opacity: 1; transform: none; transition: none; }
+    .pcard, .pc-attrs .bar6 i, .meter i, .lead, .art, .btn { transition: none; }
+    .swap { animation: none; }
   }
-
-  /* PLAYER CARDS TEASER */
-  .pc-home-sub { color: var(--muted); font-size: 16px; line-height: 1.55; margin: 0 0 18px; max-width: 620px; }
-  .pc-home-card { display: block; max-width: 420px; background: var(--bg2); border: 1px solid var(--border);
-    border-radius: 8px; color: var(--fg); margin: 0 0 16px; }
-  .pc-home-card:hover { text-decoration: none; border-color: var(--accent); }
-  .pc-home-head { padding: 14px 16px 12px; border-bottom: 2px solid var(--accent); }
-  .pc-home-name { font-size: 24px; font-weight: 800; line-height: 1.1; }
-  .pc-home-meta { color: var(--muted); font-size: 13px; margin-top: 4px; }
-  .pc-home-attrs { list-style: none; margin: 0; padding: 8px 10px 10px; display: grid; grid-template-columns: 1fr 1fr; gap: 2px 12px; }
-  .pc-home-attrs li { display: flex; justify-content: space-between; align-items: center; padding: 6px 6px; font-size: 14px; }
-  .pc-home-attrs b { font-size: 20px; font-variant-numeric: tabular-nums; }
-  .pc-home-attrs .r4 { color: var(--accent); } .pc-home-attrs .r3 { color: #c9d84a; } .pc-home-attrs .r2 { color: #e8a23a; }
-  .pc-home-cta { max-width: 420px; display: block; }
-  @media (max-width: 360px) { .pc-home-attrs { grid-template-columns: 1fr; } }
 </style>
 </head>
 <body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="bar">
+  <div class="wrap">
+    <a class="logo" href="/" aria-label="Quant Edge Syndicate, home"><img src="./qes_logo.png" alt="" width="40" height="40">Quant Edge</a>
+    <nav aria-label="Main">
+      <a href="/analysis/player-cards/">Players</a>
+      <a href="/analysis/team-cards/">Teams</a>
+      <a class="hide-s" href="/analysis/">Quant Lab</a>
+      <a class="hide-s" href="#record">Track record</a>
+    </nav>
+  </div>
+</header>
 
-<div class="wrap">
-
-  <!-- HERO -->
-  <header class="hero">
-    <img src="./qes_logo.png" alt="Quant Edge Syndicate" />
-    <p class="hero-strap">Predictive intelligence</p>
-    <p class="hero-sub">
-      A forecasting system that scores itself against the market, building toward a
-      decision intelligence consultancy. We test in predictive markets, where
-      closing-line value is one of our KPIs.
-      <em>Honest math. Transparent track. Slow on purpose.</em>
-    </p>
-    <div class="cta-row">
-      <a class="cta cta-primary" href="./proof.html">See the track record</a>
-      <a class="cta cta-secondary" href="./ledger.html">Read the ledger</a>
-      <a class="cta cta-secondary" href="/analysis/">Read the research</a>
-    </div>
-  </header>
-
-  <!-- PLAYER CARDS -->
-  <section aria-label="Player cards" class="pc-home">
-    <div class="section-eyebrow">New &middot; Player and team cards</div>
-    <h2>Every player, rated 1 to 20</h2>
-    <p class="pc-home-sub">4,000 players across 14 divisions. Each rating is where a player
-    ranks against everyone in his position, in his own division, last season. Tap any
-    rating for the real number behind it, plus this season's stats, injury news and
-    his next game.</p>
-    <a class="pc-home-card" href="/analysis/player-cards/" aria-label="Open the player cards">
-      <div class="pc-home-head">
-        <div class="pc-home-name">Pedri</div>
-        <div class="pc-home-meta">Central midfielder &middot; Barcelona &middot; rated on 2025/26, La Liga</div>
-      </div>
-      <ul class="pc-home-attrs">
-        <li><span>Creativity</span><b class="r4">20</b></li>
-        <li><span>Involvement</span><b class="r4">20</b></li>
-        <li><span>Dribbling</span><b class="r4">19</b></li>
-        <li><span>Duels</span><b class="r4">19</b></li>
-        <li><span>Tackles made</span><b class="r3">15</b></li>
-        <li><span>Shooting</span><b class="r2">8</b></li>
-      </ul>
-    </a>
-    <a class="cta cta-primary pc-home-cta" href="/analysis/player-cards/">Search 4,000 players</a>
-    <a class="cta cta-secondary pc-home-cta" href="/analysis/team-cards/">Browse 264 team cards</a>
-  </section>
-
-  <!-- HONEST STATS -->
-  <section aria-label="Track record">
-    <div class="stats-grid">
-      <div class="stat">
-        <div class="stat-num">148</div>
-        <div class="stat-label">audited bets<br>since 2026-03-12</div>
-      </div>
-      <div class="stat">
-        <div class="stat-num">51.0%</div>
-        <div class="stat-label">strike rate</div>
-      </div>
-      <div class="stat">
-        <div class="stat-num">+10.1%</div>
-        <div class="stat-label">ROI on stakes</div>
-      </div>
-      <div class="stat">
-        <div class="stat-num">75-72</div>
-        <div class="stat-label">settled<br>win-loss record</div>
-      </div>
-    </div>
-    <p class="stat-caption">
-      Every bet logged. Every result settled. Closing-line value tracked.
-      <strong>The numbers are not 97%. They are real.</strong>
-    </p>
-  </section>
-
-  <!-- WHAT WE DO / WHAT WE DON'T -->
-  <section aria-label="What we do and what we don't">
-    <div class="section-eyebrow">The difference</div>
-    <h2>What we do, and what we don&rsquo;t</h2>
-    <div class="two-col">
-      <div class="col col-do">
-        <h3>What we do</h3>
-        <ul>
-          <li>Publish single bets above gate, sized to edge</li>
-          <li>Document the reasoning per fire <em>and</em> per sit</li>
-          <li>Re-check at T-45 when lineups land</li>
-          <li>Settle and publish the result, win or lose</li>
-          <li>Publish closing-odds for every bet (CLV currently being re-verified)</li>
-        </ul>
-      </div>
-      <div class="col col-dont">
-        <h3>What we don&rsquo;t</h3>
-        <ul>
-          <li>Accumulator bait or &ldquo;banker of the day&rdquo;</li>
-          <li>96% accuracy claims</li>
-          <li>Celebrity endorsements (real or AI-faked)</li>
-          <li>&ldquo;The AI does the work&rdquo; mystique. A model produces numbers, a human decides</li>
-          <li>Tipping. We're not tipsters. We're a multi-predictive intelligence system reading predictive markets</li>
-        </ul>
-      </div>
-    </div>
-  </section>
-
-  <!-- CHANNELS -->
-  <section aria-label="Where to follow">
-    <div class="section-eyebrow">Where to follow</div>
-    <div class="channels">
-
-      <a class="channel" href="https://twitter.com/quantedgesynd" target="_blank" rel="noopener">
-        <div class="channel-row">
-          <div class="channel-icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M18.244 2H21l-6.52 7.45L22 22h-6.05l-4.74-6.2L5.8 22H3l7.02-8.02L2 2h6.2l4.28 5.66L18.244 2zm-2.12 18.4h1.67L7.95 3.5H6.16l9.964 16.9z" fill="#a6f000"/>
-            </svg>
-          </div>
-          <div class="channel-name">Twitter / X</div>
-          <div class="channel-handle">@quantedgesynd</div>
+<main id="main">
+  <section class="hero" aria-label="Introduction">
+    <div class="wrap">
+      <div>
+        <p class="eyebrow">Quant &middot; Predictive intelligence</p>
+        <h1>See football <em>in a new way</em></h1>
+        <p class="lede">Every regular outfield player in 14 divisions, rated <b>1 to 20</b> against his position in his own division. Every club too.
+          Like a game you already know, with real numbers: next games, injury news where our feed has it, which numbers really last.
+          And our forecasts, <b>scored in public</b>.</p>
+        <form class="search" action="/analysis/player-cards/" method="get" role="search">
+          <label for="hq" class="sr">Search a player</label>
+          <input id="hq" name="q" type="search" placeholder="Search a player" autocomplete="off" maxlength="60">
+          <button type="submit">Search</button>
+        </form>
+        <div class="quick">
+          <a class="chip" href="/analysis/team-cards/">Team cards <small>264 clubs</small></a>
+          <a class="chip" href="/analysis/league-forecasts-scored/">Forecasts, scored</a>
+          <a class="chip" href="/analysis/">Quant Lab</a>
         </div>
-        <div class="channel-desc">Daily free pick + slate reads.</div>
-      </a>
-
-
+      </div>
+      <div class="deck" id="deck" role="region" aria-roledescription="carousel" aria-label="Featured player cards">
+        <a class='pcard' href='/analysis/player-cards/?id=1100' aria-label='E. Haaland, Striker, Manchester City. Open his player card'><div class='pc-top'><span class='face' aria-hidden='true'><span class='fi'>EH</span><img src='https://media.api-sports.io/football/players/1100.png' alt='' width='92' height='92' onerror='this.remove()'></span><div><div class='pc-name'>E. Haaland</div><div class='pc-role'>Striker &middot; <img src='https://media.api-sports.io/football/teams/50.png' alt='' width='20' height='20' loading='lazy' onerror='this.style.visibility=&quot;hidden&quot;'>Manchester City</div></div></div><ul class='pc-attrs'><li><span>Shooting</span><b class='b4'>20</b><span class='bar6'><i class='b4' style='--w:100%'></i></span></li><li><span>Goal threat</span><b class='b4'>20</b><span class='bar6'><i class='b4' style='--w:100%'></i></span></li><li><span>Duels</span><b class='b4'>20</b><span class='bar6'><i class='b4' style='--w:100%'></i></span></li><li><span>Final ball</span><b class='b4'>18</b><span class='bar6'><i class='b4' style='--w:90%'></i></span></li><li><span>Discipline</span><b class='b4'>18</b><span class='bar6'><i class='b4' style='--w:90%'></i></span></li><li><span>Creativity</span><b class='b2'>6</b><span class='bar6'><i class='b2' style='--w:30%'></i></span></li></ul><div class='pc-foot'><span>Next: v Ipswich, Sat, 17 Oct</span><span class='go'>Full card &rarr;</span></div></a>
+        <div id="deck-live" class="sr" aria-live="off"></div>
+        <div class="deck-nav">
+          <button type="button" class="arrow" data-step="-1" aria-label="Previous player">&#8249;</button>
+          <div class="dots" id="dots"></div>
+          <button type="button" class="arrow" data-step="1" aria-label="Next player">&#8250;</button>
+          <button type="button" class="arrow pause" id="pause" aria-label="Pause the cards">&#10073;&#10073;</button>
+        </div>
+        <div class="deck-note">Real cards, live from our data on 12 October 2026. Swipe or tap the arrows.</div>
+      </div>
     </div>
   </section>
 
-  <!-- ANALYSIS TEASER -->
-  <section aria-label="Quant Lab">
-    <div class="section-eyebrow">Quant Lab</div>
-    <h2>Which football stats actually mean anything</h2>
-
-    <figure class="analysis-figure">
-      <a href="/analysis/which-football-stats-persist/">
-        <img src="/analysis/metric-persistence.png"
-             alt="Bar chart of how much of each metric's separation between players survives one season" />
-      </a>
-      <figcaption>
-        How much of the gap between the best and worst half survives one season.
-        Premier League, four completed seasons, 657 season-pairs, measured
-        within position.
-      </figcaption>
-    </figure>
-
-    <div class="analysis-note">
-      Volume and behaviour carry over. A player who takes people on this season
-      takes people on next season, at a correlation of <strong>0.89</strong>.
-      Passing, duels and tackles all hold up.
-      <br /><br />
-      Efficiency does not. Shot accuracy keeps <strong>12%</strong> of its
-      separation and conversion keeps <strong>12%</strong>. A screen that ranks
-      forwards on how many of their shots go in is ranking them largely on last
-      season's variance.
-      <br /><br />
-      <a href="/analysis/which-football-stats-persist/">Read the full piece
-      &rarr;</a> &nbsp;&middot;&nbsp;
-      <a href="/analysis/">All research &rarr;</a>
+  <section class="blk" aria-labelledby="h-top">
+    <div class="wrap">
+      <div class="kicker rv">Team cards</div>
+      <h2 id="h-top" class="rv">Top of the table, right now</h2>
+      <p class="sub rv">The leader of every division we cover. Tap a club for its formations, the XI that last played each one, ratings, squad and who is out.</p>
+      <div class="rail rv" id="leaders"><a class='lead' href='/analysis/team-cards/?team=50'><img src='https://media.api-sports.io/football/teams/50.png' alt='' width='48' height='48' loading='lazy' onerror='this.style.visibility=&quot;hidden&quot;'><span class='ln'>Manchester City</span><span class='ll'>Premier League</span><span class='lp'><span>1st</span><span><b>18</b> pts from 6</span></span></a><a class='lead' href='/analysis/team-cards/?team=529'><img src='https://media.api-sports.io/football/teams/529.png' alt='' width='48' height='48' loading='lazy' onerror='this.style.visibility=&quot;hidden&quot;'><span class='ln'>Barcelona</span><span class='ll'>La Liga</span><span class='lp'><span>1st</span><span><b>24</b> pts from 8</span></span></a><a class='lead' href='/analysis/team-cards/?team=505'><img src='https://media.api-sports.io/football/teams/505.png' alt='' width='48' height='48' loading='lazy' onerror='this.style.visibility=&quot;hidden&quot;'><span class='ln'>Inter</span><span class='ll'>Serie A</span><span class='lp'><span>1st</span><span><b>16</b> pts from 6</span></span></a><a class='lead' href='/analysis/team-cards/?team=160'><img src='https://media.api-sports.io/football/teams/160.png' alt='' width='48' height='48' loading='lazy' onerror='this.style.visibility=&quot;hidden&quot;'><span class='ln'>SC Freiburg</span><span class='ll'>Bundesliga</span><span class='lp'><span>1st</span><span><b>13</b> pts from 5</span></span></a><a class='lead' href='/analysis/team-cards/?team=91'><img src='https://media.api-sports.io/football/teams/91.png' alt='' width='48' height='48' loading='lazy' onerror='this.style.visibility=&quot;hidden&quot;'><span class='ln'>Monaco</span><span class='ll'>Ligue 1</span><span class='lp'><span>1st</span><span><b>14</b> pts from 6</span></span></a><a class='lead' href='/analysis/team-cards/?team=209'><img src='https://media.api-sports.io/football/teams/209.png' alt='' width='48' height='48' loading='lazy' onerror='this.style.visibility=&quot;hidden&quot;'><span class='ln'>Feyenoord</span><span class='ll'>Eredivisie</span><span class='lp'><span>1st</span><span><b>20</b> pts from 8</span></span></a><a class='lead' href='/analysis/team-cards/?team=212'><img src='https://media.api-sports.io/football/teams/212.png' alt='' width='48' height='48' loading='lazy' onerror='this.style.visibility=&quot;hidden&quot;'><span class='ln'>FC Porto</span><span class='ll'>Primeira Liga</span><span class='lp'><span>1st</span><span><b>24</b> pts from 8</span></span></a><a class='lead' href='/analysis/team-cards/?team=76'><img src='https://media.api-sports.io/football/teams/76.png' alt='' width='48' height='48' loading='lazy' onerror='this.style.visibility=&quot;hidden&quot;'><span class='ln'>Swansea</span><span class='ll'>Championship</span><span class='lp'><span>1st</span><span><b>20</b> pts from 9</span></span></a><a class='lead' href='/analysis/team-cards/?team=247'><img src='https://media.api-sports.io/football/teams/247.png' alt='' width='48' height='48' loading='lazy' onerror='this.style.visibility=&quot;hidden&quot;'><span class='ln'>Celtic</span><span class='ll'>Scottish Premiership</span><span class='lp'><span>1st</span><span><b>21</b> pts from 8</span></span></a><a class='lead' href='/analysis/team-cards/?team=631'><img src='https://media.api-sports.io/football/teams/631.png' alt='' width='48' height='48' loading='lazy' onerror='this.style.visibility=&quot;hidden&quot;'><span class='ln'>Gent</span><span class='ll'>Jupiler Pro League</span><span class='lp'><span>1st</span><span><b>22</b> pts from 8</span></span></a><a class='lead' href='/analysis/team-cards/?team=159'><img src='https://media.api-sports.io/football/teams/159.png' alt='' width='48' height='48' loading='lazy' onerror='this.style.visibility=&quot;hidden&quot;'><span class='ln'>Hertha BSC</span><span class='ll'>2. Bundesliga</span><span class='lp'><span>1st</span><span><b>21</b> pts from 7</span></span></a><a class='lead' href='/analysis/team-cards/?team=723'><img src='https://media.api-sports.io/football/teams/723.png' alt='' width='48' height='48' loading='lazy' onerror='this.style.visibility=&quot;hidden&quot;'><span class='ln'>Almeria</span><span class='ll'>Segunda División</span><span class='lp'><span>1st</span><span><b>21</b> pts from 9</span></span></a><a class='lead' href='/analysis/team-cards/?team=1063'><img src='https://media.api-sports.io/football/teams/1063.png' alt='' width='48' height='48' loading='lazy' onerror='this.style.visibility=&quot;hidden&quot;'><span class='ln'>Saint Etienne</span><span class='ll'>Ligue 2</span><span class='lp'><span>1st</span><span><b>19</b> pts from 8</span></span></a><a class='lead' href='/analysis/team-cards/?team=522'><img src='https://media.api-sports.io/football/teams/522.png' alt='' width='48' height='48' loading='lazy' onerror='this.style.visibility=&quot;hidden&quot;'><span class='ln'>Palermo</span><span class='ll'>Serie B</span><span class='lp'><span>1st</span><span><b>16</b> pts from 6</span></span></a></div>
+      <div class="rail-hint">Scroll sideways for all 14 divisions.</div>
     </div>
   </section>
 
-  <section aria-label="Why sport">
-    <div class="section-eyebrow">Why sport</div>
-    <h2>The proving ground, not the destination</h2>
-    <div class="long-game">
-      Sport is the harshest scoring environment we could find. Every forecast gets a price
-      attached, a closing line to measure against, and a result inside ninety minutes.
-      Nothing else marks your homework that fast.
-      <br /><br />
-      So we bet. Not because tipping is the business, but because a bet is a forecast with
-      money and a timestamp on it, and closing-line value is the only honest scoreboard here.
-      <br /><br />
-      Where this goes is quantitative analytics in sport, and the same scoring discipline
-      applied to decisions well outside it. This is a <strong>working track record</strong>,
-      not a finished one. 148 bets is suggestive; 500+ is what significance looks like.
-      We publish as we go so you can audit the build in real time.
+  <section class="blk" aria-labelledby="h-who">
+    <div class="wrap">
+      <div class="kicker rv">Built for everyone</div>
+      <h2 id="h-who" class="rv">Who it's for</h2>
+      <div class="tabs rv" role="tablist" aria-label="Who it's for">
+        <button role="tab" id="t-fans" aria-controls="p-fans" aria-selected="true">Fans</button>
+        <button role="tab" id="t-players" aria-controls="p-players" aria-selected="false" tabindex="-1">Players</button>
+        <button role="tab" id="t-scouts" aria-controls="p-scouts" aria-selected="false" tabindex="-1">Scouts and clubs</button>
+        <button role="tab" id="t-investors" aria-controls="p-investors" aria-selected="false" tabindex="-1">Investors</button>
+      </div>
+      <div class="aud rv" role="tabpanel" id="p-fans" aria-labelledby="t-fans" tabindex="0">
+        <div><h3>Like a game you know, with real numbers</h3></div>
+        <div style="display:grid;gap:16px">
+          <p>Every outfield player with 900+ league minutes last season, rated 1 to 20 against his own position in his own division. Tap any rating for the real number behind it.</p>
+          <ul><li>3,970 players and 264 clubs</li><li>The next game for everyone. Injury and suspension news in the 7 divisions our feed covers</li><li>Club formations on a pitch you can swipe</li></ul>
+          <div class="btns"><a class="btn btn-p" href="/analysis/player-cards/">Open player cards</a><a class="btn btn-s" href="/analysis/team-cards/">Team cards</a></div>
+        </div>
+      </div>
+      <div class="aud" role="tabpanel" id="p-players" aria-labelledby="t-players" tabindex="0">
+        <div><h3>Which of your numbers will last?</h3></div>
+        <div style="display:grid;gap:16px">
+          <p>Some stats carry from one season to the next. Some are mostly luck. We measured which, so you know what to work on and what to ignore.</p>
+          <ul><li>Volume and behaviour carry over</li><li>Shot conversion barely does</li><li>See where you rank in your position, if you played 900+ league minutes in one of our 14 divisions</li></ul>
+          <div class="btns"><a class="btn btn-p" href="/analysis/which-football-stats-persist/">Which stats last</a><a class="btn btn-s" href="/analysis/how-much-finishing-is-real/">How much finishing is real</a></div>
+        </div>
+      </div>
+      <div class="aud" role="tabpanel" id="p-scouts" aria-labelledby="t-scouts" tabindex="0">
+        <div><h3>What type of player to look at</h3></div>
+        <div style="display:grid;gap:16px">
+          <p>Sort every player by any rating, within his position and division. Then check what a big season is actually worth before you pay for it.</p>
+          <ul><li>Filter by division and position, sort by any rating</li><li>What a league move does to a player's shots</li><li>Honest tests of our own picks, including the ones that failed</li></ul>
+          <div class="btns"><a class="btn btn-p" href="/analysis/player-cards/">Find players</a><a class="btn btn-s" href="/analysis/what-a-league-move-does-to-shots/">League moves</a></div>
+        </div>
+      </div>
+      <div class="aud" role="tabpanel" id="p-investors" aria-labelledby="t-investors" tabindex="0">
+        <div><h3>Risk you can see</h3></div>
+        <div style="display:grid;gap:16px">
+          <p>Injury risk on player cards where we have the history, from a model tested on a season it never saw.</p>
+          <ul><li>Last season's injuries predict next season's</li><li>Age barely does, and neither does workload</li></ul>
+          <div class="btns"><a class="btn btn-p" href="/analysis/what-predicts-football-injuries/">What predicts injuries</a><a class="btn btn-s" href="/analysis/player-cards/">See injury risk</a></div>
+        </div>
+      </div>
     </div>
   </section>
 
-  <!-- FOOTER -->
-  <footer>
+  <section class="blk" aria-labelledby="h-scored">
+    <div class="wrap">
+      <div class="kicker rv">The crystal ball that keeps score</div>
+      <h2 id="h-scored" class="rv">We predict. Then we mark our own homework.</h2>
+      <p class="sub rv">An 80% range should catch the real outcome eight times in ten. Here is how ours did, scored only on what was known at the time of each forecast. And where we were wrong, we said so.</p>
+      <div class="scored">
+        <a class="score rv" href="/analysis/league-forecasts-scored/">
+          <div class="big" data-count="78">78%</div>
+          <div class="meter" aria-hidden="true"><i data-w="78" style="--mw:78%"></i><u style="left:80%"></u></div>
+          <div class="meter-k" aria-hidden="true"><span>Held</span><span>Target 80%</span></div>
+          <p>Our 80% range for a club's final Premier League position, built from betting prices ten games in, held 78% of the time over four past seasons (2022/23 to 2025/26).</p>
+          <span class="more">Where will they finish &rarr;</span>
+        </a>
+        <a class="score rv" href="/analysis/how-much-finishing-is-real/">
+          <div class="big" data-count="82">82%</div>
+          <div class="meter" aria-hidden="true"><i data-w="82" style="--mw:82%"></i><u style="left:80%"></u></div>
+          <div class="meter-k" aria-hidden="true"><span>Held</span><span>Target 80%</span></div>
+          <p>How much of a striker's finishing is real: between a fifth and a third, in all 14 leagues. Our 80% ranges held 82% of outcomes.</p>
+          <span class="more">Read it &rarr;</span>
+        </a>
+        <a class="score rv" href="/analysis/for-the-same-money/">
+          <div class="big wrong">We were wrong</div>
+          <p>Our transfer picks looked far better than the clubs' own. Then we let each player go to only one club, and the advantage did not hold. We published that too.</p>
+          <span class="more">For the same money &rarr;</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="blk" aria-labelledby="h-lab">
+    <div class="wrap">
+      <div class="kicker rv">Quant Lab</div>
+      <h2 id="h-lab" class="rv">Research, in plain English</h2>
+      <p class="sub rv">What the numbers say about football, tested before we publish it.</p>
+      <div class="rail arts rv" id="arts"><a class='art' href='/analysis/league-forecasts-scored/'><span class='at'>Where will they finish? We scored ourselves</span><span class='ad'>We built league forecasts from closing betting prices and scored them on four seasons, then forecast divisions up to three seasons ahead and scored those on twelve. The ranges hold. The weak spot is clubs we call fairly safe.</span><span class='ar'>Read &rarr;</span></a><a class='art' href='/analysis/what-predicts-football-injuries/'><span class='at'>What actually predicts a footballer&#x27;s injuries</span><span class='ad'>5,133 player-seasons in 7 leagues. Last season&#x27;s injuries predict next season&#x27;s. Age barely does, and neither does workload. Tested on a season the model never saw.</span><span class='ar'>Read &rarr;</span></a><a class='art' href='/analysis/how-much-finishing-is-real/'><span class='at'>How much of a striker&#x27;s finishing is real</span><span class='ad'>Between a fifth and a third, in all 14 leagues we measured. Our 80% ranges held 82% of outcomes. And 61 calls on this season, frozen before most of it is played.</span><span class='ar'>Read &rarr;</span></a><a class='art' href='/analysis/for-the-same-money/'><span class='at'>For the same money, would we have bought better?</span><span class='ad'>We rebuilt 120 clubs&#x27; summer 2024 windows with their own budgets. Our picks looked far better until each player could go to only one club. Then they weren&#x27;t.</span><span class='ar'>Read &rarr;</span></a><a class='art' href='/analysis/which-football-stats-persist/'><span class='at'>Which football stats actually mean anything</span><span class='ad'>We measured how much of the gap between players on each metric survives to the next season. Volume persists. Efficiency doesn&#x27;t. 657 Premier League season-pairs, method open.</span><span class='ar'>Read &rarr;</span></a><a class='art' href='/analysis/what-a-league-move-does-to-shots/'><span class='at'>What a league move does to a player&#x27;s shots</span><span class='ad'>1,262 moves across 14 divisions. Stepping up costs shots, moving between top leagues makes no clear difference. And where our ranges failed the test, we say so.</span><span class='ar'>Read &rarr;</span></a><a class='art' href='/analysis/what-23-assists-are-worth/'><span class='at'>What a season of 23 assists is actually worth</span><span class='ad'>Splitting one player&#x27;s season into the half that describes him and the half that describes his teammates. Christos Tzolis, live, with a closed case to check the method against.</span><span class='ar'>Read &rarr;</span></a><a class='art' href='/analysis/what-last-seasons-goals-tell-you/'><span class='at'>The half of a striker&#x27;s season worth paying for</span><span class='ad'>Finishing barely persists, so the obvious move is to stop looking at goals and look at shots instead. We tested that and it&#x27;s wrong. 147 Premier League attacker season-pairs.</span><span class='ar'>Read &rarr;</span></a></div>
+      <div class="btns" style="margin-top:14px"><a class="btn btn-s" href="/analysis/">All research</a></div>
+    </div>
+  </section>
+
+  <section class="blk" id="record" aria-labelledby="h-bet">
+    <div class="wrap">
+      <div class="kicker rv">The proving ground</div>
+      <h2 id="h-bet" class="rv">We also bet, in public</h2>
+      <div class="bet-intro">
+        <div class="long-game rv">
+          Sport is the harshest scoring environment we could find. Every forecast gets a price
+          attached, a closing line to measure against, and a result inside ninety minutes.
+          <br><br>
+          So we bet. Not because tipping is the business, but because a bet is a forecast with
+          money and a timestamp on it. This is a <strong>working track record</strong>, not a
+          finished one: 148 bets is suggestive, 500+ is what significance looks like.
+        </div>
+        <div class="rv">
+          <div class="stats-grid" style="margin-top:0">
+            <div class="stat"><div class="stat-num">148</div><div class="stat-label">audited bets</div></div>
+            <div class="stat"><div class="stat-num">51.0%</div><div class="stat-label">strike rate</div></div>
+            <div class="stat"><div class="stat-num">+10.1%</div><div class="stat-label">ROI on stakes</div></div>
+            <div class="stat"><div class="stat-num sm">12 March 2026</div><div class="stat-label">record starts</div></div>
+          </div>
+          <p class="stat-caption">Every bet logged. Every result settled. <strong>The numbers are not 96%. They are real.</strong></p>
+          <div class="btns"><a class="btn btn-p" href="./proof.html">See the track record</a><a class="btn btn-s" href="./ledger.html">Read the ledger</a></div>
+        </div>
+      </div>
+      <div class="two-col" style="margin-top:22px">
+        <details class="col col-do rv">
+          <summary>What we do</summary>
+          <ul>
+            <li>Publish single bets above gate, sized to edge</li>
+            <li>Document the reasoning per fire <em>and</em> per sit</li>
+            <li>Re-check at T-45 when lineups land</li>
+            <li>Settle and publish the result, win or lose</li>
+            <li>Publish closing-odds for every bet (CLV currently being re-verified)</li>
+          </ul>
+        </details>
+        <details class="col col-dont rv">
+          <summary>What we don&rsquo;t</summary>
+          <ul>
+            <li>Accumulator bait or &ldquo;banker of the day&rdquo;</li>
+            <li>96% accuracy claims</li>
+            <li>Celebrity endorsements (real or AI-faked)</li>
+            <li>&ldquo;The AI does the work&rdquo; mystique. A model produces numbers, a human decides</li>
+            <li>Tipping. We're not tipsters. We're a multi-predictive intelligence system reading predictive markets</li>
+          </ul>
+        </details>
+      </div>
+      <div class="btns"><a class="btn btn-s" href="https://twitter.com/quantedgesynd" target="_blank" rel="noopener">Follow on X &middot; @quantedgesynd</a></div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
     <div>
+      <a href="/analysis/player-cards/">Player cards</a>
+      <a href="/analysis/team-cards/">Team cards</a>
       <a href="/analysis/">Quant Lab</a>
       <a href="/metric-audit/">Metric audit</a>
       <a href="./blog/">Blog</a>
@@ -544,9 +448,130 @@
     <div class="foot-line">&copy; 2026 Quant Edge Syndicate &middot; <a href="#" data-cookie-settings>Cookie settings</a></div>
     <div class="foot-line" style="color:var(--muted);">Co-directors &middot; Simba &amp; Jed</div>
     <a class="contact" href="mailto:advanceddata7@gmail.com">advanceddata7@gmail.com</a>
-  </footer>
+    <div class="foot-line">Player photos and club badges belong to their owners and are shown to identify them.</div>
+  </div>
+</footer>
 
-</div>
+<script>const D = {"players":[{"n":"E. Haaland","id":1100,"r":"Striker","club":"Manchester City","tid":50,"l":"Premier League","at":[["Shooting",20],["Goal threat",20],["Duels",20],["Final ball",18],["Discipline",18],["Creativity",6]],"g":["Ipswich",1,"2026-10-17T14:00:00+00:00"],"x":null},{"n":"Lamine Yamal","id":386828,"r":"Right winger","club":"Barcelona","tid":529,"l":"La Liga","at":[["Shooting",20],["Goal threat",20],["Creativity",20],["Final ball",20],["Dribbling",20],["Wins fouls",18]],"g":["Real Betis",0,"2026-10-17T16:30:00+00:00"],"x":null},{"n":"B. Saka","id":1460,"r":"Right winger","club":"Arsenal","tid":42,"l":"Premier League","at":[["Creativity",20],["Duels",19],["Wins fouls",19],["Dribbling",18],["Final ball",17],["Involvement",17]],"g":["Nottingham Forest",0,"2026-10-18T15:30:00+00:00"],"x":null},{"n":"Pedri","id":133609,"r":"Central midfielder","club":"Barcelona","tid":529,"l":"La Liga","at":[["Creativity",20],["Final ball",20],["Involvement",20],["Discipline",20],["Dribbling",19],["Duels",19]],"g":["Real Betis",0,"2026-10-17T16:30:00+00:00"],"x":null},{"n":"Kylian Mbappé","id":278,"r":"Striker","club":"Real Madrid","tid":541,"l":"La Liga","at":[["Shooting",20],["Goal threat",20],["Creativity",20],["Dribbling",20],["Discipline",19],["Involvement",17]],"g":["Sevilla",1,"2026-10-18T19:00:00+00:00"],"x":null},{"n":"D. Rice","id":2937,"r":"Central midfielder","club":"Arsenal","tid":42,"l":"Premier League","at":[["Involvement",19],["Duels",19],["Creativity",18],["Discipline",18],["Final ball",14],["Interceptions",14]],"g":["Nottingham Forest",0,"2026-10-18T15:30:00+00:00"],"x":null},{"n":"J. Bellingham","id":129718,"r":"Midfielder","club":"Real Madrid","tid":541,"l":"La Liga","at":[["Dribbling",19],["Wins fouls",19],["Shooting",18],["Goal threat",18],["Tackles made",18],["Duels",18]],"g":["Sevilla",1,"2026-10-18T19:00:00+00:00"],"x":null},{"n":"V. van Dijk","id":290,"r":"Centre-back","club":"Liverpool","tid":40,"l":"Premier League","at":[["Involvement",20],["Duels",20],["Discipline",18],["Blocks",14],["Creativity",7],["Final ball",5]],"g":["Brentford",0,"2026-10-17T14:00:00+00:00"],"x":null}],"leaders":[{"id":50,"n":"Manchester City","l":"Premier League","pts":18,"p":6},{"id":529,"n":"Barcelona","l":"La Liga","pts":24,"p":8},{"id":505,"n":"Inter","l":"Serie A","pts":16,"p":6},{"id":160,"n":"SC Freiburg","l":"Bundesliga","pts":13,"p":5},{"id":91,"n":"Monaco","l":"Ligue 1","pts":14,"p":6},{"id":209,"n":"Feyenoord","l":"Eredivisie","pts":20,"p":8},{"id":212,"n":"FC Porto","l":"Primeira Liga","pts":24,"p":8},{"id":76,"n":"Swansea","l":"Championship","pts":20,"p":9},{"id":247,"n":"Celtic","l":"Scottish Premiership","pts":21,"p":8},{"id":631,"n":"Gent","l":"Jupiler Pro League","pts":22,"p":8},{"id":159,"n":"Hertha BSC","l":"2. Bundesliga","pts":21,"p":7},{"id":723,"n":"Almeria","l":"Segunda División","pts":21,"p":9},{"id":1063,"n":"Saint Etienne","l":"Ligue 2","pts":19,"p":8},{"id":522,"n":"Palermo","l":"Serie B","pts":16,"p":6}],"articles":[{"slug":"league-forecasts-scored","t":"Where will they finish? We scored ourselves","d":"We built league forecasts from closing betting prices and scored them on four seasons, then forecast divisions up to three seasons ahead and scored those on twelve. The ranges hold. The weak spot is clubs we call fairly safe."},{"slug":"what-predicts-football-injuries","t":"What actually predicts a footballer's injuries","d":"5,133 player-seasons in 7 leagues. Last season's injuries predict next season's. Age barely does, and neither does workload. Tested on a season the model never saw."},{"slug":"how-much-finishing-is-real","t":"How much of a striker's finishing is real","d":"Between a fifth and a third, in all 14 leagues we measured. Our 80% ranges held 82% of outcomes. And 61 calls on this season, frozen before most of it is played."},{"slug":"for-the-same-money","t":"For the same money, would we have bought better?","d":"We rebuilt 120 clubs' summer 2024 windows with their own budgets. Our picks looked far better until each player could go to only one club. Then they weren't."},{"slug":"which-football-stats-persist","t":"Which football stats actually mean anything","d":"We measured how much of the gap between players on each metric survives to the next season. Volume persists. Efficiency doesn't. 657 Premier League season-pairs, method open."},{"slug":"what-a-league-move-does-to-shots","t":"What a league move does to a player's shots","d":"1,262 moves across 14 divisions. Stepping up costs shots, moving between top leagues makes no clear difference. And where our ranges failed the test, we say so."},{"slug":"what-23-assists-are-worth","t":"What a season of 23 assists is actually worth","d":"Splitting one player's season into the half that describes him and the half that describes his teammates. Christos Tzolis, live, with a closed case to check the method against."},{"slug":"what-last-seasons-goals-tell-you","t":"The half of a striker's season worth paying for","d":"Finishing barely persists, so the obvious move is to stop looking at goals and look at shots instead. We tested that and it's wrong. 147 Premier League attacker season-pairs."}],"updated":"12 October 2026"};</script>
+<script>
+(function () {
+  document.documentElement.classList.add("js");
+  var reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var KIND = { out: ["Injured", "warn-out"], doubtful: ["Doubtful", "warn-doubt"], suspended: ["Suspended", "warn-susp"], unwell: ["Unavailable", "warn-out"] };
+  function esc(x) { return String(x).replace(/[&<>"']/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]; }); }
+  function band(r) { return r >= 16 ? "b4" : r >= 11 ? "b3" : r >= 6 ? "b2" : "b1"; }
+  function day(iso) { return new Date(iso).toLocaleDateString("en-GB", { weekday: "short", day: "numeric", month: "short", timeZone: "Europe/London" }); }
+  function initials(n) { return n.replace(/\./g, "").split(" ").filter(Boolean).map(function (w) { return w[0]; }).slice(-2).join("").toUpperCase(); }
+  function crest(id, s) { return "<img src='https://media.api-sports.io/football/teams/" + id + ".png' alt='' width='" + s + "' height='" + s + "' loading='lazy' onerror='this.style.visibility=&quot;hidden&quot;'>"; }
 
+  /* ---------- hero card deck ---------- */
+  var P = D.players, deck = document.getElementById("deck"), live = document.getElementById("deck-live"), dots = document.getElementById("dots");
+  var cur = 0, timer = null, paused = false;
+  function cardHTML(p) {
+    return "<a class='pcard' href='/analysis/player-cards/?id=" + p.id + "' aria-label='" + esc(p.n) + ", " + esc(p.r) + ", " + esc(p.club) + ". Open his player card'>" +
+      "<div class='pc-top'><span class='face' aria-hidden='true'><span class='fi'>" + esc(initials(p.n)) + "</span>" +
+      "<img src='https://media.api-sports.io/football/players/" + p.id + ".png' alt='' width='92' height='92' onerror='this.remove()'></span>" +
+      "<div><div class='pc-name'>" + esc(p.n) + "</div><div class='pc-role'>" + esc(p.r) + " &middot; " + (p.tid ? crest(p.tid, 20) : "") + esc(p.club) + "</div>" +
+      (p.x ? "<div style='margin-top:6px'><span class='warn " + KIND[p.x][1] + "'><i aria-hidden='true'>!</i>" + KIND[p.x][0] + "</span></div>" : "") + "</div></div>" +
+      "<ul class='pc-attrs'>" + p.at.map(function (a) {
+        return "<li><span>" + esc(a[0]) + "</span><b class='" + band(a[1]) + "'>" + a[1] + "</b><span class='bar6'><i class='" + band(a[1]) + "' data-w='" + (a[1] * 5) + "'></i></span></li>";
+      }).join("") + "</ul>" +
+      "<div class='pc-foot'><span>" + (p.g ? "Next: " + (p.g[1] ? "v " : "at ") + esc(p.g[0]) + ", " + day(p.g[2]) : "Rated on 2025/26, " + esc(p.l)) + "</span><span class='go'>Full card &rarr;</span></div></a>";
+  }
+  function fill(root) { requestAnimationFrame(function () { root.querySelectorAll("[data-w]").forEach(function (i) { i.style.width = i.dataset.w + "%"; }); }); }
+  function go(k, dir) {
+    cur = (k + P.length) % P.length;
+    var old = deck.querySelector(".pcard");
+    var wrap = document.createElement("div");
+    wrap.innerHTML = cardHTML(P[cur]);
+    var c = wrap.firstChild;
+    if (!reduce && old && dir) { c.classList.add("swap"); c.style.setProperty("--dx", (dir < 0 ? -24 : 24) + "px"); }
+    if (old) old.replaceWith(c); else deck.insertBefore(c, live);
+    tilt(c);
+    fill(c);
+    live.textContent = "Player " + (cur + 1) + " of " + P.length + ": " + P[cur].n;
+    dots.querySelectorAll("button").forEach(function (b, j) { b.setAttribute("aria-current", j === cur); });
+  }
+  function tilt(c) {
+    if (reduce || !matchMedia("(pointer: fine)").matches) return;
+    c.addEventListener("pointermove", function (e) {
+      var r = c.getBoundingClientRect(), x = (e.clientX - r.left) / r.width - .5, y = (e.clientY - r.top) / r.height - .5;
+      c.style.transform = "rotateY(" + (x * 8).toFixed(2) + "deg) rotateX(" + (-y * 8).toFixed(2) + "deg)";
+    });
+    c.addEventListener("pointerleave", function () { c.style.transform = ""; });
+  }
+  if (P.length) {
+    dots.innerHTML = P.map(function (p, j) { return "<button type='button' aria-label='Show " + esc(p.n) + "' data-k='" + j + "'></button>"; }).join("");
+    go(0, 0);
+    deck.addEventListener("click", function (e) {
+      var b = e.target.closest("[data-step]"); if (b) { go(cur + +b.dataset.step, +b.dataset.step); stop(); return; }
+      b = e.target.closest("[data-k]"); if (b) { go(+b.dataset.k, +b.dataset.k > cur ? 1 : -1); stop(); }
+    });
+    var sx = null, sy = null;
+    deck.addEventListener("touchstart", function (e) { sx = e.touches[0].clientX; sy = e.touches[0].clientY; }, { passive: true });
+    deck.addEventListener("touchend", function (e) {
+      if (sx === null) return;
+      var dx = e.changedTouches[0].clientX - sx, dy = e.changedTouches[0].clientY - sy; sx = null;
+      if (Math.abs(dx) > 45 && Math.abs(dx) > Math.abs(dy) * 1.5) { go(cur + (dx < 0 ? 1 : -1), dx < 0 ? 1 : -1); stop(); }
+    });
+    // after a swipe, the tap that ends it must not open the card
+    deck.addEventListener("click", function (e) { if (e.target.closest(".pcard") && deck.dataset.swiped) { e.preventDefault(); delete deck.dataset.swiped; } }, true);
+    deck.addEventListener("touchmove", function (e) { if (sx !== null && Math.abs(e.touches[0].clientX - sx) > 10) deck.dataset.swiped = 1; }, { passive: true });
+    function start() { if (reduce || timer || paused) return; timer = setInterval(function () { go(cur + 1, 1); }, 6000); }
+    var pz = document.getElementById("pause");
+    function stop() { clearInterval(timer); timer = null; paused = true; live.setAttribute("aria-live", "polite"); pz.innerHTML = "&#9654;"; pz.setAttribute("aria-label", "Play the cards"); }
+    pz.addEventListener("click", function (e) {
+      e.stopPropagation();
+      if (paused) { paused = false; live.setAttribute("aria-live", "off"); pz.innerHTML = "&#10073;&#10073;"; pz.setAttribute("aria-label", "Pause the cards"); start(); }
+      else stop();
+    });
+    if (reduce) { paused = true; pz.hidden = true; }
+    deck.addEventListener("mouseenter", function () { clearInterval(timer); timer = null; });
+    deck.addEventListener("mouseleave", start);
+    deck.addEventListener("focusin", function () { clearInterval(timer); timer = null; });
+    if ("IntersectionObserver" in window) new IntersectionObserver(function (es) {
+      es.forEach(function (e) { if (e.isIntersecting) start(); else { clearInterval(timer); timer = null; } });
+    }).observe(deck);
+  }
+
+  /* ---------- leaders and research rails ---------- */
+
+  /* ---------- audience tabs ---------- */
+  var tabs = Array.prototype.slice.call(document.querySelectorAll(".tabs [role=tab]"));
+  tabs.forEach(function (x, j) { if (j) document.getElementById(x.getAttribute("aria-controls")).hidden = true; });
+  function sel(t) {
+    tabs.forEach(function (x) { var on = x === t; x.setAttribute("aria-selected", on); x.tabIndex = on ? 0 : -1;
+      var p = document.getElementById(x.getAttribute("aria-controls")); p.hidden = !on; if (on) p.classList.add("in"); });
+    t.focus();
+  }
+  tabs.forEach(function (t, j) {
+    t.addEventListener("click", function () { sel(t); });
+    t.addEventListener("keydown", function (e) {
+      if (e.key === "ArrowRight" || e.key === "ArrowLeft") { sel(tabs[(j + (e.key === "ArrowRight" ? 1 : -1) + tabs.length) % tabs.length]); e.preventDefault(); }
+      else if (e.key === "Home") { sel(tabs[0]); e.preventDefault(); }
+      else if (e.key === "End") { sel(tabs[tabs.length - 1]); e.preventDefault(); }
+    });
+  });
+
+  /* ---------- reveal, meters and count-ups on scroll ---------- */
+  function count(el) {
+    var to = +el.dataset.count, t0 = null;
+    if (reduce) return;
+    function step(t) { t0 = t0 || t; var k = Math.min(1, (t - t0) / 900); el.textContent = Math.round(to * (1 - Math.pow(1 - k, 3))) + "%"; if (k < 1) requestAnimationFrame(step); }
+    requestAnimationFrame(step);
+  }
+  var els = document.querySelectorAll(".rv");
+  if (!("IntersectionObserver" in window)) { els.forEach(function (e) { e.classList.add("in"); }); fill(document); return; }
+  var io = new IntersectionObserver(function (es) {
+    es.forEach(function (e) {
+      if (!e.isIntersecting) return;
+      var el = e.target; el.classList.add("in"); io.unobserve(el);
+      el.querySelectorAll(".meter [data-w]").forEach(function (i) { i.style.width = i.dataset.w + "%"; });
+      el.querySelectorAll("[data-count]").forEach(count);
+    });
+  }, { rootMargin: "0px 0px -8% 0px", threshold: 0.08 });
+  els.forEach(function (e) { io.observe(e); });
+})();
+</script>
 </body>
 </html>

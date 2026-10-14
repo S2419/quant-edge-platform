@@ -268,6 +268,18 @@
     .pc-results button { padding: 11px 12px; }
   }
   @media (prefers-reduced-motion: reduce) { .card .tt { transition: none; } }
+  .face { position: relative; flex: none; display: inline-grid; place-items: center; border-radius: 50%; overflow: hidden;
+    background: var(--bg3); border: 2px solid var(--border-hi); }
+  .face .fi { font: 700 15px "Barlow Condensed", sans-serif; color: var(--muted); letter-spacing: .04em; }
+  .face img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; background: var(--bg3); }
+  .card .head .face { border-color: var(--accent); }
+  .card .head .hd-main { flex: 1; min-width: 0; }
+  .pc-results button.has-face { grid-template-columns: 36px 1fr auto; column-gap: 10px; align-items: center; }
+  .pc-results button.has-face .face { grid-row: span 2; }
+  .pc-results button.has-face .rn { grid-column: 2; }
+  .pc-results button.has-face .rm { grid-column: 2; }
+  .pc-results button.has-face .rv { grid-column: 3; grid-row: 1 / span 2; }
+  @media (max-width: 380px) { .card .head .face { width: 56px !important; height: 56px !important; } }
 </style>
 
 <style>
@@ -513,10 +525,10 @@
 
     <h2>Data sources</h2>
     <ul>
+      <li>Player photos and club badges belong to their owners and are shown to identify them.</li>
       <li><a href="https://www.api-football.com/">API-Football</a>: match
         statistics, scores, the official table, fixtures and injury news.</li>
       <li>Ratings, carry-over tests and formation records: our own, from that data.</li>
-      <li>Club badges are the clubs' own marks, shown to identify them.</li>
     </ul>
   </article>
 

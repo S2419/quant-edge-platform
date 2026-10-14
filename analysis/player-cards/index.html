@@ -268,6 +268,18 @@
     .pc-results button { padding: 11px 12px; }
   }
   @media (prefers-reduced-motion: reduce) { .card .tt { transition: none; } }
+  .face { position: relative; flex: none; display: inline-grid; place-items: center; border-radius: 50%; overflow: hidden;
+    background: var(--bg3); border: 2px solid var(--border-hi); }
+  .face .fi { font: 700 15px "Barlow Condensed", sans-serif; color: var(--muted); letter-spacing: .04em; }
+  .face img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; background: var(--bg3); }
+  .card .head .face { border-color: var(--accent); }
+  .card .head .hd-main { flex: 1; min-width: 0; }
+  .pc-results button.has-face { grid-template-columns: 36px 1fr auto; column-gap: 10px; align-items: center; }
+  .pc-results button.has-face .face { grid-row: span 2; }
+  .pc-results button.has-face .rn { grid-column: 2; }
+  .pc-results button.has-face .rm { grid-column: 2; }
+  .pc-results button.has-face .rv { grid-column: 3; grid-row: 1 / span 2; }
+  @media (max-width: 380px) { .card .head .face { width: 56px !important; height: 56px !important; } }
 </style>
 
 </head>
@@ -365,6 +377,7 @@
 
     <h2>Data sources</h2>
     <ul>
+      <li>Player photos and club badges belong to their owners and are shown to identify them.</li>
       <li><a href="https://www.api-football.com/">API-Football</a>: league
         season statistics, line-ups, injuries. This season's stats from our pull on 12 October 2026, refreshed every two days; the feed can run a game behind.</li>
       <li>Ratings, carry-over tests and injury risk: our own, from that data.</li>
@@ -416,6 +429,12 @@
   function stats(p) { var s = {}; S.forEach(function (k, i) { s[k] = p.s[i]; }); return s; }
   function plural(x) { return x === "Attacker" ? "attackers" : x === "Midfielder" ? "midfielders" : "defenders"; }
 
+  function initials(n) { return n.replace(/\./g, "").split(" ").filter(Boolean).map(function (w) { return w[0]; }).slice(-2).join("").toUpperCase(); }
+  function face(p, size) {
+    return "<span class='face' style='width:" + size + "px;height:" + size + "px' aria-hidden='true'><span class='fi'>" + esc(initials(p.n)) + "</span>" +
+      "<img src='https://media.api-sports.io/football/players/" + p.id + ".png' alt='' width='" + size + "' height='" + size + "' loading='lazy' onerror='this.remove()'></span>";
+  }
+
   function card(i) {
     var p = P[i], s = stats(p), rows = "";
     p.at.forEach(function (a) {
@@ -443,7 +462,7 @@
       : "<div class='ball soon'><div class='bl'>Injury risk</div><div class='bv'>Not available</div><div class='bs'>" +
         (["Premier League", "Championship", "La Liga", "Serie A", "Bundesliga", "Ligue 1", "Eredivisie"].indexOf(p.l) >= 0
           ? "Not enough history on this player." : "Not covered for this league.") + "</div></div>";
-    return "<article class='card'><header class='head' tabindex='0' aria-describedby='tth" + i + "'><div><div class='nm'>" + esc(p.n) + "</div>" +
+    return "<article class='card'><header class='head' tabindex='0' aria-describedby='tth" + i + "'>" + face(p, 72) + "<div class='hd-main'><div class='nm'>" + esc(p.n) + "</div>" +
       "<div class='meta'>" + esc(p.r) + " &middot; " + (p.c ? esc(p.c[0]) : (p.x ? esc(p.t) : "Club this season: not in our league data")) + (p.a ? " &middot; age " + p.a : "") + "</div>" +
       "<div class='meta dim'>Rated on " + D.season + " at " + esc(p.t) + " (" + esc(p.l) + "): " + s.apps + " games, " + s.minutes.toLocaleString("en-GB") + " minutes</div>" +
       (p.g ? "<div class='meta'>Next: " + esc(p.g[0]) + (p.g[1] ? " (home)" : " (away)") + ", " + day(p.g[2]) + "</div>" : "") +
@@ -470,23 +489,29 @@
 
   function list() {
     var t = norm(q.value.trim()), L = lg.value, X = pos.value, k = sort.value === "" ? -1 : +sort.value, hits = [];
+    var words = t.split(/\s+/).filter(Boolean);
+    if (words.length > 1 && !P.some(function (p, i) { return words.every(function (w) { return idx[i].indexOf(w) >= 0; }); })) words = words.slice(-1);
     for (var i = 0; i < P.length; i++) {
       var p = P[i];
       if (L && p.l !== L) continue;
       if (X && p.p !== X) continue;
-      if (t && idx[i].indexOf(t) < 0) continue;
+      if (t && !words.every(function (w) { return idx[i].indexOf(w) >= 0; })) continue;
       var v = null;
       if (k >= 0) { p.at.forEach(function (a) { if (a[0] === k) v = a; }); if (!v) continue; }
       hits.push([i, v]);
     }
     if (k >= 0) hits.sort(function (a, b) { return b[1][2] - a[1][2] || P[a[0]].n.localeCompare(P[b[0]].n); });
-    else hits.sort(function (a, b) { return P[a[0]].n.localeCompare(P[b[0]].n); });
+    else {
+      // a name that contains the searched word whole ("saka") ranks above one that only contains it ("wan-bissaka")
+      var whole = function (i) { var toks = norm(P[i].n).split(/[\s.\-']+/); return words.some(function (w) { return toks.indexOf(w) >= 0; }) ? 0 : 1; };
+      hits.sort(function (a, b) { return whole(a[0]) - whole(b[0]) || P[a[0]].n.localeCompare(P[b[0]].n); });
+    }
     var cap = (t || L || X || k >= 0) ? 30 : 6;
     cnt.textContent = hits.length.toLocaleString("en-GB") + " players" +
       (hits.length > cap ? ", showing the first " + cap + (cap === 6 ? ". Search or filter to find anyone." : "") : "");
     res.innerHTML = hits.slice(0, cap).map(function (h) {
       var p = P[h[0]];
-      return "<li><button type='button' data-i='" + h[0] + "'><span class='rn'>" + esc(p.n) + "</span>" +
+      return "<li><button type='button' class='has-face' data-i='" + h[0] + "'>" + face(p, 36) + "<span class='rn'>" + esc(p.n) + "</span>" +
         (h[1] ? "<span class='rv " + band(h[1][1]) + "'>" + h[1][1] + "</span>" : "<span></span>") +
         "<span class='rm'>" + badge(p) + esc(p.r) + ", " + esc(p.t) + "</span></button></li>";
     }).join("");
@@ -505,8 +530,9 @@
     for (var i = 0; i < P.length; i++) if (P[i].n === n) { shown.unshift(i); break; }
   });
   shown = shown.slice(0, 3);
-  var want = null, wid = null;
-  try { var u = new URLSearchParams(location.search); want = u.get("p"); wid = u.get("id"); } catch (e) {}
+  var want = null, wid = null, wq = null;
+  try { var u = new URLSearchParams(location.search); want = u.get("p"); wid = u.get("id"); wq = u.get("q"); } catch (e) {}
+  if (wq && !want && !wid) q.value = wq.slice(0, 60);
   if (want || wid) {
     var hit = -1;
     for (var w = 0; w < P.length; w++) {
