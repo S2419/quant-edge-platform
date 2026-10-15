@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google Analytics, only after consent: see /consent.js -->
+<script src="/consent.js" defer></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="alternate icon" href="/favicon.png">
+<title>Arsenal's left wing: what's missing, and three January targets | Quant Edge Syndicate</title>
+<meta name="description" content="Arsenal&#x27;s left matched the top six last season. Both men who played there have gone and Tzolis is injured. Three of 119 left wingers pass our filters and project to replace what left. One costs less than Tzolis did.">
+<link rel="canonical" href="https://quantedgesyndicate.com/analysis/arsenal-left-wing/">
+<meta name="robots" content="index,follow">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Arsenal's left wing: what's missing, and three January targets">
+<meta property="og:description" content="Arsenal&#x27;s left matched the top six last season. Both men who played there have gone and Tzolis is injured. Three of 119 left wingers pass our filters and project to replace what left. One costs less than Tzolis did.">
+<meta property="og:url" content="https://quantedgesyndicate.com/analysis/arsenal-left-wing/">
+<meta property="og:image" content="https://quantedgesyndicate.com/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Arsenal's left wing: what's missing, and three January targets">
+<meta name="twitter:description" content="Arsenal&#x27;s left matched the top six last season. Both men who played there have gone and Tzolis is injured. Three of 119 left wingers pass our filters and project to replace what left. One costs less than Tzolis did.">
+<meta name="twitter:image" content="https://quantedgesyndicate.com/og.png">
+<style>
+  :root {
+    --bg: #000000;
+    --bg2: #0c0c0c;
+    --bg3: #141414;
+    --fg: #ffffff;
+    --muted: #9a9a9a;
+    --dim: #6b6b6b;
+    --accent: #a6f000;
+    --accent-dim: #5a8400;
+    --border: #1f1f1f;
+    --border-hi: #2c2c2c;
+    --danger: #ff5252;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background: var(--bg);
+    color: var(--fg);
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  .wrap { max-width: 720px; margin: 0 auto; padding: 24px 20px 56px; }
+
+  .topbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 6px 0 22px;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 8px;
+  }
+  .topbar img { height: 30px; width: auto; display: block; }
+  .topbar nav a { color: var(--muted); font-size: 14px; margin-left: 18px; }
+  .topbar nav a:hover { color: var(--accent); text-decoration: none; }
+
+  .crumb { font-size: 12px; color: var(--dim); margin: 20px 0 10px; letter-spacing: 0.02em; }
+  .crumb a { color: var(--muted); }
+  .crumb span { color: var(--dim); }
+
+  .eyebrow {
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--accent);
+    font-weight: 600;
+    margin-bottom: 12px;
+  }
+  h1 {
+    font-size: 30px;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    margin: 0 0 16px;
+    font-weight: 800;
+  }
+  .byline {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px 14px;
+    align-items: center;
+    color: var(--muted);
+    font-size: 14px;
+    padding-bottom: 22px;
+    margin-bottom: 8px;
+    border-bottom: 1px solid var(--border);
+  }
+  .byline .author { color: var(--fg); font-weight: 600; }
+  .byline .dot { color: var(--dim); }
+
+  article p { font-size: 17px; color: #e9e9e9; margin: 0 0 20px; }
+  article h2 {
+    font-size: 21px;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    margin: 40px 0 16px;
+    padding-top: 8px;
+  }
+
+  .lineups { display: grid; grid-template-columns: 1fr; gap: 14px; margin: 8px 0 8px; }
+  .lineup {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 18px 18px;
+  }
+  .lineup .team { font-weight: 700; font-size: 16px; margin-bottom: 4px; }
+  .lineup .form { color: var(--accent); font-size: 13px; font-weight: 600; margin-bottom: 12px; letter-spacing: 0.04em; }
+  .lineup .players { font-size: 15px; color: #e9e9e9; line-height: 1.7; }
+
+  .pred {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--accent);
+    border-radius: 10px;
+    padding: 6px 20px 8px;
+    margin: 8px 0;
+  }
+  .pred p { font-size: 16px; }
+  .pred p:last-child { margin-bottom: 20px; }
+
+  .cta-card {
+    background: var(--bg2);
+    border: 1px solid var(--border-hi);
+    border-radius: 12px;
+    padding: 24px 22px;
+    margin: 44px 0 8px;
+    text-align: center;
+  }
+  .cta-card h3 { margin: 0 0 8px; font-size: 18px; }
+  .cta-card p { color: var(--muted); font-size: 15px; margin: 0 0 18px; }
+  .cta-btn {
+    display: inline-block;
+    padding: 12px 22px;
+    font-size: 15px;
+    font-weight: 600;
+    border-radius: 8px;
+    background: var(--accent);
+    color: #0a0a0a;
+    border: 1px solid var(--accent);
+  }
+  .cta-btn:hover { background: #b8ff1f; text-decoration: none; }
+  .cta-note { display: block; margin-top: 14px; font-size: 12px; color: var(--dim); }
+
+  footer {
+    border-top: 1px solid var(--border);
+    margin-top: 48px;
+    padding: 26px 0 12px;
+    text-align: center;
+    color: var(--dim);
+    font-size: 13px;
+  }
+  footer a { color: var(--muted); margin: 0 10px; }
+  footer a:hover { color: var(--accent); text-decoration: none; }
+  .foot-line { margin-top: 14px; }
+
+  @media (min-width: 720px) {
+    .wrap { padding: 32px 28px 72px; }
+    h1 { font-size: 38px; }
+    .lineups { grid-template-columns: 1fr 1fr; }
+  }
+</style>
+
+<style>
+  figure { margin: 28px 0; }
+  figure img { width: 100%; height: auto; border: 1px solid var(--border); border-radius: 6px; display: block; }
+  figcaption { color: var(--muted); font-size: 0.86rem; margin-top: 8px; }
+  table.data { width: 100%; border-collapse: collapse; margin: 22px 0; font-size: 0.92rem; }
+  table.data th { text-align: left; color: var(--muted); font-weight: 600; border-bottom: 1px solid var(--border-hi); padding: 6px 8px; }
+  table.data td { padding: 5px 8px; border-bottom: 1px solid var(--border); }
+  table.data td.num { text-align: right; font-variant-numeric: tabular-nums; }
+  tr.hi td { color: var(--accent); }
+  tr.lo td { color: #ff6b6b; }
+  .callout { border-left: 3px solid var(--accent); background: var(--bg2); padding: 14px 16px; margin: 24px 0; }
+  .callout p { margin: 0 0 10px; }
+  .callout p:last-child { margin-bottom: 0; }
+  p.note { border-left: 2px solid var(--border-hi); padding: 2px 0 2px 14px; margin: 22px 0; color: var(--muted); font-size: 0.93rem; }
+  article ol, article ul { margin: 16px 0; padding-left: 22px; }
+  article ol li, article ul li { margin: 7px 0; padding-left: 4px; }
+  article ol li::marker { color: var(--accent); font-weight: 700; }
+  .postlist a.post { display: block; border: 1px solid var(--border); border-radius: 6px; padding: 16px 18px; margin: 14px 0; text-decoration: none; }
+  .postlist a.post:hover { border-color: var(--border-hi); text-decoration: none; }
+  .postlist h2 { margin: 0 0 6px; font-size: 1.12rem; color: var(--fg); }
+  .postlist p { margin: 0; color: var(--muted); font-size: 0.92rem; }
+</style>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&display=swap" rel="stylesheet">
+<style>
+  .lede { font-size: 1.15rem; color: var(--fg); }
+  .scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  .scroll table.data { min-width: 560px; }
+  ul.ans { list-style: none; padding: 0; margin: 6px 0 0; }
+  ul.ans li { margin: 8px 0; padding-left: 0; }
+  ul.ans b { color: var(--accent); }
+
+  .tp { border: 1px solid var(--border); border-radius: 3px; background: var(--bg2); margin: 22px 0; overflow: hidden; }
+  .tp-fit { border-color: var(--accent-dim); }
+  .tp-head { display: flex; gap: 16px; align-items: center; padding: 18px; border-bottom: 1px solid var(--border);
+    background: radial-gradient(360px 160px at 0% 0%, rgba(166,240,0,.12), transparent 70%); }
+  .tp-face { flex: none; width: 84px; height: 84px; border-radius: 50%; overflow: hidden; background: var(--bg3); border: 3px solid var(--accent); }
+  .tp-no .tp-face { border-color: #9a9a9a; }
+  .tp-stretch .tp-face { border-color: #e8a23a; }
+  .tp-face img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .tp-id { min-width: 0; }
+  .tp-tier { font: 700 12px system-ui, sans-serif; letter-spacing: .14em; text-transform: uppercase; color: var(--accent); }
+  .tp-stretch .tp-tier { color: #e8a23a; } .tp-no .tp-tier { color: #9a9a9a; }
+  .tp h3 { margin: 4px 0 4px; font: 700 2rem/1 "Barlow Condensed", "Arial Narrow", sans-serif; text-transform: uppercase; }
+  .tp-meta { color: var(--muted); font-size: .9rem; }
+  .tp-grid { display: grid; gap: 18px; padding: 18px; }
+  .tp h4 { margin: 0 0 10px; font: 700 .95rem "Barlow Condensed", sans-serif; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
+  .tp ul { margin: 0 0 14px; padding-left: 18px; }
+  .tp ul li { margin: 6px 0; }
+  .tp ul.neg li::marker { color: #ff6b62; }
+  .tp dl { display: grid; grid-template-columns: max-content 1fr; gap: 6px 14px; margin: 6px 0 10px; font-size: .92rem; }
+  .tp dt { color: var(--muted); }
+  .tp dd { margin: 0; }
+  .tp .src { font-size: .82rem; color: var(--muted); margin: 6px 0; }
+  .tp-card { display: inline-block; margin-top: 4px; font-weight: 700; }
+
+  .pnote { margin: -4px 0 12px; font-size: .8rem; color: var(--dim); }
+  .pb { margin: 0 0 12px; }
+  .pb-l { display: flex; justify-content: space-between; font-size: .9rem; }
+  .pb-l b { font: 700 1.25rem "Barlow Condensed", sans-serif; color: var(--accent); }
+  .pb-t { position: relative; height: 14px; background: var(--bg3); border-radius: 2px; margin: 3px 0 2px; }
+  .pb-t i { position: absolute; top: 0; bottom: 0; }
+  .pb-r { background: rgba(166,240,0,.28); border-radius: 2px; }
+  .pb-v { width: 4px; margin-left: -2px; background: var(--accent); }
+  .pb-ref { width: 2px; margin-left: -1px; top: -4px !important; bottom: -4px !important; background: #fff; }
+  .pb-k { font-size: .75rem; color: var(--dim); }
+  .pb-key { display: flex; flex-wrap: wrap; gap: 6px 14px; font-size: .78rem; color: var(--muted); margin-top: 6px; }
+  .pb-key i { display: inline-block; vertical-align: middle; margin-right: 4px; }
+  .pb-key .kv { width: 4px; height: 12px; background: var(--accent); }
+  .pb-key .kr { width: 18px; height: 10px; background: rgba(166,240,0,.28); }
+  .pb-key .kref { width: 2px; height: 14px; background: #fff; }
+
+  @media (min-width: 720px) { .tp-grid { grid-template-columns: 1.1fr 1fr; gap: 26px; } }
+  @media (max-width: 380px) { .tp-face { width: 64px; height: 64px; } .tp h3 { font-size: 1.6rem; } .tp dl { grid-template-columns: 1fr; } }
+</style>
+
+</head>
+<body>
+<div class="wrap">
+
+  <div class="topbar">
+    <a href="/"><img src="/qes_logo.png" alt="Quant Edge Syndicate"></a>
+    <nav>
+      <a href="/analysis/">Quant Lab</a>
+      <a href="/blog/">Blog</a>
+      <a href="/proof.html">Track record</a>
+    </nav>
+  </div>
+
+    <div class="crumb">
+    <a href="/">Home</a> <span>/</span> <a href="/analysis/">Quant Lab</a>
+    <span>/</span> <span>Arsenal's left wing</span>
+  </div>
+
+  <div class="eyebrow">Quant Lab &middot; 15 October 2026</div>
+  <h1>Arsenal's left wing: what's missing, and three January targets</h1>
+
+  <article>
+    <p class="lede">Last season Arsenal's left matched or beat the top six on shots, dribbles and goals + assists.
+    Both men who played there have gone, and Tzolis, who replaced them, is out with a hamstring injury. Of
+    119 left wingers, three pass our filters and project, on average, to replace what left. One costs
+    less than Tzolis did.</p>
+
+    <div class="callout">
+      <p><strong>Our answer.</strong></p>
+      <ul class="ans">
+        <li><b>Under a Tzolis-sized fee:</b> Derry Scherhant, Freiburg, 24. Reported price about £14m to £15m.</li>
+        <li><b>A stretch:</b> Antonio Nusa, RB Leipzig, 21. Reported at around £60m, and Leipzig reportedly won't sell mid-season.</li>
+        <li><b>Best player, wrong January:</b> Kenan Yıldız, Juventus, 21. Injured until about the end of November, valued at €100m to €150m.</li>
+      </ul>
+      <p>Nusa and Scherhant pass at every club cut we tried. How many make it, and who, depends on where we
+      draw that line: at 15, Jesús Rodríguez comes in and Scherhant drops to fourth; at 25, Yıldız drops out and
+      only two pass. See How we picked.</p>
+    </div>
+
+    <h2>What the left had, and has</h2>
+    <p>Last season Leandro Trossard made 21 starts on the left and Gabriel
+    Martinelli 11. Between them they matched the left wingers of the Premier
+    League's top six on shots and beat them on dribbles and goals + assists. Trossard went to Besiktas for £17m
+    and Martinelli to Al-Hilal for £60m. Christos Tzolis came from Club Brugge for a reported £34m and has started
+    5 of 6 league games on the left. Noni Madueke started the other.</p>
+    <div class="scroll"><table class="data">
+      <thead><tr><th>Per 90, league</th><th>Arsenal's left 2025/26</th><th>Top-six LW median</th><th>Saka 2025/26</th>
+      <th>Tzolis so far</th><th>Our forecast for Tzolis</th></tr></thead>
+      <tbody><tr><td>Shots</td><td class='num'>1.66</td><td class='num'>1.66</td><td class='num'>1.90</td><td class='num'>0.74</td><td class='num'>2.21</td></tr><tr><td>Key passes</td><td class='num'>1.43</td><td class='num'>1.56</td><td class='num'>2.55</td><td class='num'>1.97</td><td class='num'>2.76</td></tr><tr><td>Dribbles attempted</td><td class='num'>2.74</td><td class='num'>2.38</td><td class='num'>4.09</td><td class='num'>1.48</td><td class='num'>2.06</td></tr><tr><td>Goals + assists</td><td class='num'>0.50</td><td class='num'>0.41</td><td class='num'>0.49</td><td class='num'>0.25</td><td class='num'>0.77</td></tr><tr><td>Fouls won</td><td class='num'>1.55</td><td class='num'>1.77</td><td class='num'>2.18</td><td class='num'>1.97</td><td class='num'>not projected</td></tr><tr><td>Passes</td><td class='num'>29.67</td><td class='num'>33.22</td><td class='num'>31.27</td><td class='num'>33.04</td><td class='num'>not projected</td></tr></tbody>
+    </table></div>
+    <p class="note">Top-six left wingers: the 6 players our lineups list as left wingers at the six
+    Premier League clubs rated highest by our club ratings, 900+ minutes (A. Adli, C. Gakpo, E. Buendía, Gabriel Martinelli, J. Doku, L. Trossard), so it includes Trossard and Martinelli themselves. Tzolis so
+    far: 365 league minutes in our latest stats pull. That is far too few to judge him on.</p>
+
+    <p><strong>So what is missing?</strong> Two things. A second left winger: there is one natural left winger in
+    the squad now, where there were two, and he is out. Tzolis went off with a hamstring injury playing for Greece
+    in the October break, and Arteta says he will miss a few weeks. And so far, end product: Tzolis is taking
+    0.7 shots per 90, well below our forecast of 2.2. That forecast is for a
+    full season and 365 minutes is not one. Our simple baseline also does not adjust for the step up from
+    Belgium, which our league-move study says costs shots. Either way, the left has no fallback.</p>
+
+    <h2>How we picked</h2>
+    <p>We wrote the method down before looking at a single name. The test as written found no output gap last
+    season, so no one passed it. That is an honest answer, but it was about last season. Everything below
+    answers the follow-up we declared after seeing that: who could replace the output that left? Our registered
+    price rule, the fees paid for similar players, failed a sanity check (it priced Yıldız at £4.5m), so we use
+    reported prices instead.</p>
+    <ol>
+      <li><strong>119 left wingers.</strong> Listed as a left winger by our lineups last season, or 10+ starts
+        on the left; 900+ league minutes; under 27 on 1 January 2027; playing this season; in our 14 divisions.</li>
+      <li><strong>27 for whom Arsenal is a natural next step.</strong> Arsenal ranks in the top quarter of
+        every club he could move to, on our destination score. Tested on 920 real moves: the club a player
+        actually joined ranked 82% of the way up on average. Here it runs from his current club, which that test did not cover.</li>
+      <li><strong>8 at clubs that sell in January.</strong> We dropped players their club signed this summer
+        (only 90 of 1,280 January sales from 2023 to 2026 were) and players at
+        the 20 highest-rated clubs in our ratings. These two filters were added after we declared the follow-up.
+        Without them the top three would be M. Godts, Vinícius Júnior, J. Doku, none of whom their clubs would sell in January.</li>
+      <li><strong>3 whose projection, averaged over the four measures, is above what left.</strong> Shots, key passes,
+        dribbles and goals + assists, each against what Arsenal's left produced last season. Dribbles do most of the work:
+        Scherhant projects below last season's left on shots and key passes.</li>
+    </ol>
+    <p><strong>Where we draw the club line changes the list.</strong> Juventus is the 22nd-rated club, just outside the
+    top-20 cut. Como and Brighton are inside it.</p>
+    <div class="scroll"><table class="data">
+      <thead><tr><th>Clubs excluded</th><th>Who passes (best first)</th></tr></thead>
+      <tbody><tr><td>Top 10</td><td>K. Yıldız, Jesús Rodríguez, A. Nusa, D. Scherhant, I. Osman</td></tr><tr><td>Top 15</td><td>K. Yıldız, Jesús Rodríguez, A. Nusa, D. Scherhant, I. Osman</td></tr><tr><td>Top 20</td><td>K. Yıldız, A. Nusa, D. Scherhant</td></tr><tr><td>Top 25</td><td>A. Nusa, D. Scherhant</td></tr><tr><td>Top 30</td><td>A. Nusa, D. Scherhant</td></tr></tbody>
+    </table></div>
+
+    <h3>The machine learning, scored on moves it never saw</h3>
+    <p>The projection was trained on 779 moves into 2023/24 and 2024/25, and tested on
+    389 moves into 2025/26. Each model had to beat a simple baseline before we would use it.
+    Most didn't.</p>
+    <div class="scroll"><table class="data">
+      <thead><tr><th>Next season, per 90</th><th>No change</th><th>Simple baseline</th><th>Ridge</th><th>Boosting</th><th>Used</th><th>80% range held</th></tr></thead>
+      <tbody><tr><td>Shots</td><td class='num'>0.399</td><td class='num'>0.360</td><td class='num'>0.357</td><td class='num'>0.367</td><td>Simple baseline</td><td class='num'>84%</td></tr><tr><td>Key passes</td><td class='num'>0.407</td><td class='num'>0.373</td><td class='num'>0.363</td><td class='num'>0.378</td><td>Simple baseline</td><td class='num'>83%</td></tr><tr><td>Dribbles attempted</td><td class='num'>0.581</td><td class='num'>0.518</td><td class='num'>0.533</td><td class='num'>0.566</td><td>Simple baseline</td><td class='num'>85%</td></tr><tr><td>Goals + assists</td><td class='num'>0.162</td><td class='num'>0.141</td><td class='num'>0.132</td><td class='num'>0.138</td><td>Ridge</td><td class='num'>79%</td></tr></tbody>
+    </table></div>
+    <p class="note">Average error on the test moves, lower is better. The simple baseline pulls last season's number
+    towards the average. Ridge regression beat it only for goals + assists (-0.009 per 90, 95% interval
+    -0.016 to -0.002). Gradient boosting never cleared the bar. Where machine learning did not earn its place,
+    we used the baseline. An 80% range should hold eight times in ten; ours held 79%
+    to 85%.</p>
+
+    <h2>The three</h2>
+    
+    <section class="tp tp-fit" aria-labelledby="h-286710">
+      <div class="tp-head">
+        <span class="tp-face" aria-hidden="true"><img src="https://media.api-sports.io/football/players/286710.png" alt="" width="84" height="84" loading="lazy" onerror="this.remove()"></span>
+        <div class="tp-id">
+          <div class="tp-tier">Under a Tzolis-sized fee</div>
+          <h3 id="h-286710">Derry Scherhant</h3>
+          <div class="tp-meta">24 on 1 Jan 2027 &middot; SC Freiburg &middot; Bundesliga</div>
+          <div class="tp-meta">10 starts on the left in 2025/26 &middot; 1,308 league minutes</div>
+        </div>
+      </div>
+      <div class="tp-grid">
+        <div>
+          <h4>Projected per 90</h4><p class='pnote'>Goals + assists adjusted for a move to Arsenal; the rest is his own numbers pulled towards the average.</p>
+          <div class='pb'><div class='pb-l'><span>Shots</span><b>1.46</b></div><div class='pb-t' role='img' aria-label='Shots: projected 1.46 per 90, 80% range 0.91 to 2.18; Arsenal left last season 1.66'><i class='pb-r' style='left:33.1%;width:calc(79.3% - 33.1%)'></i><i class='pb-v' style='left:53.1%'></i><i class='pb-ref' style='left:60.4%'></i></div><div class='pb-k'>0.91 to 2.18</div></div><div class='pb'><div class='pb-l'><span>Key passes</span><b>1.39</b></div><div class='pb-t' role='img' aria-label='Key passes: projected 1.39 per 90, 80% range 0.81 to 2.05; Arsenal left last season 1.43'><i class='pb-r' style='left:28.7%;width:calc(72.5% - 28.7%)'></i><i class='pb-v' style='left:49.2%'></i><i class='pb-ref' style='left:50.6%'></i></div><div class='pb-k'>0.81 to 2.05</div></div><div class='pb'><div class='pb-l'><span>Dribbles attempted</span><b>4.27</b></div><div class='pb-t' role='img' aria-label='Dribbles attempted: projected 4.27 per 90, 80% range 3.42 to 5.35; Arsenal left last season 2.74'><i class='pb-r' style='left:56.6%;width:calc(88.6% - 56.6%)'></i><i class='pb-v' style='left:70.7%'></i><i class='pb-ref' style='left:45.4%'></i></div><div class='pb-k'>3.42 to 5.35</div></div><div class='pb'><div class='pb-l'><span>Goals + assists</span><b>0.60</b></div><div class='pb-t' role='img' aria-label='Goals + assists: projected 0.60 per 90, 80% range 0.40 to 0.82; Arsenal left last season 0.50'><i class='pb-r' style='left:43.8%;width:calc(89.8% - 43.8%)'></i><i class='pb-v' style='left:65.7%'></i><i class='pb-ref' style='left:54.8%'></i></div><div class='pb-k'>0.40 to 0.82</div></div>
+          <div class="pb-key"><span><i class="kv"></i> projection</span><span><i class="kr"></i> 80% range</span><span><i class="kref"></i> Arsenal's left, 2025/26</span></div>
+        </div>
+        <div class="tp-facts">
+          <h4>For</h4><ul><li>Takes players on: 5.5 dribbles per 90 last season, twice what Arsenal&#x27;s left managed.</li><li>Lowest injury risk of the three, and the cheapest by a distance.</li></ul>
+          <h4>Against</h4><ul class="neg"><li>Only 1,308 league minutes last season. Our ranges don&#x27;t widen for that, so his are too narrow.</li><li>Few touches: 15.6 passes per 90 against 29.7 from Arsenal&#x27;s left last season. A runner, not a link player.</li></ul>
+          <dl>
+            <dt>Reported price</dt><dd>€16.5m to €17.5m, about £14m to £15m. Freiburg&#x27;s reported price when Ipswich asked, August 2026.</dd>
+            <dt>Yearly squad cost</dt><dd>£3.1m to £3.3m a year in fee alone, spread over a contract to June 2031. Wages on top.</dd>
+            <dt>Contract</dt><dd>Not disclosed by Freiburg; one report says June 2027. If it ends then, a January price would likely be lower.</dd>
+            <dt>Available</dt><dd>Fit and playing</dd>
+            <dt>Injury risk</dt><dd>19% chance of missing 5+ league games injured this season (typical player 29%)</dd>
+          </dl>
+          <p class="src">Reported by: <a href='https://www.fussballdaten.de/news/ipswich-will-scherhant-freiburg-fordert-17-5-millionen-euro/' rel='noopener'>Fussballdaten, Aug 2026</a> &middot; <a href='https://x.com/Plettigoal/status/1925118981783904706' rel='noopener'>Florian Plettenberg (joined Freiburg for €2m, 2025)</a></p>
+          <a class="tp-card" href="/analysis/player-cards/?id=286710">Open his player card &rarr;</a>
+        </div>
+      </div>
+    </section>
+    <section class="tp tp-stretch" aria-labelledby="h-314511">
+      <div class="tp-head">
+        <span class="tp-face" aria-hidden="true"><img src="https://media.api-sports.io/football/players/314511.png" alt="" width="84" height="84" loading="lazy" onerror="this.remove()"></span>
+        <div class="tp-id">
+          <div class="tp-tier">A stretch</div>
+          <h3 id="h-314511">Antonio Nusa</h3>
+          <div class="tp-meta">21 on 1 Jan 2027 &middot; RB Leipzig &middot; Bundesliga</div>
+          <div class="tp-meta">24 starts on the left in 2025/26 &middot; 2,035 league minutes</div>
+        </div>
+      </div>
+      <div class="tp-grid">
+        <div>
+          <h4>Projected per 90</h4><p class='pnote'>Goals + assists adjusted for a move to Arsenal; the rest is his own numbers pulled towards the average.</p>
+          <div class='pb'><div class='pb-l'><span>Shots</span><b>1.66</b></div><div class='pb-t' role='img' aria-label='Shots: projected 1.66 per 90, 80% range 1.11 to 2.37; Arsenal left last season 1.66'><i class='pb-r' style='left:40.4%;width:calc(86.2% - 40.4%)'></i><i class='pb-v' style='left:60.4%'></i><i class='pb-ref' style='left:60.4%'></i></div><div class='pb-k'>1.11 to 2.37</div></div><div class='pb'><div class='pb-l'><span>Key passes</span><b>1.35</b></div><div class='pb-t' role='img' aria-label='Key passes: projected 1.35 per 90, 80% range 0.78 to 2.02; Arsenal left last season 1.43'><i class='pb-r' style='left:27.6%;width:calc(71.5% - 27.6%)'></i><i class='pb-v' style='left:47.8%'></i><i class='pb-ref' style='left:50.6%'></i></div><div class='pb-k'>0.78 to 2.02</div></div><div class='pb'><div class='pb-l'><span>Dribbles attempted</span><b>4.41</b></div><div class='pb-t' role='img' aria-label='Dribbles attempted: projected 4.41 per 90, 80% range 3.56 to 5.49; Arsenal left last season 2.74'><i class='pb-r' style='left:59.0%;width:calc(90.9% - 59.0%)'></i><i class='pb-v' style='left:73.0%'></i><i class='pb-ref' style='left:45.4%'></i></div><div class='pb-k'>3.56 to 5.49</div></div><div class='pb'><div class='pb-l'><span>Goals + assists</span><b>0.53</b></div><div class='pb-t' role='img' aria-label='Goals + assists: projected 0.53 per 90, 80% range 0.33 to 0.76; Arsenal left last season 0.50'><i class='pb-r' style='left:36.1%;width:calc(83.2% - 36.1%)'></i><i class='pb-v' style='left:58.1%'></i><i class='pb-ref' style='left:54.8%'></i></div><div class='pb-k'>0.33 to 0.76</div></div>
+          <div class="pb-key"><span><i class="kv"></i> projection</span><span><i class="kr"></i> 80% range</span><span><i class="kref"></i> Arsenal's left, 2025/26</span></div>
+        </div>
+        <div class="tp-facts">
+          <h4>For</h4><ul><li>5.7 dribbles and 2.8 fouls won per 90 last season, both well above Arsenal&#x27;s left.</li><li>Fast start this season: 1.33 goals + assists per 90, though in only 406 minutes.</li></ul>
+          <h4>Against</h4><ul class="neg"><li>0.31 goals + assists per 90 last season, below what left with Trossard and Martinelli.</li><li>Reported price is well above the £34m Arsenal paid for Tzolis.</li></ul>
+          <dl>
+            <dt>Reported price</dt><dd>€60m to €65m reported in July, around £60m in October, so about £51m to £60m. Leipzig reportedly won&#x27;t sell while they are in the Champions League.</dd>
+            <dt>Yearly squad cost</dt><dd>£11.3m to £13.3m a year in fee alone, spread over a contract to June 2031. Wages on top.</dd>
+            <dt>Contract</dt><dd>June 2029</dd>
+            <dt>Available</dt><dd>Fit and playing</dd>
+            <dt>Injury risk</dt><dd>32% chance of missing 5+ league games injured this season (typical player 29%)</dd>
+          </dl>
+          <p class="src">Reported by: <a href='https://www.caughtoffside.com/2026/10/15/arsenal-have-advantage-one-of-best-wingers-europe/' rel='noopener'>CaughtOffside, 15 Oct 2026</a> &middot; <a href='https://www.getfootballnewsgermany.com/2026/rb-leipzig-values-in-demand-antonio-nusa-at-e60m/' rel='noopener'>Get German Football News, Jul 2026</a></p>
+          <a class="tp-card" href="/analysis/player-cards/?id=314511">Open his player card &rarr;</a>
+        </div>
+      </div>
+    </section>
+    <section class="tp tp-no" aria-labelledby="h-339883">
+      <div class="tp-head">
+        <span class="tp-face" aria-hidden="true"><img src="https://media.api-sports.io/football/players/339883.png" alt="" width="84" height="84" loading="lazy" onerror="this.remove()"></span>
+        <div class="tp-id">
+          <div class="tp-tier">Best player, wrong January</div>
+          <h3 id="h-339883">Kenan Yıldız</h3>
+          <div class="tp-meta">21 on 1 Jan 2027 &middot; Juventus &middot; Serie A</div>
+          <div class="tp-meta">10 starts on the left in 2025/26 &middot; 2,838 league minutes</div>
+        </div>
+      </div>
+      <div class="tp-grid">
+        <div>
+          <h4>Projected per 90</h4><p class='pnote'>Goals + assists adjusted for a move to Arsenal; the rest is his own numbers pulled towards the average.</p>
+          <div class='pb'><div class='pb-l'><span>Shots</span><b>1.78</b></div><div class='pb-t' role='img' aria-label='Shots: projected 1.78 per 90, 80% range 1.23 to 2.50; Arsenal left last season 1.66'><i class='pb-r' style='left:44.7%;width:calc(90.9% - 44.7%)'></i><i class='pb-v' style='left:64.7%'></i><i class='pb-ref' style='left:60.4%'></i></div><div class='pb-k'>1.23 to 2.50</div></div><div class='pb'><div class='pb-l'><span>Key passes</span><b>1.90</b></div><div class='pb-t' role='img' aria-label='Key passes: projected 1.90 per 90, 80% range 1.32 to 2.57; Arsenal left last season 1.43'><i class='pb-r' style='left:46.7%;width:calc(90.9% - 46.7%)'></i><i class='pb-v' style='left:67.2%'></i><i class='pb-ref' style='left:50.6%'></i></div><div class='pb-k'>1.32 to 2.57</div></div><div class='pb'><div class='pb-l'><span>Dribbles attempted</span><b>3.73</b></div><div class='pb-t' role='img' aria-label='Dribbles attempted: projected 3.73 per 90, 80% range 2.87 to 4.80; Arsenal left last season 2.74'><i class='pb-r' style='left:47.5%;width:calc(79.5% - 47.5%)'></i><i class='pb-v' style='left:61.8%'></i><i class='pb-ref' style='left:45.4%'></i></div><div class='pb-k'>2.87 to 4.80</div></div><div class='pb'><div class='pb-l'><span>Goals + assists</span><b>0.60</b></div><div class='pb-t' role='img' aria-label='Goals + assists: projected 0.60 per 90, 80% range 0.40 to 0.83; Arsenal left last season 0.50'><i class='pb-r' style='left:43.8%;width:calc(90.9% - 43.8%)'></i><i class='pb-v' style='left:65.7%'></i><i class='pb-ref' style='left:54.8%'></i></div><div class='pb-k'>0.40 to 0.83</div></div>
+          <div class="pb-key"><span><i class="kv"></i> projection</span><span><i class="kr"></i> 80% range</span><span><i class="kref"></i> Arsenal's left, 2025/26</span></div>
+        </div>
+        <div class="tp-facts">
+          <h4>For</h4><ul><li>Highest projected shots and key passes of the three, and joint highest goals + assists.</li><li>The most complete: 38.8 passes and 4.7 dribbles per 90 last season.</li></ul>
+          <h4>Against</h4><ul class="neg"><li>Out injured until about the end of November, and Juventus have called him unsellable.</li><li>At €100m to €150m he would add more to Arsenal&#x27;s yearly squad costs than the other two together.</li></ul>
+          <dl>
+            <dt>Reported price</dt><dd>€100m to €150m, about £85m to £128m. Reported valuations.</dd>
+            <dt>Yearly squad cost</dt><dd>£18.9m to £28.3m a year in fee alone, spread over a contract to June 2031. Wages on top.</dd>
+            <dt>Contract</dt><dd>June 2030</dd>
+            <dt>Available</dt><dd>Broke his foot in the opening league game in August; expected back around the end of November</dd>
+            <dt>Injury risk</dt><dd>24% chance of missing 5+ league games injured this season (typical player 29%)</dd>
+          </dl>
+          <p class="src">Reported by: <a href='https://www.goal.com/en/lists/di-marzio-yildiz-if-juventus-were-to-sell-him-it-would-be-for-a-fee-close-to-eur150-million/blt4278ec9946867852' rel='noopener'>Goal / Di Marzio</a> &middot; <a href='https://readarsenal.com/2026/10/14/kenan-yildiz-arsenal-bayern-step-aside/' rel='noopener'>Read Arsenal, 14 Oct 2026</a></p>
+          <a class="tp-card" href="/analysis/player-cards/?id=339883">Open his player card &rarr;</a>
+        </div>
+      </div>
+    </section>
+
+    <h3>On the edge: Jesús Rodríguez</h3>
+    <p>Como's left winger, 21 on 1 January 2027. His projection averages 1.18 times what Arsenal's
+    left produced, above Nusa and Scherhant, and he passes every filter except one: Como are the 17th-rated club in our
+    ratings, inside the top-20 cut. Draw the line at 15 and he is in, second, ahead of Nusa, which pushes Scherhant out of the three. Como paid Betis €22m for him in 2025 on a
+    contract to 2030, and in March reports put Como's price around €55m
+    (<a href="https://www.besoccer.com/new/official-como-land-real-betis-gem-jesus-rodriguez-in-euro-22m-deal-1365074" rel="noopener">BeSoccer</a>,
+    <a href="https://www.transferfeed.com/players/jesus-rodriguez/432257" rel="noopener">TransferFeed</a>).</p>
+
+    <h2>Money: what fits the rules</h2>
+    <p>From this season the Premier League caps squad costs (wages, transfer fees spread over the contract, and
+    agents' fees) at 85% of revenue. It checks on 1 March, straight after the January window. UEFA's version, which
+    applies to clubs in Europe, is stricter at 70%. In 2024/25 Arsenal's revenue was £690.3m and wages £346.8m.
+    With fee spreading of about £172m (our figure, derived from the published accounts), wages and fees came to about
+    75% of revenue on a simple basis. The rules count differently: Greg Cordell estimates Arsenal at about 62% on
+    UEFA's measure.</p>
+    <ul>
+      <li><strong>1% of Arsenal's revenue is about £6.9m a year.</strong></li>
+      <li>Scherhant's reported price adds about £3.1m to £3.3m a year in fee. Nusa's about £11m to £13m. Yıldız's £19m to £28m.</li>
+      <li>We have no wage data, so every figure here is a floor. Wages come on top.</li>
+      <li>We can't compute Arsenal's room under the rules exactly: the 2025/26 accounts are not out, and summer
+        2026 brought £77m in from Martinelli and Trossard, and new signings including Tzolis.</li>
+    </ul>
+
+    <h2>What this can't tell you</h2>
+    <ul>
+      <li><strong>Whether a club will sell.</strong> Our filters use what clubs have done in January before. Leipzig
+        and Juventus say no, and the prices above are reported, not ours.</li>
+      <li><strong>Wages and contracts.</strong> We don't have them.</li>
+      <li><strong>Fit with Arteta's system.</strong> Scherhant in particular is a different player from Trossard.</li>
+      <li><strong>Our forecast for Tzolis is well above what he has done so far.</strong> Same model, a few games in. If he
+        settles, the need is depth, not a starter.</li>
+      <li><strong>This is a follow-up, not the registered test.</strong> The registered test found no output gap.</li>
+      <li><strong>The top-20 cut is a judgement call.</strong> Juventus sits just outside it, and moving it five places either way changes who makes the three, and how many.</li>
+    </ul>
+
+    <h2>Data sources</h2>
+    <ul>
+      <li><a href="https://www.api-football.com/">API-Football</a>: league stats, lineups, transfers and injury news.</li>
+      <li>Projection, destination score, club ratings and injury risk: our own, from that data.</li>
+      <li>Fees, contracts and the rules: <a href="https://www.skysports.com/football/news/11670/13564283/arsenal-transfer-news-christos-tzolis-signs-in-lb34m-deal-from-club-brugge-as-replacement-for-leandro-trossard">Sky Sports (Tzolis)</a>,
+        <a href="https://www.espn.com/soccer/story/_/id/49720317/gabriel-martinelli-al-hilal-arsenal-transfers-premier-league-saudi-pro-league">ESPN (Martinelli)</a>,
+        <a href="https://www.skysports.com/football/news/13473576/premier-league-clubs-approve-new-squad-cost-ratio-rules-to-replace-psr-but-vote-against-a-proposal-that-could-have-introduced-a-salary-cap">Sky Sports (squad cost rules)</a>,
+        <a href="https://gregcordell.substack.com/p/arsenal-fc-202425-financial-results">Greg Cordell (Arsenal 2024/25 accounts)</a>, and the links on each player.</li>
+      <li>Player photos and club badges belong to their owners and are shown to identify them.</li>
+    </ul>
+  </article>
+
+  <footer>
+    <div>
+      <a href="/analysis/">Quant Lab</a>
+      <a href="/blog/">Blog</a>
+      <a href="/proof.html">Track record</a>
+      <a href="/legal.html">Legal</a>
+    </div>
+    <div class="foot-line">&copy; 2026 Quant Edge Syndicate &middot; <a href="#" data-cookie-settings>Cookie settings</a></div>
+  </footer>
+
+</div>
+</body>
+</html>
