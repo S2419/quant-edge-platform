@@ -260,8 +260,21 @@
     <span>/</span> <span>Arsenal's left wing</span>
   </div>
 
-  <div class="eyebrow">Quant Lab &middot; 15 October 2026</div>
+  <div class="eyebrow">Quant Lab &middot; 15 October 2026 &middot; Updated 18 October 2026</div>
   <h1>Arsenal's left wing: what's missing, and three January targets</h1>
+
+    <div class="callout">
+      <p><strong>Update, 18 October 2026.</strong> Our shots forecasts now adjust for the league a player moves from. We
+      added this to our transfer system after it beat the plain forecast on moves it never saw. The gain is small:
+      average error 0.360 to 0.349 shots per 90 on 389 moves into 2025/26,
+      about 3% (95% interval -0.020 to -0.003).
+      The first version of this piece, dated 15 October, did not adjust, and said so.
+      A move from Belgium to the Premier League costs 18% of shots on average,
+      so our forecast for Tzolis drops from 2.2 to 1.8 shots per 90. The three targets
+      move from Germany and Italy, which costs 2% on average. Their shots
+      forecasts dip slightly, and the three, their order and the club-cut table are unchanged. Without the
+      selling filters, Vinícius Júnior now edges Godts for first; the same three names.</p>
+    </div>
 
   <article>
     <p class="lede">Last season Arsenal's left matched or beat the top six on shots, dribbles and goals + assists.
@@ -290,7 +303,7 @@
     <div class="scroll"><table class="data">
       <thead><tr><th>Per 90, league</th><th>Arsenal's left 2025/26</th><th>Top-six LW median</th><th>Saka 2025/26</th>
       <th>Tzolis so far</th><th>Our forecast for Tzolis</th></tr></thead>
-      <tbody><tr><td>Shots</td><td class='num'>1.66</td><td class='num'>1.66</td><td class='num'>1.90</td><td class='num'>0.74</td><td class='num'>2.21</td></tr><tr><td>Key passes</td><td class='num'>1.43</td><td class='num'>1.56</td><td class='num'>2.55</td><td class='num'>1.97</td><td class='num'>2.76</td></tr><tr><td>Dribbles attempted</td><td class='num'>2.74</td><td class='num'>2.38</td><td class='num'>4.09</td><td class='num'>1.48</td><td class='num'>2.06</td></tr><tr><td>Goals + assists</td><td class='num'>0.50</td><td class='num'>0.41</td><td class='num'>0.49</td><td class='num'>0.25</td><td class='num'>0.77</td></tr><tr><td>Fouls won</td><td class='num'>1.55</td><td class='num'>1.77</td><td class='num'>2.18</td><td class='num'>1.97</td><td class='num'>not projected</td></tr><tr><td>Passes</td><td class='num'>29.67</td><td class='num'>33.22</td><td class='num'>31.27</td><td class='num'>33.04</td><td class='num'>not projected</td></tr></tbody>
+      <tbody><tr><td>Shots</td><td class='num'>1.66</td><td class='num'>1.66</td><td class='num'>1.90</td><td class='num'>0.74</td><td class='num'>1.81</td></tr><tr><td>Key passes</td><td class='num'>1.43</td><td class='num'>1.56</td><td class='num'>2.55</td><td class='num'>1.97</td><td class='num'>2.76</td></tr><tr><td>Dribbles attempted</td><td class='num'>2.74</td><td class='num'>2.38</td><td class='num'>4.09</td><td class='num'>1.48</td><td class='num'>2.06</td></tr><tr><td>Goals + assists</td><td class='num'>0.50</td><td class='num'>0.41</td><td class='num'>0.49</td><td class='num'>0.25</td><td class='num'>0.77</td></tr><tr><td>Fouls won</td><td class='num'>1.55</td><td class='num'>1.77</td><td class='num'>2.18</td><td class='num'>1.97</td><td class='num'>not projected</td></tr><tr><td>Passes</td><td class='num'>29.67</td><td class='num'>33.22</td><td class='num'>31.27</td><td class='num'>33.04</td><td class='num'>not projected</td></tr></tbody>
     </table></div>
     <p class="note">Top-six left wingers: the 6 players our lineups list as left wingers at the six
     Premier League clubs rated highest by our club ratings, 900+ minutes (A. Adli, C. Gakpo, E. Buendía, Gabriel Martinelli, J. Doku, L. Trossard), so it includes Trossard and Martinelli themselves. Tzolis so
@@ -299,9 +312,8 @@
     <p><strong>So what is missing?</strong> Two things. A second left winger: there is one natural left winger in
     the squad now, where there were two, and he is out. Tzolis went off with a hamstring injury playing for Greece
     in the October break, and Arteta says he will miss a few weeks. And so far, end product: Tzolis is taking
-    0.7 shots per 90, well below our forecast of 2.2. That forecast is for a
-    full season and 365 minutes is not one. Our simple baseline also does not adjust for the step up from
-    Belgium, which our league-move study says costs shots. Either way, the left has no fallback.</p>
+    0.7 shots per 90, well below our forecast of 1.8, which allows for the step up from Belgium.
+    That forecast is for a full season and 365 minutes is not one. Either way, the left has no fallback.</p>
 
     <h2>How we picked</h2>
     <p>We wrote the method down before looking at a single name. The test as written found no output gap last
@@ -318,7 +330,7 @@
       <li><strong>8 at clubs that sell in January.</strong> We dropped players their club signed this summer
         (only 90 of 1,280 January sales from 2023 to 2026 were) and players at
         the 20 highest-rated clubs in our ratings. These two filters were added after we declared the follow-up.
-        Without them the top three would be M. Godts, Vinícius Júnior, J. Doku, none of whom their clubs would sell in January.</li>
+        Without them the top three would be Vinícius Júnior, M. Godts, J. Doku, none of whom their clubs would sell in January.</li>
       <li><strong>3 whose projection, averaged over the four measures, is above what left.</strong> Shots, key passes,
         dribbles and goals + assists, each against what Arsenal's left produced last season. Dribbles do most of the work:
         Scherhant projects below last season's left on shots and key passes.</li>
@@ -342,7 +354,9 @@
     towards the average. Ridge regression beat it only for goals + assists (-0.009 per 90, 95% interval
     -0.016 to -0.002). Gradient boosting never cleared the bar. Where machine learning did not earn its place,
     we used the baseline. An 80% range should hold eight times in ten; ours held 79%
-    to 85%.</p>
+    to 85%. Since the update, shots also adjust for a change of league:
+    average error 0.349 on the same 389 moves. The shots ranges are the baseline's,
+    moved by the same amount; we have not re-scored how often those held.</p>
 
     <h2>The three</h2>
     
@@ -358,8 +372,8 @@
       </div>
       <div class="tp-grid">
         <div>
-          <h4>Projected per 90</h4><p class='pnote'>Goals + assists adjusted for a move to Arsenal; the rest is his own numbers pulled towards the average.</p>
-          <div class='pb'><div class='pb-l'><span>Shots</span><b>1.46</b></div><div class='pb-t' role='img' aria-label='Shots: projected 1.46 per 90, 80% range 0.91 to 2.18; Arsenal left last season 1.66'><i class='pb-r' style='left:33.1%;width:calc(79.3% - 33.1%)'></i><i class='pb-v' style='left:53.1%'></i><i class='pb-ref' style='left:60.4%'></i></div><div class='pb-k'>0.91 to 2.18</div></div><div class='pb'><div class='pb-l'><span>Key passes</span><b>1.39</b></div><div class='pb-t' role='img' aria-label='Key passes: projected 1.39 per 90, 80% range 0.81 to 2.05; Arsenal left last season 1.43'><i class='pb-r' style='left:28.7%;width:calc(72.5% - 28.7%)'></i><i class='pb-v' style='left:49.2%'></i><i class='pb-ref' style='left:50.6%'></i></div><div class='pb-k'>0.81 to 2.05</div></div><div class='pb'><div class='pb-l'><span>Dribbles attempted</span><b>4.27</b></div><div class='pb-t' role='img' aria-label='Dribbles attempted: projected 4.27 per 90, 80% range 3.42 to 5.35; Arsenal left last season 2.74'><i class='pb-r' style='left:56.6%;width:calc(88.6% - 56.6%)'></i><i class='pb-v' style='left:70.7%'></i><i class='pb-ref' style='left:45.4%'></i></div><div class='pb-k'>3.42 to 5.35</div></div><div class='pb'><div class='pb-l'><span>Goals + assists</span><b>0.60</b></div><div class='pb-t' role='img' aria-label='Goals + assists: projected 0.60 per 90, 80% range 0.40 to 0.82; Arsenal left last season 0.50'><i class='pb-r' style='left:43.8%;width:calc(89.8% - 43.8%)'></i><i class='pb-v' style='left:65.7%'></i><i class='pb-ref' style='left:54.8%'></i></div><div class='pb-k'>0.40 to 0.82</div></div>
+          <h4>Projected per 90</h4><p class='pnote'>Goals + assists adjusted for a move to Arsenal; the rest is his own numbers pulled towards the average, with shots also adjusted for the change of league.</p>
+          <div class='pb'><div class='pb-l'><span>Shots</span><b>1.43</b></div><div class='pb-t' role='img' aria-label='Shots: projected 1.43 per 90, 80% range 0.89 to 2.13; Arsenal left last season 1.66'><i class='pb-r' style='left:33.2%;width:calc(79.4% - 33.2%)'></i><i class='pb-v' style='left:53.3%'></i><i class='pb-ref' style='left:61.8%'></i></div><div class='pb-k'>0.89 to 2.13</div></div><div class='pb'><div class='pb-l'><span>Key passes</span><b>1.39</b></div><div class='pb-t' role='img' aria-label='Key passes: projected 1.39 per 90, 80% range 0.81 to 2.05; Arsenal left last season 1.43'><i class='pb-r' style='left:28.7%;width:calc(72.5% - 28.7%)'></i><i class='pb-v' style='left:49.2%'></i><i class='pb-ref' style='left:50.6%'></i></div><div class='pb-k'>0.81 to 2.05</div></div><div class='pb'><div class='pb-l'><span>Dribbles attempted</span><b>4.27</b></div><div class='pb-t' role='img' aria-label='Dribbles attempted: projected 4.27 per 90, 80% range 3.42 to 5.35; Arsenal left last season 2.74'><i class='pb-r' style='left:56.6%;width:calc(88.6% - 56.6%)'></i><i class='pb-v' style='left:70.7%'></i><i class='pb-ref' style='left:45.4%'></i></div><div class='pb-k'>3.42 to 5.35</div></div><div class='pb'><div class='pb-l'><span>Goals + assists</span><b>0.60</b></div><div class='pb-t' role='img' aria-label='Goals + assists: projected 0.60 per 90, 80% range 0.40 to 0.82; Arsenal left last season 0.50'><i class='pb-r' style='left:43.8%;width:calc(89.8% - 43.8%)'></i><i class='pb-v' style='left:65.7%'></i><i class='pb-ref' style='left:54.8%'></i></div><div class='pb-k'>0.40 to 0.82</div></div>
           <div class="pb-key"><span><i class="kv"></i> projection</span><span><i class="kr"></i> 80% range</span><span><i class="kref"></i> Arsenal's left, 2025/26</span></div>
         </div>
         <div class="tp-facts">
@@ -389,8 +403,8 @@
       </div>
       <div class="tp-grid">
         <div>
-          <h4>Projected per 90</h4><p class='pnote'>Goals + assists adjusted for a move to Arsenal; the rest is his own numbers pulled towards the average.</p>
-          <div class='pb'><div class='pb-l'><span>Shots</span><b>1.66</b></div><div class='pb-t' role='img' aria-label='Shots: projected 1.66 per 90, 80% range 1.11 to 2.37; Arsenal left last season 1.66'><i class='pb-r' style='left:40.4%;width:calc(86.2% - 40.4%)'></i><i class='pb-v' style='left:60.4%'></i><i class='pb-ref' style='left:60.4%'></i></div><div class='pb-k'>1.11 to 2.37</div></div><div class='pb'><div class='pb-l'><span>Key passes</span><b>1.35</b></div><div class='pb-t' role='img' aria-label='Key passes: projected 1.35 per 90, 80% range 0.78 to 2.02; Arsenal left last season 1.43'><i class='pb-r' style='left:27.6%;width:calc(71.5% - 27.6%)'></i><i class='pb-v' style='left:47.8%'></i><i class='pb-ref' style='left:50.6%'></i></div><div class='pb-k'>0.78 to 2.02</div></div><div class='pb'><div class='pb-l'><span>Dribbles attempted</span><b>4.41</b></div><div class='pb-t' role='img' aria-label='Dribbles attempted: projected 4.41 per 90, 80% range 3.56 to 5.49; Arsenal left last season 2.74'><i class='pb-r' style='left:59.0%;width:calc(90.9% - 59.0%)'></i><i class='pb-v' style='left:73.0%'></i><i class='pb-ref' style='left:45.4%'></i></div><div class='pb-k'>3.56 to 5.49</div></div><div class='pb'><div class='pb-l'><span>Goals + assists</span><b>0.53</b></div><div class='pb-t' role='img' aria-label='Goals + assists: projected 0.53 per 90, 80% range 0.33 to 0.76; Arsenal left last season 0.50'><i class='pb-r' style='left:36.1%;width:calc(83.2% - 36.1%)'></i><i class='pb-v' style='left:58.1%'></i><i class='pb-ref' style='left:54.8%'></i></div><div class='pb-k'>0.33 to 0.76</div></div>
+          <h4>Projected per 90</h4><p class='pnote'>Goals + assists adjusted for a move to Arsenal; the rest is his own numbers pulled towards the average, with shots also adjusted for the change of league.</p>
+          <div class='pb'><div class='pb-l'><span>Shots</span><b>1.62</b></div><div class='pb-t' role='img' aria-label='Shots: projected 1.62 per 90, 80% range 1.09 to 2.32; Arsenal left last season 1.66'><i class='pb-r' style='left:40.6%;width:calc(86.4% - 40.6%)'></i><i class='pb-v' style='left:60.4%'></i><i class='pb-ref' style='left:61.8%'></i></div><div class='pb-k'>1.09 to 2.32</div></div><div class='pb'><div class='pb-l'><span>Key passes</span><b>1.35</b></div><div class='pb-t' role='img' aria-label='Key passes: projected 1.35 per 90, 80% range 0.78 to 2.02; Arsenal left last season 1.43'><i class='pb-r' style='left:27.6%;width:calc(71.5% - 27.6%)'></i><i class='pb-v' style='left:47.8%'></i><i class='pb-ref' style='left:50.6%'></i></div><div class='pb-k'>0.78 to 2.02</div></div><div class='pb'><div class='pb-l'><span>Dribbles attempted</span><b>4.41</b></div><div class='pb-t' role='img' aria-label='Dribbles attempted: projected 4.41 per 90, 80% range 3.56 to 5.49; Arsenal left last season 2.74'><i class='pb-r' style='left:59.0%;width:calc(90.9% - 59.0%)'></i><i class='pb-v' style='left:73.0%'></i><i class='pb-ref' style='left:45.4%'></i></div><div class='pb-k'>3.56 to 5.49</div></div><div class='pb'><div class='pb-l'><span>Goals + assists</span><b>0.53</b></div><div class='pb-t' role='img' aria-label='Goals + assists: projected 0.53 per 90, 80% range 0.33 to 0.76; Arsenal left last season 0.50'><i class='pb-r' style='left:36.1%;width:calc(83.2% - 36.1%)'></i><i class='pb-v' style='left:58.1%'></i><i class='pb-ref' style='left:54.8%'></i></div><div class='pb-k'>0.33 to 0.76</div></div>
           <div class="pb-key"><span><i class="kv"></i> projection</span><span><i class="kr"></i> 80% range</span><span><i class="kref"></i> Arsenal's left, 2025/26</span></div>
         </div>
         <div class="tp-facts">
@@ -420,8 +434,8 @@
       </div>
       <div class="tp-grid">
         <div>
-          <h4>Projected per 90</h4><p class='pnote'>Goals + assists adjusted for a move to Arsenal; the rest is his own numbers pulled towards the average.</p>
-          <div class='pb'><div class='pb-l'><span>Shots</span><b>1.78</b></div><div class='pb-t' role='img' aria-label='Shots: projected 1.78 per 90, 80% range 1.23 to 2.50; Arsenal left last season 1.66'><i class='pb-r' style='left:44.7%;width:calc(90.9% - 44.7%)'></i><i class='pb-v' style='left:64.7%'></i><i class='pb-ref' style='left:60.4%'></i></div><div class='pb-k'>1.23 to 2.50</div></div><div class='pb'><div class='pb-l'><span>Key passes</span><b>1.90</b></div><div class='pb-t' role='img' aria-label='Key passes: projected 1.90 per 90, 80% range 1.32 to 2.57; Arsenal left last season 1.43'><i class='pb-r' style='left:46.7%;width:calc(90.9% - 46.7%)'></i><i class='pb-v' style='left:67.2%'></i><i class='pb-ref' style='left:50.6%'></i></div><div class='pb-k'>1.32 to 2.57</div></div><div class='pb'><div class='pb-l'><span>Dribbles attempted</span><b>3.73</b></div><div class='pb-t' role='img' aria-label='Dribbles attempted: projected 3.73 per 90, 80% range 2.87 to 4.80; Arsenal left last season 2.74'><i class='pb-r' style='left:47.5%;width:calc(79.5% - 47.5%)'></i><i class='pb-v' style='left:61.8%'></i><i class='pb-ref' style='left:45.4%'></i></div><div class='pb-k'>2.87 to 4.80</div></div><div class='pb'><div class='pb-l'><span>Goals + assists</span><b>0.60</b></div><div class='pb-t' role='img' aria-label='Goals + assists: projected 0.60 per 90, 80% range 0.40 to 0.83; Arsenal left last season 0.50'><i class='pb-r' style='left:43.8%;width:calc(90.9% - 43.8%)'></i><i class='pb-v' style='left:65.7%'></i><i class='pb-ref' style='left:54.8%'></i></div><div class='pb-k'>0.40 to 0.83</div></div>
+          <h4>Projected per 90</h4><p class='pnote'>Goals + assists adjusted for a move to Arsenal; the rest is his own numbers pulled towards the average, with shots also adjusted for the change of league.</p>
+          <div class='pb'><div class='pb-l'><span>Shots</span><b>1.74</b></div><div class='pb-t' role='img' aria-label='Shots: projected 1.74 per 90, 80% range 1.20 to 2.44; Arsenal left last season 1.66'><i class='pb-r' style='left:44.7%;width:calc(90.9% - 44.7%)'></i><i class='pb-v' style='left:64.8%'></i><i class='pb-ref' style='left:61.8%'></i></div><div class='pb-k'>1.20 to 2.44</div></div><div class='pb'><div class='pb-l'><span>Key passes</span><b>1.90</b></div><div class='pb-t' role='img' aria-label='Key passes: projected 1.90 per 90, 80% range 1.32 to 2.57; Arsenal left last season 1.43'><i class='pb-r' style='left:46.7%;width:calc(90.9% - 46.7%)'></i><i class='pb-v' style='left:67.2%'></i><i class='pb-ref' style='left:50.6%'></i></div><div class='pb-k'>1.32 to 2.57</div></div><div class='pb'><div class='pb-l'><span>Dribbles attempted</span><b>3.73</b></div><div class='pb-t' role='img' aria-label='Dribbles attempted: projected 3.73 per 90, 80% range 2.87 to 4.80; Arsenal left last season 2.74'><i class='pb-r' style='left:47.5%;width:calc(79.5% - 47.5%)'></i><i class='pb-v' style='left:61.8%'></i><i class='pb-ref' style='left:45.4%'></i></div><div class='pb-k'>2.87 to 4.80</div></div><div class='pb'><div class='pb-l'><span>Goals + assists</span><b>0.60</b></div><div class='pb-t' role='img' aria-label='Goals + assists: projected 0.60 per 90, 80% range 0.40 to 0.83; Arsenal left last season 0.50'><i class='pb-r' style='left:43.8%;width:calc(90.9% - 43.8%)'></i><i class='pb-v' style='left:65.7%'></i><i class='pb-ref' style='left:54.8%'></i></div><div class='pb-k'>0.40 to 0.83</div></div>
           <div class="pb-key"><span><i class="kv"></i> projection</span><span><i class="kr"></i> 80% range</span><span><i class="kref"></i> Arsenal's left, 2025/26</span></div>
         </div>
         <div class="tp-facts">
@@ -441,7 +455,7 @@
     </section>
 
     <h3>On the edge: Jesús Rodríguez</h3>
-    <p>Como's left winger, 21 on 1 January 2027. His projection averages 1.18 times what Arsenal's
+    <p>Como's left winger, 21 on 1 January 2027. His projection averages 1.17 times what Arsenal's
     left produced, above Nusa and Scherhant, and he passes every filter except one: Como are the 17th-rated club in our
     ratings, inside the top-20 cut. Draw the line at 15 and he is in, second, ahead of Nusa, which pushes Scherhant out of the three. Como paid Betis €22m for him in 2025 on a
     contract to 2030, and in March reports put Como's price around €55m
