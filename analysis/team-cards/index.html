@@ -567,9 +567,9 @@
     return "<div class='pt-lines' aria-hidden='true'><i class='pt-half'></i><i class='pt-circle'></i><i class='pt-box pt-top'></i><i class='pt-box pt-bot'></i></div>" +
       keys.map(function (r) {
         return "<div class='pt-row'>" + rows[r].sort(function (a, b) { return a[0] - b[0]; }).map(function (x) {
-          var id = x[1], info = PL[id], st = info && info[2], card = info && info[0], moved = card && info[3] && info[3] !== c.id;
-          var cls = "pt-p" + (card ? " has-card" : "") + (st ? " is-out" : "") + (moved ? " moved" : "");
-          var label = NM[id] + (card ? ", has a player card" : "") + (st ? ", " + KIND[st][0].toLowerCase() : "") + (moved ? ", at another club this season" : "");
+          var id = x[1], info = PL[id], st = info && info[2], card = info && info[0], moved = card && info[3] && info[3] !== c.id, gone = card && !info[3];
+          var cls = "pt-p" + (card ? " has-card" : "") + (st ? " is-out" : "") + (moved || gone ? " moved" : "");
+          var label = NM[id] + (card ? ", has a player card" : "") + (st ? ", " + KIND[st][0].toLowerCase() : "") + (moved ? ", at another club this season" : gone ? ", no longer at the club" : "");
           return "<button type='button' class='" + cls + "' data-p='" + id + "' aria-label='" + esc(label) + "'>" +
             "<span class='pt-dot' aria-hidden='true'>" + (st ? "<i class='pip " + KIND[st][1] + "'>!</i>" : "") + "</span><span class='pt-nm'>" + esc(surname(NM[id])) + "</span></button>";
         }).join("") + "</div>";
@@ -583,7 +583,7 @@
         "<i class='W' style='flex:" + f[3] + "'></i><i class='D' style='flex:" + f[4] + "'></i><i class='L' style='flex:" + f[5] + "'></i></span>" +
       "<span class='fx-rec'>W" + f[3] + " D" + f[4] + " L" + f[5] + "</span></div>" +
       "<div class='tc-note'>Last used " + dayY(g[0]) + ", " + (g[2] ? "home" : "away") + " v " + esc(g[1]) + ", " + RES[g[3]] +
-      ". That XI is on the pitch. <span class='key-card'>Green</span>: has a player card. <span class='key-out'>!</span>: on our feed's list (missed the last game or listed for the next; red injured or unavailable, amber doubtful, grey suspended). Faded: at another club this season, per our player cards.</div>";
+      ". That XI is on the pitch. <span class='key-card'>Green</span>: has a player card. <span class='key-out'>!</span>: on our feed's list (missed the last game or listed for the next; red injured or unavailable, amber doubtful, grey suspended). Faded: no longer at the club this season, per our player cards.</div>";
   }
   function chart(c, k) {
     var pos = function (x) { return ((x + SCALE) / (2 * SCALE) * 100).toFixed(1) + "%"; };
@@ -703,6 +703,7 @@
       "<button type='button' class='close' data-shut aria-label='Close'>&times;</button></div>";
     if (info && info[2]) h += "<div>" + badge(info[2]) + " Listed by our feed. Status from " + esc(D.status_at) + ".</div>";
     if (info && info[0] && info[3] && info[4] && info[3] !== clubId) h += "<div class='dim'>Now at " + esc(info[4]) + ", on our player cards.</div>";
+    else if (info && info[0] && !info[3]) h += "<div class='dim'>No longer at the club: not in a squad in our 14 divisions this season, on our player cards.</div>";
     if (info && info[0]) {
       h += "<div class='sh-best'>" + info[1].map(function (b) { return "<span>" + esc(b[0]) + "<b class='" + band(b[1]) + "'>" + b[1] + "</b></span>"; }).join("") + "</div>" +
         "<div class='tc-note'>His two best ratings, 1 to 20 against his position in his division last season.</div>" +
